@@ -1,0 +1,13 @@
+Se ejecuta el siguiente comando en Power Shell:
+Get-ExecutionPolicy -List ​
+
+Si el usuario actual tiene ele stado indefinido se ejecuta lo siguiente:
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser ​
+
+Se verifica nuevamente el estado del usuario actual y si aparece RemoteSigned se puede activar el entorno virtual.
+
+Para guardar todo lo instalado como reqeurimientos y así poder instalar los mismos paquetes en otro entorno virtual se ejecuta:
+pip freeze > [requirements].txt
+Entre corchetes puede ir cualquier otro nombre.
+Para instalarlos se ejecuta el siguiente comando desde el otro entorno virtual:
+pip install -r .\[requirements].txt
