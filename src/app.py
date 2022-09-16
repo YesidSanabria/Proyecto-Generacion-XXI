@@ -7,3 +7,6 @@ def index():
     return "Hola Generacion XXI"
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+# Adaptación de bases de datos al Back-End
