@@ -33,7 +33,7 @@ def index():
                 auth.sign_in_with_email_and_password(email, password)
                 #user_id = auth.get_account_info(user['idToken'])
                 #session['usr'] = user_id
-                return render_template('home.html')
+                return render_template('formulario.html')
             except:
                 unsuccessful = 'Please check your credentials'
                 return render_template('index.html', umessage=unsuccessful)
