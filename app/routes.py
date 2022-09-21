@@ -62,9 +62,10 @@ def forgot_password():
 def home():
     return render_template('home.html')
 #--------------------------------------REGISTRO E INICIO DE SESION-------------------------------------
-
-
-
+@app.route('/admin_view', methods=['GET', 'POST'])
+def admin_view():
+    return render_template('admin_view.html')
+    
 #---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':
     app.run()
