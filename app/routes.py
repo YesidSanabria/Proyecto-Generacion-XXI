@@ -2,7 +2,6 @@ import pyrebase
 from flask import render_template, request, redirect, session
 #from app import app
 from flask import Flask
-import os
 
 app = Flask(__name__)
 
@@ -22,6 +21,7 @@ config = {
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 
+#--------------------------------------REGISTRO E INICIO DE SESION-------------------------------------
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
 def index():
@@ -29,6 +29,7 @@ def index():
             email = request.form['name']
             password = request.form['password']
             try:
+#--------------------INICIAR SESION---------------------------------                
                 auth.sign_in_with_email_and_password(email, password)
                 #user_id = auth.get_account_info(user['idToken'])
                 #session['usr'] = user_id
@@ -38,6 +39,7 @@ def index():
                 return render_template('index.html', umessage=unsuccessful)
     return render_template('index.html')
 
+#----------------------REGISTRARSE-----------------------------
 @app.route('/create_account', methods=['GET', 'POST'])
 def create_account():
     if (request.method == 'POST'):
@@ -47,6 +49,7 @@ def create_account():
             return render_template('index.html')
     return render_template('create_account.html')
 
+#----------------------REINICIAR CONTRASEÑA----------------------
 @app.route('/forgot_password', methods=['GET', 'POST'])
 def forgot_password():
     if (request.method == 'POST'):
@@ -58,7 +61,10 @@ def forgot_password():
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     return render_template('home.html')
+#--------------------------------------REGISTRO E INICIO DE SESION-------------------------------------
 
 
+
+#---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':
     app.run()
