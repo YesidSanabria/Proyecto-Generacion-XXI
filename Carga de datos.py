@@ -39,9 +39,10 @@ rows = data.tolist()
 students = {}
 for register in rows:
     field = {}
-    cc = register[2]    # Cédula.
+    ci = register[9].replace('.', '')    # Correo institucional como PK.
     for i in range(len(register)):
         field[keys[i]] = str(register[i])
-    students[cc] = field
+    if ci != 'nan': # Exclusión de gente sin correo institucional.
+        students[ci] = field
 ref = db.reference('Estudiantes')
 ref.set(students)
