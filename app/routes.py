@@ -67,7 +67,17 @@ def home():
 @app.route('/admin_view', methods=['GET', 'POST'])
 def admin_view():
     return render_template('admin_view.html')
-    
+
+#--------------------------------------FORMULARIO-------------------------------------
+@app.route('/formulario', methods=['GET', 'POST'])
+def formulario():
+    return render_template('formulario.html')
+
+#--------------------------------------LOGIN-------------------------------------
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    return render_template('login.html')
+
 #---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':
     app.run()
