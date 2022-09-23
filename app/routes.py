@@ -2,6 +2,11 @@ import pyrebase
 from flask import render_template, request, redirect, session
 #from app import app
 from flask import Flask
+#######################################
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
+########################################
 
 app = Flask(__name__)
 
@@ -19,6 +24,11 @@ config = {
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 
+##########################################
+cred = credentials.Certificate("app/config/generacion-xxi-firebase-adminsdk-iwq0c-bc2e550415.json")
+firebase_admin.initialize_app(cred,{'databaseURL':'https://generacion-xxi-default-rtdb.firebaseio.com/'})
+##########################################
+
 #--------------------------------------REGISTRO E INICIO DE SESION-------------------------------------
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
@@ -26,12 +36,17 @@ def index():
     if (request.method == 'POST'):
         email = request.form['name']
         password = request.form['password']
+        #######################################
+        ref = db.reference('Estudiantes')
+        user = ref.child(email.replace('.', '')).get()
+        print(user)
+        #######################################
         try:
 #--------------------INICIAR SESION---------------------------------                
             auth.sign_in_with_email_and_password(email, password)
             #user_id = auth.get_account_info(user['idToken'])
             #session['usr'] = user_id
-            return render_template('formulario.html')
+            return render_template('formulario.html', user=user)
         except:
             unsuccessful = 'Please check your credentials'
             return render_template('index.html', umessage=unsuccessful)
