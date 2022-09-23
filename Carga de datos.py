@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 import os
 
-cred = credentials.Certificate("generacion-xxi-firebase-adminsdk-iwq0c-bc2e550415.json")
+cred = credentials.Certificate("app/config/generacion-xxi-firebase-adminsdk-iwq0c-bc2e550415.json")
 firebase_admin.initialize_app(cred,{'databaseURL':'https://generacion-xxi-default-rtdb.firebaseio.com/'})
 
 # Importar datos de Excel.
