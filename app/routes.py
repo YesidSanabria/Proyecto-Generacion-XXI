@@ -2,9 +2,11 @@ import pyrebase
 from flask import render_template, request, redirect, session
 #from app import app
 from flask import Flask
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 
+Bootstrap(app)
 config = {
     "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
     "authDomain": "generacion-xxi.firebaseapp.com",
