@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <fieldset>
+            <legend>Datos personales</legend>
+            Apellido y nombre:
+            <input type="text" name="nombre" size="30"><br>
+            Documento de identidad:
+            <input type="text" name="dni" size="8"><br>
+            Fecha de nacimiento:
+            <input type="text" name="fechanacimiento" size="12"><br>
+            Dirección:
+            <input type="text" name="direccionpersona" size="30"><br>
+
+            <h1> Bienvenido  {{nombre}} </h1>
+          </fieldset>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <p class="copyright text-muted"> &copy; desarrolladores GENERACIÓN XXI </p>
+        </div>
+    </div>    
+<footer> 
+
+{% endblock %}
