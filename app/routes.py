@@ -1,3 +1,4 @@
+from distutils.log import error
 import pyrebase
 from flask import render_template, request, redirect, session
 #from app import app
@@ -29,6 +30,20 @@ cred = credentials.Certificate("app/config/generacion-xxi-firebase-adminsdk-iwq0
 firebase_admin.initialize_app(cred,{'databaseURL':'https://generacion-xxi-default-rtdb.firebaseio.com/'})
 ##########################################
 
+#--------------------------------FUNCIONES--------------------------------------------
+def accCreationExc(email1, email2, pass1, pass2):
+    acc = {'email': email1, 'password': pass1}
+    acc['error'] = 'Este correo ya está asociado a una cuenta.'
+    if (email1 == '') | (email2 == '') | (pass1 == '') | (pass2 == ''):
+        acc['error'] = 'Rellene todos los campos.'
+    elif email1 != email2:
+        acc['error'] = 'Los correos no coinciden.'
+        acc['email'] = ''
+    elif pass1 != pass2:
+        acc['error'] = 'Las contraseñas no coinciden.'
+        acc['password'] = ''
+    return acc
+
 #--------------------------------------REGISTRO E INICIO DE SESION-------------------------------------
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
@@ -58,11 +73,17 @@ def create_account():
     if (request.method == 'POST'):
         email = request.form['name']
         password = request.form['password']
+        conf_email = request.form['conf_name']
+        conf_password = request.form['conf_password']
+        # Confirmación de correo y contraseña
+        acc = accCreationExc(email, conf_email, password, conf_password)
+        unsuccessful = acc['error']
+        email = acc['email']
+        password = acc['password']
         try:
             auth.create_user_with_email_and_password(email, password)
             return render_template('index.html')
         except:
-            unsuccessful = 'Esta cuenta ya existe.'
             return render_template('create_account.html', umessage=unsuccessful)
     return render_template('create_account.html')
 
