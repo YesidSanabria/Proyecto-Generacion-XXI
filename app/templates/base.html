@@ -1,25 +1,23 @@
-<html>
-    <head>
-      <!-- Required meta tags -->
-       <meta charset="utf-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-       <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-          <img src="{{ url_for('static', filename='img/Generación XXI Logo sin fondo negro y azul.png')}}" width="100" height="100" class="d-inline-block align-top" alt="" />
-          <!--img src="{{ url_for('static', filename='img/claro global hitss.png')}}" width="50" height="50" class="d-inline-block align-top" alt="" /-->
-          Sistema de Seguimiento de Practicantes Generación XXI
-          <img src="{{ url_for('static', filename='img/claro global hitss.png')}}" width="280" height="80" class="d-inline-block align-top" alt="" />
-        </a>
-      </nav>
-       <!--img src="{{ url_for('static', filename='img/Generación XXI Logo sin fondo gris con negro.png')}}"-->
-       
-      <title>Sistema de Seguimiento de Practicantes Generación XXI</title>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    </head>
-    <body>    
-        {% block content %}{% endblock %}
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Seguimiento de Practicantes Generación XXI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+ <!--NAV-->
+ <nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="{{ url_for('static', filename='img/Generación XXI Logo sin fondo negro y azul.png')}}" width="100" height="100" class="d-inline-block align-top" alt="" />
+    <!--img src="{{ url_for('static', filename='img/claro global hitss.png')}}" width="50" height="50" class="d-inline-block align-top" alt="" /-->
+    Sistema de Seguimiento de Practicantes Generación XXI
+    <img src="{{ url_for('static', filename='img/claro global hitss.png')}}" width="280" height="80" class="d-inline-block align-top" alt="" />
+  </a>
+</nav>
+</head>
+<body>
+  {% block content %}{% endblock %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
 </html>
