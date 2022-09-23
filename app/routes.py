@@ -33,7 +33,7 @@ def index():
             #session['usr'] = user_id
             return render_template('formulario.html')
         except:
-            unsuccessful = 'Please check your credentials'
+            unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'
             return render_template('index.html', umessage=unsuccessful)
     return render_template('index.html')
 
@@ -73,11 +73,7 @@ def admin_view():
 def formulario():
     return render_template('formulario.html')
 
-#--------------------------------------LOGIN-------------------------------------
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    return render_template('login.html')
 
 #---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':
-    app.run()
+    app.run(debug = True)
