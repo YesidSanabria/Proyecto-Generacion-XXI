@@ -34,8 +34,19 @@
 
 /* Input Styles */
 
+.input_div{
+  display: flex;
+  flex-direction:column;
+}
+
+.input_container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
   .form{
-    width: 100%;
+    width: 50%;
     padding: 15px;
     background:#f8f8f8;
     border:1px solid rgba(0, 0, 0, 0.075);
