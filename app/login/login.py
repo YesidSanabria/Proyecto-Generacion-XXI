@@ -26,6 +26,7 @@ def index():
         ref = db.reference('Estudiantes')
         user = ref.child(email.replace('.', '')).get()
         putos = 'view_personal_data.html'
+        putos1 = 'formulario.html'
         #######################################
         if (admin == email):
             putos = 'admin_view.html'
@@ -35,7 +36,10 @@ def index():
             #user_id = auth.get_account_info(user['idToken'])
             #session['usr'] = user_id
             #return render_template('formulario.html', user=user)
-            return render_template(putos, usuario=user)
+            if user==None:
+                return render_template(putos1, usuario=user)
+            else:
+                return render_template(putos, usuario=user)
             
         except:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'
