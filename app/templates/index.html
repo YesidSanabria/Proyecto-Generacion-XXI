@@ -1,14 +1,19 @@
 {% extends "base.html" %}
 
+
 {% block content %}
 
-    <br/>
-      <div class="jumbotron">
-        <h1 class="display-4">Bienvenido!</h1>
-        <img src="/app/static/img/claro_circulo_3d.png"/>
-        <h2>Genereación XXI </h2>
-        <p class="lead"> Esta pagina ofrece la actualización de datos personales</p>
-        <hr class="my-4">
+
+<body background="{{ url_for('static', filename='img/fondoinicio.png')}}">
+    
+</body>
+
+<div class="container " style="position: relative;left: 350px;top: 30px">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card border-0 shadow rounded-3 my-5">
+        <div class="card-body p-4 p-sm-5">
+          <h5 class="card-title text-center mb-5 fw-light fs-5">Iniciar Sesión</h5>
         {% if smessage %}
           <div class="alert alert-success">
             {{ smessage }}
@@ -20,25 +25,41 @@
           </div>
         {% endif %}
         <form action="/index" method="post">
-            <div class="form-group">
-            <label for="exampleInputEmail1">Correo Electrónico</label>
-            <input type="email" class="form-control" name="name"  placeholder="Enter email">
-            </div>
-            <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" name="name" placeholder="name@example.com">
+            <label for="floatingInput">Correo Electrónico</label>
+          </div>
+          <div class="form-floating mb-3">
             <input type="password" class="form-control" name="password" placeholder="Password">
-            </div>
-            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            <label for="exampleInputPassword1">Password</label>
+          </div>
+          <div class="col-sm">
+            <button type="submit" name="submit" class="btn login text-uppercase fw-bold" style="background-color: #CF2F35; color: white;">Iniciar Sesion</button> 
+            <br>
+            <a href="/create_account" class="btn login text-uppercase fw-bold" style="background-color: #FAC401; color: white;" type="submit">Registrar</a>
+          </div>
+            
+            <hr class="my-4">
+            
         </form>
 
         <div class="row">
           <div class="col-sm">
             <a href="/forgot_password" class="text-decoration-none">Olvidé mi contraseña</a>
           </div>
-          <div class="col-sm">
-            <a href="/create_account" class="text-decoration-none">Registrarse</a>
-          </div>
+         
         </div>   
      </div>
 
+    </form>
+  </div>
+</div>
+</div>
+</div>
+</div>     
+
+      
+    
+  
+        
 {% endblock %}

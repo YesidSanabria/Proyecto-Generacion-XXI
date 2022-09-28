@@ -62,7 +62,7 @@ def index():
             #user_id = auth.get_account_info(user['idToken'])
             #session['usr'] = user_id
             #return render_template('formulario.html', user=user)
-            return render_template('view_personal_data.html', user=user)
+            return render_template('view_personal_data.html', usuario=user)
         except:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'
             return render_template('index.html', umessage=unsuccessful)

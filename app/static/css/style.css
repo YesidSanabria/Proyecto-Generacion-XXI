@@ -1,3 +1,13 @@
 body{
-    background-color: blue; 
+    background-image: "{{ url_for('static', filename='img/fondoinicio.png')}}";
+    background-repeat: no-repeat;
+    background-size: auto; 
 }
+
+.logo img {
+
+    max-width: 100%;
+    height: auto;
+  }
+
+
