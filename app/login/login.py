@@ -1,6 +1,7 @@
 import pyrebase
 from flask import render_template, request
 from firebase_admin import db
+import crud.crud as crud
 
 config = {
     "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
@@ -23,8 +24,7 @@ def index():
         email = request.form['name']
         password = request.form['password']
         #######################################
-        ref = db.reference('Estudiantes')
-        user = ref.child(email.replace('.', '')).get()
+        user = crud.getStudentInfo(email)
         putos = 'view_personal_data.html'
         #######################################
         if (admin == email):

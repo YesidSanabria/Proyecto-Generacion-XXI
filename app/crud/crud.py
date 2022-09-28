@@ -9,10 +9,7 @@ cred = credentials.Certificate("app/config/generacion-xxi-firebase-adminsdk-iwq0
 firebase_admin.initialize_app(cred,{'databaseURL':'https://generacion-xxi-default-rtdb.firebaseio.com/'})
 ##########################################
 
-def getStudentInfo(studentID):
+def getStudentInfo(email):
     ref = db.reference('Estudiantes')
-    user = ref.child(studentID.replace('.', '')).get()
-    print(user)
-
-def imprimir():
-    print('holaaaaaaaaaaa')
+    user = ref.child(email.replace('.', '')).get()
+    return user
