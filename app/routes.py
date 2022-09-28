@@ -64,4 +64,4 @@ def formulario():
 
 #---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
