@@ -2,7 +2,8 @@
 
 {% block content %}
 
-
+<body class="body" background="{{ url_for('static', filename='img/fondoregistro.png')}}"  background-repeat: no-repeat>
+</body>
 <br />
 <!---Create Account-->
 <h1 class="display-4 text-center">Registro</h1>
@@ -42,7 +43,7 @@
             </div>
             <div class="d-grid">
               <button style="color: white; background-color: #cf2f35;"
-                class="btn btn-primary btn-login text-uppercase fw-bold" type="submit"
+                class="btn btn-login text-uppercase fw-bold" type="submit"
                 name="submit">Registrarme</button>
               <br>
               <a href="/index" class="text-decoration-none text-center">Ya tengo una cuenta</a>
