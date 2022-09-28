@@ -29,6 +29,8 @@ auth = firebase.auth()
 cred = credentials.Certificate("app/config/generacion-xxi-firebase-adminsdk-iwq0c-bc2e550415.json")
 firebase_admin.initialize_app(cred,{'databaseURL':'https://generacion-xxi-default-rtdb.firebaseio.com/'})
 ##########################################
+admin = "sspg.xxi@gmail.com"
+
 
 #--------------------------------FUNCIONES--------------------------------------------
 def accCreationExc(email1, email2, pass1, pass2):
@@ -55,14 +57,18 @@ def index():
         ref = db.reference('Estudiantes')
         user = ref.child(email.replace('.', '')).get()
         print(user)
+        putos = 'view_personal_data.html'
         #######################################
+        if (admin == email):
+            putos = 'admin_view.html'
         try:
 #--------------------INICIAR SESION---------------------------------                
             auth.sign_in_with_email_and_password(email, password)
             #user_id = auth.get_account_info(user['idToken'])
             #session['usr'] = user_id
             #return render_template('formulario.html', user=user)
-            return render_template('view_personal_data.html', usuario=user)
+            return render_template(putos, usuario=user)
+            
         except:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'
             return render_template('index.html', umessage=unsuccessful)
