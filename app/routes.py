@@ -1,34 +1,14 @@
-import pyrebase
+# Este se quita cuando se arregle la sección "Pendientes de cambio"
 from flask import render_template
+####################################################################
 from flask import Flask
-#######################################
-import firebase_admin
-from firebase_admin import credentials
+
 #------ Importar archivos propios -------
 import register.register as reg
 import login.login as lg
 import passw.passw as pw
 
 app = Flask(__name__)
-
-config = {
-    "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
-    "authDomain": "generacion-xxi.firebaseapp.com",
-    "databaseURL": "https://generacion-xxi-default-rtdb.firebaseio.com",
-    "projectId": "generacion-xxi",
-    "storageBucket": "generacion-xxi.appspot.com",
-    "messagingSenderId": "347199104837",
-    "appId": "1:347199104837:web:e859d53b27b23d1024c02c",
-    "measurementId": "G-YNKS2S6VJT"
-}
-
-firebase = pyrebase.initialize_app(config)
-auth = firebase.auth()
-
-##########################################
-cred = credentials.Certificate("app/config/generacion-xxi-firebase-adminsdk-iwq0c-bc2e550415.json")
-firebase_admin.initialize_app(cred,{'databaseURL':'https://generacion-xxi-default-rtdb.firebaseio.com/'})
-##########################################
 
 #--------------------------------------REGISTRO E INICIO DE SESION-------------------------------------
 @app.route('/')
