@@ -4,9 +4,9 @@ from flask import render_template
 from flask import Flask
 
 #------ Importar archivos propios -------
-import register.register as reg
-import login.login as lg
-import passw.passw as pw
+import modules.register as reg
+import modules.login as lg
+import modules.passw as pw
 
 app = Flask(__name__)
 
