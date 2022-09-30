@@ -19,3 +19,13 @@ def getAllStudents():
     all = ref.get()
     print(all)
     return all
+
+def updateStudentData(email, data):
+    ref = db.reference('Estudiantes')
+    ref.child(email.replace('.', '')).update(data)
+    # Sintaxis:
+    # updateStudentData('julian.cely@claro.com.co', {'Celular personal': '3214157461'})
+
+def deleteStudent(email):
+    ref = db.reference('Estudiantes')
+    ref.child(email.replace('.', '')).delete()
