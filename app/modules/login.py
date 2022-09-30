@@ -1,6 +1,6 @@
 import pyrebase
 from flask import render_template, request
-import crud.crud as crud
+import modules.crud as crud
 
 config = {
     "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
