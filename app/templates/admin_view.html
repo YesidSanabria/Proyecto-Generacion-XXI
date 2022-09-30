@@ -2,29 +2,50 @@
 
 {% block content %}
 
+<body>
     <br/>
       <div class="jumbotron">
         <h1 class="display-4">Lista de Practicantes</h1>
-        <img src="/app/static/img/claro_circulo_3d.png"/>
-        <h2>Generación XXI </h2>
-        <p class="lead"> Esta pagina ofrece la actualización de datos personales</p>
-        <hr class="my-4">
-        {% if smessage %}
-          <div class="alert alert-success">
-            {{ smessage }}
-          </div>
-        {% endif %}
-        {% if umessage %}
-          <div class="alert alert-danger">
-            {{ umessage }}
-          </div>
-        {% endif %}
+        
         <div class="form-outline mb-4">
             <input type="search" class="form-control" id="datatable-search-input">
-            <label class="form-label" for="datatable-search-input">Search</label>
+            <label class="form-label" for="datatable-search-input"></label>
         </div>
-          <div id="datatable">
+      <div class="container">
+        <div class="row">
+          <div class="clo-lg-6">
+            <table id="tablapracticantes" class="table table-bordered">
+              <thead>
+                <tr class="bg-dark text-light">
+                  <th scope="col">Cédula</th>
+                  <th scope="col">Nombres</th>
+                  <th scope="col">Apellidos</th>
+                  <th scope="col">Edad</th>
+                  <th scope="col">EPS</th>
+                  <th scope="col">Sexo</th>
+                  <th scope="col">Correo corporativo</th>
+                  <th scope="col">Correo personal</th>
+                  <th scope="col">Celular personal</th>
+                  <th scope="col">Celular corporativo</th>
+                  <th scope="col">Área de gerencia</th>
+                  <th scope="col">Gerencia</th>
+                  <th scope="col">Nombre de Gerente</th>
+                  <th scope="col">Universidad</th>
+                  <th scope="col">Carrera</th>
+                  <th scope="col">Nombre Tutor</th>
+                  <th scope="col">Correo Tutor</th>
+                  <th scope="col">Celular Tutor</th>
+                  <th scope="col">Nombre Emergencia</th>
+                  <th scope="col">Celular Emergencia</th>
+                </tr>
+              </thead>
+                <tbody id="bodypracticantes">
+                  
+                </tbody>
+            </table>
           </div>
+        </div>
+      </div>
      </div>
-
+    </body>
 {% endblock %}

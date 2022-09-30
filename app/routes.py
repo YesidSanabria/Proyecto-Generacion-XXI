@@ -7,6 +7,7 @@ from flask import Flask
 import modules.register as reg
 import modules.login as lg
 import modules.passw as pw
+import modules.admin as ad
 
 app = Flask(__name__)
 
@@ -34,7 +35,7 @@ def home():
 #--------------------------------------REGISTRO E INICIO DE SESION-------------------------------------
 @app.route('/admin_view', methods=['GET', 'POST'])
 def admin_view():
-    return render_template('admin_view.html')
+    return ad.admin()
 
 #--------------------------------------FORMULARIO-------------------------------------
 @app.route('/formulario', methods=['GET', 'POST'])
