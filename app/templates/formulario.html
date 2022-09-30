@@ -1,71 +1,65 @@
 {% extends "base.html" %}
 
 {% block content %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/formulario.css')}}">
+  </head>
 
-<head>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/formulario.css') }}">
-</head>
-<br />
-<div class="input_container">
-    <div class="input_div form">
-      <label for="dd_mm_inicio"><i class="fas fa-calendar-alt"></i> Nombre Completo</label>
-      <input type="text" REQUIRED name="dd_mm_inicio" id="dd_mm_inicio" placeholder="Nombre Completo">
-    </div>
-  
-    <div class="input_div form" >
-      <label for="dd_mm_termino"><i class="fas fa-calendar-alt"></i>Cedula</label>
-      <input type="text" REQUIRED name="dd_mm_termino" id="dd_mm_termino" placeholder="Cedula">
+<body>
+  <div class="container">
+    <div class="title"> Registro de Practicantes</div>
+    <div class="content">
+      <form action="#">
+        <div class="user-details">
+          <span class="details"> Nombre </span>
+          <input type="text" placeholder="Ingrese su nombre" required>
+        </div>
+        <div class="input-box">
+          <span class="details"> Apellido </span>
+          <input type="text" placeholder="Ingrese su apellido" required>
+        </div>
+        <div class="input-box">
+          <span class="details"> Correo Electronico </span>
+          <input type="text" placeholder="Ingrese su correo electronico" required>
+        </div>
+        <div class="input-box">
+          <span class="details"> Numero de Telefono </span>
+          <input type="text" placeholder="Ingrese su numero de telefono" required>
+        </div>
+        <div class="input-box">
+          <span class="details"> Contrasenia </span>
+          <input type="text" placeholder="Ingrese su contraseña" required>
+        </div>
+        <div class="gender-details">
+          <input type="radio" name="gender" id="dot-1">
+          <input type="radio" name="gender" id="dot-2">
+          <input type="radio" name="gender" id="dot-3">
+          <span class="gender-title"> Genero </span>
+          <div class="category">
+            <label for="dot-1">
+              <span class="dot one"></span>
+              <span class="gender">Hombre</span>
+            </label>
+            <label for="dot-2">
+              <span class="dot two"></span>
+              <span class="gender">Mujer</span>
+            </label>
+            <label for="dot-3">
+              <span class="dot three"></span>
+              <span class="gender"> Indefinido </span>
+            </label>
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Registro">
+        </div>
+      </form>
     </div>
   </div>
-<div class="inner contact">
-                <div class="contact-form">
-                    <form id="contact-us" method="post" action="#">
-                        <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
-                            <input type="text" name="name" id="name" required="required" class="form" placeholder="Nombre Completo" />
-                            <input type="email" name="mail" id="mail" required="required" class="form" placeholder="Cedula" />
-                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Edad"/>
-                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Sexo"/>
-                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Carrera"/>
-                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Universidad"/>
-                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Celular Empresarial"/>
-                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Correo Empresarial"/>
-                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Correo Personal"/>
-                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="EPS"/>
-                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Contacto de Emergencia"/>
-                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Nombre Contacto de Emergencia"/>
-                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Area"/>
-                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Gerencia"/>
-                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Nombre Gerencia"/>
-                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Nombre Tutor"/>
-                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Celular Tutor"/>
-                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Correo Tutor" />
-                        </div><!-- End Left Inputs -->
-                        <!-- Right Inputs -->
-                        <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
-                            <!-- Message -->
-                            <textarea name="message" id="message" class="form textarea"  placeholder="Observaciones"></textarea>
-                        </div><!-- End Right Inputs -->
-                        <!-- Bottom Submit -->
-                        <div class="relative fullwidth col-xs-12">
-                            <!-- Send Button -->
-                            <button type="submit" id="submit" name="submit" class="form-btn semibold">enviar</button> 
-                        </div><!-- End Bottom Submit -->
-                        <!-- Clear -->
-                        <div class="clear"></div>
-                    </form>
-
-                    <!-- Your Mail Message -->
-                    <div class="mail-message-area">
-                        <!-- Message -->
-                        <div class="alert gray-bg mail-message not-visible-message">
-                            <strong>Thank You !</strong> Your email has been delivered.
-                        </div>
-                    </div>
-
-                </div><!-- End Contact Form Area -->
-            </div><!-- End Inner -->
-
-
-<center> Visit Developer's Website <a href="http://shuvohabib.com" target="blank">Shuvo Habib </a> </center>
+</body>
+</html>
 
 {% endblock %}
