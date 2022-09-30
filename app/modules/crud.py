@@ -13,9 +13,3 @@ def getStudentInfo(email):
     ref = db.reference('Estudiantes')
     user = ref.child(email.replace('.', '')).get()
     return user
-
-def getAllStudents():
-    ref = db.reference('Estudiantes')
-    all = ref.get()
-    print(all)
-    return all
