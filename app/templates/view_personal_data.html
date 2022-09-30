@@ -2,32 +2,74 @@
 
 {% block content %}
 
+<body>
 <div class="container">
     <div class="row">
-        <fieldset>
-            <legend> Datos personales </legend> 
-            <h1> Bienvenido  {{ usuario['Nombres']}} </h1>
-            <h3> Nombre completo: {{ usuario['Nombres'] + " " + usuario['Apellidos']}}</h3>
-            <h3> Cedula: {{ usuario['Cedula']}} </h3>
-            <h3> Edad: {{ usuario['Edad']}} </h3>
-            <h3> Sexo: {{ usuario['Sexo']}} </h3>
-            <h3> Carrera: {{ usuario['Carrera U']}} </h3>
-            <h3> Universidad: {{ usuario['Nombre de la U']}} </h3>
-            <h3> Celular empresarial: {{ usuario['Celular Empresarial']}} </h3>
-            <h3> Correo empresarial: {{ usuario['Correo Empresarial']}} </h3>
-            <h3> Correo personal: {{ usuario['Correo Personal']}} </h3>
-            <h3> EPS: {{ usuario['EPS']}} </h3>
-            <h3> En caso de emergencia numero: {{ usuario['Numero en caso de emergencia']}} </h3>
-            <h3> En caso de emergencia nombre: {{ usuario['Nombre de caso de emergencia ']}} </h3>
-            <h3> Gerencia: {{ usuario['Gerencia a que pertenece']}} </h3>
-            <h3> Area: {{ usuario['Area de Gerencia']}} </h3>
-            <h3> Nombre gerente: {{ usuario['Nombre del Gerente ']}} </h3>
-            <h3> Nombre tutor u: {{ usuario['Nombre del tutor de la U']}} </h3>
-            <h3> Celular tutor u: {{ usuario['Celular del tutor']}} </h3>
-            <h3> Correo tutor u: {{ usuario['Correo del tutor ']}} </h3>
-          </fieldset>
+        <form>
+            <br>
+            <br>
+            <h1 style="color:#CF2F35"> Bienvenido  {{ usuario['Nombres']}} </h1>
+            <br>
+            <br>
+            
+            <legend class="text-danger font-weight-bold"> Datos personales: </legend>
+            <fieldset class="card p-3 bg-light.bg-gradient border border-danger"> 
+                <h3> Nombre completo: {{ usuario['Nombres'] + " " + usuario['Apellidos']}}</h3>
+                <h3> Cedula: {{ usuario['Cedula']}} </h3>
+                <h3> Edad: {{ usuario['Edad']}} </h3>
+                <h3> Sexo: {{ usuario['Sexo']}} </h3>
+                <h3> Correo: {{ usuario['Correo personal']}} </h3>
+            </fieldset>
+
+            <br>
+            <br>
+
+            <legend class="text-danger font-weight-bold"> Datos laborales: </legend>
+            <fieldset class="card p-3 bg-light.bg-gradient border border-danger"> 
+                <h3> Gerencia: {{ usuario['Gerencia']}} </h3>
+                <h3> Dirección corporativa: {{ usuario['Area de gerencia']}} </h3>
+                <h3> Nombre gerente: {{ usuario['Nombre gerente']}} </h3>
+                <h3> Celular corporativo: {{ usuario['Celular corporativo']}} </h3>
+                <h3> Correo corporativo: {{ usuario['Correo corporativo']}} </h3>
+            </fieldset>
+            
+            <br>
+            <br>
+
+            <legend class="text-danger font-weight-bold"> Datos academicos: </legend>
+            <fieldset class="card p-3 bg-light.bg-gradient border border-danger"> 
+                <h3> Universidad: {{ usuario['Universidad']}} </h3>
+                <h3> Carrera: {{ usuario['Carrera']}} </h3>
+                <h3> Tutor universitario: {{ usuario['Nombre tutor']}} </h3>
+                <h3> Correo del tutor: {{ usuario['Correo tutor']}} </h3>
+                <h3> Celular del tutor: {{ usuario['Celular tutor']}} </h3>
+            </fieldset>
+            
+            <br>
+            <br>
+
+            <legend class="text-danger font-weight-bold"> Datos en caso de emergencia: </legend>
+            <fieldset class="card p-3 bg-light.bg-gradient border border-danger"> 
+                <h3> EPS: {{ usuario['EPS']}} </h3>
+                <h3> En caso de emergencia llamar a: {{ usuario['Nombre emergencia']}} </h3> 
+                <h3> Numero: {{ usuario['Numero emergencia']}} </h3>
+            </fieldset>
+
+
+        </form>
+          <div class="col-sm">
+            <!--<button type="submit" name="submit" class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #CF2F35; color: white;">Iniciar Sesion</button> -->
+            <br>
+            <br>
+            <a href="/formulario" class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #FAC401; color: white;" type="submit">Actualizar datos</a>
+            <br>
+        </div>
     </div>
 </div>
+</body>
+
+<br>
+<br>
 
 <footer>
     <div class="container">

@@ -13,11 +13,12 @@ firebase_admin.initialize_app(cred,{'databaseURL':'https://generacion-xxi-defaul
 file = os.listdir('data')[0]
 # Definir todos los campos numéricos como campos de texto.
 col_types = {
-    'Numero en caso de emergencia':str, 
+    'Numero emergencia':str, 
     'Cedula':str, 
-    'Celular empresarial':str, 
+    'Celular corporativo':str, 
     'Celular personal':str,
-    'Celular del tutor':str
+    'Celular tutor':str,
+    'Edad':str
     }
 baseDatos = pd.read_excel(f'data\{file}',dtype=col_types)
 dic = baseDatos.to_dict()
