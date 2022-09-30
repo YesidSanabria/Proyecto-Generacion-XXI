@@ -12,6 +12,7 @@ firebase_admin.initialize_app(cred,{'databaseURL':'https://generacion-xxi-defaul
 def getStudentInfo(email):
     ref = db.reference('Estudiantes')
     user = ref.child(email.replace('.', '')).get()
+<<<<<<< HEAD
     return user
 
 def getAllStudents():
@@ -29,3 +30,6 @@ def updateStudentData(email, data):
 def deleteStudent(email):
     ref = db.reference('Estudiantes')
     ref.child(email.replace('.', '')).delete()
+=======
+    return user
+>>>>>>> a85ba8aa3ebac70be4e48acae28a22a611cf878f
