@@ -42,7 +42,6 @@ def admin_view():
 def formulario():
     return render_template('formulario.html')
 
-
 #---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':
     app.run(debug=True)
