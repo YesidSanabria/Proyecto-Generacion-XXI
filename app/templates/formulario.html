@@ -2,214 +2,141 @@
 
 {% block content %}
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/formulario.css')}}">
-  </head>
 
-<<<<<<< HEAD
 <head>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/formulario.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/formulario.css')}}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alkalami&family=Roboto+Condensed&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Abyssinica+SIL&family=Oswald:wght@500&family=Roboto+Condensed&display=swap"
+    rel="stylesheet">
 </head>
-<br />
 
-<div class="container-table100">
-  <div class="wrap-table100">
-  <div class="table100">
-  <table>
-  <thead>
-  <tr class="table100-head">
-  <th class="column1">Date</th>
-  <th class="column2">Order ID</th>
-  <th class="column3">Name</th>
-  <th class="column4">Price</th>
-  <th class="column5">Quantity</th>
-  <th class="column6">Total</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-  <td class="column1">2017-09-29 01:22</td>
-  <td class="column2">200398</td>
-  <td class="column3">iPhone X 64Gb Grey</td>
-  <td class="column4">$999.00</td>
-  <td class="column5">1</td>
-  <td class="column6">$999.00</td>
-  </tr>
-  <tr>
-  <td class="column1">2017-09-28 05:57</td>
-  <td class="column2">200397</td>
-  <td class="column3">Samsung S8 Black</td>
-  <td class="column4">$756.00</td>
-  <td class="column5">1</td>
-  <td class="column6">$756.00</td>
-  </tr>
-  <tr>
-  <td class="column1">2017-09-26 05:57</td>
-  <td class="column2">200396</td>
-  <td class="column3">Game Console Controller</td>
-  <td class="column4">$22.00</td>
-  <td class="column5">2</td>
-  <td class="column6">$44.00</td>
-  </tr>
-  <tr>
-  <td class="column1">2017-09-25 23:06</td>
-  <td class="column2">200392</td>
-  <td class="column3">USB 3.0 Cable</td>
-  <td class="column4">$10.00</td>
-  <td class="column5">3</td>
-  <td class="column6">$30.00</td>
-  </tr>
-  <tr>
-  <td class="column1">2017-09-24 05:57</td>
-  <td class="column2">200391</td>
-  <td class="column3">Smartwatch 4.0 LTE Wifi</td>
-  <td class="column4">$199.00</td>
-  <td class="column5">6</td>
-  <td class="column6">$1494.00</td>
-  </tr>
-  <tr>
-  <td class="column1">2017-09-23 05:57</td>
-  <td class="column2">200390</td>
-  <td class="column3">Camera C430W 4k</td>
-  <td class="column4">$699.00</td>
-  <td class="column5">1</td>
-  <td class="column6">$699.00</td>
-  </tr>
-  <tr>
-  <td class="column1">2017-09-22 05:57</td>
-  <td class="column2">200389</td>
-  <td class="column3">Macbook Pro Retina 2017</td>
-  <td class="column4">$2199.00</td>
-  <td class="column5">1</td>
-  <td class="column6">$2199.00</td>
-  </tr>
-  <tr>
-  <td class="column1">2017-09-21 05:57</td>
-  <td class="column2">200388</td>
-  <td class="column3">Game Console Controller</td>
-  <td class="column4">$999.00</td>
-  <td class="column5">1</td>
-  <td class="column6">$999.00</td>
-  </tr>
-  <tr>
-  <td class="column1">2017-09-19 05:57</td>
-  <td class="column2">200387</td>
-  <td class="column3">iPhone X 64Gb Grey</td>
-  <td class="column4">$999.00</td>
-  <td class="column5">1</td>
-  <td class="column6">$999.00</td>
-  </tr>
-  <tr>
-  <td class="column1">2017-09-18 05:57</td>
-  <td class="column2">200386</td>
-  <td class="column3">iPhone X 64Gb Grey</td>
-  <td class="column4">$999.00</td>
-  <td class="column5">1</td>
-  <td class="column6">$999.00</td>
-  </tr>
-  <tr>
-  <td class="column1">2017-09-22 05:57</td>
-  <td class="column2">200389</td>
-  <td class="column3">Macbook Pro Retina 2017</td>
-  <td class="column4">$2199.00</td>
-  <td class="column5">1</td>
-  <td class="column6">$2199.00</td>
-  </tr>
-  <tr>
-  <td class="column1">2017-09-21 05:57</td>
-  <td class="column2">200388</td>
-  <td class="column3">Game Console Controller</td>
-  <td class="column4">$999.00</td>
-  <td class="column5">1</td>
-  <td class="column6">$999.00</td>
-  </tr>
-  <tr>
-  <td class="column1">2017-09-19 05:57</td>
-  <td class="column2">200387</td>
-  <td class="column3">iPhone X 64Gb Grey</td>
-  <td class="column4">$999.00</td>
-  <td class="column5">1</td>
-  <td class="column6">$999.00</td>
-  </tr>
-  <tr>
-  <td class="column1">2017-09-18 05:57</td>
-  <td class="column2">200386</td>
-  <td class="column3">iPhone X 64Gb Grey</td>
-  <td class="column4">$999.00</td>
-  <td class="column5">1</td>
-  <td class="column6">$999.00</td>
-  </tr>
-  </tbody>
-  </table>
-  </div>
-  </div>
-  </div>
-
-<div class="input_container">
-    <div class="input_div form">
-      <label for="dd_mm_inicio"><i class="fas fa-calendar-alt"></i> Nombre Completo</label>
-      <input type="text" REQUIRED name="dd_mm_inicio" id="dd_mm_inicio" placeholder="Nombre Completo">
-    </div>
-  
-    <div class="input_div form" >
-      <label for="dd_mm_termino"><i class="fas fa-calendar-alt"></i>Cedula</label>
-      <input type="text" REQUIRED name="dd_mm_termino" id="dd_mm_termino" placeholder="Cedula">
-=======
 <body>
   <div class="container">
-    <div class="title"> Registro de Practicantes</div>
+    <div class="title title_form"><b> Registro de Practicantes Generación XXI</b></div>
+    <div>
+      <img src="../static/img/generacionxxi-negro.png" class="img">
+    </div>
+    <br>
+    <div class="title title_form"><b> Datos Personales: </b></div>
+    <br>
     <div class="content">
       <form action="#">
-        <div class="user-details">
-          <span class="details"> Nombre </span>
-          <input type="text" placeholder="Ingrese su nombre" required>
+        <div class="input_container">
+          <div class="input_div">
+            <span class="details subtitle_form"> Nombre: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details subtitle_form"> Apellidos: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details subtitle_form"> Edad: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details subtitle_form"> Genero: </span>
+            <select name="Genero" class="details">
+              <option> </option>
+              <option> Hombre </option>
+              <option> Mujer </option>
+            </select>
+          </div>
+          <div class="input_div">
+            <span class="details subtitle_form"> Correo Electrónico: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details subtitle_form"> EPS: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details subtitle_form"> Regional: </span>
+            <select name="Ciudad" class="details">
+              <option> </option>
+              <option> Bogotá </option>
+              <option> Bucaramanga </option>
+              <option> Medellín </option>
+              <option> Barranquilla </option>
+              <option> Cali </option>
+              <option> Manizales </option>
+            </select>
+          </div>
         </div>
-        <div class="input-box">
-          <span class="details"> Apellido </span>
-          <input type="text" placeholder="Ingrese su apellido" required>
+        <br>
+        <div class="title title_form"><b> Datos Laborales: </b></div>
+        <br>
+        <div class="input_container">
+          <div class="input_div">
+            <span class="details title_form"> Dirección a la que pertenece: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Gerencia a la que pertenece: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Nombre de su Gerente o Jefe: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Celular de contacto: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Correo Electronico: </span>
+            <input type="text" required>
+          </div>
         </div>
-        <div class="input-box">
-          <span class="details"> Correo Electronico </span>
-          <input type="text" placeholder="Ingrese su correo electronico" required>
+        <br>
+        <div class="title title_form"> <b>Datos Academicos: </b></div>
+        <br>
+        <div class="input_container">
+          <div class="input_div">
+            <span class="details title_form"> Universidad: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Carrera a la que pertenece: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Tutor encargado de la practica: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Correo del tutor: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Celular del tutor: </span>
+            <input type="text" required>
+          </div>
         </div>
-        <div class="input-box">
-          <span class="details"> Numero de Telefono </span>
-          <input type="text" placeholder="Ingrese su numero de telefono" required>
-        </div>
-        <div class="input-box">
-          <span class="details"> Contraseña </span>
-          <input type="text" placeholder="Ingrese su contraseña" required>
-        </div>
-        <div class="gender-details">
-          <input type="radio" name="gender" id="dot-1">
-          <input type="radio" name="gender" id="dot-2">
-          <input type="radio" name="gender" id="dot-3">
-          <span class="gender-title"> Genero </span>
-          <div class="category">
-            <label for="dot-1">
-              <span class="dot one"></span>
-              <span class="gender">Hombre</span>
-            </label>
-            <label for="dot-2">
-              <span class="dot two"></span>
-              <span class="gender">Mujer</span>
-            </label>
-            <label for="dot-3">
-              <span class="dot three"></span>
-              <span class="gender"> Indefinido </span>
-            </label>
+        <br>
+        <div class="title title_form"><b> Datos en caso de emergencia: </b></div>
+        <br>
+        <div class="input_container">
+          <div class="input_div">
+            <span class="details title_form"> Nombre del Contacto de Emergencia: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Numero del Contacto de Emergencia: </span>
+            <input type="text" required>
           </div>
         </div>
         <div class="button">
           <input type="submit" value="Registro">
         </div>
-      </form>
->>>>>>> 279459024907e3b7f0399ba0dcbe7914e53cc212
     </div>
-  </div>
-</body>
+    </form>
+
 </html>
 
 {% endblock %}
