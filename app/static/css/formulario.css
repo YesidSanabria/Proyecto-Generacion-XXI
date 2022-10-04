@@ -62,7 +62,7 @@ form .input-box span.details{
   border-color: #CF2F35;
 }
   form .gender-details .gender-title{
-    font-size: 20px;
+    font-size: 100px;
     font-weight: 500;
   }
   form .category{
@@ -139,3 +139,26 @@ form .user-details .input-box{
         flex-direction: column;
       }
     }
+
+.input_div{
+  display: flex;
+  flex-direction:column;
+}
+
+.input_container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.title_form{
+  font-family: 'Alkalami', serif;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.img{
+  width: 150px;
+  padding: 5px; 
+  margin: 10px; 
+  float: right;
+}

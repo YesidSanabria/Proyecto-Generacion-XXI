@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="admin.css">
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#" class="logo">
+                        <img src="C:\Users\jmedi\Pictures\claro_circulo_3d.png">
+                        <span class="nav-item">Admin</span>
+                    </a></li>
+                <li><a href="#">
+                        <i class="fas fa-menorah"></i>
+                        <span class="nav-item">Inicio</span>
+                    </a></li>
+                <li><a href="#">
+                        <i class="fas fa-comment"></i>
+                        <span class="nav-item">Solicitudes</span>
+                    </a></li>
+                <li><a href="#">
+                        <i class="fas fa-database"></i>
+                        <span class="nav-item">Reportes</span>
+                    </a></li>
+                <li><a href="#">
+                        <i class="fas fa-cog"></i>
+                        <span class="nav-item">Configuración</span>
+                    </a></li>
+
+                <li><a href="#" class="logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="nav-item">Cerrar sesión </span>
+                    </a></li>
+            </ul>
+        </nav>
+        <section class="main">
+            <div class="main-top">
+                <h1> Practicantes Generación XXI </h1>
+                <i class="fas fa-user-cog"></i>
+            </div>
+            <div class="users">
+                <div class="card">
+                    <img src="C:\Users\jmedi\Pictures\IMG_0677.png">
+                    <h4> Valeria Romero </h4>
+                    <p> ingeniería Mecatronica </p>
+                    <div class="per">
+                        <table>
+                            <tr>
+                                <td><span>22</span></td>
+                                <td><span>10</span></td>
+                            </tr>
+                            <tr>
+                                <td>Edad</td>
+                                <td>Semestre</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <button>Perfil</button>
+                </div>
+                <div class="card">
+                    <img src="C:\Users\jmedi\Pictures\IMG_0673.png">
+                    <h4> Julian Cely </h4>
+                    <p> Ingeniería de Sistemas </p>
+                    <div class="per">
+                        <table>
+                            <tr>
+                                <td><span>22</span></td>
+                                <td><span>9</span></td>
+                            </tr>
+                            <tr>
+                                <td>Edad</td>
+                                <td>Semestre</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <button>Perfil</button>
+                </div>
+                <div class="card">
+                    <img src="C:\Users\jmedi\Pictures\Aixa.jpeg">
+                    <h4> Aixa Ramírez </h4>
+                    <p> Ingeniería Electrónica </p>
+                    <div class="per">
+                        <table>
+                            <tr>
+                                <td><span>22</span></td>
+                                <td><span>10</span></td>
+                            </tr>
+                            <tr>
+                                <td> Edad </td>
+                                <td> Semestre </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <button>Perfil</button>
+                </div>
+                <div class="card">
+                    <img src="C:\Users\jmedi\Pictures\IMG_0679.png">
+                    <h4>Yesid Sanabria</h4>
+                    <p>Ingeniería de Sistemas</p>
+                    <div class="per">
+                        <table>
+                            <tr>
+                                <td><span>22</span></td>
+                                <td><span>10</span></td>
+                            </tr>
+                            <tr>
+                                <td> Edad </td>
+                                <td> Semestre </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <button>Perfil</button>
+                </div>
+            </div>
+
+            <section class="attendance">
+                <div class="attendance-list">
+                    <h1>Listado de Practicantes </h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Carrera</th>
+                                <th>Ciudad</th>
+                                <th>EPS</th>
+                                <th>Celular</th>
+                                <th>Detalles</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>01</td>
+                                <td>Valeria Romero</td>
+                                <td>Ingeniería Mecatronica</td>
+                                <td>Bogotá</td>
+                                <td>Compensar</td>
+                                <td>3105784214</td>
+                                <td><button>Ver</button></td>
+                            </tr>
+                            <tr class="active">
+                                <td>02</td>
+                                <td>Julian Cely </td>
+                                <td> Ingeniería de Sistemas</td>
+                                <td>Bogotá</td>
+                                <td>Sanitas</td>
+                                <td>3215081843</td>
+                                <td><button>Ver</button></td>
+                            </tr>
+                            <tr>
+                                <td>03</td>
+                                <td>Aixa Ramírez </td>
+                                <td> Ingeniería Electrónica </td>
+                                <td>Bogotá</td>
+                                <td>Sisben</td>
+                                <td>3115478963</td>
+                                <td><button>Ver</button></td>
+                            </tr>
+                            <tr>
+                                <td>04</td>
+                                <td>Yesid Sanabria</td>
+                                <td>Ingeniería de Sistemas</td>
+                                <td>Bogotá</td>
+                                <td>Sanitas</td>
+                                <td>3154789632</td>
+                                <td><button>Ver</button></td>
+                            </tr>
+                            <!-- <tr >
+                <td>05</td>
+                <td>Salina</td>
+                <td>Coding</td>
+                <td>03-24-22</td>
+                <td>9:00AM</td>
+                <td>4:00PM</td>
+                <td><button>View</button></td>
+              </tr>
+              <tr >
+                <td>06</td>
+                <td>Tara Smith</td>
+                <td>Testing</td>
+                <td>03-24-22</td>
+                <td>9:00AM</td>
+                <td>4:00PM</td>
+                <td><button>View</button></td>
+              </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </div>
+
+</body>
+
+</html>
+
+{% endblock %}
