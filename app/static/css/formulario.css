@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-
 *{
   margin: 0;
   padding: 0;
@@ -85,7 +84,6 @@ form .input-box span.details{
     border: 5px solid transparent;
     transition: all 0.3s ease;
 }
-
     #dot-1:checked ~ .category label .one,
     #dot-2:checked ~ .category label .two,
     #dot-3:checked ~ .category label .three{
@@ -139,23 +137,19 @@ form .user-details .input-box{
         flex-direction: column;
       }
     }
-
 .input_div{
   display: flex;
   flex-direction:column;
 }
-
 .input_container{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
 }
-
 .title_form{
   font-family: 'Alkalami', serif;
   font-family: 'Roboto Condensed', sans-serif;
 }
-
 .img{
   width: 150px;
   padding: 5px; 

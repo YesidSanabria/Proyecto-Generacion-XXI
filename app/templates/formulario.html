@@ -1,76 +1,127 @@
 {% extends "base.html" %}
-
 {% block content %}
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/formulario.css')}}">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/formulario.css')}}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alkalami&family=Roboto+Condensed&display=swap" rel="stylesheet">
+</head>
 
-<div class="input_container">
-    <div class="input_div form">
-      <label for="dd_mm_inicio"><i class="fas fa-calendar-alt"></i> Nombre Completo</label>
-      <input type="text" REQUIRED name="dd_mm_inicio" id="dd_mm_inicio" placeholder="Nombre Completo">
-    </div>
-  
-    <div class="input_div form" >
-      <label for="dd_mm_termino"><i class="fas fa-calendar-alt"></i>Cedula</label>
-      <input type="text" REQUIRED name="dd_mm_termino" id="dd_mm_termino" placeholder="Cedula">
-=======
 <body>
-  <div class="container">
-    <div class="title"> Registro de Practicantes</div>
-    <div class="content">
+	@@ -28,35 +25,35 @@
       <form action="#">
-        <div class="user-details">
-          <span class="details"> Nombre </span>
-          <input type="text" placeholder="Ingrese su nombre" required>
+        <div class="input_container">
+          <div class="input_div">
+            <span class="details title_form"> Nombre: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Apellidos: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Edad: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Genero: </span>
+            <select name="Genero" class="details">
+              <option> </option>
+              <option> Hombre </option>
+              <option> Mujer </option>
+            </select>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Correo Electrónico: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> EPS: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Regional: </span>
+            <select name="Ciudad" class="details">
+              <option> </option>
+              <option> Bogotá </option>
+              <option> Bucaramanga </option>
+              <option> Medellín </option>
+              <option> Barranquilla </option>
+              <option> Cali </option>
+              <option> Manizales </option>
+            </select>
+          </div>
         </div>
-        <div class="input-box">
-          <span class="details"> Apellido </span>
-          <input type="text" placeholder="Ingrese su apellido" required>
+        <br>
+        <div class="title title_form"><b> Datos Laborales: </b></div>
+        <br>
+        <div class="input_container">
+          <div class="input_div">
+            <span class="details title_form"> Dirección a la que pertenece: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Gerencia a la que pertenece: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Nombre de su Gerente o Jefe: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Celular de contacto: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Correo Electronico: </span>
+            <input type="text" required>
+          </div>
         </div>
-        <div class="input-box">
-          <span class="details"> Correo Electronico </span>
-          <input type="text" placeholder="Ingrese su correo electronico" required>
+        <br>
+        <div class="title title_form"> <b>Datos Academicos: </b></div>
+        <br>
+        <div class="input_container">
+          <div class="input_div">
+            <span class="details title_form"> Universidad: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Carrera a la que pertenece: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Tutor encargado de la practica: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Correo del tutor: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Celular del tutor: </span>
+            <input type="text" required>
+          </div>
         </div>
-        <div class="input-box">
-          <span class="details"> Numero de Telefono </span>
-          <input type="text" placeholder="Ingrese su numero de telefono" required>
-        </div>
-        <div class="input-box">
-          <span class="details"> Contraseña </span>
-          <input type="text" placeholder="Ingrese su contraseña" required>
-        </div>
-        <div class="gender-details">
-          <input type="radio" name="gender" id="dot-1">
-          <input type="radio" name="gender" id="dot-2">
-          <input type="radio" name="gender" id="dot-3">
-          <span class="gender-title"> Genero </span>
-          <div class="category">
-            <label for="dot-1">
-              <span class="dot one"></span>
-              <span class="gender">Hombre</span>
-            </label>
-            <label for="dot-2">
-              <span class="dot two"></span>
-              <span class="gender">Mujer</span>
-            </label>
-            <label for="dot-3">
-              <span class="dot three"></span>
-              <span class="gender"> Indefinido </span>
-            </label>
+        <br>
+        <div class="title title_form"><b> Datos en caso de emergencia: </b></div>
+        <br>
+        <div class="input_container">
+          <div class="input_div">
+            <span class="details title_form"> Nombre del Contacto de Emergencia: </span>
+            <input type="text" required>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Numero del Contacto de Emergencia: </span>
+            <input type="text" required>
           </div>
         </div>
         <div class="button">
           <input type="submit" value="Registro">
         </div>
-      </form>
->>>>>>> 279459024907e3b7f0399ba0dcbe7914e53cc212
     </div>
-  </div>
-</body>
+    </form>
 </html>
-
 {% endblock %}

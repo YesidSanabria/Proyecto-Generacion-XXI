@@ -39,8 +39,7 @@ def form ():
     contacto_emergencia = request.form['contacto_emergencia']
     numero_emergencia = request.form['numero_emergencia']
 
-    data = {"Nombres": nombre,
-        "Apellidos": apellido,
+    data = {"Nombres": nombre
     }
 
     try:
