@@ -1,4 +1,5 @@
 from email import message
+from operator import pos
 import pyrebase
 from flask import jsonify, render_template, request
 from firebase_admin import db
@@ -20,32 +21,47 @@ auth = firebase.auth()
 
 
 def form ():
-    nombre = request.form['nombre']
-    cedula = request.form['cedula']
-    edad = request.form['edad']
-    genero = request.form['genero']
-    email = 'jorge.medina@claro.com'
-    gerencia = request.form['gerencia']
-    direccion = request.form['direccion']
-    nombre_gerente = request.form['nombre_gerente']
-    celular_corporativo = request.form['celular_corporativo']
-    correo_corporativo = request.form['correo_corporativo']
-    universidad = request.form['universidad']
-    carrera = request.form['carrera']
-    tutor = request.form['tutor']
-    correo_tutor = request.form['correo_tutor']
-    celular_tutor = request.form['celular_tutor']
-    eps = request.form['eps']
-    contacto_emergencia = request.form['contacto_emergencia']
-    numero_emergencia = request.form['numero_emergencia']
+    if (request.method == 'POST'):
+        
+        nombre = request.form['nombre']
+        apellidos = request.form['apellidos']
+        cedula = request.form['cedula']
+        edad = request.form['edad']
+        genero = request.form['genero']
+        email = 'jorge.medina@claro.com.co'
+        gerencia = request.form['gerencia']
+        direccion = request.form['direccion']
+        nombre_gerente = request.form['nombre_gerente']
+        celular_gerente = request.form['celular_gerente']
+        universidad = request.form['universidad']
+        carrera = request.form['carrera']
+        tutor = request.form['tutor']
+        correo_tutor = request.form['correo_tutor']
+        celular_tutor = request.form['celular_tutor']
+        eps = request.form['eps']
+        contacto_emergencia = request.form['contacto_emergencia']
+        numero_emergencia = request.form['numero_emergencia']
 
-    data = {"Nombres": nombre
-    }
-
-    try:
+        data = {"Nombres": nombre,
+            "Apellidos": apellidos,
+            "Cedula": cedula,
+            "Edad": edad,
+            "Sexo": genero,
+            "Correo corporativo": email,
+            "Gerencia": gerencia,
+            "Area de gerencia": direccion,
+            "Nombre gerente": nombre_gerente,
+            "Celular corporativo": celular_gerente,
+            "Universidad": universidad,
+            "Carrera": carrera,
+            "Nombre tutor": tutor,
+            "Correo tutor": correo_tutor,
+            "Celular tutor": celular_tutor,
+            "EPS": eps,
+            "Nombre emergencia": contacto_emergencia,
+            "Numero emergencia": numero_emergencia
+        }
         crud.updateStudentData(email, data)
-        message = 'Usuario guardado satisfactoriamente'
-    except:
-        message = 'Error en el registro del usuario'
+        render_template('view_personal_data.html', usuario = crud.getStudentInfo(email))
 
-    return jsonify({"message": message})
+    return render_template('formulario.html')
