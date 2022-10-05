@@ -1,4 +1,5 @@
 #######################################
+from tracemalloc import Snapshot
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
@@ -19,6 +20,13 @@ def getAllStudents():
     all = ref.get()
     print(all)
     return all
+
+def getCedulas():
+    ref = db.reference('Estudiantes')
+    snapshot = ref.order_by_child('Cedula').get()
+    for key in snapshot:
+        print(key)
+    
 
 def updateStudentData(email, data):
     ref = db.reference('Estudiantes')

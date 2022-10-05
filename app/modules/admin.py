@@ -16,7 +16,8 @@ config = {
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 
-
+def admin():
+    return render_template('admin.html')
 
 def getAllStudent(email):
     ref = db.reference('Estudiantes')

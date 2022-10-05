@@ -26,7 +26,8 @@ def index():
         user = crud.getStudentInfo(email)
         #######################################
         if (admin == email):
-            putos = 'admin_view.html'
+            putos = 'admin.html'
+            user = crud.getAllStudents()
         elif(user==None):
             putos = 'formulario.html'
         else:

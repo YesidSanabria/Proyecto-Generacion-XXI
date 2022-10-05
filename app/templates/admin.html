@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="admin.css">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/admin.css')}}">
     <!-- Font Awesome Cdn Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
@@ -128,26 +128,37 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Carrera</th>
-                                <th>Ciudad</th>
+                                <th>Correo Corporativo</th>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>Cedula</th>
                                 <th>EPS</th>
-                                <th>Celular</th>
-                                <th>Detalles</th>
+                                <th>Edad</th>
+                                <th>Celular Corporativo</th>
+                                <th>Celular Personal</th>
+                                <th>Carrera</th>
+                                <th>Nombre Tutor</th>
+                                <th>Correo Tutor</th>
+                                <th>Celular Tutor</th>
+                                <th>Gerencia</th>
+                                <th>Nombre Gerente</th>
+                                <th>Area de Gerencia</th>
+                                <th>Número de Emergencia</th>
+                            
+
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>01</td>
-                                <td>Valeria Romero</td>
-                                <td>Ingeniería Mecatronica</td>
+                                <td scope="col">{{usuario['juliancely@clarocomco']}}</t>
+                                <!-- <td>Ingeniería Mecatronica</td>
                                 <td>Bogotá</td>
                                 <td>Compensar</td>
-                                <td>3105784214</td>
+                                <td>3105784214</td> -->
                                 <td><button>Ver</button></td>
                             </tr>
-                            <tr class="active">
+                            <!-- <tr class="active">
                                 <td>02</td>
                                 <td>Julian Cely </td>
                                 <td> Ingeniería de Sistemas</td>
@@ -173,7 +184,7 @@
                                 <td>Sanitas</td>
                                 <td>3154789632</td>
                                 <td><button>Ver</button></td>
-                            </tr>
+                            </tr> -->
                             <!-- <tr >
                 <td>05</td>
                 <td>Salina</td>
