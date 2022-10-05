@@ -9,6 +9,7 @@ import modules.login as lg
 import modules.passw as pw
 import modules.admin as ad
 import modules.form as fm
+import modules.profile as pf
 
 app = Flask(__name__)
 
@@ -53,7 +54,10 @@ def admin_view():
 def formulario():
     return fm.form()
 
-
+# --------------------------------------PERFIL-------------------------------------
+@app.route('/view_personal_data', methods=['GET', 'POST'])
+def profile():
+    return pf.profile()
 
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':

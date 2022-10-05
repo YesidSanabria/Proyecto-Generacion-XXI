@@ -12,7 +12,7 @@
 
 <body>
   <div class="container">
-    <div class="title title_form"><b> Registro de Practicantes Generación XXI</b></div>
+    <div class="title title_form"><b> Registro de Practicantes Generación XXI </b></div>
     <div>
       <img src="../static/img/generacionxxi-negro.png" class="img">
     </div>
@@ -20,19 +20,19 @@
     <div class="title title_form"><b> Datos Personales: </b></div>
     <br>
     <div class="content">
-      <form action="#" method="post">
+      <form action="/formulario" method="post">
         <div class="input_container">
           <div class="input_div">
             <span class="details title_form"> Nombre: </span>
-            <input type="text" name="nombre" required>
+            <input type="text" name="nombre" required="required">
           </div>
           <div class="input_div">
             <span class="details title_form"> Apellidos: </span>
-            <input type="text" name="apellidos" required>
+            <input type="text" name="apellidos" required="required">
           </div>
           <div class="input_div">
             <span class="details title_form"> Edad: </span>
-            <input type="text" name="edad" required>
+            <input type="text" name="edad" required="required">
           </div>
           <div class="input_div">
             <span class="details title_form"> Genero: </span>
@@ -44,11 +44,11 @@
           </div>
           <div class="input_div">
             <span class="details title_form"> Correo Electrónico: </span>
-            <input type="text" name="email" required>
+            <input type="text" name="email" required="required">
           </div>
           <div class="input_div">
             <span class="details title_form"> EPS: </span>
-            <input type="text" name="eps" required>
+            <input type="text" name="eps" required="required">
           </div>
           <div class="input_div">
             <span class="details title_form"> Regional: </span>
@@ -69,23 +69,27 @@
         <div class="input_container">
           <div class="input_div">
             <span class="details title_form"> Dirección a la que pertenece: </span>
-            <input type="text" name="direccion" required>
+            <input type="text" name="direccion" required="required">
           </div>
           <div class="input_div">
             <span class="details title_form"> Gerencia a la que pertenece: </span>
-            <input type="text" name="gerencia" required>
+            <input type="text" name="gerencia" required="required">
           </div>
           <div class="input_div">
             <span class="details title_form"> Nombre de su Gerente o Jefe: </span>
-            <input type="text" name="nombre_gerente" required>
+            <input type="text" name="nombre_gerente" required="required">
           </div>
           <div class="input_div">
             <span class="details title_form"> Celular de contacto: </span>
-            <input type="text" name="celular_gerente"required>
+            <input type="text" name="celular_gerente"required="required">
           </div>
           <div class="input_div">
-            <span class="details title_form"> Correo Electronico: </span>
-            <input type="text" name="correo_gerente" required>
+            <span class="details title_form"> Correo Corporativo: </span>
+            <input type="text" name="correo_corporativo" required="required">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Correo Gerente: </span>
+            <input type="text" name="correo_gerente" required="required">
           </div>
         </div>
         <br>
@@ -94,23 +98,23 @@
         <div class="input_container">
           <div class="input_div">
             <span class="details title_form"> Universidad: </span>
-            <input type="text" name="universidad" required>
+            <input type="text" name="universidad" required="required">
           </div>
           <div class="input_div">
             <span class="details title_form"> Carrera a la que pertenece: </span>
-            <input type="text" name="carrera" required>
+            <input type="text" name="carrera" required="required">
           </div>
           <div class="input_div">
             <span class="details title_form"> Tutor encargado de la practica: </span>
-            <input type="text" name="nombre_tutor" required>
+            <input type="text" name="nombre_tutor" required="required">
           </div>
           <div class="input_div">
             <span class="details title_form"> Correo del tutor: </span>
-            <input type="text" required>
+            <input type="text" name="correo_tutor" required="required">
           </div>
           <div class="input_div">
             <span class="details title_form"> Celular del tutor: </span>
-            <input type="text" name="correo_tutor" required>
+            <input type="text" name="celular_tutor" required="required">
           </div>
         </div>
         <br>
@@ -119,15 +123,15 @@
         <div class="input_container">
           <div class="input_div">
             <span class="details title_form"> Nombre del Contacto de Emergencia: </span>
-            <input type="text" name="nombre_emergencia" required>
+            <input type="text" name="nombre_emergencia" required="required">
           </div>
           <div class="input_div">
             <span class="details title_form"> Numero del Contacto de Emergencia: </span>
-            <input type="text" name="numero_emergencia" required>
+            <input type="text" name="numero_emergencia" required="required">
           </div>
         </div>
         <div class="button">
-          <button type="submit" value="Registro" >ENVIAR</button>
+          <button type="submit" name="Registro" >ENVIAR</button>
         </div>
     </div>
     </form>

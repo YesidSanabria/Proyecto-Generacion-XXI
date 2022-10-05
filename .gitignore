@@ -66,5 +66,10 @@ node_modules/
 .env
 
 # pycache
-app/__pycache__
-app/modules/__pycache__/*.pyc
+app/modules/__pycache__/crud.cpython-310.pyc
+app/modules/__pycache__/form.cpython-310.pyc
+app/modules/__pycache__/login.cpython-310.pyc
+app/modules/__pycache__/admin.cpython-310.pyc
+app/modules/__pycache__/passw.cpython-310.pyc
+app/modules/__pycache__/register.cpython-310.pyc
+app/modules/__pycache__/profile.cpython-310.pyc
