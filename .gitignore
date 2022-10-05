@@ -66,4 +66,5 @@ node_modules/
 .env
 
 # pycache
-*.pyc
+app/__pycache__
+app/modules/__pycache__
