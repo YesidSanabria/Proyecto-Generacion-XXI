@@ -8,6 +8,7 @@ import modules.register as reg
 import modules.login as lg
 import modules.passw as pw
 import modules.admin as ad
+import modules.form as fm
 
 app = Flask(__name__)
 
@@ -48,9 +49,10 @@ def admin_view():
 # --------------------------------------FORMULARIO-------------------------------------
 
 
-@app.route('/formulario', methods=['GET', 'POST'])
+@app.route('/formulario', methods=['POST'])
 def formulario():
-    return render_template('formulario.html')
+    return fm.form()
+
 
 
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
