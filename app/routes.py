@@ -49,7 +49,7 @@ def admin_view():
 # --------------------------------------FORMULARIO-------------------------------------
 
 
-@app.route('/formulario', methods=['POST'])
+@app.route('/formulario', methods=['GET', 'POST'])
 def formulario():
     return fm.form()
 
