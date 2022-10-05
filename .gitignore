@@ -64,3 +64,7 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+# pycache
+app/__pycache__
+app/modules/__pycache__/*.pyc
