@@ -56,8 +56,8 @@ def formulario():
 
 # --------------------------------------PERFIL-------------------------------------
 @app.route('/view_personal_data', methods=['GET', 'POST'])
-def profile():
-    return pf.profile()
+def view_personal_data():
+    return pf.view_personal_data()
 
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':

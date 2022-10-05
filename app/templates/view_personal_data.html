@@ -5,7 +5,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <form>
+        <form action="/view_personal_data" method="post">
             <br>
             <br>
             <h1 style="color:#CF2F35"> Bienvenido  {{ usuario['Nombres']}} </h1>
@@ -54,15 +54,14 @@
                 <h3> En caso de emergencia llamar a: {{ usuario['Nombre emergencia']}} </h3> 
                 <h3> Numero: {{ usuario['Numero emergencia']}} </h3>
             </fieldset>
-
-
+            <div class="col-sm">
+                <br>
+                <input id="email" name="email" type="hidden" value="julian.cely@claro.com.co">
+                <br>
+                <button class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #FAC401; color: white;" type="submit" name="email" value="{{usuario['Correo Corporativo']}}">Actualizar datos</button>
+                <br>
         </form>
-          <div class="col-sm">
-            <!--<button type="submit" name="submit" class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #CF2F35; color: white;">Iniciar Sesion</button> -->
-            <br>
-            <br>
-            <a href="/formulario" class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #FAC401; color: white;" type="submit">Actualizar datos</a>
-            <br>
+          
         </div>
     </div>
 </div>
