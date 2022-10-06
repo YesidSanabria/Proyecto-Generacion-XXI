@@ -19,6 +19,7 @@ auth = firebase.auth()
 def admin():
     return render_template('admin.html')
 
+# Esto está en crud #
 def getAllStudent(email):
     ref = db.reference('Estudiantes')
     user = ref.child(email.replace('.', '')).get()

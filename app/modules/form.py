@@ -22,10 +22,10 @@ def form ():
         
         nombre = request.form['nombre']
         apellidos = request.form['apellidos']
-        # cedula = request.form['cedula']
+        cedula = request.form['cedula']
         edad = request.form['edad']
         genero = request.form['genero']
-        email = 'jorge.medina@claro.com.co'
+        email = request.form['correo_corporativo']
         gerencia = request.form['gerencia']
         direccion = request.form['direccion']
         nombre_gerente = request.form['nombre_gerente']
@@ -34,7 +34,7 @@ def form ():
         carrera = request.form['carrera']
         tutor = request.form['nombre_tutor']
         correo_tutor = request.form['correo_tutor']
-        # celular_tutor = request.form['celular_tutor']
+        celular_tutor = request.form['celular_tutor']
         eps = request.form['eps']
         contacto_emergencia = request.form['nombre_emergencia']
         numero_emergencia = request.form['numero_emergencia']
@@ -42,19 +42,19 @@ def form ():
 
         data = {"Nombres": nombre,
             "Apellidos": apellidos,
-            # "Cedula": cedula,
+            "Cedula": cedula,
             "Edad": edad,
             "Sexo": genero,
             "Correo corporativo": email,
             "Gerencia": gerencia,
             "Area de gerencia": direccion,
             "Nombre gerente": nombre_gerente,
-            "Celular corporativo": celular_gerente,
+            "Celular gerente": celular_gerente,
             "Universidad": universidad,
             "Carrera": carrera,
             "Nombre tutor": tutor,
             "Correo tutor": correo_tutor,
-            # "Celular tutor": celular_tutor,
+            "Celular tutor": celular_tutor,
             "EPS": eps,
             "Nombre emergencia": contacto_emergencia,
             "Numero emergencia": numero_emergencia,

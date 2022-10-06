@@ -24,11 +24,12 @@ def index():
         password = request.form['password']
         #######################################
         user = crud.getStudentInfo(email)
+        print(user)
         #######################################
         if (admin == email):
             putos = 'admin.html'
             user = crud.getAllStudents()
-        elif(user==None):
+        elif(user['Nombres'] == ''):
             putos = 'formulario.html'
         else:
             putos = 'view_personal_data.html'

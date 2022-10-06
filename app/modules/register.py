@@ -1,5 +1,6 @@
 import pyrebase
 from flask import render_template, request
+import modules.crud as crud
 
 config = {
     "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
@@ -41,6 +42,7 @@ def create_account():
         password = acc['password']
         try:
             auth.create_user_with_email_and_password(email, password)
+            crud.createNewStudent(email)
             return render_template('index.html')
         except:
             return render_template('create_account.html', umessage=unsuccessful)

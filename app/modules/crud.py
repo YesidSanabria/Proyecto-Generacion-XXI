@@ -18,7 +18,6 @@ def getStudentInfo(email):
 def getAllStudents():
     ref = db.reference('Estudiantes')
     all = ref.get()
-    print(all)
     return all
 
 def getCedulas():
@@ -37,3 +36,11 @@ def updateStudentData(email, data):
 def deleteStudent(email):
     ref = db.reference('Estudiantes')
     ref.child(email.replace('.', '')).delete()
+
+def createNewStudent(email):
+    ref = db.reference('Estudiantes')
+    initData = {
+            'Correo corporativo': email,
+            'Nombres': ''
+        }
+    ref.child(email.replace('.','')).set(initData)
