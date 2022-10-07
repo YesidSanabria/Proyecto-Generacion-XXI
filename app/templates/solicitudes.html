@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body>
+<div class="container">
+    <div class="row">
+        <form action="/solicitudes" method="post">
+            <h4>Nombre del solicitante</h4>
+            <input type="text" required="required" name="nombre">
+            <h4>Correo electrónico</h4>
+            <input type="email" required="required" name="email">
+            <h4>Dirección corporativa</h4>
+            <input type="text" required="required" name="direccion">
+            <h4>Gerencia</h4>
+            <input type="text" required="required" name="gerencia">
+            <h4>Carrera del practicante</h4>
+            <input type="text" required="required" name="profesion">
+            <h4>Motivo de la solicitud</h4>
+            <textarea required="required" name="motivo"></textarea>
+            <br>
+            <button type="submit">Enviar solicitud</button>
+        </form>
+          
+        </div>
+    </div>
+</div>
+</body>
+
+<br>
+<br>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <p class="copyright text-muted"> &copy; desarrolladores GENERACIÓN XXI </p>
+        </div>
+    </div>    
+<footer> 
+
+{% endblock %}

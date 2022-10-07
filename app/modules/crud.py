@@ -55,7 +55,6 @@ def createNewStudent(email):
         }
     ref.child(email.replace('.','')).set(initData)
     
-
 def cedulas():
     ref = db.reference('Estudiantes')
     all = ref.get()
@@ -88,3 +87,7 @@ def cedulas():
     print(info4)
     
     return info5
+
+def addRequest(req):
+    ref = db.reference('Solicitudes')
+    ref.push(req)
