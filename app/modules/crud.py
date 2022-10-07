@@ -10,6 +10,15 @@ cred = credentials.Certificate("app/config/generacion-xxi-firebase-adminsdk-iwq0
 firebase_admin.initialize_app(cred,{'databaseURL':'https://generacion-xxi-default-rtdb.firebaseio.com/'})
 ##########################################
 
+# VARIABLES
+
+options = {
+    'sexo': ['Hombre', 'Mujer'], 
+    'regional': ['Bogotá', 'Bucaramanga', 'Medellín', 'Barranquilla', 'Cali', 'Manizales']
+    }
+
+# FUNCIONES
+
 def getStudentInfo(email):
     ref = db.reference('Estudiantes')
     user = ref.child(email.replace('.', '')).get()
