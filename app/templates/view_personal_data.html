@@ -10,6 +10,11 @@
             <br>
             <h1 style="color:#CF2F35"> Bienvenido  {{ usuario['Nombres']}} </h1>
             <br>
+            {% if smessage %}
+                <div class="alert alert-success">
+                    {{ smessage }}
+                </div>
+            {% endif %}
             <br>
             
             <legend class="text-danger font-weight-bold"> Datos personales: </legend>

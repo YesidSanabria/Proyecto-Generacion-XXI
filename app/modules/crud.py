@@ -1,12 +1,10 @@
 #######################################
-from tracemalloc import Snapshot
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 ########################################
 
 import pandas as pd
-from sklearn.datasets import load_iris
 
 ##########################################
 cred = credentials.Certificate("app/config/generacion-xxi-firebase-adminsdk-iwq0c-bc2e550415.json")

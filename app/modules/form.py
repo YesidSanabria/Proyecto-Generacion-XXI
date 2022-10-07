@@ -64,6 +64,7 @@ def form ():
             "Regional": regional
         }
         crud.updateStudentData(email, data)
-        return render_template('view_personal_data.html', usuario=crud.getStudentInfo(email))
+        mensaje = 'Los datos han sido guardados satisfactoriamente.'
+        return render_template('view_personal_data.html', usuario=crud.getStudentInfo(email), smessage=mensaje)
 
     return render_template('formulario.html')
