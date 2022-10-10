@@ -42,6 +42,9 @@ def form ():
         numero_emergencia = request.form['numero_emergencia']
         correo_gerente = request.form['correo_gerente']
         regional = request.form['ciudad']
+        celular_corporativo = request.form['celular_corporativo']
+        celular_personal = request.form['celular_personal']
+        correo_personal = request.form['correo_personal']
 
         data = {"Nombres": nombre,
             "Apellidos": apellidos,
@@ -62,7 +65,10 @@ def form ():
             "Nombre emergencia": contacto_emergencia,
             "Numero emergencia": numero_emergencia,
             "Correo gerente": correo_gerente,
-            "Regional": regional
+            "Regional": regional,
+            "Celular corporativo": celular_corporativo,
+            "Celular personal": celular_personal,
+            "Correo personal": correo_personal
         }
         crud.updateStudentData(email, data)
         mensaje = 'Los datos han sido guardados satisfactoriamente.'
