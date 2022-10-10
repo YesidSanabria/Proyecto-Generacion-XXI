@@ -72,7 +72,8 @@ def cedulas():
             info3 = info2.drop(0)
 
         if i>0:
-            info3 = info3.append(info2.drop(0))    
+            #info3 = info3.append(info2.drop(0))
+            info3 = pd.concat([info3,info2.drop(0)],axis=0)   
         
     pd.set_option("display.max_rows", None, "display.max_columns", None)
     #print(info3)
@@ -84,9 +85,13 @@ def cedulas():
     info4 = info4.drop(columns = 'index')
     info5 = info4[3] #este es el campo que se modifica para obtener las colunas de los datos en este caso las cedulas
     
-    print(info4)
+    #print(info4)
     
-    return info5
+    info6 = info4[7]
+    
+    return info5,info6
+
+
 
 def addRequest(req):
     ref = db.reference('Solicitudes')
