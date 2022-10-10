@@ -95,5 +95,3 @@ def addRequest(req):
 def getRequests():
     ref = db.reference('Solicitudes')
     return ref.get()
-
-print(getRequests())
