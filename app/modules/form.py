@@ -1,3 +1,4 @@
+from doctest import register_optionflag
 import pyrebase
 from flask import render_template, request
 import modules.crud as crud
@@ -39,6 +40,7 @@ def form ():
         contacto_emergencia = request.form['nombre_emergencia']
         numero_emergencia = request.form['numero_emergencia']
         correo_gerente = request.form['correo_gerente']
+        regional = request.form['ciudad']
 
         data = {"Nombres": nombre,
             "Apellidos": apellidos,
@@ -58,9 +60,11 @@ def form ():
             "EPS": eps,
             "Nombre emergencia": contacto_emergencia,
             "Numero emergencia": numero_emergencia,
-            "Correo gerente": correo_gerente
+            "Correo gerente": correo_gerente,
+            "Regional": regional
         }
         crud.updateStudentData(email, data)
-        return render_template('view_personal_data.html', usuario=crud.getStudentInfo(email))
+        mensaje = 'Los datos han sido guardados satisfactoriamente.'
+        return render_template('view_personal_data.html', usuario=crud.getStudentInfo(email), smessage=mensaje)
 
     return render_template('formulario.html')

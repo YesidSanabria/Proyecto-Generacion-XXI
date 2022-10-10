@@ -1,17 +1,24 @@
 #######################################
-from tracemalloc import Snapshot
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 ########################################
 
 import pandas as pd
-from sklearn.datasets import load_iris
 
 ##########################################
 cred = credentials.Certificate("app/config/generacion-xxi-firebase-adminsdk-iwq0c-bc2e550415.json")
 firebase_admin.initialize_app(cred,{'databaseURL':'https://generacion-xxi-default-rtdb.firebaseio.com/'})
 ##########################################
+
+# VARIABLES
+
+options = {
+    'sexo': ['Hombre', 'Mujer'], 
+    'regional': ['Bogotá', 'Bucaramanga', 'Medellín', 'Barranquilla', 'Cali', 'Manizales']
+    }
+
+# FUNCIONES
 
 def getStudentInfo(email):
     ref = db.reference('Estudiantes')
@@ -48,7 +55,6 @@ def createNewStudent(email):
         }
     ref.child(email.replace('.','')).set(initData)
     
-
 def cedulas():
     ref = db.reference('Estudiantes')
     all = ref.get()
@@ -81,3 +87,7 @@ def cedulas():
     print(info4)
     
     return info5
+
+def addRequest(req):
+    ref = db.reference('Solicitudes')
+    ref.push(req)

@@ -32,7 +32,7 @@ def index():
         password = request.form['password']
         #######################################
         user = crud.getStudentInfo(email)
-        print(user)
+        options = crud.options
         #######################################
         if (admin == email):
             putos = 'admin.html'
@@ -48,7 +48,7 @@ def index():
             #session['usr'] = user_id
             #return render_template('formulario.html', user=user)
 
-            return render_template(putos, usuario=user)
+            return render_template(putos, usuario=user, opcion=options)
             
         except:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'

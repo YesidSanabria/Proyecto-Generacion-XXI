@@ -10,6 +10,7 @@ import modules.passw as pw
 import modules.admin as ad
 import modules.form as fm
 import modules.profile as pf
+import modules.demand as dm
 
 app = Flask(__name__)
 
@@ -40,6 +41,10 @@ def forgot_password():
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     return render_template('home.html')
+
+@app.route('/solicitudes', methods=['GET', 'POST'])
+def solicitudes():
+    return dm.demand()
 # --------------------------------------REGISTRO E INICIO DE SESION-------------------------------------
 
 

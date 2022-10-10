@@ -10,6 +10,11 @@
             <br>
             <h1 style="color:#CF2F35"> Bienvenido  {{ usuario['Nombres']}} </h1>
             <br>
+            {% if smessage %}
+                <div class="alert alert-success">
+                    {{ smessage }}
+                </div>
+            {% endif %}
             <br>
 
             <form action="/view_personal_data" method="post" enctype="multipart/form-data">

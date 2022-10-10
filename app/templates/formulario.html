@@ -37,9 +37,8 @@
           <div class="input_div">
             <span class="details title_form"> Genero: </span>
             <select name="genero" class="details" value="{{usuario['Sexo']}}">
-              <option> </option>
-              <option>Hombre</option>
-              <option>Mujer</option>
+              <option>{{opcion['sexo'][0]}}</option>
+              <option>{{opcion['sexo'][1]}}</option>
             </select>
           </div>
           <div class="input_div">
@@ -57,13 +56,12 @@
           <div class="input_div">
             <span class="details title_form"> Regional: </span>
             <select name="ciudad" class="details" value="{{usuario['Regional']}}">
-              <option> </option>
-              <option>Bogotá</option>
-              <option>Bucaramanga</option>
-              <option>Medellín</option>
-              <option>Barranquilla</option>
-              <option>Cali</option>
-              <option>Manizales</option>
+              <option>{{opcion['regional'][0]}}</option>
+              <option>{{opcion['regional'][1]}}</option>
+              <option>{{opcion['regional'][2]}}</option>
+              <option>{{opcion['regional'][3]}}</option>
+              <option>{{opcion['regional'][4]}}</option>
+              <option>{{opcion['regional'][5]}}</option>
             </select>
           </div>
         </div>
