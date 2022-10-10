@@ -39,18 +39,19 @@ def orderOptions(email):
 def view_personal_data():
     if (request.method == 'POST'):
 
-        upload = request.files['upload']
-        userr= request.form['userr']
-        storage.child("profile_pictures/" + userr).put(upload)
-        
-        # return render_template('formulario.html', usuario=crud.getStudentInfo(email))
-        
-        #if True:
-        links = storage.child("profile_pictures/"+userr).get_url(None)
-        print(links)
+        # upload = request.files['upload']
+        # userr= request.form['userr']
+        # storage.child("profile_pictures/" + userr).put(upload)
+        #  #if True:
+        # links = storage.child("profile_pictures/"+userr).get_url(None)
+        # print(links)
         email = request.form['email']
 
-        return render_template('view_personal_data.html',l=links,usuario=crud.getStudentInfo(email))
+        # return render_template('view_personal_data.html',l=links,usuario=crud.getStudentInfo(email))
+    
+        options = crud.options
+    
+        return render_template('formulario.html', usuario=crud.getStudentInfo(email), opcion=options)
                                       
         user = crud.getStudentInfo(email)
         try:

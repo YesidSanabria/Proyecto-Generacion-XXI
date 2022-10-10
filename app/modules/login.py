@@ -47,8 +47,8 @@ def index():
             #user_id = auth.get_account_info(user['idToken'])
             #session['usr'] = user_id
             #return render_template('formulario.html', user=user)
-
-            return render_template(putos, usuario=user, opcion=options)
+            links = storage.child("profile_pictures/"+email).get_url(None) # obtener la foto si ya existe 
+            return render_template(putos, usuario=user, opcion=options,l=links)
             
         except:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'
