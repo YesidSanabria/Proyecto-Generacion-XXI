@@ -40,8 +40,15 @@ def index():
             putos = 'admin.html'
             [user,ema] = crud.cedulas()
             ema = ema.str.lower()
-            print(ema)
-            links = storage.child("profile_pictures/jorge.medina@claro.com.co").get_url(None)
+            #print(ema)
+            #links = storage.child("profile_pictures/jorge.medina@claro.com.co").get_url(None)
+            links=[]
+            
+            for i in range(len(ema)):
+                links.append(storage.child("profile_pictures/"+ema[i]).get_url(None)) #arreglo con los campos de imagenes de cada persona
+            
+            #print(links)
+            
             req = crud.getRequests()
         elif(user['Nombres'] == ''):
             putos = 'formulario.html'

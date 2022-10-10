@@ -96,3 +96,7 @@ def cedulas():
 def addRequest(req):
     ref = db.reference('Solicitudes')
     ref.push(req)
+    
+def getRequests():
+    ref = db.reference('Solicitudes')
+    return ref.get()
