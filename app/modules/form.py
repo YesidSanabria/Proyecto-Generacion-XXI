@@ -15,6 +15,7 @@ config = {
 }
 
 firebase = pyrebase.initialize_app(config)
+storage = firebase.storage() #linea del storage
 auth = firebase.auth()
 
 
@@ -65,6 +66,14 @@ def form ():
         }
         crud.updateStudentData(email, data)
         mensaje = 'Los datos han sido guardados satisfactoriamente.'
-        return render_template('view_personal_data.html', usuario=crud.getStudentInfo(email), smessage=mensaje)
+        links = storage.child("profile_pictures/"+email).get_url(None)
+        upload = request.files['upload']
+        userr= request.form['userr']
+        #print(upload.filename)
+        if (upload.filename != ''):
+            storage.child("profile_pictures/" + userr).put(upload)
+            links = storage.child("profile_pictures/"+userr).get_url(None)
+            #print("1")
+        return render_template('view_personal_data.html', usuario=crud.getStudentInfo(email), smessage=mensaje,l=links)
 
     return render_template('formulario.html')

@@ -17,10 +17,18 @@
       <img src="../static/img/generacionxxi-negro.png" class="img">
     </div>
     <br>
+    <form action="/formulario" method="post" enctype="multipart/form-data">
+      <center><input type="file" name="upload" ></center>
+      <input type="hidden" name="userr" value="{{usuario['Correo corporativo']}}">
+      <br>
+  <!--</form>-->
+    <div>
+      <center><img src="{{l}}" width="100" height="100"></center>
+    </div>
     <div class="title title_form"><b> Datos Personales: </b></div>
     <br>
     <div class="content">
-      <form action="/formulario" method="post">
+      <!--<form action="/formulario" method="post">-->
         <div class="input_container">
           <div class="input_div">
             <span class="details title_form"> Nombre: </span>
@@ -133,7 +141,7 @@
           </div>
         </div>
         <div class="button">
-          <button type="submit" name="Registro" >ENVIAR</button>
+          <button class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #0096A9; color: white;" type="submit" name="Registro" >ENVIAR</button>
         </div>
     </div>
     </form>

@@ -46,17 +46,18 @@ def view_personal_data():
         # links = storage.child("profile_pictures/"+userr).get_url(None)
         # print(links)
         email = request.form['email']
-
+        links = storage.child("profile_pictures/"+email).get_url(None)
         # return render_template('view_personal_data.html',l=links,usuario=crud.getStudentInfo(email))
     
-        options = crud.options
+        #options = crud.options
     
-        return render_template('formulario.html', usuario=crud.getStudentInfo(email), opcion=options)
+        #return render_template('formulario.html', usuario=crud.getStudentInfo(email), opcion=options)
                                       
         user = crud.getStudentInfo(email)
         try:
             opciones = orderOptions(email)
         except:
             opciones = crud.options
-        return render_template('formulario.html', usuario=user, opcion=opciones)
+        return render_template('formulario.html', usuario=user, opcion=opciones,l=links)
+    
     return render_template('view_personal_data.html')
