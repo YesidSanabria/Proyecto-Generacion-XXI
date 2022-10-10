@@ -2,27 +2,41 @@
 
 {% block content %}
 
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/admin.css')}}">
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+
 <body>
 <div class="container">
-    <div class="row">
-        <form action="/solicitudes" method="post">
-            <h4>Nombre del solicitante</h4>
-            <input type="text" required="required" name="nombre">
-            <h4>Correo electrónico</h4>
-            <input type="email" required="required" name="email">
-            <h4>Dirección corporativa</h4>
-            <input type="text" required="required" name="direccion">
-            <h4>Gerencia</h4>
-            <input type="text" required="required" name="gerencia">
-            <h4>Carrera del practicante</h4>
-            <input type="text" required="required" name="profesion">
-            <h4>Motivo de la solicitud</h4>
-            <textarea required="required" name="motivo"></textarea>
-            <br>
-            <button type="submit">Enviar solicitud</button>
-        </form>
-          
-        </div>
+    
+        <div>
+        <section class="attendance">
+
+            <div class="attendance-list">
+                <form action="/solicitudes" method="post">
+                    <h4>Nombre del solicitante</h4>
+                    <input type="text" class="form-control" required="required" name="nombre">
+                    <h4>Correo electrónico</h4>
+                    <input type="email" class="form-control" required="required" name="email">
+                    <h4>Dirección corporativa</h4>
+                    <input type="text" class="form-control" required="required" name="direccion">
+                    <h4>Gerencia</h4>
+                    <input type="text" class="form-control" required="required" name="gerencia">
+                    <h4>Carrera del practicante</h4>
+                    <input type="text" class="form-control" required="required" name="profesion">
+                    <h4>Motivo de la solicitud</h4>
+                    <textarea required="required" class="form-control" name="motivo"></textarea>
+                    <br>
+                    <button type="submit" style="width: 350px; background-color: #CF2F35; color: white;">Enviar solicitud</button>
+                </form>
+                  
+            </div>
+
+        </section>
+    </div>
     </div>
 </div>
 </body>
@@ -30,12 +44,5 @@
 <br>
 <br>
 
-<footer>
-    <div class="container">
-        <div class="row">
-            <p class="copyright text-muted"> &copy; desarrolladores GENERACIÓN XXI </p>
-        </div>
-    </div>    
-<footer> 
 
 {% endblock %}

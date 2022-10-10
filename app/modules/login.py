@@ -29,6 +29,7 @@ def index():
         if (admin == email):
             putos = 'admin.html'
             user = crud.cedulas()
+            req = crud.getRequests()
         elif(user['Nombres'] == ''):
             putos = 'formulario.html'
         else:
@@ -40,7 +41,7 @@ def index():
             #session['usr'] = user_id
             #return render_template('formulario.html', user=user)
 
-            return render_template(putos, usuario=user, opcion=options)
+            return render_template(putos, usuario=user, opcion=options, req=req)
             
         except:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'
