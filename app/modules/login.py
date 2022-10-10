@@ -14,7 +14,15 @@ config = {
 }
 
 firebase = pyrebase.initialize_app(config)
+storage = firebase.storage() #linea del storage
 auth = firebase.auth()
+
+#storage.child("profile_pictures/new.jpeg").put(r"C:\Users\ic5705b\Documents\GitHub\Proyecto-Generacion-XXI\app\descarga.jpeg") #cargar imagenes al storage
+# storage.child("profile_pictures/new.jpeg").download(r"C:\Users\ic5705b\Documents\GitHub\Proyecto-Generacion-XXI\app","example.jpeg") #descargar las imagenes obtenidas del storage 
+# print(storage.child("profile_pictures/new.jpeg").get_url(None)) #Obtener la url de la ruta de las imagenes
+
+
+
 
 admin = "sspg.xxi@gmail.com"
 
@@ -40,8 +48,8 @@ def index():
             #user_id = auth.get_account_info(user['idToken'])
             #session['usr'] = user_id
             #return render_template('formulario.html', user=user)
-
-            return render_template(putos, usuario=user, opcion=options, req=req)
+            links = storage.child("profile_pictures/"+email).get_url(None) # obtener la foto si ya existe 
+            return render_template(putos, usuario=user, opcion=options,l=links)
             
         except:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'

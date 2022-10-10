@@ -5,10 +5,10 @@
 <body>
 <div class="container">
     <div class="row">
-        <form action="/view_personal_data" method="post">
+        
             <br>
             <br>
-            <h1 style="color:#CF2F35"> Bienvenido  {{ usuario['Nombres']}} </h1>
+            <center><h1 style="color:#CF2F35"> Bienvenido  {{ usuario['Nombres']}} </h1></center>
             <br>
             {% if smessage %}
                 <div class="alert alert-success">
@@ -16,6 +16,21 @@
                 </div>
             {% endif %}
             <br>
+
+            <!--<form action="/view_personal_data" method="post" enctype="multipart/form-data">
+                <center><input type="file" name="upload" ></center>
+                <input type="hidden" name="userr" value="{{usuario['Correo corporativo']}}">
+                <br>
+                <center><button class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #FAC401; color: white;" type="submit" name="email" value="{{usuario['Correo corporativo']}}"> Subir foto </button> </center>
+                <br>
+                <br>
+            </form>-->
+
+            <div>
+                <center><img src="{{l}}" width="300" height="300"></center>
+            </div>
+        
+        <form action="/view_personal_data" method="post">
             
             <legend class="text-danger font-weight-bold"> Datos personales: </legend>
             <fieldset class="card p-3 bg-light.bg-gradient border border-danger"> 
@@ -41,7 +56,7 @@
             <br>
             <br>
 
-            <legend class="text-danger font-weight-bold"> Datos academicos: </legend>
+            <legend class="text-danger font-weight-bold"> Datos académicos: </legend>
             <fieldset class="card p-3 bg-light.bg-gradient border border-danger"> 
                 <h3> Universidad: {{ usuario['Universidad']}} </h3>
                 <h3> Carrera: {{ usuario['Carrera']}} </h3>
@@ -63,9 +78,9 @@
                 <br>
                 <input id="email" name="email" type="hidden" value="{{usuario['Correo corporativo']}}">
                 <br>
-                <button class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #FAC401; color: white;" type="submit" name="email" value="{{usuario['Correo Corporativo']}}">Actualizar datos</button>
+                <button class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #FAC401; color: white;" type="submit" name="email" value="{{usuario['Correo corporativo']}}">Actualizar datos</button>
                 <br>
-        </form>
+        </form
           
         </div>
     </div>
