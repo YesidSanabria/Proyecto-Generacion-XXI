@@ -1,3 +1,4 @@
+import re
 import pyrebase
 from flask import render_template, request
 import modules.crud as crud
@@ -33,6 +34,7 @@ def index():
         #######################################
         user = crud.getStudentInfo(email)
         options = crud.options
+        req = ''
         #######################################
         if (admin == email):
             putos = 'admin.html'
@@ -40,6 +42,7 @@ def index():
             ema = ema.str.lower()
             print(ema)
             links = storage.child("profile_pictures/jorge.medina@claro.com.co").get_url(None)
+            req = crud.getRequests()
         elif(user['Nombres'] == ''):
             putos = 'formulario.html'
             links = storage.child("profile_pictures/"+email).get_url(None) # obtener la foto si ya existe
@@ -52,7 +55,7 @@ def index():
             #user_id = auth.get_account_info(user['idToken'])
             #session['usr'] = user_id
             #return render_template('formulario.html', user=user) 
-            return render_template(putos, usuario=user, opcion=options,l=links)
+            return render_template(putos, usuario=user, opcion=options, l=links, req=req)
             
         except:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'
