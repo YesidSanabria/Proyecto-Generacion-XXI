@@ -95,3 +95,11 @@ def addRequest(req):
 def getRequests():
     ref = db.reference('Solicitudes')
     return ref.get()
+
+def getStudenKeys():
+    ref = db.reference('Estudiantes')
+    data = ref.get()
+    list = []
+    for key in data.keys():
+        list.append(key)
+    return list
