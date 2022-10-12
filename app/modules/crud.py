@@ -80,8 +80,8 @@ def cedulas():
     info5 = info4[3] #este es el campo que se modifica para obtener las colunas de los datos en este caso las cedulas
     
     print(info4)
-    
-    return info5
+    info6 = info4[8]
+    return info5, info6
 
 def addRequest(req):
     ref = db.reference('Solicitudes')
@@ -124,7 +124,6 @@ def correo():
     info4 = pd.concat([info,info3],axis=1)
     info4 = info4.drop(columns = 'index')
     info5 = info4["email"] #este es el campo que se modifica para obtener las colunas de los datos en este caso las cedulas
-    print (info5[0])
     return info5
 
 
@@ -156,3 +155,5 @@ def cantidadP():
     info5 = info4["email"] #este es el campo que se modifica para obtener las colunas de los datos en este caso las cedulas
     cantidad = len(info5)
     return cantidad
+
+
