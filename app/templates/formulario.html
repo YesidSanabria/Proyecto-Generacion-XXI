@@ -11,47 +11,49 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="title title_form"><b> Registro de Practicantes Generación XXI - {{usuario['Nombres']}}</b></div>
-    <div>
-      <img src="../static/img/generacionxxi-negro.png" class="img">
+  <div class="container row">
+    <div class="title title_form">
+      <h5><b> Registro de Practicantes Generación XXI - {{usuario['Nombres']}} {{usuario['Apellidos']}}</b></h5>
     </div>
-    <br>
+    <div>
+      <img class="img-practicante" src="{{l}}" width="100" height="100">
+    </div>
+      <div id="div-file" class="div-file">
+        <p id="texto" class="texto-image"> Cargar Imagen </p>
+        <input type="file" class="input-cargar" id="cargar" >
+      </div>
     <form action="/formulario" method="post" enctype="multipart/form-data">
-      <center><input type="file" name="upload" ></center>
       <input type="hidden" name="userr" value="{{usuario['Correo corporativo']}}">
       <br>
-  <!--</form>-->
-    <div>
-      <center><img src="{{l}}" width="100" height="100"></center>
-    </div>
+    <br>
     <div class="title title_form"><b> Datos Personales: </b></div>
     <br>
     <div class="content">
       <!--<form action="/formulario" method="post">-->
-        <div class="input_container">
+        <div class="input_container row">
           <div class="input_div">
             <span class="details title_form"> Nombre: </span>
-            <input type="text" name="nombre" required="required" value="{{usuario['Nombres']}}">
+            <input type="text"  class="text" name="nombre" required="required" value="{{usuario['Nombres']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> Apellidos: </span>
-            <input type="text" name="apellidos" required="required" value="{{usuario['Apellidos']}}">
+            <input type="text" class="text" name="apellidos" required="required" value="{{usuario['Apellidos']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> Edad: </span>
-            <input type="text" name="edad" required="required" value="{{usuario['Edad']}}">
+            <input type="text" class="text" name="edad" required="required" value="{{usuario['Edad']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> Genero: </span>
-            <select name="genero" class="details" value="{{usuario['Sexo']}}">
-              <option>{{opcion['sexo'][0]}}</option>
-              <option>{{opcion['sexo'][1]}}</option>
-            </select>
+            <input type="text" class="text" name="genero" required="required" value="{{usuario['Sexo']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> Cédula: </span>
-            <input type="text" name="cedula" required="required" value="{{usuario['Cedula']}}">
+            <input type="text" class="text" name="cedula" required="required" value="{{usuario['Cedula']}}">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Celular personal: </span>
+            <input type="text" name="celular_personal" required="required" value="{{usuario['Celular personal']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> Correo Electrónico: </span>
@@ -59,88 +61,89 @@
           </div>
           <div class="input_div">
             <span class="details title_form"> EPS: </span>
-            <input type="text" name="eps" required="required" value="{{usuario['EPS']}}">
+            <input type="text" class="text" name="eps" required="required" value="{{usuario['EPS']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> Regional: </span>
-            <select name="ciudad" class="details" value="{{usuario['Regional']}}">
-              <option>{{opcion['regional'][0]}}</option>
-              <option>{{opcion['regional'][1]}}</option>
-              <option>{{opcion['regional'][2]}}</option>
-              <option>{{opcion['regional'][3]}}</option>
-              <option>{{opcion['regional'][4]}}</option>
-              <option>{{opcion['regional'][5]}}</option>
-            </select>
+            <input type="text" class="text" name="ciudad" required="required" value="{{usuario['Regional']}}">
           </div>
         </div>
         <br>
         <div class="title title_form"><b> Datos Laborales: </b></div>
         <br>
+          <div class="input_div">
+            <span class="details title_form"> Celular corporativo: </span>
+            <input type="text" name="celular_corporativo" required="required" value="{{usuario['Celular corporativo']}}">
+          </div>
         <div class="input_container">
           <div class="input_div">
             <span class="details title_form"> Dirección a la que pertenece: </span>
-            <input type="text" name="direccion" required="required" value="{{usuario['Area de gerencia']}}">
+            <input type="text" class="text" name="direccion" required="required" value="{{usuario['Area de gerencia']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> Gerencia a la que pertenece: </span>
-            <input type="text" name="gerencia" required="required" value="{{usuario['Gerencia']}}">
+            <input type="text" class="text" name="gerencia" required="required" value="{{usuario['Gerencia']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> Nombre de su Gerente o Jefe: </span>
-            <input type="text" name="nombre_gerente" required="required" value="{{usuario['Nombre gerente']}}">
+            <input type="text" class="text" name="nombre_gerente" required="required" value="{{usuario['Nombre gerente']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> Celular de contacto gerente: </span>
-            <input type="text" name="celular_gerente"required="required" value="{{usuario['Celular gerente']}}">
+            <input type="text" class="text" name="celular_gerente"required="required" value="{{usuario['Celular gerente']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> Correo Corporativo: </span>
-            <input type="text" name="correo_corporativo" required="required" readonly="readonly" value="{{usuario['Correo corporativo']}}">
+            <input type="text" class="text" name="correo_corporativo" required="required" readonly="readonly" value="{{usuario['Correo corporativo']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> Correo Gerente: </span>
-            <input type="text" name="correo_gerente" required="required" value="{{usuario['Correo gerente']}}">
+            <input type="text" class="text" name="correo_gerente" required="required" value="{{usuario['Correo gerente']}}">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Celular corporativo: </span>
+            <input type="text" class="text" name="celular_corporativo" required="required" value="{{usuario['Celular corporativo']}}">
           </div>
         </div>
         <br>
         <div class="title title_form"> <b>Datos Academicos: </b></div>
         <br>
-        <div class="input_container">
+        <div class="input_container row">
           <div class="input_div">
             <span class="details title_form"> Universidad: </span>
-            <input type="text" name="universidad" required="required" value="{{usuario['Universidad']}}">
+            <input type="text" class="text" name="universidad" required="required" value="{{usuario['Universidad']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> Carrera a la que pertenece: </span>
-            <input type="text" name="carrera" required="required" value="{{usuario['Carrera']}}">
+            <input type="text" class="text" name="carrera" required="required" value="{{usuario['Carrera']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> Tutor encargado de la practica: </span>
-            <input type="text" name="nombre_tutor" required="required" value="{{usuario['Nombre tutor']}}">
+            <input type="text" class="text" name="nombre_tutor" required="required" value="{{usuario['Nombre tutor']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> Correo del tutor: </span>
-            <input type="text" name="correo_tutor" required="required" value="{{usuario['Correo tutor']}}">
+            <input type="text" class="text" name="correo_tutor" required="required" value="{{usuario['Correo tutor']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> Celular del tutor: </span>
-            <input type="text" name="celular_tutor" required="required" value="{{usuario['Celular tutor']}}">
+            <input type="text" class="text" name="celular_tutor" required="required" value="{{usuario['Celular tutor']}}">
           </div>
         </div>
         <br>
         <div class="title title_form"><b> Datos en caso de emergencia: </b></div>
         <br>
-        <div class="input_container">
+        <div class="input_container row">
           <div class="input_div">
             <span class="details title_form"> Nombre del Contacto de Emergencia: </span>
-            <input type="text" name="nombre_emergencia" required="required" value="{{usuario['Nombre emergencia']}}">
+            <input type="text" class="text" name="nombre_emergencia" required="required" value="{{usuario['Nombre emergencia']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> Numero del Contacto de Emergencia: </span>
-            <input type="text" name="numero_emergencia" required="required" value="{{usuario['Numero emergencia']}}">
+            <input type="text" class="text" name="numero_emergencia" required="required" value="{{usuario['Numero emergencia']}}">
           </div>
         </div>
-        <div class="button">
+        <div class="button text" >
           <button class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #0096A9; color: white;" type="submit" name="Registro" >ENVIAR</button>
         </div>
     </div>
