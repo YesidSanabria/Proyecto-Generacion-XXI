@@ -66,13 +66,13 @@ def form ():
         }
         crud.updateStudentData(email, data)
         mensaje = 'Los datos han sido guardados satisfactoriamente.'
-        links = storage.child("profile_pictures/"+email).get_url(None)
+        links = crud.getImagesURL([email])
         upload = request.files['upload']
         userr= request.form['userr']
         #print(upload.filename)
         if (upload.filename != ''):
-            storage.child("profile_pictures/" + userr).put(upload)
-            links = storage.child("profile_pictures/"+userr).get_url(None)
+            crud.uploadProfileImage(userr, upload)
+            links = crud.getImagesURL([userr])
             #print("1")
         return render_template('view_personal_data.html', usuario=crud.getStudentInfo(email), smessage=mensaje,l=links)
 

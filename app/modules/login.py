@@ -1,4 +1,3 @@
-import re
 import pyrebase
 from flask import render_template, request
 import modules.crud as crud
@@ -34,35 +33,33 @@ def index():
         #######################################
         user = crud.getStudentInfo(email)
         options = crud.options
+        # Inicialización de parámetros.
         req = ''
-        cor = ''
         cantidad = ''
+        emails = ''
         #######################################
         if (admin == email):
             putos = 'admin.html'
-            [user, ema] = crud.cedulas()
-            ema = ema.str.lower()
+            [user, emails, cantidad] = crud.getStudentsData()
+            emails = [x.lower() for x in emails]
             req = crud.getRequests()
-            cantidad = crud.cantidadP()
-            cor = crud.correo()
-            links=[]
-            for i in range(len(ema)):
-                links.append(storage.child("profile_pictures/"+ema[i]).get_url(None)) #arreglo con los campos de imagenes de cada persona
+             #arreglo con los campos de imagenes de cada persona
+            links = crud.getImagesURL(emails)
         elif(user['Nombres'] == ''):
             putos = 'formulario.html'
-            links = storage.child("profile_pictures/"+email).get_url(None)
+            links = crud.getImagesURL([email])
         else:
             putos = 'view_personal_data.html'
-            links = storage.child("profile_pictures/"+email).get_url(None)
-        try:
+            links = crud.getImagesURL([email])
+        if True:
 #--------------------INICIAR SESION---------------------------------                
             auth.sign_in_with_email_and_password(email, password)
             #user_id = auth.get_account_info(user['idToken'])
             #session['usr'] = user_id
             #return render_template('formulario.html', user=user)
-            return render_template(putos, usuario=user, opcion=options, l=links, req=req, correo=cor, cantidadDatos=cantidad)
+            return render_template(putos, usuario=user, opcion=options, l=links, req=req, correo=emails, cantidadDatos=cantidad)
             
-        except:
+        else:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'
             return render_template('index.html', umessage=unsuccessful)
     return render_template('index.html')

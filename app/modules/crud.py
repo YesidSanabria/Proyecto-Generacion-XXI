@@ -1,15 +1,27 @@
 #######################################
+from email.mime import image
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
-########################################
-
-import pandas as pd
-
+import pyrebase
 ##########################################
 cred = credentials.Certificate("app/config/generacion-xxi-firebase-adminsdk-iwq0c-bc2e550415.json")
 firebase_admin.initialize_app(cred,{'databaseURL':'https://generacion-xxi-default-rtdb.firebaseio.com/'})
 ##########################################
+
+config = {
+    "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
+    "authDomain": "generacion-xxi.firebaseapp.com",
+    "databaseURL": "https://generacion-xxi-default-rtdb.firebaseio.com",
+    "projectId": "generacion-xxi",
+    "storageBucket": "generacion-xxi.appspot.com",
+    "messagingSenderId": "347199104837",
+    "appId": "1:347199104837:web:e859d53b27b23d1024c02c",
+    "measurementId": "G-YNKS2S6VJT"
+}
+
+firebase = pyrebase.initialize_app(config)
+storage = firebase.storage()
 
 # VARIABLES
 
@@ -55,33 +67,12 @@ def createNewStudent(email):
         }
     ref.child(email.replace('.','')).set(initData)
     
-def cedulas():
-    ref = db.reference('Estudiantes')
-    all = ref.get()
-    info = pd.DataFrame(list(all.items()))
-    for i in range(len(info)):
-        info1 = info[1][i]
-        info2 = pd.DataFrame(list(info1.items())).transpose()
-        
-        if i == 0:
-            info3 = info2.drop(0)
-
-        if i>0:
-            info3 = pd.concat([info3, info2.drop(0)], axis=0)    
-        
-    pd.set_option("display.max_rows", None, "display.max_columns", None)
-    #print(info3)
-    
-    info = info.drop(columns = 1)
-    info3 = info3.reset_index()
-    
-    info4 = pd.concat([info,info3],axis=1)
-    info4 = info4.drop(columns = 'index')
-    info5 = info4[3] #este es el campo que se modifica para obtener las colunas de los datos en este caso las cedulas
-    
-    print(info4)
-    info6 = info4[8]
-    return info5, info6
+def getStudentsData():
+    data = getAllStudents()
+    keys = list(data.keys())
+    email = [data[i]['Correo corporativo'] for i in keys]
+    cantidad = len(keys)
+    return keys, email, cantidad
 
 def addRequest(req):
     ref = db.reference('Solicitudes')
@@ -99,61 +90,14 @@ def getStudenKeys():
         list.append(key)
     return list
 
-def correo():
-    ref = db.reference('Estudiantes')
-    all = ref.get()
-    
-    info = pd.DataFrame(list(all.items()))
-    for i in range(len(info)):
-        info1 = info[1][i]
-        info2 = pd.DataFrame(list(info1.items())).transpose()
-        
-        if i == 0:
-            info3 = info2.drop(0)
+def getImagesURL(emails):
+    links=[]
+    for i in range(len(emails)):
+        links.append(storage.child("profile_pictures/"+str(emails[i])).get_url(None))
+    if len(links) == 1:
+        return links[0]
+    else:
+        return links
 
-        if i>0:
-            info3 = pd.concat([info3,info2.drop(0)],axis=0)   
-        
-    pd.set_option("display.max_rows", None, "display.max_columns", None)
-    
-    info = info.drop(columns = 1)
-    info.columns = ["email"]
-
-    info3 = info3.reset_index()
-    
-    info4 = pd.concat([info,info3],axis=1)
-    info4 = info4.drop(columns = 'index')
-    info5 = info4["email"] #este es el campo que se modifica para obtener las colunas de los datos en este caso las cedulas
-    return info5
-
-
-def cantidadP():
-    ref = db.reference('Estudiantes')
-    all = ref.get()
-    
-    info = pd.DataFrame(list(all.items()))
-    for i in range(len(info)):
-        info1 = info[1][i]
-        info2 = pd.DataFrame(list(info1.items())).transpose()
-        
-        if i == 0:
-            info3 = info2.drop(0)
-
-        if i>0:
-            info3 = pd.concat([info3, info2.drop(0)], axis=0)    
-        
-    pd.set_option("display.max_rows", None, "display.max_columns", None)
-    
-    info = info.drop(columns = 1)
-    info.columns = ["email"]
-
-    info3 = info3.reset_index()
-    
-    info4 = pd.concat([info,info3],axis=1)
-    info4 = info4.drop(columns = 'index')
-    
-    info5 = info4["email"] #este es el campo que se modifica para obtener las colunas de los datos en este caso las cedulas
-    cantidad = len(info5)
-    return cantidad
-
-
+def uploadProfileImage(path, image):
+    storage.child("profile_pictures/" + path).put(image)
