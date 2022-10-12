@@ -35,25 +35,29 @@ def index():
         user = crud.getStudentInfo(email)
         options = crud.options
         req = ''
+        cor = ''
+        cantidad = ''
         #######################################
         if (admin == email):
             putos = 'admin.html'
             user = crud.cedulas()
             req = crud.getRequests()
+            cantidad = crud.cantidadP()
+            cor = crud.correo()
         elif(user['Nombres'] == ''):
             putos = 'formulario.html'
         else:
             putos = 'view_personal_data.html'
-        try:
+        if True:
 #--------------------INICIAR SESION---------------------------------                
             auth.sign_in_with_email_and_password(email, password)
             #user_id = auth.get_account_info(user['idToken'])
             #session['usr'] = user_id
             #return render_template('formulario.html', user=user)
             links = storage.child("profile_pictures/"+email).get_url(None) # obtener la foto si ya existe 
-            return render_template(putos, usuario=user, opcion=options, l=links, req=req)
+            return render_template(putos, usuario=user, opcion=options, l=links, req=req, correo=cor, cantidadDatos=cantidad)
             
-        except:
+        else:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'
             return render_template('index.html', umessage=unsuccessful)
     return render_template('index.html')

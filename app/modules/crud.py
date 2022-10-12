@@ -58,11 +58,6 @@ def createNewStudent(email):
 def cedulas():
     ref = db.reference('Estudiantes')
     all = ref.get()
-    data = {
-        "calories": '34',
-        "duration": '56'
-        }
-    
     info = pd.DataFrame(list(all.items()))
     for i in range(len(info)):
         info1 = info[1][i]
@@ -72,7 +67,7 @@ def cedulas():
             info3 = info2.drop(0)
 
         if i>0:
-            info3 = info3.append(info2.drop(0))    
+            info3 = pd.concat([info3, info2.drop(0)], axis=0)    
         
     pd.set_option("display.max_rows", None, "display.max_columns", None)
     #print(info3)
@@ -103,3 +98,61 @@ def getStudenKeys():
     for key in data.keys():
         list.append(key)
     return list
+
+def correo():
+    ref = db.reference('Estudiantes')
+    all = ref.get()
+    
+    info = pd.DataFrame(list(all.items()))
+    for i in range(len(info)):
+        info1 = info[1][i]
+        info2 = pd.DataFrame(list(info1.items())).transpose()
+        
+        if i == 0:
+            info3 = info2.drop(0)
+
+        if i>0:
+            info3 = pd.concat([info3,info2.drop(0)],axis=0)   
+        
+    pd.set_option("display.max_rows", None, "display.max_columns", None)
+    
+    info = info.drop(columns = 1)
+    info.columns = ["email"]
+
+    info3 = info3.reset_index()
+    
+    info4 = pd.concat([info,info3],axis=1)
+    info4 = info4.drop(columns = 'index')
+    info5 = info4["email"] #este es el campo que se modifica para obtener las colunas de los datos en este caso las cedulas
+    print (info5[0])
+    return info5
+
+
+def cantidadP():
+    ref = db.reference('Estudiantes')
+    all = ref.get()
+    
+    info = pd.DataFrame(list(all.items()))
+    for i in range(len(info)):
+        info1 = info[1][i]
+        info2 = pd.DataFrame(list(info1.items())).transpose()
+        
+        if i == 0:
+            info3 = info2.drop(0)
+
+        if i>0:
+            info3 = pd.concat([info3, info2.drop(0)], axis=0)    
+        
+    pd.set_option("display.max_rows", None, "display.max_columns", None)
+    
+    info = info.drop(columns = 1)
+    info.columns = ["email"]
+
+    info3 = info3.reset_index()
+    
+    info4 = pd.concat([info,info3],axis=1)
+    info4 = info4.drop(columns = 'index')
+    
+    info5 = info4["email"] #este es el campo que se modifica para obtener las colunas de los datos en este caso las cedulas
+    cantidad = len(info5)
+    return cantidad
