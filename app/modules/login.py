@@ -37,6 +37,7 @@ def index():
         req = ''
         cantidad = ''
         emails = ''
+        keys =''
         #######################################
         if (admin == email):
             putos = 'admin.html'

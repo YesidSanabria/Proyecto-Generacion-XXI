@@ -27,7 +27,7 @@ def form ():
         cedula = request.form['cedula']
         edad = request.form['edad']
         genero = request.form['genero']
-        email = request.form['correo_corporativo']
+        correo_corporativo = request.form['correo_corporativo']
         gerencia = request.form['gerencia']
         direccion = request.form['direccion']
         nombre_gerente = request.form['nombre_gerente']
@@ -42,13 +42,14 @@ def form ():
         numero_emergencia = request.form['numero_emergencia']
         correo_gerente = request.form['correo_gerente']
         regional = request.form['ciudad']
+        correo_personal = request.form['correo_personal']
 
         data = {"Nombres": nombre,
             "Apellidos": apellidos,
             "Cedula": cedula,
             "Edad": edad,
             "Sexo": genero,
-            "Correo corporativo": email,
+            "Correo corporativo": correo_corporativo,
             "Gerencia": gerencia,
             "Area de gerencia": direccion,
             "Nombre gerente": nombre_gerente,
@@ -62,11 +63,12 @@ def form ():
             "Nombre emergencia": contacto_emergencia,
             "Numero emergencia": numero_emergencia,
             "Correo gerente": correo_gerente,
-            "Regional": regional
+            "Regional": regional,
+            "Correo personal": correo_personal
         }
-        crud.updateStudentData(email, data)
+        crud.updateStudentData(correo_corporativo, data)
         mensaje = 'Los datos han sido guardados satisfactoriamente.'
-        links = crud.getImagesURL([email])
+        links = crud.getImagesURL([correo_corporativo])
         upload = request.files['upload']
         userr= request.form['userr']
         #print(upload.filename)
@@ -74,6 +76,6 @@ def form ():
             crud.uploadProfileImage(userr, upload)
             links = crud.getImagesURL([userr])
             #print("1")
-        return render_template('view_personal_data.html', usuario=crud.getStudentInfo(email), smessage=mensaje,l=links)
+        return render_template('view_personal_data.html', usuario=crud.getStudentInfo(correo_corporativo), smessage=mensaje,l=links)
 
     return render_template('formulario.html')
