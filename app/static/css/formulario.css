@@ -6,7 +6,6 @@
   font-family: 'Poppins', sans-serif;
 }
 body{
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,8 +13,8 @@ body{
   background-image: url("../img/fondoregistro.png");
 }
 .container{
-  max-width: 1200px;
-  width: 140%;
+  /*max-width: 1200px;
+  width: 140%;*/
   background-color: #fff;
   padding: 25px 30px;
   border-radius: 5px;
