@@ -2,47 +2,62 @@
 
 {% block content %}
 
-<head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/admin.css')}}">
-    <!-- Font Awesome Cdn Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-</head>
-
-<body>
-<div class="container">
-    
-        <div>
-        <section class="attendance">
-
-            <div class="attendance-list">
-                <form action="/solicitudes" method="post">
-                    <h4>Nombre del solicitante</h4>
-                    <input type="text" class="form-control" required="required" name="nombre">
-                    <h4>Correo electrónico</h4>
-                    <input type="email" class="form-control" required="required" name="email">
-                    <h4>Dirección corporativa</h4>
-                    <input type="text" class="form-control" required="required" name="direccion">
-                    <h4>Gerencia</h4>
-                    <input type="text" class="form-control" required="required" name="gerencia">
-                    <h4>Carrera del practicante</h4>
-                    <input type="text" class="form-control" required="required" name="profesion">
-                    <h4>Motivo de la solicitud</h4>
-                    <textarea required="required" class="form-control" name="motivo"></textarea>
-                    <br>
-                    <button type="submit" style="width: 350px; background-color: #CF2F35; color: white;">Enviar solicitud</button>
-                </form>
-                  
-            </div>
-
-        </section>
-    </div>
-    </div>
-</div>
+<body class="body" background="{{ url_for('static', filename='img/fondoregistro.png')}}"  background-repeat: no-repeat>
 </body>
+<br />
+<!---Create Account-->
+{% if smessage %}
+<div class="alert alert-success">
+  {{ smessage }}
+</div>
+{% endif %}
+{% if umessage %}
+<div class="alert alert-danger">
+  {{ umessage }}
+</div>
+{% endif %}
 
-<br>
-<br>
-
-
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card border-0 shadow rounded-3 my-5">
+        <div class="card-body p-4 p-sm-5">
+          <h5 class="card-title text-center mb-5 fw-light fs-5">Solicitud de Practicantes</h5>
+          <form action="/solicitudes" method="post">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" name="nombre" required placeholder="Nombre del solicitante" autocomplete="off">
+              <label for="floatingInput">Nombre del solicitante</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" name="email" required placeholder="correo@claro.com.co" autocomplete="off">
+              <label for="floatingInput">Correo electrónico</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" name="direccion" required placeholder="Dirección corporativa" autocomplete="off">
+              <label for="floatingInput">Dirección corporativa</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" name="gerencia" required placeholder="Gerencia" autocomplete="off">
+              <label for="floatingInput">Gerencia</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="profesion" required placeholder="Carrera del practicante" autocomplete="off">
+                <label for="floatingInput">Carrera del practicante</label>
+            </div>
+            <label for="floatingInput">Motivo de la solicitud</label>
+            <div class="form-floating mb-3">
+                <textarea type="text" style="width: 100%; border-color: #CED4DA;" rows="6" name="motivo" required autocomplete="off"></textarea>
+            </div>
+            <div class="d-grid">
+              <button style="color: white; background-color: #cf2f35;"
+                class="btn btn-login text-uppercase fw-bold" type="submit"
+                name="submit">Enviar solicitud</button>
+              <br>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

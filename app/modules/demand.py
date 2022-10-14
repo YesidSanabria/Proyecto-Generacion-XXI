@@ -11,5 +11,5 @@ def demand():
         solicitud['Nombre'] = request.form['nombre']
         solicitud['Email'] = request.form['email']
         crud.addRequest(solicitud)
-        return render_template('index.html')
+        return render_template('index.html', smessage='Solicitud enviada')
     return render_template('solicitudes.html')
