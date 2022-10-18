@@ -38,6 +38,7 @@ def index():
         cantidad = ''
         emails = ''
         keys =''
+        cuenta = ''
         #######################################
         if (admin == email):
             putos = 'admin.html'
