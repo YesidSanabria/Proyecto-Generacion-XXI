@@ -55,7 +55,7 @@ def index():
         else:
             putos = 'view_personal_data.html'
             links = crud.getImagesURL([email])
-        try:
+        if True:
 #--------------------INICIAR SESION---------------------------------                
             auth.sign_in_with_email_and_password(email, password)
             #user_id = auth.get_account_info(user['idToken'])
@@ -63,7 +63,7 @@ def index():
             #return render_template('formulario.html', user=user)
             return render_template(putos, usuario=user, opcion=options, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
             
-        except:
+        else:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'
             return render_template('index.html', umessage=unsuccessful)
     return render_template('index.html')
