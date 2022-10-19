@@ -48,25 +48,23 @@
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          {% for x in range(1, (cantidadDatos//8)+1) %}
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{x}}" aria-label="Slide {{x+1}}"></button>
+          {% endfor %}
         </div>
         <div class="carousel-inner">
             <div class="main-top">
                 <h1> Practicantes Generación XXI </h1>
                 <i class="fas fa-user-cog"></i>
             </div>
-            {% for n in range(0,2) -%}
             <div class="carousel-item active">
                 <section class="main">
                     {% for i in range(0,2) -%}
-                        <p> {{cuent}} </p>
                         <div class="scroll">
                         <div class="users">
                             {% for j in range(0,4) -%}
                                 <div class="card">
                                     <center><img src={{l[j+4*i]}}></center>
-                                    <p> {{j}} </p>
                                     <p> {{j+4*i}}</p>
                                     {{cantidadDatos}}
                                     <p> {{usuario[keys[j+4*i]]['Correo corporativo']}} </p>
@@ -87,6 +85,66 @@
                                             <button>Perfil</button>
                                  </div>
                                 <br>
+                            {% endfor -%}
+                        </div>
+                    {% endfor -%}
+                </section>    
+            </div>
+            {% for x in range(8,cantidadDatos,8) -%}
+            <div class="carousel-item">
+                <section class="main">
+                    {% for i in range(0,2) -%}
+                    
+                        <div class="scroll">
+                        <div class="users">
+                            {% for j in range(x,x+4) -%}
+                                {% if (j+4*i) >= cantidadDatos %}
+                                <div class="card">
+                                    <center><img src={{l[1]}}></center>
+                                    <p> __ </p>
+                                    {{cantidadDatos}}
+                                    <p> __ </p>
+                                    <td scope="col">__</td>
+                                    <p> __ </p>
+                                        <div class="per">
+                                            <table>
+                                                <tr>
+                                                    <td><span>__</span></td>
+                                                    <td><span>__</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Edad</td>
+                                                    <td>Género</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                            <button>Perfil</button>
+                                 </div>
+                                <br>
+                                {% else %}
+                                <div class="card">
+                                    <center><img src={{l[j+4*i]}}></center>
+                                    <p> {{j+4*i}}</p>
+                                    {{cantidadDatos}}
+                                    <p> {{usuario[keys[j+4*i]]['Correo corporativo']}} </p>
+                                    <td scope="col">{{usuario[keys[j+4*i]]['Nombres']}} {{usuario[keys[j+4*i]]['Apellidos']}}</td>
+                                    <p> {{usuario[keys[j+4*i]]['Carrera']}} </p>
+                                        <div class="per">
+                                            <table>
+                                                <tr>
+                                                    <td><span>{{usuario[keys[j+4*i]]['Edad']}}</span></td>
+                                                    <td><span>{{usuario[keys[j+4*i]]['Sexo']}}</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Edad</td>
+                                                    <td>Género</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                            <button>Perfil</button>
+                                 </div>
+                                <br>
+                                {% endif %}
                             {% endfor -%}
                         </div>
                     {% endfor -%}
