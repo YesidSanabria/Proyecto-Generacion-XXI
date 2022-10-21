@@ -12,25 +12,25 @@
 
 <body>
   <div class="container row">
-    <div class="title title_form">
-      <h5><b> Registro de Practicantes Generación XXI - {{usuario['Nombres']}} {{usuario['Apellidos']}}</b></h5>
-    </div>
-    <center>
-    <div>
-      <img class="img-practicante" src="{{l}}" width="100" height="100">
-    </div>
-    
-      <div id="div-file" class="div-file">
-        <p id="texto" class="texto-image"> Cargar Imagen </p>
-      </div>
-    </center>
-    <form action="/formulario" method="post" enctype="multipart/form-data">
-      <center>
-      <input type="file" class="input-cargar" name="upload">
-      <input type="hidden" name="userr" value="{{usuario['Correo corporativo']}}">
-      </center>
+    <div class="container-superior">
+      <form action="/formulario" method="post" enctype="multipart/form-data">
       <br>
-    <br>
+      <h5><b> Registro de Practicantes Generación XXI - {{usuario['Nombres']}} {{usuario['Apellidos']}}</b></h5>
+      <br>
+      <img class="img-practicante" src="{{l}}" width="100" height="100">
+      <br>
+      <button class="contenedor-btn-file bordeado">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-up" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z"/>
+          <path fill-rule="evenodd" d="M7.646 4.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V14.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3z"/>
+        </svg>
+        Adjuntar Archivo
+        <label for="btn-file"></label>
+        <input type="file" id="btn-file" name="upload">
+      </button>
+    </div>
+      <input type="hidden" name="userr" value="{{usuario['Correo corporativo']}}">
+      <br>
     <div class="title title_form"><b> Datos Personales: </b></div>
     <br>
     <div class="content">
@@ -58,11 +58,11 @@
           </div>
           <div class="input_div">
             <span class="details title_form"> Celular personal: </span>
-            <input type="text" name="celular_personal" required="required" value="{{usuario['Celular personal']}}">
+            <input type="text" class="text" name="celular_personal" required="required" value="{{usuario['Celular personal']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> Correo Electrónico: </span>
-            <input type="text" name="correo_personal" required="required" value="{{usuario['Correo personal']}}">
+            <input type="text" class="text" name="correo_personal" required="required" value="{{usuario['Correo personal']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> EPS: </span>
@@ -79,7 +79,7 @@
         <div class="input_container">
           <div class="input_div">
             <span class="details title_form"> Celular corporativo: </span>
-            <input type="text" name="celular_corporativo" required="required" value="{{usuario['Celular corporativo']}}">
+            <input type="text" class="text" name="celular_corporativo" required="required" value="{{usuario['Celular corporativo']}}">
           </div>
           <div class="input_div">
             <span class="details title_form"> Dirección a la que pertenece: </span>
@@ -148,11 +148,10 @@
             <input type="text" class="text" name="numero_emergencia" required="required" value="{{usuario['Numero emergencia']}}">
           </div>
         </div>
-        <center>
-        <div class="button text" >
-          <button class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #0096A9; color: white;" type="submit" name="Registro" >ENVIAR</button>
-        </div>
-        </center>
+    </div>
+    <br>
+    <div class="btn-enviar">
+      <button class="btn-grad" type="submit" name="Registro"> Enviar </button>
     </div>
     </form>
 </html>
