@@ -11,6 +11,8 @@ import modules.admin as ad
 import modules.form as fm
 import modules.profile as pf
 import modules.demand as dm
+import modules.notif as nt
+
 
 from flask_mail import Mail, Message
 
@@ -73,9 +75,8 @@ if __name__ == '__main__':
     mail.init_app(app)
     app.run(debug=True)
 
-# ---------------------------------Propuesta ADMIN JM -------------------------------------
+# ---------------------------------Propuesta Notificaciones YS -------------------------------------
 
-
-@app.route('/admin', methods=['GET', 'POST'])
-def admin():
-    return render_template('admin.html')
+@app.route('/notif', methods=['GET', 'POST'])
+def admin_view():
+    return nt.noti()
