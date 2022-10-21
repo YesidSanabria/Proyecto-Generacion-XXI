@@ -2,232 +2,336 @@
 
 {% block content %}
 
-<head>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/personalData.css')}}">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
-    <!-- Font Awesome CSS -->
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
-  </head>
-
 <body>
-<div class="student-profile py-4"> 
-    <div class="container>">
-        <div class="row">
-        
-            
-            <br>
-            {% if smessage %}
-                <div class="alert alert-success">
-                    {{ smessage }}
+        <head>
+            <meta charset="UTF-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/personalData.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/personald.css')}}">
+            <!-- Google Fonts -->
+            <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+            <!-- Bootstrap CSS -->
+            <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+            <!-- Font Awesome CSS -->
+            <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+            <!----===== Boxicons CSS ===== -->
+            <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+        </head>
+
+    <body>
+        <body>
+            <nav class="sidebar close">
+                <header>
+                    <div class="image-text">
+                        <div class="text logo-text">
+                            <span class="name">Generación XXI</span>
+                            <span class="profession">Navegación</span>
+                        </div>
+                    </div>
+                        <i class='bx bx-chevron-right toggle' style="background-color: #CF2F35;"></i>
+                </header>
+    
+                <div class="menu-bar">
+                    <div class="menu">
+                        <li class="search-box">
+                            <i class='bx bx-search icon'></i>
+                            <input type="text" placeholder="Search...">
+                        </li>
+
+                        <li class="nav-link">
+                            <i class='bx bxs-user icon'></i>
+                            <form action="/admin_view" method="post">
+                                <button class="contenedor-btn-file bordeado" name="ruta" value="admin">
+                                    <span class="btn-file"> Perfil</span>
+                                </button>
+                            </form>
+                        </li>
+
+                        <li class="nav-link">
+                            <i class='bx bx-bell icon'></i>
+                                <form action="/admin_view" method="post">
+                                    <button class="contenedor-btn-file bordeado" name="ruta" value="notif">
+                                        <span class="btn-file">Actualizar Perfil</span>
+                                    </button>
+                                </form>
+                        </li>
+    
+                        <li class="nav-link">
+                            <i class='bx bx-pie-chart-alt icon' ></i>
+                                <form action="/admin_view" method="post">
+                                    <button class="contenedor-btn-file bordeado" name="ruta" value="reportes">
+                                        <span class="btn-file">Autoevaluación</span>
+                                    </button>
+                                </form>
+                        </li>
+                        
+                        <li class="nav-link">
+                            <i class='bx bx-pie-chart-alt icon' ></i>
+                                <form action="/admin_view" method="post">
+                                    <button class="contenedor-btn-file bordeado" name="ruta" value="reportes">
+                                        <span class="btn-file">PQR</span>
+                                    </button>
+                                </form>
+                        </li>
+                    </div>
+    
+                    <div class="bottom-content">
+                        <li class="">
+                            <a href="/index">
+                                <i class='bx bx-log-out icon' ></i>
+                                    <span class="text nav-text">Logout</span>
+                            </a>
+                        </li>
+    
+                        <li class="mode">
+                            <div class="sun-moon">
+                                <i class='bx bx-moon icon moon'></i>
+                                <i class='bx bx-sun icon sun'></i>
+                            </div>
+                            <span class="mode-text text">Dark mode</span>
+    
+                            <div class="toggle-switch">
+                                <span class="switch"></span>
+                            </div>
+                        </li>
+                    </div>    
                 </div>
-            {% endif %}
-            <br>
+            </nav>
 
-            <!--<form action="/view_personal_data" method="post" enctype="multipart/form-data">
-                <center><input type="file" name="upload" ></center>
-                <input type="hidden" name="userr" value="{{usuario['Correo corporativo']}}">
-                <br>
-                <center><button class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #FAC401; color: white;" type="submit" name="email" value="{{usuario['Correo corporativo']}}"> Subir foto </button> </center>
-                <br>
-                <br>
-            </form>-->
-            <center>
-            <div class="col-lg-4">
-            <div class="card shadow-sm">
-            <div class="card-header bg-transparent text-center">
-            <div>
-                <br>
-                <center><h1 style="color:#CF2F35"> Bienvenido  {{ usuario['Nombres']}} </h1></center>
-                <br>
-                <center><img src="{{l}}" width="150" height="150"></center>
-                <br>
-            </div>
-            <!--<div class="card-body">
-                <p class="mb-0"><strong class="pr-1"> </strong> </p> 
-            </div> -->
-            </div>
-            </div>
-            </div>
-            </center>
+            <section class="home">
+                <div class="container">
+                    <div class="student-profile py-4"> 
+                        <div class="container>">
+                            <div class="row">
+                                <br>
+                                {% if smessage %}
+                                <div class="alert alert-success">
+                                    {{ smessage }}
+                                </div>
+                                {% endif %}
+                                <br>
+                                <center>
+                                    <div class="col-lg-4">
+                                        <div class="card shadow-sm">
+                                            <div class="card-header bg-transparent text-center">
+                                                <div>
+                                                    <br>
+                                                    <center><h1 style="color:#CF2F35"> Bienvenido  {{ usuario['Nombres']}} </h1></center>
+                                                        <br>
+                                                    <center><img src="{{l}}" width="150" height="150"></center>
+                                                        <br>
+                                                </div>
+                                                    <!--<div class="card-body">
+                                                    <p class="mb-0"><strong class="pr-1"> </strong> </p> 
+                                                    </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </center>
 
-            
+                                <center>
+                                    <form action="/view_personal_data" method="post">
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <div class="col-lg-8">
+                                        <div class="card shadow-sm">
+                                            <div class="card-header bg-transparent border-0">
+                                                <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Datos personales</h3>
+                                            </div>
+                                            <div class="card-body pt-0">
+                                                <table class="table table-bordered">
+                                                    <tr>
+                                                        <th width="40%">Nombre completo: </th>
+                                                        <td>{{ usuario['Nombres'] + " " + usuario['Apellidos']}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th width="40%">Cedula: </th>
+                                                        <td>{{ usuario['Cedula']}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th width="40%">Edad: </th>
+                                                        <td>{{ usuario['Edad']}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th width="40%">Genero: </th>
+                                                        <td>{{ usuario['Sexo']}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th width="40%">Celular: </th>
+                                                        <td>{{ usuario['Celular personal']}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th width="40%">Correo: </th>
+                                                        <td>{{ usuario['Correo personal']}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th width="40%">Ciudad: </th>
+                                                        <td>{{ usuario['Regional']}}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>        
+                                        <br>
+                                        <br>
+                            
+                                        <div class="card shadow-sm">
+                                        <div class="card-header bg-transparent border-0">
+                                            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Datos laborales</h3>
+                                        </div>
+                                        <div class="card-body pt-0">
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th width="40%">Gerencia: </th>
+                                                    <td>{{ usuario['Gerencia']}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="40%">Dirección corporativa: </th>
+                                                    <td>{{ usuario['Area de gerencia']}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="40%">Nombre gerente: </th>
+                                                    <td>{{ usuario['Nombre gerente']}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="40%">Celular corporativo: </th>
+                                                    <td>{{ usuario['Celular corporativo']}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="40%">Correo corporativo: </th>
+                                                    <td>{{ usuario['Correo corporativo']}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="40%">Correo gerente: </th>
+                                                    <td>{{ usuario['Correo gerente']}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="40%">Celular gerente: </th>
+                                                    <td>{{ usuario['Celular gerente']}}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        </div>
+                            
+                                        <br>
+                                        <br>
+                            
+                                        <div class="card shadow-sm">
+                                            <div class="card-header bg-transparent border-0">
+                                                <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Datos académicos</h3>
+                                            </div>
+                                            <div class="card-body pt-0">
+                                                <table class="table table-bordered">
+                            
+                                            <tr>
+                                                <th width="40%">Universidad: </th>
+                                                <td>{{ usuario['Universidad']}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th width="40%">Carrera: </th>
+                                                <td>{{ usuario['Carrera']}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th width="40%">Tutor universitario: </th>
+                                                <td>{{ usuario['Nombre tutor']}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th width="40%"> Correo del tutor: </th>
+                                                <td>{{ usuario['Correo tutor']}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th width="40%">Celular del tutor: </th>
+                                                <td>{{ usuario['Celular tutor']}}</td>
+                                            </tr>
+                                            </table>
+                                        </div>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <div class="card shadow-sm">
+                                            <div class="card-header bg-transparent border-0">
+                                                <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Datos en caso de emergencia</h3>
+                                            </div>
+                                            <div class="card-body pt-0">
+                                                <table class="table table-bordered">
+                                            
+                                            <tr>
+                                                <th width="40%">EPS: </th>
+                                                <td>{{ usuario['EPS']}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th width="40%">En caso de emergencia llamar a: </th>
+                                                <td>{{ usuario['Nombre emergencia']}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th width="40%">Numero: </th>
+                                                <td>{{ usuario['Numero emergencia']}}</td>
+                                            </tr>
+                                            </table>
+                                        </div>
+                                        </div>
+                            
+                                        <div class="col-sm">
+                                            <br>
+                                            <input id="email" name="email" type="hidden" value="{{usuario['Correo corporativo']}}">
+                                            <br>
+                                            <button class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #FAC401; color: white;" type="submit" name="email" value="{{usuario['Correo corporativo']}}">Actualizar datos</button>
+                                            <br>
+                                        </div>
+                                    </div>
+                                    </form>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>  
+
+            <script>
+                const body = document.querySelector('body'),
+            sidebar = body.querySelector('nav'),
+            toggle = body.querySelector(".toggle"),
+            searchBtn = body.querySelector(".search-box"),
+            modeSwitch = body.querySelector(".toggle-switch"),
+            modeText = body.querySelector(".mode-text");
+
+
+                toggle.addEventListener("click" , () =>{
+                sidebar.classList.toggle("close");
+            })
+
+                searchBtn.addEventListener("click" , () =>{
+                sidebar.classList.remove("close");
+            })
+
+                modeSwitch.addEventListener("click" , () =>{
+                    body.classList.toggle("dark");
+    
+                    if(body.classList.contains("dark")){
+                        modeText.innerText = "Light mode";
+                    }else{
+                        modeText.innerText = "Dark mode";
+                    }
+                    });
+        </script>      
+
+        </body>
+        
+        <br>
+        <br>
+
         <center>
-        <form action="/view_personal_data" method="post">
-            <br>
-            <br>
-            <br>
-            <div class="col-lg-8">
-            <div class="card shadow-sm">
-            <div class="card-header bg-transparent border-0">
-                <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Datos personales</h3>
-            </div>
-            <div class="card-body pt-0">
-                <table class="table table-bordered">
-                    <tr>
-                        <th width="40%">Nombre completo: </th>
-                        <td>{{ usuario['Nombres'] + " " + usuario['Apellidos']}}</td>
-                    </tr>
-                    <tr>
-                        <th width="40%">Cedula: </th>
-                        <td>{{ usuario['Cedula']}}</td>
-                    </tr>
-                    <tr>
-                        <th width="40%">Edad: </th>
-                        <td>{{ usuario['Edad']}}</td>
-                    </tr>
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <p class="copyright text-white"> &copy; desarrolladores GENERACIÓN XXI </p>
+                    </div>
+                </div>    
+            <footer> 
+        </center>
+    </body>
 
-                    <tr>
-                        <th width="40%">Genero: </th>
-                        <td>{{ usuario['Sexo']}}</td>
-                    </tr>
-                    <tr>
-                        <th width="40%">Celular: </th>
-                        <td>{{ usuario['Celular personal']}}</td>
-                    </tr>
-                    <tr>
-                        <th width="40%">Correo: </th>
-                        <td>{{ usuario['Correo personal']}}</td>
-                    </tr>
-                    <tr>
-                        <th width="40%">Ciudad: </th>
-                        <td>{{ usuario['Regional']}}</td>
-                    </tr>
-                </table>
-            </div>
-            </div>
-
-            <br>
-            <br>
-
-            <div class="card shadow-sm">
-            <div class="card-header bg-transparent border-0">
-                <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Datos laborales</h3>
-            </div>
-            <div class="card-body pt-0">
-                <table class="table table-bordered">
-                    <tr>
-                        <th width="40%">Gerencia: </th>
-                        <td>{{ usuario['Gerencia']}}</td>
-                    </tr>
-                    <tr>
-                        <th width="40%">Dirección corporativa: </th>
-                        <td>{{ usuario['Area de gerencia']}}</td>
-                    </tr>
-                    <tr>
-                        <th width="40%">Nombre gerente: </th>
-                        <td>{{ usuario['Nombre gerente']}}</td>
-                    </tr>
-                    <tr>
-                        <th width="40%">Celular corporativo: </th>
-                        <td>{{ usuario['Celular corporativo']}}</td>
-                    </tr>
-                    <tr>
-                        <th width="40%">Correo corporativo: </th>
-                        <td>{{ usuario['Correo corporativo']}}</td>
-                    </tr>
-                    <tr>
-                        <th width="40%">Correo gerente: </th>
-                        <td>{{ usuario['Correo gerente']}}</td>
-                    </tr>
-                    <tr>
-                        <th width="40%">Celular gerente: </th>
-                        <td>{{ usuario['Celular gerente']}}</td>
-                    </tr>
-                </table>
-            </div>
-            </div>
-
-            <br>
-            <br>
-
-            <div class="card shadow-sm">
-                <div class="card-header bg-transparent border-0">
-                    <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Datos académicos</h3>
-                </div>
-                <div class="card-body pt-0">
-                    <table class="table table-bordered">
-
-                <tr>
-                    <th width="40%">Universidad: </th>
-                    <td>{{ usuario['Universidad']}}</td>
-                </tr>
-                <tr>
-                    <th width="40%">Carrera: </th>
-                    <td>{{ usuario['Carrera']}}</td>
-                </tr>
-                <tr>
-                    <th width="40%">Tutor universitario: </th>
-                    <td>{{ usuario['Nombre tutor']}}</td>
-                </tr>
-                <tr>
-                    <th width="40%"> Correo del tutor: </th>
-                    <td>{{ usuario['Correo tutor']}}</td>
-                </tr>
-                <tr>
-                    <th width="40%">Celular del tutor: </th>
-                    <td>{{ usuario['Celular tutor']}}</td>
-                </tr>
-                </table>
-            </div>
-            </div>
-            
-            <br>
-            <br>
-
-            <div class="card shadow-sm">
-                <div class="card-header bg-transparent border-0">
-                    <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Datos en caso de emergencia</h3>
-                </div>
-                <div class="card-body pt-0">
-                    <table class="table table-bordered">
-                
-                <tr>
-                    <th width="40%">EPS: </th>
-                    <td>{{ usuario['EPS']}}</td>
-                </tr>
-                <tr>
-                    <th width="40%">En caso de emergencia llamar a: </th>
-                    <td>{{ usuario['Nombre emergencia']}}</td>
-                </tr>
-                <tr>
-                    <th width="40%">Numero: </th>
-                    <td>{{ usuario['Numero emergencia']}}</td>
-                </tr>
-                </table>
-            </div>
-            </div>
-
-            <div class="col-sm">
-                <br>
-                <input id="email" name="email" type="hidden" value="{{usuario['Correo corporativo']}}">
-                <br>
-                <button class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #FAC401; color: white;" type="submit" name="email" value="{{usuario['Correo corporativo']}}">Actualizar datos</button>
-                <br>
-            </div>
-        
-            </div>
-            
-            </form>
-            </center>
-        </div>
-    </div>
-</div>
 </body>
-
-<br>
-<br>
-
-<center>
-<footer>
-    <div class="container">
-        <div class="row">
-            <p class="copyright text-white"> &copy; desarrolladores GENERACIÓN XXI </p>
-        </div>
-    </div>    
-<footer> 
-</center>
-
 {% endblock %}
