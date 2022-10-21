@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card border-0 shadow rounded-3 my-5">
+        <div class="card-body p-4 p-sm-5">
+    <br/>
+      <div class="jumbotron">
+        <h1 class="display-4">Verificación de identidad</h1>
+        {% if smessage %}
+          <div class="alert alert-success">
+            {{ smessage }}
+          </div>
+        {% endif %}
+        {% if umessage %}
+          <div class="alert alert-danger">
+            {{ umessage }}
+          </div>
+        {% endif %}
+        <form action="/confirm" method="post">
+          <h5 class="lead">Ingrese el código de 6 dígitos enviado a su correo electrónico</h5>
+          <br>
+        <div class="form-floating mb-3">
+          <input class="form-control" name="code_input" placeholder="Código de verificación">
+          <label for="floatingInput">Código de verificación</label>
+        </div>
+        <input type="hidden" name="role" value="{{role}}">
+        <input type="hidden" name="email" value="{{email}}">
+        <input type="hidden" name="code" value="{{code}}">
+        <button type="submit" name="submit" class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #CF2F35; color: white;">Ingresar a Evaluación</button>
+      </form>
+     </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+{% endblock %}
