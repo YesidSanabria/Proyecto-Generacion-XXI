@@ -1,6 +1,7 @@
 import pyrebase
-from flask import render_template, request
+from flask import render_template, request, Flask
 import modules.crud as crud
+
 
 config = {
     "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
@@ -46,6 +47,7 @@ def index():
             req = crud.getRequests()
              #arreglo con los campos de imagenes de cada persona
             links = crud.getImagesURL(emails)
+            
         elif(user['Nombres'] == ''):
             putos = 'formulario.html'
             links = crud.getImagesURL([email])

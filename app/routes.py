@@ -26,6 +26,20 @@ mail = Mail()
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
 def index():
+    #configuracion del obejto
+    # app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+    # app.config['MAIL_PORT'] = 465
+    # app.config['MAIL_USERNAME'] = 'ingsebastianherrerau@gmail.com'
+    # app.config['MAIL_PASSWORD'] = 'Js193550*'
+    # app.config['MAIL_USE_TLS'] = False
+    # app.config['MAIL_USE_SSL'] = True
+            
+    # #crea el objeto mail
+    # mail=Mail(app)
+            
+    # msg = Message("hello",sender='ingsebastianherrerau@gmail.com',recipients=['johansebastian620@gmail.com'])
+    # mail.send(msg) 
+            
     return lg.index()
 
 # ----------------------REGISTRARSE-----------------------------
