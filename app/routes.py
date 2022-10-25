@@ -13,7 +13,12 @@ import modules.profile as pf
 import modules.demand as dm
 import modules.notif as nt
 
+
+from flask_mail import Mail
+
+
 app = Flask(__name__)
+mail = Mail()
 
 # --------------------------------------REGISTRO E INICIO DE SESION-------------------------------------
 
