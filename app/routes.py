@@ -89,9 +89,9 @@ def view_personal_data():
 
 # ---------------------------------Propuesta Notificaciones YS -------------------------------------
 
-# @app.route('/notif', methods=['GET', 'POST'])
-# def admin_view():
-#     return nt.notif()
+@app.route('/notif', methods=['GET', 'POST'])
+def notif():
+    return nt.notif()
 
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':

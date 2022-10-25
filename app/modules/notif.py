@@ -17,7 +17,7 @@ config = {
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 
-def admin():
+def notif():
     if (request.method == 'POST'):
         ruta = request.form ["ruta"]
         if ruta == "admin":
