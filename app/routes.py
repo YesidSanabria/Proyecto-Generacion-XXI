@@ -13,33 +13,14 @@ import modules.profile as pf
 import modules.demand as dm
 import modules.notif as nt
 
-
-from flask_mail import Mail, Message
-
-
 app = Flask(__name__)
-mail = Mail()
 
 # --------------------------------------REGISTRO E INICIO DE SESION-------------------------------------
 
 
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
-def index():
-    #configuracion del obejto
-    # app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-    # app.config['MAIL_PORT'] = 465
-    # app.config['MAIL_USERNAME'] = 'ingsebastianherrerau@gmail.com'
-    # app.config['MAIL_PASSWORD'] = 'Js193550*'
-    # app.config['MAIL_USE_TLS'] = False
-    # app.config['MAIL_USE_SSL'] = True
-            
-    # #crea el objeto mail
-    # mail=Mail(app)
-            
-    # msg = Message("hello",sender='ingsebastianherrerau@gmail.com',recipients=['johansebastian620@gmail.com'])
-    # mail.send(msg) 
-            
+def index():     
     return lg.index()
 
 # ----------------------REGISTRARSE-----------------------------
@@ -84,13 +65,14 @@ def formulario():
 def view_personal_data():
     return pf.view_personal_data()
 
+# ---------------------------------Propuesta Notificaciones YS -------------------------------------
+
+# @app.route('/notif', methods=['GET', 'POST'])
+# def admin_view():
+#     return nt.notif()
+
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':
     mail.init_app(app)
     app.run(debug=True)
 
-# ---------------------------------Propuesta Notificaciones YS -------------------------------------
-
-@app.route('/notif', methods=['GET', 'POST'])
-def admin_view():
-    return nt.noti()
