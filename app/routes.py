@@ -16,7 +16,7 @@ import modules.confirm as cf
 import modules.notif as nt
 
 
-from flask_mail import Mail, Message
+from flask_mail import Mail
 
 
 app = Flask(__name__)
@@ -26,7 +26,7 @@ mail = Mail()
 
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
-def index():
+def index():     
     return lg.index()
 
 # ----------------------REGISTRARSE-----------------------------
@@ -87,7 +87,14 @@ def formulario():
 def view_personal_data():
     return pf.view_personal_data()
 
+# ---------------------------------Propuesta Notificaciones YS -------------------------------------
+
+# @app.route('/notif', methods=['GET', 'POST'])
+# def admin_view():
+#     return nt.notif()
+
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':
     mail.init_app(app)
     app.run(debug=True)
+

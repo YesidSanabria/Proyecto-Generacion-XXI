@@ -1,6 +1,7 @@
 import pyrebase
-from flask import render_template, request
+from flask import render_template, request, Flask
 import modules.crud as crud
+
 
 config = {
     "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
@@ -46,13 +47,14 @@ def index():
             req = crud.getRequests()
              #arreglo con los campos de imagenes de cada persona
             links = crud.getImagesURL(emails)
+            
         elif(user['Nombres'] == ''):
             putos = 'formulario.html'
             links = crud.getImagesURL([email])
         else:
             putos = 'view_personal_data.html'
             links = crud.getImagesURL([email])
-        if True:
+        try:
 #--------------------INICIAR SESION---------------------------------                
             auth.sign_in_with_email_and_password(email, password)
             #user_id = auth.get_account_info(user['idToken'])
@@ -60,7 +62,7 @@ def index():
             #return render_template('formulario.html', user=user)
             return render_template(putos, usuario=user, opcion=options, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
             
-        else:
+        except:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'
             return render_template('index.html', umessage=unsuccessful)
     return render_template('index.html')
