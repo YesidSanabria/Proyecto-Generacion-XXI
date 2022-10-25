@@ -2,7 +2,7 @@ import routes as rt
 from flask_mail import Mail, Message
 
 def send_mail(email,codVer):
-    #mail = Mail()
+    # mail = Mail()
     # https://myaccount.google.com/apppasswords
     #configuracion del obejto
     rt.app.config['MAIL_SERVER'] = 'smtp.gmail.com'
