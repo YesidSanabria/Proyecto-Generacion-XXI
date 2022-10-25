@@ -16,7 +16,11 @@ import modules.confirm as cf
 import modules.notif as nt
 
 
+from flask_mail import Mail, Message
+
+
 app = Flask(__name__)
+mail = Mail()
 
 # --------------------------------------REGISTRO E INICIO DE SESION-------------------------------------
 
@@ -85,4 +89,5 @@ def view_personal_data():
 
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':
+    mail.init_app(app)
     app.run(debug=True)
