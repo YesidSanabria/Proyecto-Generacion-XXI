@@ -19,11 +19,11 @@ config = {
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 
-def admin():
+def infopract():
     if (request.method == 'POST'):
         ruta = request.form ["ruta"]
-        if ruta == "admin":
-            putos = 'admin.html'
+        if ruta == "infopract":
+            putos = 'infopract.html'
             user = crud.getAllStudents()
             [keys, emails, cantidad] = crud.getStudentsData()
             cuenta = crud.amountCards()
@@ -35,28 +35,4 @@ def admin():
             if True:
                 return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
 
-        elif ruta == "infopract":
-            putos = 'infopract.html'
-            user = crud.getStudentInfo(request.form["yave"])
-            [keys, emails, cantidad] = crud.getStudentsData()
-            cuenta = crud.amountCards()
-            emails = [x.lower() for x in emails]
-            req = crud.getRequests()
-             #arreglo con los campos de imagenes de cada persona
-            links = crud.getImagesURL(emails)
-
-            if True:
-                
-                return render_template(putos, usuario=user, l=links)
-                  
-        
-    return render_template('admin.html')    
-
-
-
-
-
-
-
-
-
+    return render_template('infopract.html')    
