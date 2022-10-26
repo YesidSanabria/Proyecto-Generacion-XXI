@@ -16,7 +16,6 @@ import modules.confirm as cf
 import modules.infopraad as ip
 import modules.notif as nt
 
-
 from flask_mail import Mail
 
 
