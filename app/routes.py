@@ -18,6 +18,12 @@ app = Flask(__name__)
 
 
 @app.route('/')
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+    return render_template('home.html')
+
+
+
 @app.route('/index', methods=['GET', 'POST'])
 def index():
     return lg.index()
@@ -38,9 +44,7 @@ def forgot_password():
 
 
 ############################ Pendientes de cambio ################################
-@app.route('/home', methods=['GET', 'POST'])
-def home():
-    return render_template('home.html')
+
 
 @app.route('/solicitudes', methods=['GET', 'POST'])
 def solicitudes():

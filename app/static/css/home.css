@@ -1,0 +1,11 @@
+:root{
+    --color-dark: #18191d;
+    --color-light: #ffffff;
+    --gold: #ded3cd;
+}
+
+body{
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    letter-spacing: .05rem;
+}
