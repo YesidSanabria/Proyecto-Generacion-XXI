@@ -13,6 +13,7 @@ import modules.profile as pf
 import modules.demand as dm
 import modules.evaluation as ev
 import modules.confirm as cf
+import modules.infopraad as ip
 import modules.notif as nt
 
 
@@ -21,6 +22,9 @@ app = Flask(__name__)
 # --------------------------------------REGISTRO E INICIO DE SESION-------------------------------------
 
 @app.route('/')
+
+
+
 @app.route('/index', methods=['GET', 'POST'])
 def index():
     return lg.index()
@@ -38,6 +42,7 @@ def forgot_password():
     return pw.forgot_password()
 
 ############################ Pendientes de cambio ################################
+
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     return render_template('home.html')
@@ -70,6 +75,10 @@ def solicitudes():
 
 @app.route('/admin_view', methods=['GET', 'POST'])
 def admin_view():
+    return ad.admin()
+
+@app.route('/infopract', methods=['GET', 'POST'])
+def infopract():
     return ad.admin()
 
 # --------------------------------------FORMULARIO-------------------------------------
