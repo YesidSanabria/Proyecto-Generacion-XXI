@@ -1,6 +1,7 @@
 import pyrebase
-from flask import render_template, request
+from flask import render_template, request, Flask
 import modules.crud as crud
+
 
 config = {
     "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
@@ -21,9 +22,6 @@ auth = firebase.auth()
 # storage.child("profile_pictures/new.jpeg").download(r"C:\Users\ic5705b\Documents\GitHub\Proyecto-Generacion-XXI\app","example.jpeg") #descargar las imagenes obtenidas del storage 
 # print(storage.child("profile_pictures/new.jpeg").get_url(None)) #Obtener la url de la ruta de las imagenes
 
-
-
-
 admin = "sspg.xxi@gmail.com"
 
 def index():
@@ -38,15 +36,18 @@ def index():
         cantidad = ''
         emails = ''
         keys =''
+        cuenta = ''
         #######################################
         if (admin == email):
             putos = 'admin.html'
             user = crud.getAllStudents()
             [keys, emails, cantidad] = crud.getStudentsData()
+            cuenta = crud.amountCards()
             emails = [x.lower() for x in emails]
             req = crud.getRequests()
              #arreglo con los campos de imagenes de cada persona
             links = crud.getImagesURL(emails)
+            
         elif(user['Nombres'] == ''):
             putos = 'formulario.html'
             links = crud.getImagesURL([email])
@@ -59,7 +60,7 @@ def index():
             #user_id = auth.get_account_info(user['idToken'])
             #session['usr'] = user_id
             #return render_template('formulario.html', user=user)
-            return render_template(putos, usuario=user, opcion=options, l=links, req=req, keys=keys, cantidadDatos=cantidad)
+            return render_template(putos, usuario=user, opcion=options, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
             
         except:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'

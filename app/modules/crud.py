@@ -1,5 +1,4 @@
 #######################################
-from email.mime import image
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
@@ -31,6 +30,27 @@ options = {
     }
 
 # FUNCIONES
+
+def amountCards():
+    for n in range(0,2):
+        if n ==0:
+            for i in range(0,2):
+                for j in range(0,4):
+                    cuenta=j+(4*i)
+                    arreglo = [i,j]
+                    if j == 7:
+                        pasar = j 
+                    print (arreglo, cuenta)     
+        elif n ==1:
+            for i in range(0,2):
+                for pasar in range(0,4):
+                    cuenta=pasar+(4*i)
+                    arreglo = [i,pasar]
+                    print (arreglo, cuenta)    
+
+
+    return cuenta
+
 
 def getStudentInfo(email):
     ref = db.reference('Estudiantes')

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card border-0 shadow rounded-3 my-5">
+        <div class="card-body p-4 p-sm-5">
+    <br/>
+      <div class="jumbotron">
+        <h1 class="display-4">Evaluación de Practicantes</h1>
+        {% if smessage %}
+          <div class="alert alert-success">
+            {{ smessage }}
+          </div>
+        {% endif %}
+        {% if umessage %}
+          <div class="alert alert-danger">
+            {{ umessage }}
+          </div>
+        {% endif %}
+        <form action="/evaluation" method="post">
+          <h5 class="lead">¿Cuál es su rol?</h5>
+          <br>
+          <div class="btn-group" role="group">
+            <input type="radio" name="role" class="btn-check" id="radioBtn1" value="docente" required>
+            <label class="btn btn-outline-danger" for="radioBtn1">Docente</label>
+            <input type="radio" name="role" class="btn-check" id="radioBtn3" value="gerente" required>
+            <label class="btn btn-outline-danger" for="radioBtn3">Gerente</label>
+        </div>
+        <br><br>
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" name="email" placeholder="Correo electrónico" required>
+          <label for="floatingInput">Correo electrónico</label>
+        </div>
+        <button type="submit" name="submit" class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #CF2F35; color: white;">Enviar código de verificación</button>
+      </form>
+     </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+{% endblock %}
