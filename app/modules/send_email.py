@@ -15,5 +15,6 @@ def send_mail(email,codVer):
     #crea el objeto mail
     mail=Mail(rt.app)
                     
-    msg = Message(codVer,sender='sspg.xxi@gmail.com',recipients=[email])
+    msg = Message("Codigo de verificación de usuario",sender='sspg.xxi@gmail.com',recipients=[email])
+    msg.body = 'Su codigo de verificación es: ' + codVer + "\n\n" + "Mensaje enviado de manera automática, no responder"
     mail.send(msg)
