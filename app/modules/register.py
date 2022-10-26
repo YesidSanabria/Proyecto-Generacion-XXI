@@ -1,7 +1,6 @@
 import pyrebase
 from flask import render_template, request
 import modules.crud as crud
-import modules.config as co
 
 from flask_mail import Mail, Message
 
@@ -43,15 +42,11 @@ def create_account():
         unsuccessful = acc['error']
         email = acc['email']
         password = acc['password']
-        try:
+        if True:
             auth.create_user_with_email_and_password(email, password)
-            crud.createNewStudent(email)
-            msg = Message('Gracias por tu registro', sender = co.config['MAIL_USERNAME'],
-                          recipients=[email])
-            msg.html = render_template('email.html', user=email)
-            
-            
+            crud.createNewStudent(email)                                                          
             return render_template('index.html')
-        except:
+        else:
+        # except:
             return render_template('create_account.html', umessage=unsuccessful)
     return render_template('create_account.html')

@@ -117,17 +117,12 @@
                                                             <p> {{usuario[keys[j+4*i]]['Correo corporativo']}} </p>
                                                             <p> {{usuario[keys[j+4*i]]['Carrera']}} </p>
                                                         <div class="per">
-                                                            <table>
-                                                                <tr>
-                                                                    <td><span>{{usuario[keys[j+4*i]]['Edad']}}</span></td>
-                                                                    
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Edad</td>                                                                    
+                                                            <table>                                                                
+                                                                <tr>                                                                                                                                 
                                                                     <form action="/admin_view" method="post">
                                                                         <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
                                                                         <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
-                                                                            <span class="btn-file">info</span>
+                                                                            Perfil
                                                                         </button>
                                                                     </form>
                                                                 </tr>
@@ -147,56 +142,7 @@
                                                 <div class="users">
                                                     {% for j in range(x,x+4) -%}
                                                         {% if (j+4*i) >= cantidadDatos %}
-                                                            <div class="card">
-                                                                <center><img src={{l[1]}}></center>
-                                                                    <p> __ </p>
-                                                                    <!-- {{cantidadDatos}} -->
-                                                                    <p> __ </p>
-                                                                    <td scope="col">__</td>
-                                                                    <p> __ </p>
-                                                                    <div class="per">
-                                                                        <table>
-                                                                            <tr>
-                                                                                <td><span>__</span></td>
-                                                                                <td><span>__</span></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>Edad</td>
-                                                                                <td>Género</td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
-                                                                    <body>
-
-                                                                        <button onclick="openForm()">Perfil</button>
-                                                                        
-                                                                        <div class="form-popup" id="myForm">
-                                                                          <form action="/action_page.php" class="form-container">
-                                                                            <h1>Login</h1>
-                                                                        
-                                                                            <label for="email"><b>Email</b></label>
-                                                                            <input type="text" placeholder="Enter Email" name="email" required>
-                                                                        
-                                                                            <label for="psw"><b>Password</b></label>
-                                                                            <input type="password" placeholder="Enter Password" name="psw" required>
-                                                                        
-                                                                            <button type="submit" class="btn">Login</button>
-                                                                            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-                                                                          </form>
-                                                                        </div>
-                                                                        
-                                                                        <script>
-                                                                        function openForm() {
-                                                                          document.getElementById("myForm").style.display = "block";
-                                                                        }
-                                                                        
-                                                                        function closeForm() {
-                                                                          document.getElementById("myForm").style.display = "none";
-                                                                        }
-                                                                        </script>
-                                                                    </body>
-                                                        </div>
-                                                        <br>
+                                                            
                                                     {% else %}
                                                         <div class="card">
                                                             <center><img src={{l[j+4*i]}}></center>
@@ -206,47 +152,17 @@
                                                                 <p> {{usuario[keys[j+4*i]]['Correo corporativo']}} </p>
                                                                 <p> {{usuario[keys[j+4*i]]['Carrera']}} </p>
                                                                     <div class="per">
-                                                                        <table>
-                                                                            <tr>
-                                                                                <td><span>{{usuario[keys[j+4*i]]['Edad']}}</span></td>
-                                                                                
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>Edad</td>
-                                                                                
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
-                                                                    <body>
+                                                                        <table>                                                                                                                                                      
+                                                                            <form action="/admin_view" method="post">
+                                                                                <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
+                                                                                <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
+                                                                                    Perfil
+                                                                                </button>
+                                                                            </form>
 
-                                                                        <button onclick="openForm()">Perfil</button>
-                                                                        
-                                                                        <div class="form-popup" id="myForm">
-                                                                          <form action="/action_page.php" class="form-container">
-                                                                            <h1>Login</h1>
-                                                                        
-                                                                            <label for="email"><b>Email</b></label>
-                                                                            <input type="text" placeholder="Enter Email" name="email" required>
-                                                                        
-                                                                            <label for="psw"><b>Password</b></label>
-                                                                            <input type="password" placeholder="Enter Password" name="psw" required>
-                                                                        
-                                                                            <button type="submit" class="btn">Login</button>
-                                                                            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-                                                                          </form>
-                                                                        </div>
-                                                                        
-                                                                        <script>
-                                                                        function openForm() {
-                                                                          document.getElementById("myForm").style.display = "block";
-                                                                        }
-                                                                        
-                                                                        function closeForm() {
-                                                                          document.getElementById("myForm").style.display = "none";
-                                                                        }
-                                                                        </script>
-                                                                    </body>
-                                                            </div>
+                                                                        </table>
+                                                                    </div>                                                                
+                                                        </div>
                                                                 <br>
                                                         {% endif %}
                                                     {% endfor -%}
