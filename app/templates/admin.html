@@ -123,40 +123,16 @@
                                                                     
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>Edad</td>
-                                                                    
+                                                                    <td>Edad</td>                                                                    
+                                                                    <form action="/admin_view" method="post">
+                                                                        <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
+                                                                        <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
+                                                                            <span class="btn-file">info</span>
+                                                                        </button>
+                                                                    </form>
                                                                 </tr>
                                                             </table>
-                                                        </div>
-                                                        <body>
-
-                                                            <button onclick="openForm()">Perfil</button>
-                                                            
-                                                            <div class="form-popup" id="myForm">
-                                                              <form action="/action_page.php" class="form-container">
-                                                                <h1>Login</h1>
-                                                            
-                                                                <label for="email"><b>Email</b></label>
-                                                                <input type="text" placeholder="Enter Email" name="email" required>
-                                                            
-                                                                <label for="psw"><b>Password</b></label>
-                                                                <input type="password" placeholder="Enter Password" name="psw" required>
-                                                            
-                                                                <button type="submit" class="btn">Login</button>
-                                                                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-                                                              </form>
-                                                            </div>
-                                                            
-                                                            <script>
-                                                            function openForm() {
-                                                              document.getElementById("myForm").style.display = "block";
-                                                            }
-                                                            
-                                                            function closeForm() {
-                                                              document.getElementById("myForm").style.display = "none";
-                                                            }
-                                                            </script>
-                                                        </body>
+                                                        </div>                                                        
                                                     </div>
                                                     <br>
                                                 {% endfor -%}

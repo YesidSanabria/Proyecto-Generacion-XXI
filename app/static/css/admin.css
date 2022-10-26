@@ -193,6 +193,17 @@ a:hover i{
   padding: 10px;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
+
+.users .card2{
+  width: 100%;
+  margin: 30px;
+  background: #CF2F35;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
 .users .card img{
   width: 70px;
   height: 70px;
