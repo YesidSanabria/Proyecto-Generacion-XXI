@@ -17,6 +17,11 @@ body{
 .student-profile .card {
     border-radius: 10px;
 }
+.imgRedonda {
+    width:150px;
+    height:150px;
+    border-radius:75px;
+}
 .student-profile .card .card-header .profile_img {
     width: 150px;
     height: 150px;
