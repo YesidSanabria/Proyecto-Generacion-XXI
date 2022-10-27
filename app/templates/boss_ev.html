@@ -2,7 +2,204 @@
 
 {% block content %}
 
-<h1>Evaluación Gerente - Practicante</h1>
-<h5>{{email}}</h5>
+<body class="body" background="{{ url_for('static', filename='img/fondoregistro.png')}}"  background-repeat: no-repeat>
+</body>
+<br />
+<!---Create Account-->
+{% if smessage %}
+<div class="alert alert-success">
+  {{ smessage }}
+</div>
+{% endif %}
+{% if umessage %}
+<div class="alert alert-danger">
+  {{ umessage }}
+</div>
+{% endif %}
 
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card border-0 shadow rounded-3 my-5">
+        <div class="card-body p-4 p-sm-5">
+          <h5 class="card-title text-center mb-5 fw-light fs-5">Evaluación practicante</h5>
+          <form action="/solicitudes" method="post">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" name="p1" required placeholder="Gerencia" autocomplete="off">
+              <label for="floatingInput">Gerencia</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" name="p2" required placeholder="Cédula" autocomplete="off">
+              <label for="floatingInput">Cédula</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" name="p3" required placeholder="Nombre Completo (Líder)" autocomplete="off">
+              <label for="floatingInput">Nombre Completo (Líder)</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" name="p4" required placeholder="Nombre del Practicante" autocomplete="off">
+              <label for="floatingInput">Nombre del Practicante</label>
+            </div>
+            <hr>
+            <label for="floatingInput">El practicante cumple con las tareas asignadas</label>
+            <br>
+                <input id="radio1" type="radio" name="p5" value="1">
+                <label for="radio1">1 </label>
+                <input id="radio2" type="radio" name="p5" value="2">
+                <label for="radio2">2 </label>
+                <input id="radio3" type="radio" name="p5" value="3">
+                <label for="radio3">3 </label>
+                <input id="radio4" type="radio" name="p5" value="4">
+                <label for="radio4">4 </label>
+                <input id="radio5" type="radio" name="p5" value="5">
+                <label for="radio5">5 </label>
+                <input id="radio6" type="radio" name="p5" value="6">
+                <label for="radio6">6 </label>
+                <input id="radio7" type="radio" name="p5" value="7">
+                <label for="radio7">7 </label>
+                <input id="radio8" type="radio" name="p5" value="8">
+                <label for="radio8">8 </label>
+                <input id="radio9" type="radio" name="p5" value="9">
+                <label for="radio9">9 </label>
+                <input id="radio10" type="radio" name="p5" value="10">
+                <label for="radio10">10 </label>
+            <br>
+            <br>
+            <label for="floatingInput">El practicante tiene buena actitud en la realización de su práctica</label>
+            <br>
+                <input id="radio1" type="radio" name="p6" value="1">
+                <label for="radio1">1 </label>
+                <input id="radio2" type="radio" name="p6" value="2">
+                <label for="radio2">2 </label>
+                <input id="radio3" type="radio" name="p6" value="3">
+                <label for="radio3">3 </label>
+                <input id="radio4" type="radio" name="p6" value="4">
+                <label for="radio4">4 </label>
+                <input id="radio5" type="radio" name="p6" value="5">
+                <label for="radio5">5 </label>
+                <input id="radio6" type="radio" name="p6" value="6">
+                <label for="radio6">6 </label>
+                <input id="radio7" type="radio" name="p6" value="7">
+                <label for="radio7">7 </label>
+                <input id="radio8" type="radio" name="p6" value="8">
+                <label for="radio8">8 </label>
+                <input id="radio9" type="radio" name="p6" value="9">
+                <label for="radio9">9 </label>
+                <input id="radio10" type="radio" name="p6" value="10">
+                <label for="radio10">10 </label>
+            <br>
+            <br>
+            <label for="floatingInput">El practicante cuenta con la capacidad para proponer e innovar</label>
+            <br>
+                <input id="radio1" type="radio" name="p7" value="1">
+                <label for="radio1">1 </label>
+                <input id="radio2" type="radio" name="p7" value="2">
+                <label for="radio2">2 </label>
+                <input id="radio3" type="radio" name="p7" value="3">
+                <label for="radio3">3 </label>
+                <input id="radio4" type="radio" name="p7" value="4">
+                <label for="radio4">4 </label>
+                <input id="radio5" type="radio" name="p7" value="5">
+                <label for="radio5">5 </label>
+                <input id="radio6" type="radio" name="p7" value="6">
+                <label for="radio6">6 </label>
+                <input id="radio7" type="radio" name="p7" value="7">
+                <label for="radio7">7 </label>
+                <input id="radio8" type="radio" name="p7" value="8">
+                <label for="radio8">8 </label>
+                <input id="radio9" type="radio" name="p7" value="9">
+                <label for="radio9">9 </label>
+                <input id="radio10" type="radio" name="p7" value="10">
+                <label for="radio10">10 </label>
+            <hr>
+            <h5>Agilismo</h5>
+            <label for="floatingInput">Se actualiza continuamente en búsqueda de oportunidades para mejorar los procesos de manera ágil, entregando soluciones simples</label>
+            <br>
+                <input id="radio1" type="radio" name="p8" value="1">
+                <label for="radio1">1 </label>
+                <input id="radio2" type="radio" name="p8" value="2">
+                <label for="radio2">2 </label>
+                <input id="radio3" type="radio" name="p8" value="3">
+                <label for="radio3">3 </label>
+                <input id="radio4" type="radio" name="p8" value="4">
+                <label for="radio4">4 </label>
+                <input id="radio5" type="radio" name="p8" value="5">
+                <label for="radio5">5 </label>
+                <input id="radio6" type="radio" name="p8" value="6">
+                <label for="radio6">6 </label>
+                <input id="radio7" type="radio" name="p8" value="7">
+                <label for="radio7">7 </label>
+                <input id="radio8" type="radio" name="p8" value="8">
+                <label for="radio8">8 </label>
+                <input id="radio9" type="radio" name="p8" value="9">
+                <label for="radio9">9 </label>
+                <input id="radio10" type="radio" name="p8" value="10">
+                <label for="radio10">10 </label>
+            <br>
+            <br>
+            <h5>Digital</h5>
+            <label for="floatingInput">Toma desiciones basadas en datos, así como la integración de herramientas tecnológicas en sus procesos</label>
+            <br>
+                <input id="radio1" type="radio" name="p9" value="1">
+                <label for="radio1">1 </label>
+                <input id="radio2" type="radio" name="p9" value="2">
+                <label for="radio2">2 </label>
+                <input id="radio3" type="radio" name="p9" value="3">
+                <label for="radio3">3 </label>
+                <input id="radio4" type="radio" name="p9" value="4">
+                <label for="radio4">4 </label>
+                <input id="radio5" type="radio" name="p9" value="5">
+                <label for="radio5">5 </label>
+                <input id="radio6" type="radio" name="p9" value="6">
+                <label for="radio6">6 </label>
+                <input id="radio7" type="radio" name="p9" value="7">
+                <label for="radio7">7 </label>
+                <input id="radio8" type="radio" name="p9" value="8">
+                <label for="radio8">8 </label>
+                <input id="radio9" type="radio" name="p9" value="9">
+                <label for="radio9">9 </label>
+                <input id="radio10" type="radio" name="p9" value="10">
+                <label for="radio10">10 </label>
+            <br>
+            <br>
+            <h5>Liderazgo</h5>
+            <label for="floatingInput">Es una persona proactiva, de iniciativa, demuestra interés por aprender, trabaja en equipo, actuúa coherentemente bajo el respeto, escucha y hace que las cosas sucedan</label>
+            <br>
+                <input id="radio1" type="radio" name="p10" value="1">
+                <label for="radio1">1 </label>
+                <input id="radio2" type="radio" name="p10" value="2">
+                <label for="radio2">2 </label>
+                <input id="radio3" type="radio" name="p10" value="3">
+                <label for="radio3">3 </label>
+                <input id="radio4" type="radio" name="p10" value="4">
+                <label for="radio4">4 </label>
+                <input id="radio5" type="radio" name="p10" value="5">
+                <label for="radio5">5 </label>
+                <input id="radio6" type="radio" name="p10" value="6">
+                <label for="radio6">6 </label>
+                <input id="radio7" type="radio" name="p10" value="7">
+                <label for="radio7">7 </label>
+                <input id="radio8" type="radio" name="p10" value="8">
+                <label for="radio8">8 </label>
+                <input id="radio9" type="radio" name="p10" value="9">
+                <label for="radio9">9 </label>
+                <input id="radio10" type="radio" name="p10" value="10">
+                <label for="radio10">10 </label>
+            <hr>
+            <label for="floatingInput">Observaciones</label>
+            <div class="form-floating mb-3">
+                <textarea type="text" style="width: 100%; border-color: #CED4DA;" rows="6" name="obs" required autocomplete="off"></textarea>
+            </div>
+            <div class="d-grid">
+              <button style="color: white; background-color: #cf2f35;"
+                class="btn btn-login text-uppercase fw-bold" type="submit"
+                name="submit">Enviar</button>
+              <br>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
