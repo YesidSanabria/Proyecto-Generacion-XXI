@@ -48,8 +48,7 @@ def admin():
             if True:
                 
                 return render_template(putos, usuario=user, l=links)
-                  
-        
+
     return render_template('admin.html')    
 
 
