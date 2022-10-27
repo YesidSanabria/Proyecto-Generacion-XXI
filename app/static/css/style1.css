@@ -57,6 +57,18 @@
     font-weight: bold;
   }
 
+  .btn-eval{
+    background-color: #CF2F35;
+    margin: 10px;
+    padding: 5px 10px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;    
+    border-color: #FFF;        
+    border-radius: 10px;
+    align-items: center;
+  }
 
 
   .btn-estilo{

@@ -109,13 +109,18 @@
                                             <div class="users">
                                                 {% for j in range(0,4) -%}
                                                     <div class="card">
-                                                            <center><img src={{l[j+4*i]}}></center>
+                                                            <center><div class="cardc"><img src={{l[j+4*i]}}></div></center>
                                                             <!-- <p> {{j+4*i}}</p>
                                                             {{cantidadDatos}} -->
-                                                            <td scope="col">{{usuario[keys[j+4*i]]['Nombres']}} {{usuario[keys[j+4*i]]['Apellidos']}}</td>
-
+                                                            <div class="cardc">
+                                                            <td scope="col"><b>{{usuario[keys[j+4*i]]['Nombres']}} {{usuario[keys[j+4*i]]['Apellidos']}}</b></td>
+                                                            </div>
+                                                            <div class="cardc">
                                                             <p> {{usuario[keys[j+4*i]]['Correo corporativo']}} </p>
+                                                        </div>
+                                                        <div class="cardc">
                                                             <p> {{usuario[keys[j+4*i]]['Carrera']}} </p>
+                                                        </div>
                                                         <div class="per">
                                                             <table>                                                                
                                                                 <tr>                                                                                                                                 
@@ -145,22 +150,27 @@
                                                             
                                                     {% else %}
                                                         <div class="card">
-                                                            <center><img src={{l[j+4*i]}}></center>
+                                                            <center><div class="cardc"><img src={{l[j+4*i]}}></div></center>
                                                             <!-- <p> {{j+4*i}}</p>
                                                                 {{cantidadDatos}} -->
-                                                                <td scope="col">{{usuario[keys[j+4*i]]['Nombres']}} {{usuario[keys[j+4*i]]['Apellidos']}}</td>
+                                                                <div class="cardc">
+                                                                <td scope="col"><b>{{usuario[keys[j+4*i]]['Nombres']}} {{usuario[keys[j+4*i]]['Apellidos']}}</b></td>
+                                                                </div>
+                                                                <div class="cardc">
                                                                 <p> {{usuario[keys[j+4*i]]['Correo corporativo']}} </p>
+                                                                </div>
+                                                                <div class="cardc">
                                                                 <p> {{usuario[keys[j+4*i]]['Carrera']}} </p>
+                                                                </div>
                                                                     <div class="per">
-                                                                        <table>                                                                                                                                                      
+                                                                        <div>                                                                                                                                                                                                                              
                                                                             <form action="/admin_view" method="post">
                                                                                 <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
                                                                                 <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
                                                                                     Perfil
                                                                                 </button>
-                                                                            </form>
-
-                                                                        </table>
+                                                                            </form>                                                                        
+                                                                        </div>    
                                                                     </div>                                                                
                                                         </div>
                                                                 <br>
