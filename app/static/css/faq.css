@@ -16,7 +16,7 @@ body{margin-top:20px;}
 .faq-accordian .card {
     position: relative;
     z-index: 1;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 .faq-accordian .card:last-child {
     margin-bottom: 0;
@@ -28,7 +28,7 @@ body{margin-top:20px;}
 }
 .faq-accordian .card .card-header h6 {
     cursor: pointer;
-    padding: 1.75rem 2rem;
+    padding: 1.6rem 2rem;
     color: #3f43fd;
     display: -webkit-box;
     display: -ms-flexbox;
