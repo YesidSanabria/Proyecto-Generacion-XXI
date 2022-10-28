@@ -126,6 +126,7 @@
                                                                 <tr>                                                                                                                                 
                                                                     <form action="/admin_view" method="post">
                                                                         <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
+                                                                        <input type="hidden" value="{{usuario[keys[j+4*i]]['Correo corporativo']}}" name="foto">
                                                                         <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
                                                                             Perfil
                                                                         </button>
@@ -166,6 +167,7 @@
                                                                         <div>                                                                                                                                                                                                                              
                                                                             <form action="/admin_view" method="post">
                                                                                 <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
+                                                                                <input type="hidden" value="{{usuario[keys[j+4*i]]['Correo corporativo']}}" name="foto">
                                                                                 <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
                                                                                     Perfil
                                                                                 </button>

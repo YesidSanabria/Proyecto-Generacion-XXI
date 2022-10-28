@@ -38,6 +38,7 @@ def admin():
         elif ruta == "infopract":
             putos = 'infopract.html'
             user = crud.getStudentInfo(request.form["yave"])
+            foto = crud.getImagesURL([request.form["foto"]])
             [keys, emails, cantidad] = crud.getStudentsData()
             cuenta = crud.amountCards()
             emails = [x.lower() for x in emails]
@@ -47,7 +48,7 @@ def admin():
 
             if True:
                 
-                return render_template(putos, usuario=user, l=links)
+                return render_template(putos, usuario=user, l=foto)
 
     return render_template('admin.html')    
 

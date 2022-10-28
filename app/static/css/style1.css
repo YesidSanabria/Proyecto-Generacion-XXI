@@ -32,6 +32,12 @@
   .contenedor-btn-file > i {
     margin-right: 15px;
   }
+
+  .imgRedonda {
+    width:150px;
+    height:150px;
+    border-radius:75px;
+}
   .contenedor-btn-file label  {
     display: block;
     position: absolute;
