@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/faq.css')}}">
+</head>
+<body class="body" background="{{ url_for('static', filename='img/fondocarper.png')}}"  background-repeat: no-repeat>
+</body>
+<div class="faq_area section_padding_130" id="faq">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 col-lg-6">
+                <!-- Section Heading-->
+                <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <h3>Preguntas Frecuentes (FAQ)</h3>
+                    <p>A continuación, encontrará respuesta a las Preguntas Frecuentes que usted puede llegar a tener en su proceso de practicas.</p>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <!-- FAQ Area-->
+            <div class="col-12 col-sm-10 col-lg-8">
+                <div class="accordion faq-accordian" id="faqAccordion">
+
+                    <div class="accordion-item card border-0 wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <div class="accordion-header card-header" id="headingOne">
+                            <h6 class="mb-0 collapsed accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Pregunta Frecuente<span class="lni-chevron-up"></span></h6>
+                        </div>
+                        <div class="collapse" id="collapseOne" aria-labelledby="headingOne" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                <p>Información de respuesta de la pregunta.</p>
+                                <p>Ampliación de la información de la pregunta.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item card border-0 wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <div class="accordion-header card-header" id="headingTwo">
+                            <h6 class="mb-0 collapsed accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Pregunta Frecuente<span class="lni-chevron-up"></span></h6>
+                        </div>
+                        <div class="collapse" id="collapseTwo" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                <p>Información de respuesta de la pregunta.</p>
+                                <p>Ampliación de la información de la pregunta.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item card border-0 wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <div class="accordion-header card-header" id="headingThree">
+                            <h6 class="mb-0 collapsed accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Pregunta Frecuente<span class="lni-chevron-up"></span></h6>
+                        </div>
+                        <div class="collapse" id="collapseThree" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                <p>Información de respuesta de la pregunta.</p>
+                                <p>Ampliación de la información de la pregunta.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item card border-0 wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <div class="accordion-header card-header" id="headingFour">
+                            <h6 class="mb-0 collapsed accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Pregunta Frecuente<span class="lni-chevron-up"></span></h6>
+                        </div>
+                        <div class="collapse" id="collapseFour" aria-labelledby="headingFour" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                <p>Información de respuesta de la pregunta.</p>
+                                <p>Ampliación de la información de la pregunta.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- Support Button-->
+                <div class="support-button text-center d-flex align-items-center justify-content-center mt-4 wow fadeInUp" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                    <i class="lni-emoji-sad"></i>
+                    <p class="mb-0 px-2">¿No pudo encontrar su respuesta aqui?</p>
+                    <a href="#"> Contactanos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

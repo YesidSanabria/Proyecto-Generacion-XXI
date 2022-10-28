@@ -64,6 +64,14 @@ def formulario():
 def view_personal_data():
     return pf.view_personal_data()
 
+# ---------------------------------FAQ -------------------------------------
+
+
+@app.route('/faq', methods=['GET', 'POST'])
+def faq():
+    return render_template('faq.html')
+
+
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':
     app.run(debug=True)
@@ -74,3 +82,4 @@ if __name__ == '__main__':
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
     return render_template('admin.html')
+
