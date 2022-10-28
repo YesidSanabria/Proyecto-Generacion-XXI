@@ -34,6 +34,10 @@ def index():
 
 # ----------------------REGISTRARSE-----------------------------
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    return reg.register()
+
 @app.route('/create_account', methods=['GET', 'POST'])
 def create_account():
     return reg.create_account()

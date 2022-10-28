@@ -9,8 +9,10 @@ def confirm():
         if code == code_input:
             if role == 'docente':
                 return render_template('teacher_ev.html', email=email)
-            else:
+            elif role == 'gerente':
                 return render_template('boss_ev.html', email=email)
+            else:
+                return render_template('create_account.html', email=email)
         else:
             message = 'El código de verificación no corresponde'
             return render_template('confirm.html', umessage=message, code=code, email=email, role=role)
