@@ -24,6 +24,7 @@
         <div class="card-body p-4 p-sm-5">
           <h5 class="card-title text-center mb-5 fw-light fs-5">Evaluación practicante</h5>
           <form action="/boss_ev" method="post">
+            <input type="hidden" name="user" value="{{user}}">
             <div class="form-floating mb-3">
               <input type="text" class="form-control" name="p1" required placeholder="Gerencia" autocomplete="off">
               <label for="floatingInput">Gerencia</label>
@@ -43,52 +44,70 @@
             <hr>
             <label for="floatingInput">El practicante cumple con las tareas asignadas</label>
             <br>
+            <br>
+            <div class="btn-group" role="group">
               {% for i in range(1,11) %}
-                <input id="radio{{i}}" type="radio" name="p5" value="{{i}}" required>
-                <label for="radio{{i}}">{{i}}</label>
+              <input type="radio" name="p5" class="btn-check" id="radioBtn{{i}}" value="{{i}}" required>
+              <label class="btn btn-outline-danger" for="radioBtn{{i}}">{{i}}</label>
               {% endfor %}
+            </div>
             <br>
             <br>
             <label for="floatingInput">El practicante tiene buena actitud en la realización de su práctica</label>
             <br>
+            <br>
+            <div class="btn-group" role="group">
               {% for i in range(1,11) %}
-                <input id="radio{{i}}" type="radio" name="p6" value="{{i}}" required>
-                <label for="radio{{i}}">{{i}}</label>
+              <input type="radio" name="p6" class="btn-check" id="radioBtn{{i+10}}" value="{{i}}" required>
+              <label class="btn btn-outline-danger" for="radioBtn{{i+10}}">{{i}}</label>
               {% endfor %}
+            </div>
             <br>
             <br>
             <label for="floatingInput">El practicante cuenta con la capacidad para proponer e innovar</label>
             <br>
+            <br>
+            <div class="btn-group" role="group">
               {% for i in range(1,11) %}
-                <input id="radio{{i}}" type="radio" name="p7" value="{{i}}" required>
-                <label for="radio{{i}}">{{i}}</label>
+              <input type="radio" name="p7" class="btn-check" id="radioBtn{{i+20}}" value="{{i}}" required>
+              <label class="btn btn-outline-danger" for="radioBtn{{i+20}}">{{i}}</label>
               {% endfor %}
+            </div>
             <hr>
             <h5>Agilismo</h5>
             <label for="floatingInput">Se actualiza continuamente en búsqueda de oportunidades para mejorar los procesos de manera ágil, entregando soluciones simples</label>
             <br>
+            <br>
+            <div class="btn-group" role="group">
               {% for i in range(1,11) %}
-                <input id="radio{{i}}" type="radio" name="p8" value="{{i}}" required>
-                <label for="radio{{i}}">{{i}}</label>
+              <input type="radio" name="p8" class="btn-check" id="radioBtn{{i+30}}" value="{{i}}" required>
+              <label class="btn btn-outline-danger" for="radioBtn{{i+30}}">{{i}}</label>
               {% endfor %}
+            </div>
             <br>
             <br>
             <h5>Digital</h5>
             <label for="floatingInput">Toma desiciones basadas en datos, así como la integración de herramientas tecnológicas en sus procesos</label>
             <br>
+            <br>
+            <div class="btn-group" role="group">
               {% for i in range(1,11) %}
-                <input id="radio{{i}}" type="radio" name="p9" value="{{i}}" required>
-                <label for="radio{{i}}">{{i}}</label>
+              <input type="radio" name="p9" class="btn-check" id="radioBtn{{i+40}}" value="{{i}}" required>
+              <label class="btn btn-outline-danger" for="radioBtn{{i+40}}">{{i}}</label>
               {% endfor %}
+            </div>
             <br>
             <br>
             <h5>Liderazgo</h5>
             <label for="floatingInput">Es una persona proactiva, de iniciativa, demuestra interés por aprender, trabaja en equipo, actuúa coherentemente bajo el respeto, escucha y hace que las cosas sucedan</label>
             <br>
+            <br>
+            <div class="btn-group" role="group">
               {% for i in range(1,11) %}
-                <input id="radio{{i}}" type="radio" name="p10" value="{{i}}" required>
-                <label for="radio{{i}}">{{i}}</label>
+              <input type="radio" name="p10" class="btn-check" id="radioBtn{{i+50}}" value="{{i}}" required>
+              <label class="btn btn-outline-danger" for="radioBtn{{i+50}}">{{i}}</label>
               {% endfor %}
+            </div>
             <hr>
             <label for="floatingInput">Observaciones</label>
             <div class="form-floating mb-3">
