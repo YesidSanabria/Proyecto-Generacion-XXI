@@ -1,11 +1,130 @@
-:root{
-    --color-dark: #18191d;
-    --color-light: #ffffff;
-    --gold: #ded3cd;
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Trispace', sans-serif;
 }
 
-body{
-    font-family: 'Oswald', sans-serif;
-    font-size: 1rem;
-    letter-spacing: .05rem;
+.container{
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(163, 64, 64, 0.7)), url("../img/fondoregistro.png");
+    background-position: center;
+    background-size: cover;
+    padding-left: 15%;
+    padding-right: 10%;
+    box-sizing: border-box;
+}
+
+.navbar{
+    height: 12%;
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    width: 130px;
+    cursor: pointer;
+}
+
+.menu-icon{
+    width: 30px;
+    cursor: pointer;
+    margin-left: 40px;
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul li{
+    list-style: none;
+    display: inline-block;
+    margin-left: 100px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 13px;
+}
+
+.row{
+    display: flex;
+    height: 88%;
+    align-items: center;
+}
+
+.col{
+    flex-basis: 100%;
+}
+
+h1{
+    color: #fff;
+    font-size: 60px;
+}
+
+p{
+    color: #fff;
+    font-size: 11px;
+    line-height: 15px;
+}
+
+button{
+    width: 180px;
+    color: #000;
+    font-size: 12px;
+    padding: 12px 0;
+    background: #fff;
+    border: 0;
+    border-radius: 20px;
+    outline: none;
+    margin-top: 30px;
+    cursor: pointer;
+    
+}
+
+.card{
+    width: 200px;
+    height: 230px;
+    display: inline-block;
+    border-radius: 10px;
+    padding: 15px 25px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 10px 15px;
+    background-position: center;
+    background-size: cover;
+    transition: transform 0.5s;
+}
+
+.card1{
+    background-image: url("../img/1.png");
+}
+.card2{
+    background-image: url("../img/2.png");
+}
+.card3{
+    background-image: url("../img/3.png");
+}
+.card4{
+    background-image: url("../img/4.png");
+}
+
+.card:hover{
+    transform: translateY(-10px);
+}
+
+h5{
+    color: #fff;
+    text-shadow: 0 0 5px #999;
+}
+
+.card p{
+    text-shadow: 0 0 15px #000;
+    font-size: 8px;
+}
+
+.centro-boton{
+    justify-content: flex-end;
 }
