@@ -18,6 +18,7 @@ body{
     border-radius: 10px;
 }
 .imgRedonda {
+    /*border: 8px solid #B7202E;*/
     width:150px;
     height:150px;
     border-radius:75px;

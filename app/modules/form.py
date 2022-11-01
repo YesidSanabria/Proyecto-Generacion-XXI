@@ -27,7 +27,9 @@ def form ():
         cedula = request.form['cedula']
         edad = request.form['edad']
         genero = request.form['genero']
+        celular_personal = request.form['celular_personal']
         correo_corporativo = request.form['correo_corporativo']
+        celular_corporativo = request.form['celular_corporativo']
         gerencia = request.form['gerencia']
         direccion = request.form['direccion']
         nombre_gerente = request.form['nombre_gerente']
@@ -53,7 +55,9 @@ def form ():
             "Gerencia": gerencia,
             "Area de gerencia": direccion,
             "Nombre gerente": nombre_gerente,
+            "Celular personal" : celular_personal,
             "Celular gerente": celular_gerente,
+            "Celular corporativo": celular_corporativo,
             "Universidad": universidad,
             "Carrera": carrera,
             "Nombre tutor": tutor,

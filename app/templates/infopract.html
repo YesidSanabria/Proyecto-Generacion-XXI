@@ -109,74 +109,219 @@
         </div>
       </div>
     </nav>
-
-    <section class="home">
-        <section class="main">
-            <div class="users">
-
+    
+      <section class="home">      
+        <section class="main">          
+              <div class="users"> 
                 <!-- Carta principal de info personal -->
-                <div class="card2">
-                  <Head>
-                    <center><img src="https://firebasestorage.googleapis.com/v0/b/generacion-xxi.appspot.com/o/profile_pictures%2Fdaniel.ramirezt%40claro.com.co?alt=media"></center>
+                <div class="card0">
+                  <div class="card2">
+                    <div class="ul">
+                    <div class="cuerpo">
+                      <div class="card3">
+                        <div class="ul">
+                          <button type="button"><img src="{{url_for ('static', filename = './img/flecha.png')}}"height ="30" width="45" /></button>                                                 
+                          <div class="text logo-text">
+                            <h2 class="fontp" style="color: #cf2f35;" align="left">Generación XXI</h2>
+                          </div>
+                          <button type="button" class="btn-eval" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Evaluación
+                          </button>
+                          <button type="button" class="btn-eval" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Evaluación
+                          </button>
+                          <button type="button" class="btn-eval" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Evaluación
+                          </button>
+                        </div>
+                        <center><hr width="95%"></center>
 
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      Editar
-                    </button>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      Eliminar
-                    </button>
-                  </Head>
-                            <body>
-                                
-                                  <!-- Modal -->
-                                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            {{usuario}}
-                                        </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                          <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                      </div>
-                                    </div>
+                        <Head>
+
+                          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">                            
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <div class="ul">                                  
+                                  <div class="card4">
+                                    <center>
+                                    <h3 class="fontp" style="color: #cf2f35;" align="left">Datos Personales</h3>                                
+                                    <h6 align="left"><b>Nombre: </b><td>{{ usuario['Nombres'] + " " + usuario['Apellidos']}}</td></h6>                            
+                                    <br sice>
+                                    <h6 align="left"><b>Cedula: </b><td>{{ usuario['Cedula']}}</td></h6>                                
+                                    <br>
+                                    <h6 align="left"><b>Edad: </b><td>{{ usuario['Edad']}}</td></h6>                                
+                                    <br>                              
+                                    <h6 align="left"><b>Genero: </b><td>{{ usuario['Sexo']}}</td></h6>                                
+                                    <br>                                
+                                    <h6 align="left"><b>Celular: </b><td>{{ usuario['Celular personal']}}</td></h6>                                
+                                    <br>
+                                    <h6 align="left"><b>Correo: </b><td>{{ usuario['Correo personal']}}</td></h6>                              
+                                    <br>
+                                    <h6 align="left"><b>Ciudad: </b><td align="left">{{ usuario['Regional']}}</td></h6>                                
+                                    <br>
+                                  </center>
+                                  </div>                                
+                                  <div class="card4" align:> 
+                                    <center>
+                                    <h3 class="fontp" style="color: #cf2f35;" align="left">Datos Corporativos</h3>                             
+                                    <h6 align="left"><b>Gerencia: </b><td>{{ usuario['Gerencia']}}</td></h6>
+                                    <br>                                 
+                                    <h6 align="left"><b>Dirección corporativa: </b><td>{{ usuario['Area de gerencia']}}</td></h6>
+                                    <br>                                  
+                                    <h6 align="left"><b>Nombre gerente: </b><td>{{ usuario['Nombre gerente']}}</td></h6>
+                                    <br>                                      
+                                    <h6 align="left"><b>Celular corporativo: </b><td>{{ usuario['Celular corporativo']}}</td></h6>
+                                    <br>                                      
+                                    <h6 align="left"><b>Correo corporativo: </b><td>{{ usuario['Correo corporativo']}}</td></h6>
+                                    <br>                                      
+                                    <h6 align="left"><b>Correo gerente: </b><td>{{ usuario['Correo gerente']}}</td></h6>
+                                    <br>                                      
+                                    <h6 align="left"><b>Celular gerente: </b><td>{{ usuario['Celular gerente']}}</td></h6>                                                                    
+                                    <br>
+                                  </center>
                                   </div>
-                            </body>
-                            {{usuario['Nombres']}}
-                            {{cantidadDatos}}
-                                  
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            
-                                        </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                          <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
+                                </div>
+                              </div>
+                              <div class="carousel-item">
+                                <div class="ul">
+                                  <div class="card4">                                
+                                    <h3 class="fontp" style="color: #cf2f35;" align="left">Datos Académicos</h3>
+                                    <h6 align="left"><b>Universidad: </b><td>{{ usuario['Universidad']}}</td></h6>
+                                    <br>                                      
+                                    <h6 align="left"><b>Carrera: </b><td>{{ usuario['Carrera']}}</td></h6>
+                                    <br>                                            
+                                    <h6 align="left"><b>Tutor universitario:</b><td>{{ usuario['Nombre tutor']}}</td>  </h6>
+                                    <br>                                       
+                                    <h6 align="left"><b>Correo del tutor: </b><td>{{ usuario['Correo tutor']}}</td> </h6>
+                                    <br>                                       
+                                    <h6 align="left"><b>Celular del tutor: </b><td>{{ usuario['Celular tutor']}}</td> </h6>
+                                    <br>                                                                        
+                                  </div>
+                                  <div class="card4">
+                                    <h3 class="fontp" style="color: #cf2f35;" align="left">Datos en caso de Emergencia</h3>                                                                                                                 
+                                    <h6 align="left"><b>EPS: </b><td>{{ usuario['EPS']}}</td></h6>
+                                    <br>
+                                    <h6 align="left"><b>En caso de emergencia llamar a: </b><td>{{ usuario['Nombre emergencia']}}</td></h6>
+                                    <br>
+                                    <h6 align="left"><b>Numero: </b><td>{{ usuario['Numero emergencia']}}</td></h6>
+                                    <br>
+                                  </div>
+                                </div>
+                              </div>                              
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                            <div class="carousel-indicators">                            
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>                              
+                            </div>
+                          </div>
+                          <div class="position-relative">  
+                            <div class="position-absolute top-0 end-0">
+                              
+                            </div>
+                          </div>
+                        </Head>                        
+                          <br>                        
+                        <div class="ul">
+                          <div class="btnAdnim">
+                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 80%;">
+                            Editar
+                          </button>
+                        </div>
+                        <div class="btnAdnim">
+                          <button type="button" class="btn btn-warning" style="width: 80%;" data-bs-toggle="modal" data-bs-target="#eliminarDatos">
+                            Eliminar
+                          </button>
+
+                          <div class="modal fade" id="eliminarDatos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Usuario</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div>
+                                      <p>¿Esta seguto que desea eliminar a este usuario?</p>
+                                    </div>                                    
+                                  </div>
+                                  <div class="modal-footer">
+                                    <div class="card0">
+                                    <div class="ul">
+                                      <div class="btnAdnim" >
+                                        <button class="btn btn-danger" style="width: 80%;">Si</button>
+                                      </div>
+                                      <div class="btnAdnim">
+                                        <button class="btn btn-warning" style="width: 80%;">No</button>
                                       </div>
                                     </div>
-                                </div>     
+                                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button> -->
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        </div>                        
+                        <body>                        
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      {{usuario}}
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                        </body>                                               
+                      </div>
+                
+                    </div>
+                    <div class="cuerpo2">
+                      <div>
+                        <br>
+                        <center><img src="{{l}}" class='imgRedonda' alt = "su imagen fue secuestrada por un alienígena ～～ "/></center>
+                        <p></p>
+                      <center><div class="card5">
+                                <center><h4 style="color: #cf2f35;" >Datos de Contacto</h4></center>
+                                PENDIENTE!!!
+                                <p>{{usuario['Nombres']}} {{usuario['Apellidos']}}</p>
+                                <p>{{usuario['Correo corporativo']}}</p>
+                                <p>{{usuario['Celular personal']}}</p>
+                              </div>
+                      </center>  
+                      </div>
+                      <div style="position: static;">
+                      <center><img src = "{{url_for ('static', filename = './img/claro plano palabra blanco.png')}}" width = "130" height = "45" alt = "su imagen fue secuestrada por un alienígena ～～ "style = "position: relative; top: 80px; left: 100px;" /></center>
+                    </div>
+                    </div>
+                    </div>
+                  </div>
+                     <div class="position-relative">  
+                     
+                      
+                  </div>
                 </div>   
-                </div>   
-            </div>
-        </section>
-          <div>
-            <p>Info Practi</p>
-            {{cantidadDatos}}
-          </div>
-    </section>
+              </div>   
+        </section>      
+      </section>
+  
 
     <script>
       const body = document.querySelector("body"),
