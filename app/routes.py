@@ -29,8 +29,6 @@ mail = Mail()
 def home():
     return render_template('home.html')
 
-
-
 @app.route('/index', methods=['GET', 'POST'])
 def index():     
     return lg.index()
@@ -50,11 +48,6 @@ def create_account():
 @app.route('/forgot_password', methods=['GET', 'POST'])
 def forgot_password():
     return pw.forgot_password()
-
-############################ Pendientes de cambio ################################
-@app.route('/home', methods=['GET', 'POST'])
-def home():
-    return render_template('home.html')
 
 # --------------------------------------EVALUACION A PRACTICANTES-------------------------------------
 
