@@ -33,6 +33,6 @@ def evaluation():
             mail.send_mail(email,code)
             return render_template('confirm.html', code=code, email=email, role=role, name=name, user=user)
         else:
-            message = 'El correo ingresado no corresponde con el del '+ role + ' registrado por el practicante'
+            message = 'El correo ingresado no corresponde con el del ' + role + ' registrado por algún practicante'
             return render_template('evaluation.html', umessage=message)
     return render_template('evaluation.html')
