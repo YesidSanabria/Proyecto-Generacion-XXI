@@ -105,8 +105,18 @@ def view_personal_data():
 def notif():
     return nt.notif()
 
+# ---------------------------------FAQ -------------------------------------
+
+
+@app.route('/faq', methods=['GET', 'POST'])
+def faq():
+    return render_template('faq.html')
+
+
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':
     mail.init_app(app)
     app.run(debug=True)
+
+
 
