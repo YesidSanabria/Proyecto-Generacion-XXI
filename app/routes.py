@@ -25,6 +25,9 @@ mail = Mail()
 # --------------------------------------REGISTRO E INICIO DE SESION-------------------------------------
 
 @app.route('/')
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+    return render_template('home.html')
 
 
 
@@ -49,7 +52,6 @@ def forgot_password():
     return pw.forgot_password()
 
 ############################ Pendientes de cambio ################################
-
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     return render_template('home.html')
