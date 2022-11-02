@@ -33,8 +33,15 @@ def send_custom_email(email,link,correo):
                     
     #crea el objeto mail
     mail=Mail(rt.app)
-                    
-    msg = Message("Restablecer contraseña",sender='sspg.xxi@gmail.com',recipients=[email])
-    #msg.body = 'Link de restablecimiento de contraseña: ' +  "\n\n"  + "Mensaje enviado de manera automática, no responder" 
-    msg.html = render_template('correoFP.html', link=link,mail=correo)
-    mail.send(msg)
+
+    print(link)
+    
+    # msg = Message("Restablecer contraseña",sender='sspg.xxi@gmail.com',recipients=[email])
+    # #msg.body = 'Link de restablecimiento de contraseña: ' +  "\n\n"  + "Mensaje enviado de manera automática, no responder" 
+    # msg.html = render_template('correoFP.html', link=link,mail=correo)
+    # mail.send(msg)
+    
+    msg1 = Message("Restablecer contraseña",sender='sspg.xxi@gmail.com',recipients=[correo])
+    #msg1.body = 'Link de restablecimiento de contraseña: ' + "\n\n"  + "Mensaje enviado de manera automática, no responder" 
+    msg1.html = render_template('correoFP.html', link=link,mail=correo)
+    mail.send(msg1)

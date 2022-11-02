@@ -32,7 +32,8 @@ def forgot_password():
             #print(user['Correo personal'])
             link = auth.generate_password_reset_link(email, action_code_settings)
             mail.send_custom_email(user['Correo personal'],link,email)
-            return render_template('index.html')
+            unsuccessful = 'Revisa tu correo corporativo'
+            return render_template('index.html', smessage=unsuccessful)
         except firebase_admin._auth_utils.EmailNotFoundError:
             unsuccessful = 'Este correo no tiene una cuenta asociada.'
             return render_template('index.html', umessage=unsuccessful)
