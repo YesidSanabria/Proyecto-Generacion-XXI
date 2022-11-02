@@ -57,32 +57,43 @@
           </li>
 
           <li class="nav-link">
-            <i class="bx bxs-user icon"></i>
+            
             <form action="/admin_view" method="post">
-              <button
+              
+              <button              
                 class="contenedor-btn-file bordeado"
                 name="ruta"
                 value="admin"
               >
+              <div class="ul">
+                <i class="bx bxs-user icon"></i>
                 <span class="btn-file"> Practicantes</span>
+              </div>
               </button>
+            
             </form>
           </li>
 
           <li class="nav-link">
-            <i class="bx bx-bell icon"></i>
+            
             <form action="/admin_view" method="post">
               <button class="contenedor-btn-file bordeado" name="ruta" value="notif">
+                <div class="ul">
+                  <i class="bx bx-bell icon"></i>
                 <span class="btn-file">Notificaciones</span>
+                </div>
               </button>
             </form>
           </li>
 
           <li class="nav-link">
-            <i class="bx bx-pie-chart-alt icon"></i>
+            
             <form action="/admin_view" method="post">
               <button class="contenedor-btn-file bordeado" name="ruta" value="reportes">
+                <div class="ul">
+                  <i class="bx bx-pie-chart-alt icon"></i>
                 <span class="btn-file">Reportes</span>
+                </div>
               </button>
             </form>
           </li>
@@ -141,7 +152,8 @@
                           <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">                            
                             <div class="carousel-inner">
                               <div class="carousel-item active">
-                                <div class="ul">                                  
+                                <div class="ul">
+                                  <div class="card9"></div>                                  
                                   <div class="card4">
                                     <center>
                                     <h3 class="fontp" style="color: #cf2f35;" align="left">Datos Personales</h3>                                
@@ -160,7 +172,8 @@
                                     <h6 align="left"><b>Ciudad: </b><td align="left">{{ usuario['Regional']}}</td></h6>                                
                                     <br>
                                   </center>
-                                  </div>                                
+                                  </div>
+                                  <div class="card9"></div>
                                   <div class="card4" align:> 
                                     <center>
                                     <h3 class="fontp" style="color: #cf2f35;" align="left">Datos Corporativos</h3>                             
@@ -180,10 +193,12 @@
                                     <br>
                                   </center>
                                   </div>
+                                  <div class="card9"></div>
                                 </div>
                               </div>
                               <div class="carousel-item">
                                 <div class="ul">
+                                  <div class="card9"></div>
                                   <div class="card4">                                
                                     <h3 class="fontp" style="color: #cf2f35;" align="left">Datos Académicos</h3>
                                     <h6 align="left"><b>Universidad: </b><td>{{ usuario['Universidad']}}</td></h6>
@@ -197,6 +212,7 @@
                                     <h6 align="left"><b>Celular del tutor: </b><td>{{ usuario['Celular tutor']}}</td> </h6>
                                     <br>                                                                        
                                   </div>
+                                  <div class="card9"></div>
                                   <div class="card4">
                                     <h3 class="fontp" style="color: #cf2f35;" align="left">Datos en caso de Emergencia</h3>                                                                                                                 
                                     <h6 align="left"><b>EPS: </b><td>{{ usuario['EPS']}}</td></h6>
@@ -206,40 +222,29 @@
                                     <h6 align="left"><b>Numero: </b><td>{{ usuario['Numero emergencia']}}</td></h6>
                                     <br>
                                   </div>
+                                  <div class="card9"></div>
                                 </div>
                               </div>                              
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Next</span>
-                            </button>
+                            <br>
+                            <center><hr width="95%"></center>
                             <div class="carousel-indicators">                            
-                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>                              
-                            </div>
-                          </div>
-                          <div class="position-relative">  
-                            <div class="position-absolute top-0 end-0">
-                              
-                            </div>
-                          </div>
-                        </Head>                        
-                          <br>                        
+                              <button type="button" style="background-color: #cf2f35;" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                              <button type="button" style="background-color: #cf2f35;" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>                              
+                            </div>                            
+                          </div>                        
+                        </Head>                                                                                                  
                         <div class="ul">
                           <div class="btnAdnim">
                           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 80%;">
                             Editar
                           </button>
-                        </div>
+                        </div>                        
                         <div class="btnAdnim">
+                          <!-- fooooormmmm emliminar -->                          
                           <button type="button" class="btn btn-warning" style="width: 80%;" data-bs-toggle="modal" data-bs-target="#eliminarDatos">
                             Eliminar
-                          </button>
-
+                          </button>                    
                           <div class="modal fade" id="eliminarDatos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                               <div class="modal-content">
@@ -249,17 +254,29 @@
                                   </div>
                                   <div class="modal-body">
                                     <div>
-                                      <p>¿Esta seguto que desea eliminar a este usuario?</p>
+                                      <b>¿Esta seguto que desea eliminar a este usuario?</b>
+                                      <center><hr width="95%"></center>
+                                      <div class="ul">
+                                      <b>Correo :</b> {{usuario["Correo corporativo"]}}
+                                    </div> 
+                                    <div class="ul">
+                                      <b>Nombre :</b> {{usuario["Nombres"]}} {{usuario["Apellidos"]}}
+                                    </div>                                     
                                     </div>                                    
                                   </div>
                                   <div class="modal-footer">
                                     <div class="card0">
                                     <div class="ul">
-                                      <div class="btnAdnim" >
-                                        <button class="btn btn-danger" style="width: 80%;">Si</button>
-                                      </div>
+                                      <form action="admin_view" method="post">
+                                        <div class="btnAdnim" >
+                                          <input type="hidden" value="{{usuario['Correo corporativo']}}" name="eliminar">
+                                            <button class="btn btn-danger" style="width: 200px;" name="ruta" value="elim">
+                                              Si
+                                            </button>
+                                        </div>
+                                      </form>
                                       <div class="btnAdnim">
-                                        <button class="btn btn-warning" style="width: 80%;">No</button>
+                                        <button class="btn btn-warning" style="width: 200px;">No</button>
                                       </div>
                                     </div>
                                     <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -296,7 +313,7 @@
                     <div class="cuerpo2">
                       <div>
                         <br>
-                        <center><img src = "{{url_for ('static', filename = './img/pato.jpg')}}" width = "200" height = "200" alt = "su imagen fue secuestrada por un alienígena ～～ "/></center>
+                        <center><img src="{{l}}" class='imgRedonda' alt = "su imagen fue secuestrada por un alienígena ～～ "/></center>
                         <p></p>
                       <center><div class="card5">
                                 <center><h4 style="color: #cf2f35;" >Datos de Contacto</h4></center>
@@ -312,11 +329,7 @@
                     </div>
                     </div>
                     </div>
-                  </div>
-                     <div class="position-relative">  
-                     
-                      
-                  </div>
+                  </div>                     
                 </div>   
               </div>   
         </section>      

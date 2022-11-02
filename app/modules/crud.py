@@ -2,6 +2,8 @@
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
+from firebase_admin import auth
+from flask import render_template
 import pyrebase
 ##########################################
 cred = credentials.Certificate("app/config/generacion-xxi-firebase-adminsdk-iwq0c-bc2e550415.json")
@@ -77,7 +79,7 @@ def updateStudentData(email, data):
 
 def deleteStudent(email):
     ref = db.reference('Estudiantes')
-    ref.child(email.replace('.', '')).delete()
+    ref.child(email.replace('.', '')).delete()   
 
 def createNewStudent(email):
     ref = db.reference('Estudiantes')
@@ -91,7 +93,7 @@ def getStudentsData():
     data = getAllStudents()
     keys = list(data.keys())
     email = [data[i]['Correo corporativo'] for i in keys]
-    cantidad = len(keys)
+    cantidad = len(keys)    
     return keys, email, cantidad
 
 def addRequest(req):
@@ -111,13 +113,13 @@ def getStudenKeys():
     return list
 
 def getImagesURL(emails):
-    links=[]
+    foto=[]
     for i in range(len(emails)):
-        links.append(storage.child("profile_pictures/"+str(emails[i])).get_url(None))
-    if len(links) == 1:
-        return links[0]
+        foto.append(storage.child("profile_pictures/"+str(emails[i])).get_url(None))
+    if len(foto) == 1:
+        return foto[0]
     else:
-        return links
+        return foto
 
 def uploadProfileImage(path, image):
     storage.child("profile_pictures/" + path).put(image)

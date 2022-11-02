@@ -19,11 +19,11 @@ config = {
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 
-def infopract():
+def info():
     if (request.method == 'POST'):
         ruta = request.form ["ruta"]
         if ruta == "infopract":
-            putos = 'infopract.html'
+            putos = 'admin.html'
             user = crud.getAllStudents()
             [keys, emails, cantidad] = crud.getStudentsData()
             cuenta = crud.amountCards()
@@ -35,4 +35,4 @@ def infopract():
             if True:
                 return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
 
-    return render_template('infopract.html')    
+    return render_template('homeadmin.html')    

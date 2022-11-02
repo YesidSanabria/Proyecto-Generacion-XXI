@@ -56,7 +56,7 @@ def index():
             links = crud.getImagesURL([email])
         try:
 #--------------------INICIAR SESION---------------------------------                
-            auth.sign_in_with_email_and_password(email, password)
+            auth.sign_in_with_email_and_password(email, password)            
             #user_id = auth.get_account_info(user['idToken'])
             #session['usr'] = user_id
             #return render_template('formulario.html', user=user)

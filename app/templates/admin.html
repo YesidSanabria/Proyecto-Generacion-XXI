@@ -31,46 +31,60 @@
                     <div class="menu-bar">
                         <div class="menu">
                             <li class="search-box">
-                                <i class='bx bx-search icon'></i>
-                                <input type="text" placeholder="Search...">
+                              <i class="bx bx-search icon"></i>
+                              <input type="text" placeholder="Search..." />
                             </li>
-
+                  
                             <li class="nav-link">
-                                <i class='bx bxs-user icon'></i>
-                                <form action="/admin_view" method="post">
-                                    <button class="contenedor-btn-file bordeado" name="ruta" value="admin">
-                                        <span class="btn-file"> Practicantes</span>
-                                    </button>
-                                </form>
+                              
+                              <form action="/admin_view" method="post">
+                                
+                                <button              
+                                  class="contenedor-btn-file bordeado"
+                                  name="ruta"
+                                  value="admin"
+                                >
+                                <div class="ul">
+                                  <i class="bx bxs-user icon"></i>
+                                  <span class="btn-file"> Practicantes</span>
+                                </div>
+                                </button>
+                              
+                              </form>
                             </li>
-    
+                  
                             <li class="nav-link">
-                                <i class='bx bx-bell icon'></i>
-                                    <form action="/admin_view" method="post">
-                                        <button class="contenedor-btn-file bordeado" name="ruta" value="notif">
-                                            <span class="btn-file">Notificaciones</span>
-                                        </button>
-                                    </form>
+                              
+                              <form action="/admin_view" method="post">
+                                <button class="contenedor-btn-file bordeado" name="ruta" value="notif">
+                                  <div class="ul">
+                                    <i class="bx bx-bell icon"></i>
+                                  <span class="btn-file">Notificaciones</span>
+                                  </div>
+                                </button>
+                              </form>
                             </li>
-        
+                  
                             <li class="nav-link">
-                                <i class='bx bx-pie-chart-alt icon' ></i>
-                                    <form action="/admin_view" method="post">
-                                        <button class="contenedor-btn-file bordeado" name="ruta" value="reportes">
-                                            <span class="btn-file">Reportes</span>
-                                        </button>
-                                    </form>
-                            </li>   
-                        </div>
+                              
+                              <form action="/admin_view" method="post">
+                                <button class="contenedor-btn-file bordeado" name="ruta" value="reportes">
+                                  <div class="ul">
+                                    <i align="left" class="bx bx-pie-chart-alt icon"></i>
+                                  <span class="btn-file">Reportes</span>
+                                  </div>
+                                </button>
+                              </form>
+                            </li>
+                          </div>
         
                         <div class="bottom-content">
-                            <li class="">
+                            <li class="a">
                                 <a href="/index">
                                     <i class='bx bx-log-out icon' ></i>
-                                        <span class="text nav-text">Logout</span>
+                                    <span class="text nav-text">Logout</span>
                                 </a>
-                            </li>
-        
+                            </li>        
                             <li class="mode">
                                 <div class="sun-moon">
                                     <i class='bx bx-moon icon moon'></i>
@@ -126,6 +140,7 @@
                                                                 <tr>                                                                                                                                 
                                                                     <form action="/admin_view" method="post">
                                                                         <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
+                                                                        <input type="hidden" value="{{usuario[keys[j+4*i]]['Correo corporativo']}}" name="foto">
                                                                         <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
                                                                             Perfil
                                                                         </button>
@@ -166,6 +181,7 @@
                                                                         <div>                                                                                                                                                                                                                              
                                                                             <form action="/admin_view" method="post">
                                                                                 <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
+                                                                                <input type="hidden" value="{{usuario[keys[j+4*i]]['Correo corporativo']}}" name="foto">
                                                                                 <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
                                                                                     Perfil
                                                                                 </button>
