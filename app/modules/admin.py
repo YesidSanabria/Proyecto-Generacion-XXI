@@ -40,6 +40,7 @@ def admin():
             putos = 'infopract.html'
             user = crud.getStudentInfo(request.form["yave"])
             foto = crud.getImagesURL([request.form["foto"]])
+            foto = crud.getImagesURL([request.form["foto"]])
             [keys, emails, cantidad] = crud.getStudentsData()
             cuenta = crud.amountCards()
             emails = [x.lower() for x in emails]
@@ -70,6 +71,8 @@ def admin():
 
             return render_template(putos, usuario=crud.getStudentInfo(editt))
     return render_template('admin.html')   
+
+
 
 
 def confirm():

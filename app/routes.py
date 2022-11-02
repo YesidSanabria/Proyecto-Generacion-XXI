@@ -25,14 +25,19 @@ mail = Mail()
 # --------------------------------------REGISTRO E INICIO DE SESION-------------------------------------
 
 @app.route('/')
-
-
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+    return render_template('home.html')
 
 @app.route('/index', methods=['GET', 'POST'])
 def index():     
     return lg.index()
 
 # ----------------------REGISTRARSE-----------------------------
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    return reg.register()
 
 @app.route('/create_account', methods=['GET', 'POST'])
 def create_account():
@@ -43,12 +48,6 @@ def create_account():
 @app.route('/forgot_password', methods=['GET', 'POST'])
 def forgot_password():
     return pw.forgot_password()
-
-############################ Pendientes de cambio ################################
-
-@app.route('/home', methods=['GET', 'POST'])
-def home():
-    return render_template('home.html')
 
 # --------------------------------------EVALUACION A PRACTICANTES-------------------------------------
 
@@ -108,8 +107,18 @@ def view_personal_data():
 def notif():
     return nt.notif()
 
+# ---------------------------------FAQ -------------------------------------
+
+
+@app.route('/faq', methods=['GET', 'POST'])
+def faq():
+    return render_template('faq.html')
+
+
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':
     mail.init_app(app)
     app.run(debug=True)
+
+
 
