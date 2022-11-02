@@ -235,13 +235,15 @@
                           </div>                        
                         </Head>                                                                                                  
                         <div class="ul">
-                          <div class="btnAdnim">
-                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 80%;">
-                            Editar
-                          </button>
+                          <div class="btnAdnim">                            
+                            <form action="admin_view" method="post">
+                              <input type="hidden" value="{{usuario['Correo corporativo']}}" name="editar">
+                              <button type="submit" class="btn btn-primary" style="width: 80%;" name="ruta" value="edit" >
+                                Editar
+                              </button>
+                            </form>
                         </div>                        
-                        <div class="btnAdnim">
-                          <!-- fooooormmmm emliminar -->                          
+                        <div class="btnAdnim">                                               
                           <button type="button" class="btn btn-warning" style="width: 80%;" data-bs-toggle="modal" data-bs-target="#eliminarDatos">
                             Eliminar
                           </button>                    
@@ -288,24 +290,7 @@
                           </div>
                         </div>
                         </div>                        
-                        <body>                        
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                      {{usuario}}
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                      <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </div>
-                              </div>
-                            </div>
+                        <body>                                                    
                         </body>                                               
                       </div>
                 

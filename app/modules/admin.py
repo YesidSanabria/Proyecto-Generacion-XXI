@@ -1,3 +1,4 @@
+from django.shortcuts import render
 import pyrebase
 from flask import render_template, request
 from firebase_admin import db
@@ -53,16 +54,21 @@ def admin():
             putos = 'homeadmin.html'         
             
             [keys, emails, cantidad] = crud.getStudentsData()
-            user = crud.deleteStudent(request.form["eliminar"])            
+            user = crud.deleteStudent(request.form["eliminar"])
+            foto = crud.getImagesURL([request.form["eliminar"]])            
             emails = [x.lower() for x in emails]
             req = crud.getRequests()
             links = crud.getImagesURL(emails)
 
-            if True:
-                print ("su ptm") 
-                return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad) 
-                          
-            
+            if True:                 
+                return render_template(putos, usuario=user, l=foto, req=req, keys=keys, cantidadDatos=cantidad) 
+
+        elif ruta =="edit":
+            putos = 'admformulario.html'
+            editt = request.form['editar']
+            # foto = crud.getImagesURL([request.form["foto"]])
+
+            return render_template(putos, usuario=crud.getStudentInfo(editt))
     return render_template('admin.html')   
 
 
@@ -80,4 +86,4 @@ def confirm():
         if True:
             return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
         
-    return render_template('homeadmin.html')   
+    return render_template('homeadmin.html')

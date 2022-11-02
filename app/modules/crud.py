@@ -39,20 +39,13 @@ def amountCards():
             for i in range(0,2):
                 for j in range(0,4):
                     cuenta=j+(4*i)
-                    arreglo = [i,j]
                     if j == 7:
-                        pasar = j 
-                    print (arreglo, cuenta)     
+                        pasar = j                     
         elif n ==1:
             for i in range(0,2):
                 for pasar in range(0,4):
-                    cuenta=pasar+(4*i)
-                    arreglo = [i,pasar]
-                    print (arreglo, cuenta)    
-
-
+                    cuenta=pasar+(4*i)                   
     return cuenta
-
 
 def getStudentInfo(email):
     ref = db.reference('Estudiantes')
@@ -63,13 +56,6 @@ def getAllStudents():
     ref = db.reference('Estudiantes')
     all = ref.get()
     return all
-
-def getCedulas():
-    ref = db.reference('Estudiantes')
-    snapshot = ref.order_by_child('Cedula').get()
-    for key in snapshot:
-        print(key)
-    
 
 def updateStudentData(email, data):
     ref = db.reference('Estudiantes')

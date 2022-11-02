@@ -45,6 +45,7 @@ def form ():
         correo_gerente = request.form['correo_gerente']
         regional = request.form['ciudad']
         correo_personal = request.form['correo_personal']
+        registro = request.form['registro']
 
         data = {"Nombres": nombre,
             "Apellidos": apellidos,
@@ -73,13 +74,27 @@ def form ():
         crud.updateStudentData(correo_corporativo, data)
         mensaje = 'Los datos han sido guardados satisfactoriamente.'
         links = crud.getImagesURL([correo_corporativo])
-        upload = request.files['upload']
+        try:
+            upload = request.files['upload']
+            if (upload.filename != ''):
+                crud.uploadProfileImage(userr, upload)
+                links = crud.getImagesURL([userr])
+                #print("1")
+        except:
+            upload = 3
         userr= request.form['userr']
         #print(upload.filename)
-        if (upload.filename != ''):
-            crud.uploadProfileImage(userr, upload)
-            links = crud.getImagesURL([userr])
-            #print("1")
-        return render_template('view_personal_data.html', usuario=crud.getStudentInfo(correo_corporativo), smessage=mensaje,l=links)
+        
 
+            
+        if (registro == 'estudiante'):
+            return render_template('view_personal_data.html', usuario=crud.getStudentInfo(correo_corporativo), smessage=mensaje,l=links)
+        else:
+
+            user = crud.getStudentInfo(request.form["userr"])
+            links = crud.getImagesURL([correo_corporativo])
+
+            return render_template('infopract.html', usuario=user, l=links)
+
+        
     return render_template('formulario.html')

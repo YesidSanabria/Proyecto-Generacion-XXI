@@ -87,6 +87,10 @@ def infopract():
 @app.route('/homeadmin', methods=['GET', 'POST'])
 def hadmin():
     return ad.confirm()
+
+@app.route('/formad', methods=['GET', 'POST'])
+def formad():
+    return ad.formad()
 # --------------------------------------FORMULARIO-------------------------------------
 
 @app.route('/formulario', methods=['GET', 'POST'])
