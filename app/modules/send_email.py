@@ -1,4 +1,5 @@
 import routes as rt
+from flask import render_template
 from flask_mail import Mail, Message
 
 def send_mail(email,codVer):
@@ -19,7 +20,7 @@ def send_mail(email,codVer):
     msg.body = 'Su codigo de verificación es: ' + codVer + "\n\n" + "Mensaje enviado de manera automática, no responder"
     mail.send(msg)
 
-def send_custom_email(email,link):
+def send_custom_email(email,link,correo):
     # mail = Mail()
     # https://myaccount.google.com/apppasswords
     #configuracion del obejto
@@ -33,6 +34,7 @@ def send_custom_email(email,link):
     #crea el objeto mail
     mail=Mail(rt.app)
                     
-    msg = Message("Restabler de contraseña",sender='sspg.xxi@gmail.com',recipients=[email])
-    msg.body = 'Link de restablecimiento de contraseña: ' + link + "\n\n"  + "Mensaje enviado de manera automática, no responder" 
+    msg = Message("Restablecer contraseña",sender='sspg.xxi@gmail.com',recipients=[email])
+    #msg.body = 'Link de restablecimiento de contraseña: ' +  "\n\n"  + "Mensaje enviado de manera automática, no responder" 
+    msg.html = render_template('correoFP.html', link=link,mail=correo)
     mail.send(msg)
