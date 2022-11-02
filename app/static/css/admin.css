@@ -106,12 +106,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-
-
-
-
-
-
 body{
     background-image: url("../img/fondoadmin.png");
 }
@@ -207,6 +201,28 @@ a:hover i{
   display: flex;
   width: 100%;
 }
+
+.card9{
+  width: 1px;
+  height: 25%;
+  margin: 10px;
+  text-align: center;
+  border-radius: 10px;
+ background-color: #04AA6D;
+}
+
+.users .card6{
+  width: 25%;
+  height: 25%;
+  margin: 10px;
+  background: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  position: fixed;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
 .users .card{
   width: 25%;
   margin: 10px;

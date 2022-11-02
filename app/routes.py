@@ -83,6 +83,9 @@ def admin_view():
 def infopract():
     return ad.admin()
 
+@app.route('/homeadmin', methods=['GET', 'POST'])
+def hadmin():
+    return ad.confirm()
 # --------------------------------------FORMULARIO-------------------------------------
 
 @app.route('/formulario', methods=['GET', 'POST'])
