@@ -1,7 +1,5 @@
-from django.shortcuts import render
 import pyrebase
 from flask import render_template, request
-from firebase_admin import db
 import modules.crud as crud
 
 
