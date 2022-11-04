@@ -18,7 +18,7 @@ import modules.notif as nt
 
 from flask_mail import Mail
 
-
+import modules.faq as fq
 app = Flask(__name__)
 mail = Mail()
 
@@ -108,7 +108,8 @@ def notif():
 
 @app.route('/faq', methods=['GET', 'POST'])
 def faq():
-    return render_template('faq.html')
+    question= fq.question
+    return render_template('faq.html', question=question)
 
 
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
