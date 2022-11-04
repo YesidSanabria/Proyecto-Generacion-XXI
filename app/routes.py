@@ -11,7 +11,7 @@ import modules.admin as ad
 import modules.form as fm
 import modules.profile as pf
 import modules.demand as dm
-
+import modules.faq as fq
 app = Flask(__name__)
 
 # --------------------------------------REGISTRO E INICIO DE SESION-------------------------------------
@@ -69,7 +69,8 @@ def view_personal_data():
 
 @app.route('/faq', methods=['GET', 'POST'])
 def faq():
-    return render_template('faq.html')
+    question= fq.question
+    return render_template('faq.html', question=question)
 
 
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
