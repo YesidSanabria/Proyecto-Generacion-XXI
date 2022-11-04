@@ -131,18 +131,75 @@
                     <div class="cuerpo">
                       <div class="card3">
                         <div class="ul">
-                          <button type="button"><img src="{{url_for ('static', filename = './img/flecha.png')}}"height ="30" width="45" /></button>                                                 
+                          <form action="/admin_view" method="post">
+                          <button type="submit" name="ruta" value="admin"><img src="{{url_for ('static', filename = './img/flecha.png')}}"height ="30" width="45" /></button>                                                 
+                          </form>
                           <div class="text logo-text">
                             <h2 class="fontp" style="color: #cf2f35;" align="left">Generación XXI</h2>
                           </div>
+                            <input type="hidden" value="{{usuario['Correo corporativo']}}" name="editar">
+                          <button type="button" class="btn-eval" data-bs-toggle="modal" data-bs-target="#evaluacionLider">
+                            Evaluaciones lider
+                          </button>
+
+                          <div class="modal fade" id="evaluacionLider" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Evaluaciones Lider</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    {% for key in ev.keys() %}
+                                    <div>
+                                      <b>Evaluación de {{ev[key]['Fecha']}}</b>
+                                      <center><hr width="95%"></center>
+                                      <div class="ul">
+                                      <b>Gerencia:</b> {{ev[key]['Pregunta1']}}
+                                    </div> 
+                                    <div class="ul">
+                                      <b>Cédula:</b> {{ev[key]['Pregunta2']}}
+                                    </div>
+                                    <div class="ul">
+                                      <b>Nombre completo (Líder):</b> {{ev[key]['Pregunta3']}}
+                                    </div>
+                                    <div class="ul">
+                                      <b>Nombre del practicante:</b> {{ev[key]['Pregunta4']}}
+                                    </div>
+                                    <div class="ul">
+                                      <b>Cumplimiento tareas asignadas:</b> {{ev[key]['Pregunta5']}}
+                                    </div>
+                                    <div class="ul">
+                                      <b>Buena actitud:</b> {{ev[key]['Pregunta6']}}
+                                    </div>
+                                    <div class="ul">
+                                      <b>Capacidad de proponer e innovar:</b> {{ev[key]['Pregunta7']}}
+                                    </div>
+                                    <div class="ul">
+                                      <b>Agilismo:</b> {{ev[key]['Pregunta8']}}
+                                    </div>
+                                    <div class="ul">
+                                      <b>Digital:</b> {{ev[key]['Pregunta9']}}
+                                    </div>
+                                    <div class="ul">
+                                      <b>Liderazgo:</b> {{ev[key]['Pregunta10']}}
+                                    </div>
+                                    <div class="ul">
+                                      <b>Observaciones:</b> {{ev[key]['Observaciones']}}
+                                    </div>  
+                                    <center><hr width="95%"></center>                                
+                                    </div>
+                                    {% endfor %}                                 
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+
                           <button type="button" class="btn-eval" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Evaluación
+                            Evaluaciones Docente
                           </button>
                           <button type="button" class="btn-eval" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Evaluación
-                          </button>
-                          <button type="button" class="btn-eval" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Evaluación
+                            Autoevaluación
                           </button>
                         </div>
                         <center><hr width="95%"></center>
@@ -256,7 +313,7 @@
                                   </div>
                                   <div class="modal-body">
                                     <div>
-                                      <b>¿Esta seguto que desea eliminar a este usuario?</b>
+                                      <b>¿Esta seguro que desea eliminar a este usuario?</b>
                                       <center><hr width="95%"></center>
                                       <div class="ul">
                                       <b>Correo :</b> {{usuario["Correo corporativo"]}}

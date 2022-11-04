@@ -1,7 +1,7 @@
-from doctest import register_optionflag
 import pyrebase
 from flask import render_template, request
 import modules.crud as crud
+import modules.evaluation as ev
 
 config = {
     "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
@@ -90,11 +90,10 @@ def form ():
         if (registro == 'estudiante'):
             return render_template('view_personal_data.html', usuario=crud.getStudentInfo(correo_corporativo), smessage=mensaje,l=links)
         else:
-
             user = crud.getStudentInfo(request.form["userr"])
             links = crud.getImagesURL([correo_corporativo])
-
-            return render_template('infopract.html', usuario=user, l=links)
-
-        
+            ev = crud.getEvaluationResults(correo_corporativo, 'lider')
+            if ev == None:
+                ev = {'': ''}  
+            return render_template('infopract.html', usuario=user, l=links, ev=ev)
     return render_template('formulario.html')

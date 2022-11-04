@@ -2,6 +2,7 @@ from flask import render_template, request
 import random
 import modules.send_email as mail
 import modules.crud as crud
+from datetime import date
 
 # Funciones
 
@@ -36,3 +37,16 @@ def evaluation():
             message = 'El correo ingresado no corresponde con el del ' + role + ' registrado por algún practicante'
             return render_template('evaluation.html', umessage=message)
     return render_template('evaluation.html')
+
+def boss_ev():
+    if request.method == 'POST':
+        evaluation = {}
+        for i in range(1,11):
+            evaluation['Pregunta' + str(i)] = request.form['p' + str(i)]
+        evaluation['Observaciones'] = request.form['obs']
+        evaluation['Fecha'] = str(date.today())
+        email = request.form['user']
+        crud.saveNewEvaluation(email, 'lider', evaluation)
+        message = 'Estudiante evaluado con éxito'
+        return render_template('evaluation.html', smessage=message)
+    return render_template('boss_ev.html')
