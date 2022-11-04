@@ -38,26 +38,21 @@ def orderOptions(email):
 
 def view_personal_data():
     if (request.method == 'POST'):
+        ruta = request.form ["ruta"]
+        if ruta == "pract":
+            user = crud.getStudentInfo(request.form["practic"])
+            links = crud.getImagesURL([request.form["practic"]])
+            try:
+                opciones = orderOptions(user)
+            except:
+                opciones = crud.options
+            return render_template('view_personal_data.html', usuario=user, opcion=opciones,l=links)
+        elif ruta == "actu":
+            putos = 'formulario.html'
+            options = crud.options          
+            user = crud.getStudentInfo(request.form['actuali'])
+            links = crud.getImagesURL([request.form["actuali"]])
+            return render_template(putos, usuario= user, opcion=options, l=links)
 
-        # upload = request.files['upload']
-        # userr= request.form['userr']
-        # storage.child("profile_pictures/" + userr).put(upload)
-        #  #if True:
-        # links = storage.child("profile_pictures/"+userr).get_url(None)
-        # print(links)
-        email = request.form['email']
-        links = storage.child("profile_pictures/"+email).get_url(None)
-        # return render_template('view_personal_data.html',l=links,usuario=crud.getStudentInfo(email))
-    
-        #options = crud.options
-    
-        #return render_template('formulario.html', usuario=crud.getStudentInfo(email), opcion=options)
-                                      
-        user = crud.getStudentInfo(email)
-        try:
-            opciones = orderOptions(email)
-        except:
-            opciones = crud.options
-        return render_template('formulario.html', usuario=user, opcion=opciones,l=links)
     
     return render_template('view_personal_data.html')
