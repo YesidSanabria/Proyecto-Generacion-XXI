@@ -38,7 +38,7 @@ def admin():
 
         elif ruta == "infopract":
             putos = 'infopract.html'
-            user = crud.getStudentInfo(request.form["yave"])
+            user = crud.getStudentInfo(request.form["yave"])            
             foto = crud.getImagesURL([request.form["foto"]])
             ev = crud.getEvaluationResults(request.form['yave'], 'lider')
             if ev == None:

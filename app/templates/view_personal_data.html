@@ -42,8 +42,9 @@
 
                         <li class="nav-link">
                             <i class='bx bxs-user icon'></i>
-                            <form action="/admin_view" method="post">
-                                <button class="contenedor-btn-file bordeado" name="ruta" value="admin">
+                            <form action="/view_personal_data" method="post">
+                                <input type="hidden" value="{{usuario['Correo corporativo']}}" name="practic">
+                                <button class="contenedor-btn-file bordeado" name="ruta" value="pract">
                                     <span class="btn-file"> Perfil</span>
                                 </button>
                             </form>
@@ -51,8 +52,9 @@
 
                         <li class="nav-link">
                             <i class='bx bx-bell icon'></i>
-                                <form action="/admin_view" method="post">
-                                    <button class="contenedor-btn-file bordeado" name="ruta" value="notif">
+                                <form action="/view_personal_data" method="post">
+                                    <input type="hidden" value="{{usuario['Correo corporativo']}}" name="actuali">
+                                    <button class="contenedor-btn-file bordeado" name="ruta" value="actu">
                                         <span class="btn-file">Actualizar Perfil</span>
                                     </button>
                                 </form>
