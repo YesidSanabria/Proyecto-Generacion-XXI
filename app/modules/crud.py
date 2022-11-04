@@ -47,6 +47,8 @@ def amountCards():
                     cuenta=pasar+(4*i)                   
     return cuenta
 
+# DATOS DE LOS ESTUDIANTES
+
 def getStudentInfo(email):
     ref = db.reference('Estudiantes')
     user = ref.child(email.replace('.', '')).get()
@@ -82,6 +84,8 @@ def getStudentsData():
     cantidad = len(keys)    
     return keys, email, cantidad
 
+# SOLICITUDES DE PRACTICANTES
+
 def addRequest(req):
     ref = db.reference('Solicitudes')
     ref.push(req)
@@ -90,13 +94,7 @@ def getRequests():
     ref = db.reference('Solicitudes')
     return ref.get()
 
-def getStudenKeys():
-    ref = db.reference('Estudiantes')
-    data = ref.get()
-    list = []
-    for key in data.keys():
-        list.append(key)
-    return list
+# FOTOS DE PERFIL
 
 def getImagesURL(emails):
     foto=[]
@@ -109,3 +107,17 @@ def getImagesURL(emails):
 
 def uploadProfileImage(path, image):
     storage.child("profile_pictures/" + path).put(image)
+
+# EVALUACIONES
+
+def saveNewEvaluation(email, role, data):
+    table = db.reference('Evaluaciones')
+    id = table.child(email.replace('.', ''))
+    role = id.child(role)
+    role.push(data)
+
+def getEvaluationResults(email, role):
+    table = db.reference('Evaluaciones')
+    id = table.child(email.replace('.', ''))
+    role = id.child(role)
+    return role.get()

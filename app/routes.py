@@ -61,7 +61,7 @@ def confirm():
 
 @app.route('/boss_ev', methods=['GET', 'POST'])
 def boss_ev():
-    return render_template('boss_ev.html')
+    return ev.boss_ev()
 
 @app.route('/teacher_ev', methods=['GET', 'POST'])
 def teacher_ev():
@@ -77,10 +77,6 @@ def solicitudes():
 
 @app.route('/admin_view', methods=['GET', 'POST'])
 def admin_view():
-    return ad.admin()
-
-@app.route('/infopract', methods=['GET', 'POST'])
-def infopract():
     return ad.admin()
 
 @app.route('/homeadmin', methods=['GET', 'POST'])

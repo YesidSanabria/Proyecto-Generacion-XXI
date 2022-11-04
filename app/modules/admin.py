@@ -40,16 +40,10 @@ def admin():
             putos = 'infopract.html'
             user = crud.getStudentInfo(request.form["yave"])
             foto = crud.getImagesURL([request.form["foto"]])
-            foto = crud.getImagesURL([request.form["foto"]])
-            [keys, emails, cantidad] = crud.getStudentsData()
-            cuenta = crud.amountCards()
-            emails = [x.lower() for x in emails]
-            req = crud.getRequests()
-             #arreglo con los campos de imagenes de cada persona            
-
-            if True:
-                
-                return render_template(putos, usuario=user, l=foto)
+            ev = crud.getEvaluationResults(request.form['yave'], 'lider')
+            if ev == None:
+                ev = {'': ''}
+            return render_template(putos, usuario=user, l=foto, ev=ev)
 
         elif ruta == "elim":
             putos = 'homeadmin.html'         
@@ -60,9 +54,8 @@ def admin():
             emails = [x.lower() for x in emails]
             req = crud.getRequests()
             links = crud.getImagesURL(emails)
-
-            if True:                 
-                return render_template(putos, usuario=user, l=foto, req=req, keys=keys, cantidadDatos=cantidad) 
+                         
+            return render_template(putos, usuario=user, l=foto, req=req, keys=keys, cantidadDatos=cantidad, ev=ev) 
 
         elif ruta =="edit":
             putos = 'admformulario.html'

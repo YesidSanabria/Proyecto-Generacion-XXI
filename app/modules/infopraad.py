@@ -22,7 +22,7 @@ auth = firebase.auth()
 def info():
     if (request.method == 'POST'):
         ruta = request.form ["ruta"]
-        if ruta == "infopract":
+        if ruta == "admin":
             putos = 'admin.html'
             user = crud.getAllStudents()
             [keys, emails, cantidad] = crud.getStudentsData()
