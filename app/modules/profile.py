@@ -40,8 +40,10 @@ def view_personal_data():
     if (request.method == 'POST'):
         ruta = request.form ["ruta"]
         if ruta == "pract":
-            user = crud.getStudentInfo(request.form["practic"])
-            links = crud.getImagesURL([request.form["practic"]])
+            user = crud.getStudentInfo(request.form["email"])
+            links = crud.getImagesURL([request.form["email"]])
+            cedula = str(request.form ["cedula"])
+            storage.child("development_plan/" + "plan_desarrollo_" + cedula + ".pdf").download(r"/","plan_desarrollo_" + cedula + ".pdf")
             try:
                 opciones = orderOptions(user)
             except:

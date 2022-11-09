@@ -291,6 +291,7 @@
                           <div class="btnAdnim">                            
                             <form action="admin_view" method="post">
                               <input type="hidden" value="{{usuario['Correo corporativo']}}" name="editar">
+                              <input type="hidden" value="{{y}}" name="yavee">
                               <button type="submit" class="btn btn-primary" style="width: 80%;" name="ruta" value="edit" >
                                 Editar
                               </button>
@@ -361,7 +362,23 @@
                                 <p>{{usuario['Celular personal']}}</p>
                               </div>
                       </center>  
+                      <br>
+                      <center><div class="card5">
+                        <form method="post" action="/admin_view" enctype="multipart/form-data">
+                          <label for="file">Seleccione el plan de desarrollo</label>
+                          <input type="hidden" name="ruta" value="infopract1">
+                          <input type="hidden" name="user" value={{usuario}}>
+                          <input type="hidden" name="foto" value={{l}}>
+                          <input type="hidden" name="yavee" value={{y}}>
+                          <input name="file_plan" id="fileId" type="file" accept=".pdf,.PDF,.Pdf">
+                          <button type="submit" class="btn btn-primary" style="width: 80%;" name="plandesa" value={{usuario['Cedula']}} >
+                            subir
+                          </button>
+                        </form>
                       </div>
+                      </center>
+                      </div>
+
                       <div style="position: static;">
                       <center><img src = "{{url_for ('static', filename = './img/claro plano palabra blanco.png')}}" width = "130" height = "45" alt = "su imagen fue secuestrada por un alienígena ～～ "style = "position: relative; top: 80px; left: 100px;" /></center>
                     </div>

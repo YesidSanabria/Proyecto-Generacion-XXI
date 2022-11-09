@@ -121,3 +121,7 @@ def getEvaluationResults(email, role):
     id = table.child(email.replace('.', ''))
     role = id.child(role)
     return role.get()
+
+#PDF plan de desarrollo
+def uploadDevelopmentPlan(path, pdf):
+    storage.child("development_plan/" + "plan_desarrollo_" + path + ".pdf").put(pdf)
