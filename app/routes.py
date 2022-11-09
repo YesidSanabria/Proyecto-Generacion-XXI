@@ -13,7 +13,6 @@ import modules.profile as pf
 import modules.demand as dm
 import modules.evaluation as ev
 import modules.confirm as cf
-import modules.infopraad as ip
 import modules.notif as nt
 
 from flask_mail import Mail
@@ -105,17 +104,12 @@ def notif():
 
 # ---------------------------------FAQ -------------------------------------
 
-
 @app.route('/faq', methods=['GET', 'POST'])
 def faq():
     question= fq.question
     return render_template('faq.html', question=question)
 
-
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':
     mail.init_app(app)
     app.run(debug=True)
-
-
-

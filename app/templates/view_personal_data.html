@@ -41,21 +41,25 @@
                         </li>
 
                         <li class="nav-link">
-                            <i class='bx bxs-user icon'></i>
                             <form action="/view_personal_data" method="post">
                                 <input type="hidden" value="{{usuario['Correo corporativo']}}" name="practic">
                                 <button class="contenedor-btn-file bordeado" name="ruta" value="pract">
+                                <div class="ul">
+                                    <i class='bx bxs-user icon'></i>
                                     <span class="btn-file"> Perfil</span>
+                                </div>
                                 </button>
                             </form>
                         </li>
 
                         <li class="nav-link">
-                            <i class='bx bx-bell icon'></i>
                                 <form action="/view_personal_data" method="post">
                                     <input type="hidden" value="{{usuario['Correo corporativo']}}" name="actuali">
                                     <button class="contenedor-btn-file bordeado" name="ruta" value="actu">
+                                    <div class="ul">
+                                        <i class='bx bx-bell icon'></i>
                                         <span class="btn-file">Actualizar Perfil</span>
+                                    </div>
                                     </button>
                                 </form>
                         </li>
