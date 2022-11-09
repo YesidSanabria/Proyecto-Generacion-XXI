@@ -48,7 +48,10 @@ def admin():
             
             [keys, emails, cantidad] = crud.getStudentsData()
             user = crud.deleteStudent(request.form["eliminar"])
-            foto = crud.getImagesURL([request.form["eliminar"]])            
+            foto = crud.getImagesURL([request.form["eliminar"]])
+            ev = crud.getEvaluationResults(request.form['eliminar'], 'lider')
+            if ev == None:
+                ev = {'': ''}         
             emails = [x.lower() for x in emails]
             req = crud.getRequests()
             links = crud.getImagesURL(emails)
