@@ -28,8 +28,10 @@ def index():
     if (request.method == 'POST'):
         email = request.form['name']
         password = request.form['password']
+        
         #######################################
         user = crud.getStudentInfo(email)
+        file = crud.urlDevelopmentPlan(user['Cedula']) 
         options = crud.options
         # Inicialización de parámetros.
         req = ''
@@ -60,7 +62,7 @@ def index():
             #user_id = auth.get_account_info(user['idToken'])
             #session['usr'] = user_id
             #return render_template('formulario.html', user=user)
-            return render_template(putos, usuario=user, opcion=options, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
+            return render_template(putos, usuario=user, opcion=options, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta, file=file)
             
         except:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'

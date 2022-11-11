@@ -1,5 +1,5 @@
 import pyrebase
-from flask import render_template, request
+from flask import render_template, request, send_file
 import modules.crud as crud
 
 
@@ -42,13 +42,12 @@ def view_personal_data():
         if ruta == "pract":
             user = crud.getStudentInfo(request.form["email"])
             links = crud.getImagesURL([request.form["email"]])
-            cedula = str(request.form ["cedula"])
-            storage.child("development_plan/" + "plan_desarrollo_" + cedula + ".pdf").download(r"/","plan_desarrollo_" + cedula + ".pdf")
+            file = crud.urlDevelopmentPlan(user['Cedula'])
             try:
                 opciones = orderOptions(user)
             except:
                 opciones = crud.options
-            return render_template('view_personal_data.html', usuario=user, opcion=opciones,l=links)
+            return render_template('view_personal_data.html', usuario=user, opcion=opciones,l=links,file=file)
         elif ruta == "actu":
             putos = 'formulario.html'
             options = crud.options          
@@ -58,3 +57,9 @@ def view_personal_data():
 
     
     return render_template('view_personal_data.html')
+
+def download_file():
+    if (request.method == 'POST'):
+        cedula = request.form ["cedula"]
+        return crud.downloadDevelopmentPlan(cedula)
+    

@@ -134,7 +134,7 @@
                                 </center>
 
                                 <center>
-                                    <form action="/view_personal_data" method="post">
+                    
                                     <br>
                                     <br>
                                     <br>
@@ -280,11 +280,15 @@
                                             <input id="email" name="ruta" type="hidden" value="pract">
                                             <input id="email" name="cedula" type="hidden" value="{{usuario['Cedula']}}">
                                             <br>
-                                            <button class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #FAC401; color: white;" type="submit" name="email" value="{{usuario['Correo corporativo']}}">Actualizar datos</button>
+                                            
+                                            <button class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #FAC401; color: white;" type="button" name="email" value="{{usuario['Correo corporativo']}}">
+                                                 <a href={{file}} target=_blank>descargar plan de desarrollo</a>
+                                            </button>
+                                            
                                             <br>
                                         </div>
                                     </div>
-                                    </form>
+                                    
                                 </center>
                             </div>
                         </div>
