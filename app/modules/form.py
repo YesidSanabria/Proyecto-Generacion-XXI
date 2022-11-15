@@ -89,7 +89,9 @@ def form ():
 
             
         if (registro == 'estudiante'):
-            return render_template('view_personal_data.html', usuario=crud.getStudentInfo(correo_corporativo), smessage=mensaje,l=links)
+            user = crud.getStudentInfo(request.form["userr"])
+            file = crud.urlDevelopmentPlan(user['Cedula'])
+            return render_template('view_personal_data.html', usuario=crud.getStudentInfo(correo_corporativo), smessage=mensaje,l=links,file=file)
         else:
             user = crud.getStudentInfo(request.form["userr"])
             links = crud.getImagesURL([correo_corporativo])
