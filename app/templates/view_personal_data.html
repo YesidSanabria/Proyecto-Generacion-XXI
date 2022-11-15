@@ -41,41 +41,49 @@
                         </li>
 
                         <li class="nav-link">
-                            <i class='bx bxs-user icon'></i>
                             <form action="/view_personal_data" method="post">
                                 <input type="hidden" value="{{usuario['Correo corporativo']}}" name="practic">
                                 <input type="hidden" value="{{usuario['Correo corporativo']}}" name="email">
                                 <button class="contenedor-btn-file bordeado" name="ruta" value="pract">
+                                    <div class="ul">
+                                    <i align="left" class='bx bxs-user icon'></i>
                                     <span class="btn-file"> Perfil</span>
+                                    </div>
                                 </button>
                             </form>
                         </li>
 
                         <li class="nav-link">
-                            <i class='bx bx-bell icon'></i>
                                 <form action="/view_personal_data" method="post">
                                     <input type="hidden" value="{{usuario['Correo corporativo']}}" name="actuali">
                                     <input type="hidden" value="{{usuario['Correo corporativo']}}" name="email">
                                     <button class="contenedor-btn-file bordeado" name="ruta" value="actu">
+                                        <div class="ul">
+                                        <i class='bx bx-bell icon'></i>
                                         <span class="btn-file">Actualizar Perfil</span>
+                                        </div>
                                     </button>
                                 </form>
                         </li>
     
                         <li class="nav-link">
-                            <i class='bx bx-pie-chart-alt icon' ></i>
                                 <form action="/admin_view" method="post">
                                     <button class="contenedor-btn-file bordeado" name="ruta" value="reportes">
+                                        <div class="ul">
+                                        <i class='bx bx-pie-chart-alt icon' ></i>
                                         <span class="btn-file">Autoevaluación</span>
+                                        </div>
                                     </button>
                                 </form>
                         </li>
                         
                         <li class="nav-link">
-                            <i class='bx bx-pie-chart-alt icon' ></i>
                                 <form action="/admin_view" method="post">
                                     <button class="contenedor-btn-file bordeado" name="ruta" value="reportes">
+                                        <div class="ul">
+                                        <i class='bx bx-pie-chart-alt icon' ></i>
                                         <span class="btn-file">FAQ</span>
+                                        </div>
                                     </button>
                                 </form>
                         </li>
