@@ -75,6 +75,7 @@ def form ():
         crud.updateStudentData(correo_corporativo, data)
         mensaje = 'Los datos han sido guardados satisfactoriamente.'
         links = crud.getImagesURL([correo_corporativo])
+        userr= request.form['userr']
         try:
             upload = request.files['upload']
             if (upload.filename != ''):
@@ -83,7 +84,6 @@ def form ():
                 #print("1")
         except:
             upload = 3
-        userr= request.form['userr']
         #print(upload.filename)
         
 
