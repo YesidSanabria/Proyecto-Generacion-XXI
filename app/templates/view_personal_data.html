@@ -44,6 +44,7 @@
                             <i class='bx bxs-user icon'></i>
                             <form action="/view_personal_data" method="post">
                                 <input type="hidden" value="{{usuario['Correo corporativo']}}" name="practic">
+                                <input type="hidden" value="{{usuario['Correo corporativo']}}" name="email">
                                 <button class="contenedor-btn-file bordeado" name="ruta" value="pract">
                                     <span class="btn-file"> Perfil</span>
                                 </button>
@@ -54,6 +55,7 @@
                             <i class='bx bx-bell icon'></i>
                                 <form action="/view_personal_data" method="post">
                                     <input type="hidden" value="{{usuario['Correo corporativo']}}" name="actuali">
+                                    <input type="hidden" value="{{usuario['Correo corporativo']}}" name="email">
                                     <button class="contenedor-btn-file bordeado" name="ruta" value="actu">
                                         <span class="btn-file">Actualizar Perfil</span>
                                     </button>
