@@ -30,8 +30,7 @@ def index():
         password = request.form['password']
         
         #######################################
-        user = crud.getStudentInfo(email)
-        file = crud.urlDevelopmentPlan(user['Cedula']) 
+        user = crud.getStudentInfo(email) 
         options = crud.options
         # Inicialización de parámetros.
         req = ''
@@ -39,6 +38,7 @@ def index():
         emails = ''
         keys =''
         cuenta = ''
+        file = ''
         #######################################
         if (admin == email):
             putos = 'admin.html'
@@ -55,6 +55,7 @@ def index():
             links = crud.getImagesURL([email])
         else:
             putos = 'view_personal_data.html'
+            file = crud.urlDevelopmentPlan(user['Cedula'])
             links = crud.getImagesURL([email])
         try:
 #--------------------INICIAR SESION---------------------------------                
