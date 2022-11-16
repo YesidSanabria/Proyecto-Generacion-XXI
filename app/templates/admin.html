@@ -32,10 +32,10 @@
                         <div class="menu">
                             <li class="search-box">
                             <form action="/admin_view" method="post">
-                            <button style="background-color: #F6F5FF;">
+                            <button type="submit" style="background-color: #F6F5FF;" name="ruta" value="search">
                               <i class="bx bx-search icon"></i>
                             </button>
-                              <input type="text" placeholder="Buscar..." />
+                            <input type="text" name="buscar" placeholder="Buscar..." />
                             </form>
                             </li>
                   
@@ -114,6 +114,8 @@
                                         {% for i in range(0,2) -%}                                            
                                             <div class="users">
                                                 {% for j in range(0,4) -%}
+                                                    {% if (j+4*i) > cantidadDatos %}
+                                                    {% else %}
                                                     <div class="card">
                                                             <center><div class="cardc"><img src={{l[j+4*i]}}></div></center>
                                                             <!-- <p> {{j+4*i}}</p>
@@ -142,6 +144,7 @@
                                                         </div>                                                        
                                                     </div>
                                                     <br>
+                                                    {% endif %}
                                                 {% endfor -%}
                                             </div>
                                         {% endfor -%}
