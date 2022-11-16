@@ -41,39 +41,49 @@
                         </li>
 
                         <li class="nav-link">
-                            <i class='bx bxs-user icon'></i>
                             <form action="/view_personal_data" method="post">
                                 <input type="hidden" value="{{usuario['Correo corporativo']}}" name="practic">
+                                <input type="hidden" value="{{usuario['Correo corporativo']}}" name="email">
                                 <button class="contenedor-btn-file bordeado" name="ruta" value="pract">
+                                    <div class="ul">
+                                    <i align="left" class='bx bxs-user icon'></i>
                                     <span class="btn-file"> Perfil</span>
+                                    </div>
                                 </button>
                             </form>
                         </li>
 
                         <li class="nav-link">
-                            <i class='bx bx-bell icon'></i>
                                 <form action="/view_personal_data" method="post">
                                     <input type="hidden" value="{{usuario['Correo corporativo']}}" name="actuali">
+                                    <input type="hidden" value="{{usuario['Correo corporativo']}}" name="email">
                                     <button class="contenedor-btn-file bordeado" name="ruta" value="actu">
+                                        <div class="ul">
+                                        <i class='bx bx-bell icon'></i>
                                         <span class="btn-file">Actualizar Perfil</span>
+                                        </div>
                                     </button>
                                 </form>
                         </li>
     
                         <li class="nav-link">
-                            <i class='bx bx-pie-chart-alt icon' ></i>
                                 <form action="/admin_view" method="post">
                                     <button class="contenedor-btn-file bordeado" name="ruta" value="reportes">
+                                        <div class="ul">
+                                        <i class='bx bx-pie-chart-alt icon' ></i>
                                         <span class="btn-file">Autoevaluación</span>
+                                        </div>
                                     </button>
                                 </form>
                         </li>
                         
                         <li class="nav-link">
-                            <i class='bx bx-pie-chart-alt icon' ></i>
                                 <form action="/admin_view" method="post">
                                     <button class="contenedor-btn-file bordeado" name="ruta" value="reportes">
+                                        <div class="ul">
+                                        <i class='bx bx-pie-chart-alt icon' ></i>
                                         <span class="btn-file">FAQ</span>
+                                        </div>
                                     </button>
                                 </form>
                         </li>
@@ -134,7 +144,7 @@
                                 </center>
 
                                 <center>
-                                    <form action="/view_personal_data" method="post">
+                    
                                     <br>
                                     <br>
                                     <br>
@@ -277,13 +287,18 @@
                             
                                         <div class="col-sm">
                                             <br>
-                                            <input id="email" name="email" type="hidden" value="{{usuario['Correo corporativo']}}">
+                                            <input id="email" name="ruta" type="hidden" value="pract">
+                                            <input id="email" name="cedula" type="hidden" value="{{usuario['Cedula']}}">
                                             <br>
-                                            <button class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #FAC401; color: white;" type="submit" name="email" value="{{usuario['Correo corporativo']}}">Actualizar datos</button>
+                                            
+                                            <button class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #FFFCFC; color: white;" type="button" name="email" value="{{usuario['Correo corporativo']}}">
+                                                 <a href={{file}} target=_blank>descargar plan de desarrollo</a>
+                                            </button>
+                                            
                                             <br>
                                         </div>
                                     </div>
-                                    </form>
+                                    
                                 </center>
                             </div>
                         </div>
