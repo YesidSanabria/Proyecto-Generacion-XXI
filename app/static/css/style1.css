@@ -485,4 +485,14 @@ body.dark .home .text{
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
   }
 
+ .syinput{
+  width: 50%;
+  font-size: 15px;
+  color: rgb(0, 0, 0);
+  opacity: 90%;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #ffffff;
+ }
+
  
