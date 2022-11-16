@@ -1,6 +1,7 @@
 import pyrebase
-from flask import render_template, request
+from flask import render_template, request, session
 import modules.crud as crud
+import modules.login as lg
 
 
 
@@ -40,19 +41,34 @@ def view_personal_data():
     if (request.method == 'POST'):
         ruta = request.form ["ruta"]
         if ruta == "pract":
-            user = crud.getStudentInfo(request.form["practic"])
-            links = crud.getImagesURL([request.form["practic"]])
+            user = crud.getStudentInfo(request.form["email"])
+            links = crud.getImagesURL([request.form["email"]])
+            file = crud.urlDevelopmentPlan(user['Cedula'])
             try:
                 opciones = orderOptions(user)
             except:
                 opciones = crud.options
-            return render_template('view_personal_data.html', usuario=user, opcion=opciones,l=links)
+            if request.form['actuali'] in session["username"]:
+                return render_template('view_personal_data.html', usuario=user, opcion=opciones,l=links,file=file)
+            else: 
+                return "inicie sesion"
         elif ruta == "actu":
             putos = 'formulario.html'
             options = crud.options          
             user = crud.getStudentInfo(request.form['actuali'])
             links = crud.getImagesURL([request.form["actuali"]])
-            return render_template(putos, usuario= user, opcion=options, l=links)
+            # print(request.form['actuali'])
+            # print(session["username"])
+            if request.form['actuali'] in session["username"]:
+                return render_template(putos, usuario= user, opcion=options, l=links)
+            else:
+                return "inicie sesion"
 
     
     return render_template('view_personal_data.html')
+
+def download_file():
+    if (request.method == 'POST'):
+        cedula = request.form ["cedula"]
+        return crud.downloadDevelopmentPlan(cedula)
+    

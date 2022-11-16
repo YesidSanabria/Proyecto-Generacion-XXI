@@ -19,6 +19,7 @@ from flask_mail import Mail
 
 import modules.faq as fq
 app = Flask(__name__)
+app.secret_key = 'esto-es-una-clave-muy-secreta'
 mail = Mail()
 
 # --------------------------------------REGISTRO E INICIO DE SESION-------------------------------------
@@ -107,6 +108,11 @@ def faq():
     question= fq.question
     return render_template('faq.html', question=question)
 
+#------------------------- DESCARGAR EL LAN DE DESARROLLO- -------------------
+@app.route('/download', methods=['GET', 'POST'])
+def download_file():
+    return pf.download_file()
+    
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':
     mail.init_app(app)

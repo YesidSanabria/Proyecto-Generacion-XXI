@@ -1,5 +1,5 @@
 import pyrebase
-from flask import render_template, request, Flask
+from flask import render_template, request, Flask, session
 import modules.crud as crud
 
 
@@ -18,6 +18,7 @@ firebase = pyrebase.initialize_app(config)
 storage = firebase.storage() #linea del storage
 auth = firebase.auth()
 
+
 #storage.child("profile_pictures/new.jpeg").put(r"C:\Users\ic5705b\Documents\GitHub\Proyecto-Generacion-XXI\app\descarga.jpeg") #cargar imagenes al storage
 # storage.child("profile_pictures/new.jpeg").download(r"C:\Users\ic5705b\Documents\GitHub\Proyecto-Generacion-XXI\app","example.jpeg") #descargar las imagenes obtenidas del storage 
 # print(storage.child("profile_pictures/new.jpeg").get_url(None)) #Obtener la url de la ruta de las imagenes
@@ -28,8 +29,9 @@ def index():
     if (request.method == 'POST'):
         email = request.form['name']
         password = request.form['password']
+        
         #######################################
-        user = crud.getStudentInfo(email)
+        user = crud.getStudentInfo(email) 
         options = crud.options
         # Inicialización de parámetros.
         req = ''
@@ -37,6 +39,7 @@ def index():
         emails = ''
         keys =''
         cuenta = ''
+        file = ''
         #######################################
         if (admin == email):
             putos = 'admin.html'
@@ -53,14 +56,16 @@ def index():
             links = crud.getImagesURL([email])
         else:
             putos = 'view_personal_data.html'
+            file = crud.urlDevelopmentPlan(user['Cedula'])
             links = crud.getImagesURL([email])
         try:
 #--------------------INICIAR SESION---------------------------------                
             auth.sign_in_with_email_and_password(email, password)            
             #user_id = auth.get_account_info(user['idToken'])
-            #session['usr'] = user_id
+            session['username'] = email
+            print(session['username'])
             #return render_template('formulario.html', user=user)
-            return render_template(putos, usuario=user, opcion=options, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
+            return render_template(putos, usuario=user, opcion=options, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta, file=file)
             
         except:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'

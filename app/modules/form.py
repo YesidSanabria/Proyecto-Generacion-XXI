@@ -46,6 +46,7 @@ def form ():
         regional = request.form['ciudad']
         correo_personal = request.form['correo_personal']
         registro = request.form['registro']
+        
 
         data = {"Nombres": nombre,
             "Apellidos": apellidos,
@@ -88,12 +89,14 @@ def form ():
 
             
         if (registro == 'estudiante'):
-            return render_template('view_personal_data.html', usuario=crud.getStudentInfo(correo_corporativo), smessage=mensaje,l=links)
+            user = crud.getStudentInfo(request.form["userr"])
+            file = crud.urlDevelopmentPlan(user['Cedula'])
+            return render_template('view_personal_data.html', usuario=crud.getStudentInfo(correo_corporativo), smessage=mensaje,l=links,file=file)
         else:
             user = crud.getStudentInfo(request.form["userr"])
             links = crud.getImagesURL([correo_corporativo])
             ev = crud.getEvaluationResults(correo_corporativo, 'lider')
             if ev == None:
                 ev = {'': ''}  
-            return render_template('infopract.html', usuario=user, l=links, ev=ev)
+            return render_template('infopract.html', usuario=user, l=links, ev=ev, y=correo_corporativo)
     return render_template('formulario.html')
