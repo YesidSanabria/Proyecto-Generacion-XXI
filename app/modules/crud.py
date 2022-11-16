@@ -3,8 +3,9 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 from firebase_admin import auth
-from flask import render_template
+from flask import render_template, send_file
 import pyrebase
+import os
 ##########################################
 cred = credentials.Certificate("app/config/generacion-xxi-firebase-adminsdk-iwq0c-bc2e550415.json")
 firebase_admin.initialize_app(cred,{'databaseURL':'https://generacion-xxi-default-rtdb.firebaseio.com/'})
@@ -108,6 +109,9 @@ def getImagesURL(emails):
 def uploadProfileImage(path, image):
     storage.child("profile_pictures/" + path).put(image)
 
+def deleteProfileImage(path):
+    storage.child("profile_pictures/" + path, None)
+
 # EVALUACIONES
 
 def saveNewEvaluation(email, role, data):
@@ -121,3 +125,20 @@ def getEvaluationResults(email, role):
     id = table.child(email.replace('.', ''))
     role = id.child(role)
     return role.get()
+
+#PDF plan de desarrollo
+def uploadDevelopmentPlan(path, pdf):
+    storage.child("development_plan/" + "plan_desarrollo_" + path + ".pdf").put(pdf)
+    
+#eliminar archivos pland de desarrollo
+def deleteDevelopmentPlan(path):
+    storage.delete("development_plan/" + "plan_desarrollo_" + path + ".pdf", None)
+
+#descargar archivos del storage plan de desarrollo
+def downloadDevelopmentPlan(cedula):
+    storage.child("development_plan/" + "plan_desarrollo_" + cedula + ".pdf").download("/","app/pdfs/plan_desarrollo_" + cedula + ".pdf")
+    return send_file("pdfs/plan_desarrollo_" + cedula + ".pdf",as_attachment=True)
+
+def urlDevelopmentPlan(cedula):
+    archivo = storage.child("development_plan/" + "plan_desarrollo_" + cedula + ".pdf").get_url(None)
+    return archivo

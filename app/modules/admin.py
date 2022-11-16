@@ -36,19 +36,41 @@ def admin():
 
         elif ruta == "infopract":
             putos = 'infopract.html'
-            user = crud.getStudentInfo(request.form["yave"])            
+            yave = request.form["yave"]
+            user = crud.getStudentInfo(yave)            
             foto = crud.getImagesURL([request.form["foto"]])
             ev = crud.getEvaluationResults(request.form['yave'], 'lider')
             if ev == None:
                 ev = {'': ''}
-            return render_template(putos, usuario=user, l=foto, ev=ev)
+            return render_template(putos, usuario=user, l=foto, ev=ev, y=yave)
+        
+        elif ruta == "infopract1":
+            yave = request.form["yavee"]
+            putos = 'infopract.html'
+            user = crud.getStudentInfo(yave)            
+            foto = request.form["foto"]
+            ev = crud.getEvaluationResults(yave, 'lider')
+            message = ''
+            file_plan = request.files['file_plan']
+            plandesa = request.form['plandesa']         
+            
+            if (file_plan.filename != ''):
+                crud.uploadDevelopmentPlan(plandesa, file_plan)
+                message = 'Plan de desarrollo subido satisfactoriamente.'
+
+            if ev == None:
+                ev = {'': ''}
+            return render_template(putos, usuario=user, l=foto, ev=ev, y=yave, smessage=message)
 
         elif ruta == "elim":
             putos = 'homeadmin.html'         
             
             [keys, emails, cantidad] = crud.getStudentsData()
             user = crud.deleteStudent(request.form["eliminar"])
-            foto = crud.getImagesURL([request.form["eliminar"]])            
+            foto = crud.getImagesURL([request.form["eliminar"]])
+            ev = crud.getEvaluationResults(request.form['eliminar'], 'lider')
+            if ev == None:
+                ev = {'': ''}         
             emails = [x.lower() for x in emails]
             req = crud.getRequests()
             links = crud.getImagesURL(emails)
@@ -58,12 +80,13 @@ def admin():
         elif ruta =="edit":
             putos = 'admformulario.html'
             editt = request.form['editar']
+            yave = request.form['yavee']
             # foto = crud.getImagesURL([request.form["foto"]])
 
-            return render_template(putos, usuario=crud.getStudentInfo(editt))
+            return render_template(putos, usuario=crud.getStudentInfo(editt),y=yave)
     return render_template('admin.html')   
 
-
+    
 
 
 def confirm():
