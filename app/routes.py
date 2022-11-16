@@ -19,6 +19,7 @@ from flask_mail import Mail
 
 import modules.faq as fq
 app = Flask(__name__)
+app.secret_key = 'esto-es-una-clave-muy-secreta'
 mail = Mail()
 
 # --------------------------------------REGISTRO E INICIO DE SESION-------------------------------------

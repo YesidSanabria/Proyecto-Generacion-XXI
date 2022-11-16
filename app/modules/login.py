@@ -1,5 +1,5 @@
 import pyrebase
-from flask import render_template, request, Flask
+from flask import render_template, request, Flask, session
 import modules.crud as crud
 
 
@@ -17,6 +17,7 @@ config = {
 firebase = pyrebase.initialize_app(config)
 storage = firebase.storage() #linea del storage
 auth = firebase.auth()
+
 
 #storage.child("profile_pictures/new.jpeg").put(r"C:\Users\ic5705b\Documents\GitHub\Proyecto-Generacion-XXI\app\descarga.jpeg") #cargar imagenes al storage
 # storage.child("profile_pictures/new.jpeg").download(r"C:\Users\ic5705b\Documents\GitHub\Proyecto-Generacion-XXI\app","example.jpeg") #descargar las imagenes obtenidas del storage 
@@ -61,7 +62,8 @@ def index():
 #--------------------INICIAR SESION---------------------------------                
             auth.sign_in_with_email_and_password(email, password)            
             #user_id = auth.get_account_info(user['idToken'])
-            #session['usr'] = user_id
+            session['username'] = email
+            print(session['username'])
             #return render_template('formulario.html', user=user)
             return render_template(putos, usuario=user, opcion=options, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta, file=file)
             
