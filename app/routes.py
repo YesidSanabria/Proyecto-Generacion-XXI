@@ -82,9 +82,6 @@ def admin_view():
 def hadmin():
     return ad.confirm()
 
-@app.route('/formad', methods=['GET', 'POST'])
-def formad():
-    return ad.formad()
 # --------------------------------------FORMULARIO-------------------------------------
 
 @app.route('/formulario', methods=['GET', 'POST'])
@@ -92,6 +89,7 @@ def formulario():
     return fm.form()
 
 # --------------------------------------PERFIL-------------------------------------
+
 @app.route('/view_personal_data', methods=['GET', 'POST'])
 def view_personal_data():
     return pf.view_personal_data()
