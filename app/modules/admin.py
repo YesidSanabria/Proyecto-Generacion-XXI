@@ -50,16 +50,17 @@ def admin():
             user = crud.getStudentInfo(yave)            
             foto = request.form["foto"]
             ev = crud.getEvaluationResults(yave, 'lider')
-                                      
+            message = ''
             file_plan = request.files['file_plan']
             plandesa = request.form['plandesa']         
             
             if (file_plan.filename != ''):
-                crud.uploadDevelopmentPlan(plandesa, file_plan)                
+                crud.uploadDevelopmentPlan(plandesa, file_plan)
+                message = 'Plan de desarrollo subido satisfactoriamente.'
 
             if ev == None:
                 ev = {'': ''}
-            return render_template(putos, usuario=user, l=foto, ev=ev, y=yave)
+            return render_template(putos, usuario=user, l=foto, ev=ev, y=yave, smessage=message)
 
         elif ruta == "elim":
             putos = 'homeadmin.html'         
