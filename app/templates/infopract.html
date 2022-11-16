@@ -68,7 +68,19 @@
               </button>
             
             </form>
-          </li>          
+          </li>
+
+          <li class="nav-link">
+            
+            <form action="/admin_view" method="post">
+              <button class="contenedor-btn-file bordeado" name="ruta" value="notif">
+                <div class="ul">
+                  <i class="bx bx-bell icon"></i>
+                <span class="btn-file">Notificaciones</span>
+                </div>
+              </button>
+            </form>
+          </li>
 
           <li class="nav-link">
             
@@ -279,7 +291,6 @@
                           <div class="btnAdnim">                            
                             <form action="admin_view" method="post">
                               <input type="hidden" value="{{usuario['Correo corporativo']}}" name="editar">
-                              <input type="hidden" value="{{y}}" name="yavee">
                               <button type="submit" class="btn btn-primary" style="width: 80%;" name="ruta" value="edit" >
                                 Editar
                               </button>
@@ -350,31 +361,7 @@
                                 <p>{{usuario['Celular personal']}}</p>
                               </div>
                       </center>  
-                      <br>
-                      <center><div class="card5">
-                        <form method="post" action="/admin_view" enctype="multipart/form-data">
-                          <label for="file">Seleccione el plan de desarrollo</label>
-                          <hr>
-                          <input type="hidden" name="ruta" value="infopract1">
-                          <input type="hidden" name="user" value={{usuario}}>
-                          <input type="hidden" name="foto" value={{l}}>
-                          <input type="hidden" name="yavee" value={{y}}>
-                          <input style= "width: 100%;" name="file_plan" id="fileId" type="file" accept=".pdf,.PDF,.Pdf">
-                          <br>
-                          <button type="submit" class="btn btn-primary" style="width: 80%;" name="plandesa" value="{{usuario['Cedula']}}">
-                            subir
-                          </button>
-                        </form>
-                        {% if smessage %}
-                        <br>
-                      <div class="alert alert-success">
-                       {{ smessage }}
                       </div>
-                      {% endif %}
-                      </div>
-                      </center>
-                      </div>
-
                       <div style="position: static;">
                       <center><img src = "{{url_for ('static', filename = './img/claro plano palabra blanco.png')}}" width = "130" height = "45" alt = "su imagen fue secuestrada por un alienígena ～～ "style = "position: relative; top: 80px; left: 100px;" /></center>
                     </div>

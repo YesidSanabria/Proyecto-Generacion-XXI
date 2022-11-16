@@ -181,7 +181,11 @@
     --tran-05: all 0.3s ease;
 }
 
-
+body{
+    min-height: 100vh;
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+}
 
 ::selection{
     background-color: var(--primary-color);
@@ -461,38 +465,3 @@ body.dark .switch::before{
 body.dark .home .text{
     color: var(--text-color);
 }
-
-.carccontainer{
-    width: 98%;
-    height: 98%;
-    margin: 10px;  
-    border-radius: 10px;
-  }
-  .carpec{
-    width: 98%;
-    height: 9%;    
-    border-radius: 10px;    
-  }
-.cardpassword{
-    position: absolute;
-    top: 20%;
-    left: 30%;
-    width: 45%;
-    height: 50%;
-    margin: 10px;    
-    border-radius: 10px;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
-  }
-
- .syinput{
-  width: 50%;
-  font-size: 15px;
-  color: rgb(0, 0, 0);
-  opacity: 90%;
-  border-radius: 10px;
-  text-align: center;
-  background-color: #ffffff;
- }
-
- 
