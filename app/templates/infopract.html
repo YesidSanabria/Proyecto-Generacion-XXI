@@ -354,15 +354,23 @@
                       <center><div class="card5">
                         <form method="post" action="/admin_view" enctype="multipart/form-data">
                           <label for="file">Seleccione el plan de desarrollo</label>
+                          <hr>
                           <input type="hidden" name="ruta" value="infopract1">
                           <input type="hidden" name="user" value={{usuario}}>
                           <input type="hidden" name="foto" value={{l}}>
                           <input type="hidden" name="yavee" value={{y}}>
-                          <input name="file_plan" id="fileId" type="file" accept=".pdf,.PDF,.Pdf">
-                          <button type="submit" class="btn btn-primary" style="width: 80%;" name="plandesa" value={{usuario['Cedula']}} >
+                          <input style= "width: 100%;" name="file_plan" id="fileId" type="file" accept=".pdf,.PDF,.Pdf">
+                          <br>
+                          <button type="submit" class="btn btn-primary" style="width: 80%;" name="plandesa" value="{{usuario['Cedula']}}">
                             subir
                           </button>
                         </form>
+                        {% if smessage %}
+                        <br>
+                      <div class="alert alert-success">
+                       {{ smessage }}
+                      </div>
+                      {% endif %}
                       </div>
                       </center>
                       </div>
