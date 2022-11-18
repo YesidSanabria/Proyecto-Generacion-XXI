@@ -63,7 +63,7 @@ def index():
             auth.sign_in_with_email_and_password(email, password)            
             #user_id = auth.get_account_info(user['idToken'])
             session['username'] = email
-            print(session['username'])
+            #print(session['username'])
             #return render_template('formulario.html', user=user)
             return render_template(putos, usuario=user, opcion=options, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta, file=file)
             

@@ -111,10 +111,16 @@ def faq():
     question= fq.question
     return render_template('faq.html', question=question)
 
-#------------------------- DESCARGAR EL LAN DE DESARROLLO- -------------------
+#------------------------- DESCARGAR EL PLAN DE DESARROLLO- -------------------
 @app.route('/download', methods=['GET', 'POST'])
 def download_file():
     return pf.download_file()
+
+#------------------------ DASHBOARD ------------------------------------------
+@app.route('/dashboard', methods=['GET', 'POST'])
+def dashboard():
+    return render_template('dashboard.html')
+
     
 
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
