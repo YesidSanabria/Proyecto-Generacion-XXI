@@ -44,7 +44,7 @@ def index():
         if (admin == email):
             putos = 'admin.html'
             user = crud.getAllStudents()
-            [keys, emails, cantidad] = crud.getStudentsData()
+            [keys, emails, cantidad] = crud.getStudentsData([])
             cuenta = crud.amountCards()
             emails = [x.lower() for x in emails]
             req = crud.getRequests()

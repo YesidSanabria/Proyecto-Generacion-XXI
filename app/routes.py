@@ -83,9 +83,6 @@ def admin_view():
 def hadmin():
     return ad.confirm()
 
-@app.route('/formad', methods=['GET', 'POST'])
-def formad():
-    return ad.formad()
 # --------------------------------------FORMULARIO-------------------------------------
 
 @app.route('/formulario', methods=['GET', 'POST'])
@@ -93,6 +90,7 @@ def formulario():
     return fm.form()
 
 # --------------------------------------PERFIL-------------------------------------
+
 @app.route('/view_personal_data', methods=['GET', 'POST'])
 def view_personal_data():
     return pf.view_personal_data()
@@ -104,7 +102,6 @@ def notif():
     return nt.notif()
 
 # ---------------------------------FAQ -------------------------------------
-
 
 @app.route('/faq', methods=['GET', 'POST'])
 def faq():
@@ -122,11 +119,7 @@ def dashboard():
     return render_template('dashboard.html')
 
     
-
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':
     mail.init_app(app)
     app.run(debug=True)
-
-
-

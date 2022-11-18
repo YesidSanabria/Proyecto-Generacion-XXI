@@ -60,6 +60,15 @@ def getAllStudents():
     all = ref.get()
     return all
 
+def getSomeStudents(students):
+    lista = []
+    for student in students:
+        lista.append(getStudentInfo(student))
+    someStudents = {}
+    for i in range(len(lista)):
+        someStudents[students[i]] = lista[i]
+    return someStudents
+
 def updateStudentData(email, data):
     ref = db.reference('Estudiantes')
     ref.child(email.replace('.', '')).update(data)
@@ -78,8 +87,11 @@ def createNewStudent(email):
         }
     ref.child(email.replace('.','')).set(initData)
     
-def getStudentsData():
-    data = getAllStudents()
+def getStudentsData(students):
+    if len(students) >= 1:
+        data = getSomeStudents(students)
+    else:
+        data = getAllStudents()
     keys = list(data.keys())
     email = [data[i]['Correo corporativo'] for i in keys]
     cantidad = len(keys)    

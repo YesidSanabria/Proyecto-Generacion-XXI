@@ -76,7 +76,6 @@ def form ():
         mensaje = 'Los datos han sido guardados satisfactoriamente.'
         links = crud.getImagesURL([correo_corporativo])
         userr= request.form['userr']
-        userr= request.form['userr']
         try:
             upload = request.files['upload']
             if (upload.filename != ''):
