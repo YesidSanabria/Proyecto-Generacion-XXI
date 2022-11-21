@@ -1,9 +1,19 @@
 import modules.crud as crud
 
+def limpiar_acentos(text):
+	acentos = {'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u', 'Á': 'A', 'E': 'E', 'Í': 'I', 'Ó': 'O', 'Ú': 'U', 'ü': 'u', 'Ü': 'U'}
+	for acen in acentos:
+		if acen in text:
+			text = text.replace(acen, acentos[acen])
+	return text
+
 def searchInData(user, text):
-    if str(text.upper()) in str(user['Nombres'].upper()):
+    text = limpiar_acentos(text)
+    names = limpiar_acentos(user['Nombres'])
+    lastnames = limpiar_acentos(user['Apellidos'])
+    if text.upper() in names.upper():
         return True
-    if str(text.upper()) in str(user['Apellidos'].upper()):
+    if text.upper() in lastnames.upper():
         return True
     return False
 

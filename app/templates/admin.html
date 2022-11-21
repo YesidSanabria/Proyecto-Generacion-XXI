@@ -103,7 +103,7 @@
                                     {% endfor %}
                             </div>
 
-                            <div class="carousel-inner">
+                            <div class="carousel-inner" style="width: 100%;">
                                 <div class="main-top">
                                     <div class="text logo-text">
                                         <span class="name">Practicantes Generación XXI</span>
@@ -114,12 +114,32 @@
                                         {% for i in range(0,2) -%}                                            
                                             <div class="users">
                                                 {% for j in range(0,4) -%}
-                                                    {% if (j+4*i) > cantidadDatos %}
+                                                    {% if (j+4*i) >= cantidadDatos %}
+                                                    <div class="card" style="opacity: 0%;">
+                                                        <center><div class="cardc"><img src={{l[j+4*i]}}></div></center>
+                                                        <div class="cardc">
+                                                        <td scope="col"><b> ------------------------  </b></td>
+                                                        </div>
+                                                        <div class="cardc">
+                                                        <p> ------------------------ </p>
+                                                    </div>
+                                                    <div class="cardc">
+                                                        <p> ------------------------------------ </p>
+                                                    </div>
+                                                    <div class="per">
+                                                        <table>                                                                
+                                                            <tr>
+                                                                    <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
+                                                                        --
+                                                                    </button>
+                                                            </tr>
+                                                        </table>
+                                                    </div>                                                        
+                                                </div>
+                                                <br>
                                                     {% else %}
                                                     <div class="card">
                                                             <center><div class="cardc"><img src={{l[j+4*i]}}></div></center>
-                                                            <!-- <p> {{j+4*i}}</p>
-                                                            {{cantidadDatos}} -->
                                                             <div class="cardc">
                                                             <td scope="col"><b>{{usuario[keys[j+4*i]]['Nombres']}} {{usuario[keys[j+4*i]]['Apellidos']}}</b></td>
                                                             </div>
@@ -148,8 +168,8 @@
                                                 {% endfor -%}
                                             </div>
                                         {% endfor -%}
-                                    </section>    
-                                </div>
+                                    </section>
+                                </div>    
                                 {% for x in range(8,cantidadDatos,8) -%}
                                     <div class="carousel-item">
                                         <section class="main">
@@ -157,7 +177,28 @@
                                                 <div class="users">
                                                     {% for j in range(x,x+4) -%}
                                                         {% if (j+4*i) >= cantidadDatos %}
-                                                            
+                                                        <div class="card" style="opacity: 0%;">
+                                                            <center><div class="cardc"><img src={{l[j+4*i]}}></div></center>
+                                                            <div class="cardc">
+                                                            <td scope="col"><b> ------------------------  </b></td>
+                                                            </div>
+                                                            <div class="cardc">
+                                                            <p> ------------------------ </p>
+                                                        </div>
+                                                        <div class="cardc">
+                                                            <p> ------------------------------------ </p>
+                                                        </div>
+                                                        <div class="per">
+                                                            <table>                                                                
+                                                                <tr>
+                                                                        <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
+                                                                            --
+                                                                        </button>
+                                                                </tr>
+                                                            </table>
+                                                        </div>                                                        
+                                                    </div>
+                                                    <br>
                                                     {% else %}
                                                         <div class="card">
                                                             <center><div class="cardc"><img src={{l[j+4*i]}}></div></center>
