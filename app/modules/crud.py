@@ -28,8 +28,8 @@ storage = firebase.storage()
 # VARIABLES
 
 options = {
-    'sexo': ['Hombre', 'Mujer'], 
-    'regional': ['Bogotá', 'Bucaramanga', 'Medellín', 'Barranquilla', 'Cali', 'Manizales']
+    'sexo': ['Hombre', 'Mujer', 'Otros'], 
+    'regional': ['Bogotá', 'Bucaramanga', 'Medellín', 'Barranquilla', 'Cali', 'Manizales']    
     }
 
 # FUNCIONES
