@@ -1,5 +1,9 @@
 import pyrebase
 from flask import render_template, request
+import firebase_admin
+from firebase_admin import auth
+import modules.send_email as mail
+import modules.crud as crud
 
 config = {
     "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
@@ -13,11 +17,31 @@ config = {
 }
 
 firebase = pyrebase.initialize_app(config)
-auth = firebase.auth()
+#auth = firebase.auth()
 
 def forgot_password():
     if (request.method == 'POST'):
+        action_code_settings = auth.ActionCodeSettings(
+            url='https://www.example.com/finishSignUp?cartId=1234',
+            handle_code_in_app=True,
+        )
         email = request.form['name']
-        auth.send_password_reset_email(email)
-        return render_template('index.html')
+        #print(email)
+        try:
+            user = crud.getStudentInfo(email)
+            #print(user['Correo personal'])
+            link = auth.generate_password_reset_link(email, action_code_settings)
+            mail.send_custom_email(user['Correo personal'],link,email)
+            unsuccessful = 'Revisa tu correo corporativo'
+            return render_template('index.html', smessage=unsuccessful)
+        except firebase_admin._auth_utils.EmailNotFoundError:
+            unsuccessful = 'Este correo no tiene una cuenta asociada.'
+            return render_template('index.html', umessage=unsuccessful)
+        except:
+            unsuccessful = 'Cambios de contraseña excedidos, intentelo mas tarde.'
+            return render_template('index.html', umessage=unsuccessful)
+        # # Construct password reset email from a template embedding the link, and send
+        # # using a custom SMTP server.
+        
+        #auth.send_password_reset_email(email)
     return render_template('forgot_password.html')

@@ -1,6 +1,9 @@
 import pyrebase
 from flask import render_template, request
-from firebase_admin import db
+import modules.crud as crud
+import modules.search as sr
+
+
 
 config = {
     "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
@@ -17,11 +20,104 @@ firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 
 def admin():
-    return render_template('admin.html')
+    if (request.method == 'POST'):
+        ruta = request.form ["ruta"]
+        if ruta == "admin":
+            putos = 'admin.html'
+            user = crud.getAllStudents()
+            [keys, emails, cantidad] = crud.getStudentsData([])
+            cuenta = crud.amountCards()
+            emails = [x.lower() for x in emails]
+            req = crud.getRequests()
+             #arreglo con los campos de imagenes de cada persona
+            links = crud.getImagesURL(emails)
+            return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
 
-# Esto está en crud #
-def getAllStudent(email):
-    ref = db.reference('Estudiantes')
-    user = ref.child(email.replace('.', '')).get()
-    return user
-    return render_template('admin_view.html')
+        elif ruta == "infopract":
+            putos = 'infopract.html'
+            yave = request.form["yave"]
+            user = crud.getStudentInfo(yave)            
+            foto = crud.getImagesURL([request.form["foto"]])
+            ev = crud.getEvaluationResults(request.form['yave'], 'lider')
+            if ev == None:
+                ev = {'': ''}
+            return render_template(putos, usuario=user, l=foto, ev=ev, y=yave)
+        
+        elif ruta == "infopract1":
+            yave = request.form["yavee"]
+            putos = 'infopract.html'
+            user = crud.getStudentInfo(yave)            
+            foto = request.form["foto"]
+            ev = crud.getEvaluationResults(yave, 'lider')
+            message = ''
+            file_plan = request.files['file_plan']
+            plandesa = request.form['plandesa']         
+            
+            if (file_plan.filename != ''):
+                crud.uploadDevelopmentPlan(plandesa, file_plan)
+                message = 'Plan de desarrollo subido satisfactoriamente.'
+
+            if ev == None:
+                ev = {'': ''}
+            return render_template(putos, usuario=user, l=foto, ev=ev, y=yave, smessage=message)
+
+        elif ruta == "elim":
+            putos = 'homeadmin.html'         
+            
+            [keys, emails, cantidad] = crud.getStudentsData([])
+            user = crud.deleteStudent(request.form["eliminar"])
+            foto = crud.getImagesURL([request.form["eliminar"]])
+            ev = crud.getEvaluationResults(request.form['eliminar'], 'lider')
+            if ev == None:
+                ev = {'': ''}         
+            emails = [x.lower() for x in emails]
+            req = crud.getRequests()
+            links = crud.getImagesURL(emails)
+                         
+            return render_template(putos, usuario=user, l=foto, req=req, keys=keys, cantidadDatos=cantidad, ev=ev) 
+
+        elif ruta =="edit":
+            putos = 'admformulario.html'
+            editt = request.form['editar']
+            yave = request.form['yavee']
+            # foto = crud.getImagesURL([request.form["foto"]])
+
+            return render_template(putos, usuario=crud.getStudentInfo(editt),y=yave)
+
+        elif ruta == 'search':
+            putos = 'admin.html'
+            user = crud.getAllStudents()
+            buscar = request.form['buscar']
+            studentsList = sr.searchStudent(buscar)
+            if buscar == '':
+                [keys, emails, cantidad] = crud.getStudentsData([])
+            else:
+                [keys, emails, cantidad] = crud.getStudentsData(studentsList)
+            emails = [x.lower() for x in emails]
+            req = crud.getRequests()
+             #arreglo con los campos de imagenes de cada persona
+            links = crud.getImagesURL(emails)
+            if len(links[0]) == 1:
+                links = [links]
+            return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad)
+
+    return render_template('admin.html')   
+
+    
+
+
+def confirm():
+    if (request.method == 'POST'):               
+        putos = 'admin.html'
+        user = crud.getAllStudents()
+        [keys, emails, cantidad] = crud.getStudentsData([])
+        cuenta = crud.amountCards()
+        emails = [x.lower() for x in emails]
+        req = crud.getRequests()
+             #arreglo con los campos de imagenes de cada persona
+        links = crud.getImagesURL(emails)
+
+        if True:
+            return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
+        
+    return render_template('homeadmin.html')

@@ -1,7 +1,7 @@
-from doctest import register_optionflag
 import pyrebase
 from flask import render_template, request
 import modules.crud as crud
+import modules.evaluation as ev
 
 config = {
     "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
@@ -27,7 +27,9 @@ def form ():
         cedula = request.form['cedula']
         edad = request.form['edad']
         genero = request.form['genero']
+        celular_personal = request.form['celular_personal']
         correo_corporativo = request.form['correo_corporativo']
+        celular_corporativo = request.form['celular_corporativo']
         gerencia = request.form['gerencia']
         direccion = request.form['direccion']
         nombre_gerente = request.form['nombre_gerente']
@@ -43,6 +45,7 @@ def form ():
         correo_gerente = request.form['correo_gerente']
         regional = request.form['ciudad']
         correo_personal = request.form['correo_personal']
+        registro = request.form['registro']
 
         data = {"Nombres": nombre,
             "Apellidos": apellidos,
@@ -53,7 +56,9 @@ def form ():
             "Gerencia": gerencia,
             "Area de gerencia": direccion,
             "Nombre gerente": nombre_gerente,
+            "Celular personal" : celular_personal,
             "Celular gerente": celular_gerente,
+            "Celular corporativo": celular_corporativo,
             "Universidad": universidad,
             "Carrera": carrera,
             "Nombre tutor": tutor,
@@ -69,13 +74,27 @@ def form ():
         crud.updateStudentData(correo_corporativo, data)
         mensaje = 'Los datos han sido guardados satisfactoriamente.'
         links = crud.getImagesURL([correo_corporativo])
-        upload = request.files['upload']
         userr= request.form['userr']
+        try:
+            upload = request.files['upload']
+            if (upload.filename != ''):
+                crud.uploadProfileImage(userr, upload)
+                links = crud.getImagesURL([userr])
+                #print("1")
+        except:
+            upload = 3
+        
         #print(upload.filename)
-        if (upload.filename != ''):
-            crud.uploadProfileImage(userr, upload)
-            links = crud.getImagesURL([userr])
-            #print("1")
-        return render_template('view_personal_data.html', usuario=crud.getStudentInfo(correo_corporativo), smessage=mensaje,l=links)
+        
 
+            
+        if (registro == 'estudiante'):
+            return render_template('view_personal_data.html', usuario=crud.getStudentInfo(correo_corporativo), smessage=mensaje,l=links)
+        else:
+            user = crud.getStudentInfo(request.form["userr"])
+            links = crud.getImagesURL([correo_corporativo])
+            ev = crud.getEvaluationResults(correo_corporativo, 'lider')
+            if ev == None:
+                ev = {'': ''}  
+            return render_template('infopract.html', usuario=user, l=links, ev=ev)
     return render_template('formulario.html')

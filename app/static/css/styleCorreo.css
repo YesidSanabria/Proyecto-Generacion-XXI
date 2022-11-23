@@ -1,0 +1,7 @@
+a:link, a:visited {
+    text-decoration: none;
+  }
+
+  body{
+    background-image: url("../img/Fondo.png");
+  }

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<body class="body" background="{{ url_for('static', filename='img/fondoregistro.png')}}">
+<body  background="{{ url_for('static', filename='img/fondoregistro.png')}}">
 </body>
 <br />
 <!---Create Account-->
@@ -23,25 +23,18 @@
       <div class="card border-0 shadow rounded-3 my-5">
         <div class="card-body p-4 p-sm-5">
           <h5 class="card-title text-center mb-5 fw-light fs-5">Crear nueva cuenta</h5>
-          <form action="/create_account" method="post">
+          <form action="/register" method="post">
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" name="email" placeholder="correo@claro.com.co" autocomplete="off" readonly value="{{email}}">
+              <input type="email" class="form-control" name="email" placeholder="correo@claro.com.co" autocomplete="off">
               <label for="floatingInput">Correo electronico corporativo</label>
             </div>
-            <div class="form-floating mb-3">
-              <input type="password" class="form-control" name="password" placeholder="Digite una contraseña" autocomplete="off">
-              <label for="floatingPassword">Contraseña</label>
-            </div>
-            <div class="form-floating mb-3">
-              <input type="password" class="form-control" name="conf_password" placeholder="Digite una contraseña" autocomplete="off">
-              <label for="floatingPassword">Confirme la contraseña</label>
-            </div>
+            <br>
             <div class="d-grid">
               <button style="color: white; background-color: #cf2f35;"
                 class="btn btn-login text-uppercase fw-bold" type="submit"
-                name="submit">Registrarme</button>
+                name="submit">Continuar</button>
               <br>
-              <a href="/register" class="text-decoration-none text-center">Probar con otro correo</a>
+              <a href="/index" class="text-decoration-none text-center">Ya tengo una cuenta</a>
             </div>
           </form>
         </div>

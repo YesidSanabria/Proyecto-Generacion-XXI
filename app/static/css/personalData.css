@@ -1,17 +1,27 @@
-body {
-    background: #67B26F;  /* fallback for old browsers */
-    background-image: url("../img/fondoregistro.png");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    padding: 0;
+/*  import google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+*{
     margin: 0;
-    font-family: 'Lato', sans-serif;
-    color: #000;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
+body{
+    background-image: url("../img/fondoregistro.png");
+}
+
 .student-profile .card {
     border-radius: 10px;
+}
+.imgRedonda {
+    /*border: 8px solid #B7202E;*/
+    width:150px;
+    height:150px;
+    border-radius:75px;
 }
 .student-profile .card .card-header .profile_img {
     width: 150px;
@@ -35,3 +45,8 @@ body {
     padding: 5px 10px;
     color: #000;
 }
+
+.ul{
+    display: flex;
+    list-style: none;
+  }

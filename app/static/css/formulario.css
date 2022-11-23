@@ -6,7 +6,7 @@
   font-family: 'Poppins', sans-serif;
 }
 body{
-  height: 100vh;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,8 +14,8 @@ body{
   background-image: url("../img/fondoregistro.png");
 }
 .container{
-  max-width: 1200px;
-  width: 140%;
+  /*max-width: 1200px;
+  width: 140%;*/
   background-color: #fff;
   padding: 25px 30px;
   border-radius: 5px;
@@ -152,7 +152,104 @@ form .user-details .input-box{
 }
 .img{
   width: 150px;
-  padding: 5px; 
+  padding: 20px; 
   margin: 10px; 
   float: right;
 }
+
+.contenedor-btn-file input[type="file"]{
+  appearance: none;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  
+}
+
+.contenedor-btn-file{
+  display: inline-block;
+  position: relative;
+  background-color: #CF2F35;
+  color: #fff;
+  border: 0;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.15);
+  overflow: hidden;
+  transition: ease-out 120ms background-color;
+  margin-right: 1rem;
+  
+}
+
+.contenedor-btn-file:hover{
+  background-color: #CF2F35;
+}
+.contenedor-btn-file:active{
+  background-color: #CF2F35;
+}
+.contenedor-btn-file > i {
+  margin-right: 15px;
+}
+
+.contenedor-btn-file label  {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  
+}
+
+.contenedor-btn-file.bordeado{
+  background-color: #fff;
+  border: 2px solid #CF2F35;
+  color: #CF2F35;
+  
+}
+
+.contenedor-btn-file.bordeado:hover{
+  background-color: #CF2F35;
+  color: #fff;
+  
+}
+
+
+.container-superior {
+  width: 1400px; 
+  height: 250px; 
+  background: #CF2F35;
+  text-align: center;
+  border: 2px solid rgb(0, 0, 0);
+}
+
+h5{
+  color: #fff;
+}
+
+         
+.btn-grad {
+  background-image: linear-gradient(to right, #D31027 0%, #EA384D  51%, #D31027  100%);
+  margin: 10px;
+  padding: 15px 80px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-enviar{
+  align-items: center;
+  text-align: center;
+}
+
