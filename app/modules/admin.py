@@ -88,7 +88,7 @@ def admin():
             putos = 'admin.html'
             user = crud.getAllStudents()
             buscar = request.form['buscar']
-            studentsList = sr.searchStudent(buscar)
+            studentsList = sr.searchStudent(buscar)            
             if buscar == '':
                 [keys, emails, cantidad] = crud.getStudentsData([])
             else:
@@ -100,6 +100,23 @@ def admin():
             if len(links[0]) == 1:
                 links = [links]
             return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad)
+
+        elif ruta == 'searchCareer':
+            putos = 'admin.html'
+            user = crud.getAllStudents()
+            buscar = request.form['buscar']
+            studentsList = sr.searchCareer(buscar)            
+            if buscar == '':
+                [keys, emails, cantidad] = crud.getStudentsData([])
+            else:
+                [keys, emails, cantidad] = crud.getStudentsData(studentsList)
+            emails = [x.lower() for x in emails]
+            req = crud.getRequests()
+             #arreglo con los campos de imagenes de cada persona
+            links = crud.getImagesURL(emails)
+            if len(links[0]) == 1:
+                links = [links]
+            return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad)   
 
     return render_template('admin.html')   
 
