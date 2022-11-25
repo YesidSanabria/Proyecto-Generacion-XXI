@@ -54,13 +54,14 @@ def view_personal_data():
                 return "inicie sesion"
         elif ruta == "actu":
             putos = 'formulario.html'
-            options = crud.options          
             user = crud.getStudentInfo(request.form['actuali'])
             links = crud.getImagesURL([request.form["actuali"]])
-            # print(request.form['actuali'])
-            # print(session["username"])
+            try:
+                opciones = orderOptions(user)
+            except:
+                opciones = crud.options                         
             if request.form['actuali'] in session["username"]:
-                return render_template(putos, usuario= user, opcion=options, l=links)
+                return render_template(putos, usuario= user, opcion=opciones, l=links)
             else:
                 return "inicie sesion"
 

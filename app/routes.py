@@ -14,6 +14,7 @@ import modules.demand as dm
 import modules.evaluation as ev
 import modules.confirm as cf
 import modules.notif as nt
+import modules.reports as rp
 
 from flask_mail import Mail
 
@@ -108,10 +109,16 @@ def faq():
     question= fq.question
     return render_template('faq.html', question=question)
 
-#------------------------- DESCARGAR EL LAN DE DESARROLLO- -------------------
+#------------------------- DESCARGAR EL PLAN DE DESARROLLO- -------------------
 @app.route('/download', methods=['GET', 'POST'])
 def download_file():
     return pf.download_file()
+
+#------------------------ DASHBOARD ------------------------------------------
+@app.route('/dashboard', methods=['GET', 'POST'])
+def dashboard():
+    return rp.dashboard()
+
     
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':

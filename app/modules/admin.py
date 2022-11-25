@@ -88,7 +88,7 @@ def admin():
             putos = 'admin.html'
             user = crud.getAllStudents()
             buscar = request.form['buscar']
-            studentsList = sr.searchStudent(buscar)
+            studentsList = sr.searchStudent(buscar)            
             if buscar == '':
                 [keys, emails, cantidad] = crud.getStudentsData([])
             else:
@@ -100,6 +100,33 @@ def admin():
             if len(links[0]) == 1:
                 links = [links]
             return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad)
+
+        elif ruta == 'searchCareer':
+            putos = 'admin.html'
+            user = crud.getAllStudents()
+            buscar = request.form['buscar']
+            studentsList = sr.searchCareer(buscar)            
+            if buscar == '':
+                [keys, emails, cantidad] = crud.getStudentsData([])
+            else:
+                [keys, emails, cantidad] = crud.getStudentsData(studentsList)
+            emails = [x.lower() for x in emails]
+            req = crud.getRequests()
+             #arreglo con los campos de imagenes de cada persona
+            links = crud.getImagesURL(emails)
+            if len(links[0]) == 1:
+                links = [links]
+            return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad)
+        
+        elif ruta == 'reportes':
+            putos = 'dashboard.html'
+            [keys, email, canEdad, canGenero] = crud.getInfoGraphs([])
+            canGenero['Otros'] = 0
+            canEdadK = list(canEdad.keys())
+            canEdadV = list(canEdad.values())
+            canGeneroK = list(canGenero.keys())
+            canGeneroV = list(canGenero.values())
+            return render_template(putos, keys=keys, email=email, canEdadK=canEdadK, canEdadV=canEdadV, canGeneroK=canGeneroK, canGeneroV=canGeneroV)
 
     return render_template('admin.html')   
 
