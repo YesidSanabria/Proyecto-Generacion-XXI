@@ -116,7 +116,17 @@ def admin():
             links = crud.getImagesURL(emails)
             if len(links[0]) == 1:
                 links = [links]
-            return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad)   
+            return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad)
+        
+        elif ruta == 'reportes':
+            putos = 'dashboard.html'
+            [keys, email, canEdad, canGenero] = crud.getInfoGraphs([])
+            canGenero['Otros'] = 0
+            canEdadK = list(canEdad.keys())
+            canEdadV = list(canEdad.values())
+            canGeneroK = list(canGenero.keys())
+            canGeneroV = list(canGenero.values())
+            return render_template(putos, keys=keys, email=email, canEdadK=canEdadK, canEdadV=canEdadV, canGeneroK=canGeneroK, canGeneroV=canGeneroV)
 
     return render_template('admin.html')   
 

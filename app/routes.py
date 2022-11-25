@@ -14,6 +14,7 @@ import modules.demand as dm
 import modules.evaluation as ev
 import modules.confirm as cf
 import modules.notif as nt
+import modules.reports as rp
 
 from flask_mail import Mail
 
@@ -116,7 +117,7 @@ def download_file():
 #------------------------ DASHBOARD ------------------------------------------
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
-    return render_template('dashboard.html')
+    return rp.dashboard()
 
     
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
