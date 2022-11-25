@@ -1,4 +1,4 @@
-import modules.crud as crud
+import crud as crud
 
 def limpiar_acentos(text):
 	acentos = {'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u', 'Á': 'A', 'E': 'E', 'Í': 'I', 'Ó': 'O', 'Ú': 'U', 'ü': 'u', 'Ü': 'U'}
