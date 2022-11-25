@@ -183,7 +183,6 @@
       </div>
       
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      {{canEdadK}}
       <script>
         const ctx = document.getElementById('income_vs_expense');
         const ctx1 = document.getElementById('income_vs_category');
@@ -198,7 +197,7 @@
             {% endfor %}
             ],
             datasets: [{
-              label: '# of Votes',
+              label: '# de practicantes',
               data: [
               {% for i in canEdadV%}
               "{{i}}",
