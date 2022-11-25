@@ -168,4 +168,5 @@ def getInfoGraphs(students):
     genero = [data[i]['Sexo'] for i in keys]
     canEdad = dict(Counter(edad))
     canGenero = dict(Counter(genero))
-    return keys, email, canEdad, canGenero
+    canPrac = len(keys)
+    return keys, email, canEdad, canGenero, canPrac

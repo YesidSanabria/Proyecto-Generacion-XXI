@@ -120,13 +120,13 @@ def admin():
         
         elif ruta == 'reportes':
             putos = 'dashboard.html'
-            [keys, email, canEdad, canGenero] = crud.getInfoGraphs([])
+            [keys, email, canEdad, canGenero, canPrac] = crud.getInfoGraphs([])
             canGenero['Otros'] = 0
             canEdadK = list(canEdad.keys())
             canEdadV = list(canEdad.values())
             canGeneroK = list(canGenero.keys())
             canGeneroV = list(canGenero.values())
-            return render_template(putos, keys=keys, email=email, canEdadK=canEdadK, canEdadV=canEdadV, canGeneroK=canGeneroK, canGeneroV=canGeneroV)
+            return render_template(putos, keys=keys, email=email, canEdadK=canEdadK, canEdadV=canEdadV, canGeneroK=canGeneroK, canGeneroV=canGeneroV, canPrac=canPrac)
 
     return render_template('admin.html')   
 
