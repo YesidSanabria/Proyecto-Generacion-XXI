@@ -1,5 +1,5 @@
-import crud as crud
-import search as sr
+import modules.crud as crud
+import modules.search as sr
 
 careers = {
     'SISTEMAS': 'Ingeniería de Sistemas',
