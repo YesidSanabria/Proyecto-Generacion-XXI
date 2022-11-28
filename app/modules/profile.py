@@ -48,10 +48,13 @@ def view_personal_data():
                 opciones = orderOptions(user)
             except:
                 opciones = crud.options
-            if request.form['practic'] in session["username"]:
-                return render_template('view_personal_data.html', usuario=user, opcion=opciones,l=links,file=file)
-            else: 
-                return "inicie sesion"
+            try:
+                if request.form['practic'] in session["username"]:
+                    return render_template('view_personal_data.html', usuario=user, opcion=opciones,l=links,file=file)
+                else: 
+                    return render_template('index.html')
+            except:
+                return render_template('index.html')
         elif ruta == "actu":
             putos = 'formulario.html'
             user = crud.getStudentInfo(request.form['actuali'])
@@ -59,11 +62,14 @@ def view_personal_data():
             try:
                 opciones = orderOptions(user)
             except:
-                opciones = crud.options                         
-            if request.form['actuali'] in session["username"]:
-                return render_template(putos, usuario= user, opcion=opciones, l=links)
-            else:
-                return "inicie sesion"
+                opciones = crud.options   
+            try:                      
+                if request.form['actuali'] in session["username"]:
+                    return render_template(putos, usuario= user, opcion=opciones, l=links)
+                else:
+                    return render_template('index.html')
+            except:
+                return render_template('index.html')
 
     
     return render_template('view_personal_data.html')
