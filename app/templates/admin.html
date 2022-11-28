@@ -34,17 +34,20 @@
                             class="nav_logo-name">Generación XXI</span> </a>
                     <div class="nav_list">
 
-                        <form action="/view_personal_data" method="post">
-                        <input type="hidden" value="{{usuario['Correo corporativo']}}" name="email">
-                        <button class="nav_link active"  name="ruta" value="pract">
+                        <form action="/admin_view" method="post">
+                        <button class="nav_link active"  name="ruta" value="search">
                             <i class='bx bx-user nav_icon'></i>
-                            <span class="nav_name">Mi Perfil</span></button></form>
+                            <span class="nav_name">Buscar</span></button></form>
 
-                            <form action="/view_personal_data" method="post">
-                                <input type="hidden" value="{{usuario['Correo corporativo']}}" name="actuali">
-                        <button class="nav_link" name="ruta" value="actu">
+                            <form action="/admin_view" method="post">
+                        <button class="nav_link" name="ruta" value="admin">
                             <i class='bx bx-pencil nav_icon'></i>
-                            <span class="nav_name">Editar Perfil</span></button></form>
+                            <span class="nav_name">Admin</span></button></form>
+
+                            <form action="/admin_view" method="post">
+                                <button class="nav_link" name="ruta" value="reportes">
+                                    <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                                    <span class="nav_name">Reportes</span></button></form>
 
                         <a href="#" class="nav_link">
                             <i class='bx bx-message-square-detail nav_icon'></i>
