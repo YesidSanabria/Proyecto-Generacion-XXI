@@ -129,7 +129,7 @@ if server_name and ':' in server_name:
 else:
     port = 8000
     host = "localhost"
-app.run(host=host, port=port)
+app.run(host=host, port=port, debug=True)
 
 
 
