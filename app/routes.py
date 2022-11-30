@@ -106,7 +106,8 @@ def notif():
 @app.route('/faq', methods=['GET', 'POST'])
 def faq():
     question= fq.question
-    return render_template('faq.html', question=question)
+    length = len(question)
+    return render_template('faq.html', question=question, length=length)
 
 #------------------------- DESCARGAR EL LAN DE DESARROLLO- -------------------
 @app.route('/download', methods=['GET', 'POST'])
