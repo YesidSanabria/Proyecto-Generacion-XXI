@@ -1,36 +1,44 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <body>
-            <head>
-                <meta charset="UTF-8" />
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/admin.css')}}">
-                <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style1.css')}}">
-                <!-- CSS only -->
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
-                <!----===== Boxicons CSS ===== -->
-                <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-            </head>
-        <body>
-            <body>
-                <nav class="sidebar close">
-                    <header>
-                        <div class="image-text">
-                            <div class="text logo-text">
-                                <span class="name">Generación XXI</span>
-                                <span class="profession">Navegación</span>
-                            </div>
-                        </div>
-                            <i class='bx bx-chevron-right toggle' style="background-color: #CF2F35;"></i>
-                    </header>
-        
-                    <div class="menu-bar">
-                        <div class="menu">
-                            <li class="search-box">
+<body>
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/admin.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style1.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/personald.css')}}">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet'
+            href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+        <!-- Font Awesome CSS -->
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <!----===== Boxicons CSS ===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+
+    <body id="body-pd">
+        <header class="header" id="header">
+            <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        </header>
+        <div class="l-navbar" id="nav-bar">
+            <nav class="nav">
+                <div> <a href="/index" class="nav_logo"> <i class='bx bxs-home nav_logo-icon'></i> <span
+                            class="nav_logo-name">Generación XXI</span> </a>
+                    <div class="nav_list">
+
+                        <form action="/admin_view" method="post">
+                        <button class="nav_link active"  name="ruta" value="search">
+                            <i class='bx bx-user nav_icon'></i>
+                            <span class="nav_name">Buscar</span></button></form>
+
                             <form action="/admin_view" method="post">
                             <div class="ul">
                                 <button type="submit" style="background-color: #F6F5FF;" name="ruta" value="search">
@@ -92,18 +100,21 @@
                             </li>
                         </div>    
                     </div>
-                </nav>
-        
-                <section class="home">
-                    <div class="container">
-                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
+                        class="nav_name">SignOut</span> </a>
+            </nav>
+        </div>
 
-                            <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                    {% for x in range(1, (cantidadDatos//8)+1) %}
-                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{x}}" aria-label="Slide {{x+1}}"></button>
-                                    {% endfor %}
-                            </div>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                {% for x in range(1, (cantidadDatos//8)+1) %}
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{x}}"
+                    aria-label="Slide {{x+1}}"></button>
+                {% endfor %}
+            </div>
 
                             <div class="carousel-inner" style="width: 100%;">
                                 <div class="main-top">
@@ -297,4 +308,6 @@
             </body>
         </body>
     </body>
-{% endblock %}
+
+    </html>
+    {% endblock %}
