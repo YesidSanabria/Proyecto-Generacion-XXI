@@ -121,47 +121,11 @@
 
 <div class="row">
 
-  <div class="col-xs-10 col-sm-6 col-md-6">
-    <div class="card card-style mb-2">
-        <div class="card-body">
-            <center>
-            <div class="chart-container" style="position: relative; height:40vh; width:30vw">
-                <canvas id="income_vs_expense"></canvas>
-            </div>
-            </center>
-        </div>
-    </div>
-  </div>
-
   <div class="col-xs-10 col-sm-6 col-md-3">
     <div class="card card-style mb-2">
         <div class="card-body">
             <center>
-            <div class="chart-container" style="position: relative; height:40vh; width:14vw">
-                <canvas id="income_vs_category"></canvas>
-            </div>
-            </center>
-        </div>
-    </div>
-  </div>
-
-  <div class="col-xs-10 col-sm-6 col-md-3">
-    <div class="card card-style mb-2">
-        <div class="card-body">
-            <center>
-            <div class="chart-container" style="position: relative; height:40vh; width:14vw">
-                <canvas id="overtime_expenditure"></canvas>
-            </div>
-            </center>
-        </div>
-    </div>
-  </div>
-
-  <div class="col-xs-10 col-sm-6 col-md-3">
-    <div class="card card-style mb-2">
-        <div class="card-body">
-            <center>
-            <div class="chart-container" style="position: relative; height:50vh; width:17vw">
+            <div class="chart-container" style="position: relative; height:46vh; width:14vw">
               <br>
               <br>
               <h4>Cantidad practicantes: </h4>
@@ -174,6 +138,55 @@
     </div>
   </div>
 
+  <div class="col-xs-10 col-sm-6 col-md-6">
+    <div class="card card-style mb-2">
+        <div class="card-body">
+            <center>
+            <h4> Distribución de practicantes por edades </h4>
+            <div class="chart-container" style="position: relative; height:40vh; width:30vw">
+                <canvas id="edad"></canvas>
+            </div>
+            </center>
+        </div>
+    </div>
+  </div>
+
+  <div class="col-xs-10 col-sm-6 col-md-3">
+    <div class="card card-style mb-2">
+        <div class="card-body">
+            <center>
+              <h4> Equipares </h4>
+            <div class="chart-container" style="position: relative; height:40vh; width:14vw">
+                <canvas id="genero"></canvas>
+            </div>
+            </center>
+        </div>
+    </div>
+  </div>
+  
+    <div class="card card-style mb-2">
+        <div class="card-body">
+            <center>
+              <h4> Distribución de practicantes por carrera </h4>
+            <div class="chart-container" style="position: relative; height:70vh; width:80vw">
+                <canvas id="carreras"></canvas>
+            </div>
+            </center>
+        </div>
+    </div>
+
+    <div class="card card-style mb-2">
+        <div class="card-body">
+            <center>
+              <h4> Distribución de practicantes por universidad </h4>
+            <div class="chart-container" style="position: relative; height:70vh; width:80vw">
+                <canvas id="universidad"></canvas>
+            </div>
+            </center>
+        </div>
+    </div>
+ 
+
 </div>
 
 </div>
@@ -184,9 +197,10 @@
       
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       <script>
-        const ctx = document.getElementById('income_vs_expense');
-        const ctx1 = document.getElementById('income_vs_category');
-        const ctx2 = document.getElementById('overtime_expenditure');
+        const ctx = document.getElementById('edad');
+        const ctx1 = document.getElementById('genero');
+        const ctx2 = document.getElementById('carreras');
+        const ctx3 = document.getElementById('universidad');
       
         new Chart(ctx, {
           type: 'bar',
@@ -203,15 +217,14 @@
               "{{i}}",
               {% endfor %}
               ],
-              /*backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(11, 156, 49, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+              backgroundColor: [
+                    '#b7202e',
+                    '#0096a9',
+                    '#f58220',
+                    '#737373',
+                    '#000000'
                 ],
-                borderColor: [
+                /*borderColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 206, 86, 1)',
@@ -223,6 +236,9 @@
             }]
           },
           options: {
+            plugins: {
+              legend: {display: false},
+            },
             scales: {
               y: {
                 beginAtZero: true
@@ -241,18 +257,20 @@
         "{{i}}",
         {% endfor %}
         ];
-        /*var barColors = [
-          "#b91d47",
-          "#00aba9",
-          "#2b5797",
-        ];*/
+        var barColors = [
+        '#0096a9',
+        '#b7202e',
+        '#f58220',
+        '#737373',
+        '#000000'
+        ];
 
         new Chart(ctx1, {
           type: "pie",
           data: {
             labels: xValues,
             datasets: [{
-              //backgroundColor: barColors,
+              backgroundColor: barColors,
               data: yValues
             }]
           },
@@ -264,32 +282,78 @@
           }
         });
 
-        var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-        var yValues = [55, 49, 44, 24, 15];
+        var xValues = [
+        {% for i in carreras %}
+        "{{i}}",
+        {% endfor %}
+        ];
+        var yValues = [
+        {% for i in cont_carreras %}
+        "{{i}}",
+        {% endfor %}
+        ];
         var barColors = [
-          "#b91d47",
-          "#00aba9",
-          "#2b5797",
-          "#e8c3b9",
-          "#1e7145"
+        '#b7202e',
+        '#0096a9',
+        '#f58220',
+        '#737373',
+        '#000000'
         ];
 
         new Chart(ctx2, {
-          type: "doughnut",
+          type: "bar",
           data: {
             labels: xValues,
             datasets: [{
               backgroundColor: barColors,
+              label: "# de practicantes",
               data: yValues
             }]
           },
           options: {
+            plugins: {
+              legend: {display: false},
+            },
             title: {
               display: true,
-              text: "World Wide Wine Production 2018"
-            }
+              text: "Carreras"
+            },
+            indexAxis:'y'
           }
         });
+
+        new Chart(ctx3, {
+          type: 'bar',
+          data: {
+            labels: [
+            {% for i in uni %}
+            "{{i}}",
+            {% endfor %}
+            ],
+            datasets: [
+              {
+                label: "# de practicantes",
+                backgroundColor: barColors,
+                data: [
+                {% for i in cont_uni %}
+                "{{i}}",
+                {% endfor %}
+                ]
+              }
+            ]
+          },
+          options: {
+            plugins: {
+              legend: {display: false},
+            },
+            title: {
+              display: true,
+              text: 'Predicted world population (millions) in 2050'
+            },
+            indexAxis:'y'
+          }
+      });
+
       </script>
       <script>
         const body = document.querySelector("body"),

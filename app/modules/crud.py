@@ -2,11 +2,8 @@
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
-from firebase_admin import auth
-from flask import render_template, send_file
+from flask import send_file
 import pyrebase
-import os
-from collections import Counter
 ##########################################
 cred = credentials.Certificate("app/config/generacion-xxi-firebase-adminsdk-iwq0c-bc2e550415.json")
 firebase_admin.initialize_app(cred,{'databaseURL':'https://generacion-xxi-default-rtdb.firebaseio.com/'})
@@ -155,18 +152,3 @@ def downloadDevelopmentPlan(cedula):
 def urlDevelopmentPlan(cedula):
     archivo = storage.child("development_plan/" + "plan_desarrollo_" + cedula + ".pdf").get_url(None)
     return archivo
-
-#importar datos de graficas (edad)
-def getInfoGraphs(students):
-    if len(students) >= 1:
-        data = getSomeStudents(students)
-    else:
-        data = getAllStudents()
-    keys = list(data.keys())
-    email = [data[i]['Correo corporativo'] for i in keys]
-    edad = [data[i]['Edad'] for i in keys]
-    genero = [data[i]['Sexo'] for i in keys]
-    canEdad = dict(Counter(edad))
-    canGenero = dict(Counter(genero))
-    canPrac = len(keys)
-    return keys, email, canEdad, canGenero, canPrac

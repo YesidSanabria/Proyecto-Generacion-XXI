@@ -2,7 +2,7 @@ import pyrebase
 from flask import render_template, request
 import modules.crud as crud
 import modules.search as sr
-
+import modules.reports as rp
 
 
 config = {
@@ -120,13 +120,15 @@ def admin():
         
         elif ruta == 'reportes':
             putos = 'dashboard.html'
-            [keys, email, canEdad, canGenero, canPrac] = crud.getInfoGraphs([])
+            [keys, email, canEdad, canGenero, canPrac] = rp.getInfoGraphs([])
+            [carreras, cont_carreras] = rp.getCareerData()
+            [uni, cont_uni] = rp.getUniversityData()
             canGenero['Otros'] = 0
             canEdadK = list(canEdad.keys())
             canEdadV = list(canEdad.values())
             canGeneroK = list(canGenero.keys())
             canGeneroV = list(canGenero.values())
-            return render_template(putos, keys=keys, email=email, canEdadK=canEdadK, canEdadV=canEdadV, canGeneroK=canGeneroK, canGeneroV=canGeneroV, canPrac=canPrac)
+            return render_template(putos, keys=keys, carreras=carreras,cont_carreras=cont_carreras,uni=uni,cont_uni=cont_uni, email=email, canEdadK=canEdadK, canEdadV=canEdadV, canGeneroK=canGeneroK, canGeneroV=canGeneroV, canPrac=canPrac)
 
     return render_template('admin.html')   
 
