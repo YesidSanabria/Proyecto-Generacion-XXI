@@ -140,10 +140,10 @@
             <div class="chart-container" style="position: relative; height:46vh; width:14vw">
               <br>
               <br>
-              <h4>Cantidad practicantes: </h4>
+              <h4>Promedio general del grupo: </h4>
               <br>
               <br>
-              <h1>{{canPrac}}</h1>
+              <h1>7</h1>
             </div>
             </center>
         </div>
@@ -154,29 +154,27 @@
     <div class="card card-style mb-2">
         <div class="card-body">
             <center>
-            <h4> Distribución de practicantes por edades </h4>
+            <h4> Promedio de calificaciones por pregunta </h4>
             <div class="chart-container" style="position: relative; height:40vh; width:30vw">
-                <canvas id="edad"></canvas>
+                <canvas id="prom_preg"></canvas>
             </div>
             </center>
         </div>
     </div>
   </div>
 
-  <div class="col-xs-10 col-sm-6 col-md-3">
     <div class="card card-style mb-2">
         <div class="card-body">
             <center>
-              <h4> Equipares </h4>
-            <div class="chart-container" style="position: relative; height:40vh; width:14vw">
+              <h4> A.L.D </h4>
+            <div class="chart-container" style="position: relative; height:60vh; width:80vw">
                 <canvas id="genero"></canvas>
             </div>
             </center>
         </div>
     </div>
-  </div>
   
-    <div class="card card-style mb-2">
+    <!-- <div class="card card-style mb-2">
         <div class="card-body">
             <center>
               <h4> Distribución de practicantes por carrera </h4>
@@ -196,7 +194,7 @@
             </div>
             </center>
         </div>
-    </div>
+    </div> -->
  
 
 </div>
@@ -209,7 +207,7 @@
       
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       <script>
-        const ctx = document.getElementById('edad');
+        const ctx = document.getElementById('prom_preg');
         const ctx1 = document.getElementById('genero');
         const ctx2 = document.getElementById('carreras');
         const ctx3 = document.getElementById('universidad');
@@ -217,18 +215,10 @@
         new Chart(ctx, {
           type: 'bar',
           data: {
-            labels: [
-            {% for i in canEdadK%}
-            "{{i}}",
-            {% endfor %}
-            ],
+            labels: ['1', '2', '3', '4', '5', '6'],
             datasets: [{
               label: '# de practicantes',
-              data: [
-              {% for i in canEdadV%}
-              "{{i}}",
-              {% endfor %}
-              ],
+              data: [6, 4, 8, 7, 7, 9],
               backgroundColor: [
                     '#b7202e',
                     '#0096a9',
@@ -259,41 +249,48 @@
           }
         });
 
-        var xValues = [
-        {% for i in canGeneroK %}
-        "{{i}}",
-        {% endfor %}
-        ];
-        var yValues = [
-        {% for i in canGeneroV %}
-        "{{i}}",
-        {% endfor %}
-        ];
-        var barColors = [
-        '#0096a9',
-        '#b7202e',
-        '#f58220',
-        '#737373',
-        '#000000'
-        ];
+        const data = {
+  labels: [
+    'Agilismo',
+    'Digital',
+    'Liderazgo'
+  ],
+  datasets: [{
+    label: 'Promedio grupal',
+    data: [65, 59, 90],
+    fill: true,
+    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+    borderColor: 'rgb(255, 99, 132)',
+    pointBackgroundColor: 'rgb(255, 99, 132)',
+    pointBorderColor: '#fff',
+    pointHoverBackgroundColor: '#fff',
+    pointHoverBorderColor: 'rgb(255, 99, 132)'
+  },
+  {
+    label: '',
+    data: [0, 0, 0],
+    fill: true,
+    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+    borderColor: 'rgb(255, 99, 132)',
+    pointBackgroundColor: 'rgb(255, 99, 132)',
+    pointBorderColor: '#fff',
+    pointHoverBackgroundColor: '#fff',
+    pointHoverBorderColor: 'rgb(255, 99, 132)'
+  }]
+};
 
-        new Chart(ctx1, {
-          type: "pie",
-          data: {
-            labels: xValues,
-            datasets: [{
-              backgroundColor: barColors,
-              data: yValues
-            }]
-          },
-          options: {
-            title: {
-              display: true,
-              text: "Genero"
-            }
-          }
-        });
-
+new Chart(ctx1, {
+  type: 'radar',
+  data: data,
+  options: {
+    elements: {
+      line: {
+        borderWidth: 3
+      }
+    }
+  },
+});
+        
         var xValues = [
         {% for i in carreras %}
         "{{i}}",
