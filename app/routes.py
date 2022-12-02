@@ -120,6 +120,9 @@ def download_file():
 def dashboard():
     return rp.dashboard()
 
+@app.route('/dashboard_ev', methods=['GET', 'POST'])
+def dashboard_ev():
+    return rp.dashboard_ev()
     
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':

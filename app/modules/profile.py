@@ -48,10 +48,13 @@ def view_personal_data():
                 opciones = orderOptions(user)
             except:
                 opciones = crud.options
-            if request.form['email'] in session["username"]:
-                return render_template('view_personal_data.html', usuario=user, opcion=opciones,l=links,file=file)
-            else: 
-                return "inicie sesion"
+            try:
+                if request.form['practic'] in session["username"]:
+                    return render_template('view_personal_data.html', usuario=user, opcion=opciones,l=links,file=file)
+                else: 
+                    return render_template('index.html')
+            except:
+                return render_template('index.html')
         elif ruta == "actu":
             putos = 'formulario.html'
             options = crud.options          

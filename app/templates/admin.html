@@ -68,150 +68,121 @@
         </div>
 
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+    <body>
+            <head>
+                <meta charset="UTF-8" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/admin.css')}}">
+                <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style1.css')}}">
+                <!-- CSS only -->
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                {% for x in range(1, (cantidadDatos//8)+1) %}
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{x}}"
-                    aria-label="Slide {{x+1}}"></button>
-                {% endfor %}
-            </div>
-
-            <div class="carousel-inner" style="width: 100%;">
-                <div class="main-top">
-                    <div class="text logo-text">
-                        <span class="name">Practicantes Generación XXI</span>
-                    </div>
-                </div>
-                <div class="carousel-item active">
-                    <section class="main">
-                        {% for i in range(0,2) -%}
-                        <div class="users">
-                            {% for j in range(0,4) -%}
-                            {% if (j+4*i) >= cantidadDatos %}
-                            <div class="card" style="opacity: 0%;">
-                                <center>
-                                    <div class="cardc"><img src={{l[j+4*i]}}></div>
-                                </center>
-                                <div class="cardc">
-                                    <td scope="col"><b> ------------------------ </b></td>
-                                </div>
-                                <div class="cardc">
-                                    <p> ------------------------ </p>
-                                </div>
-                                <div class="cardc">
-                                    <p> ------------------------------------ </p>
-                                </div>
-                                <div class="per">
-                                    <table>
-                                        <tr>
-                                            <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
-                                                --
-                                            </button>
-                                        </tr>
-                                    </table>
-                                </div>
+                <!----===== Boxicons CSS ===== -->
+                <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+            </head>
+        <body>
+            <body>
+                <nav class="sidebar close">
+                    <header>
+                        <div class="image-text">
+                            <div class="text logo-text">
+                                <span class="name">Generación XXI</span>
+                                <span class="profession">Navegación</span>
                             </div>
-                            <br>
-                            {% else %}
-                            <div class="card">
-                                <center>
-                                    <div class="cardc"><img src={{l[j+4*i]}}></div>
-                                </center>
-                                <div class="cardc">
-                                    <td scope="col"><b>{{usuario[keys[j+4*i]]['Nombres']}}
-                                            {{usuario[keys[j+4*i]]['Apellidos']}}</b></td>
-                                </div>
-                                <div class="cardc">
-                                    <p> {{usuario[keys[j+4*i]]['Correo corporativo']}} </p>
-                                </div>
-                                <div class="cardc">
-                                    <p> {{usuario[keys[j+4*i]]['Carrera']}} </p>
-                                </div>
-                                <div class="per">
-                                    <table>
-                                        <tr>
-                                            <form action="/admin_view" method="post">
-                                                <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
-                                                <input type="hidden"
-                                                    value="{{usuario[keys[j+4*i]]['Correo corporativo']}}" name="foto">
-                                                <button class="contenedor-btn-file bordeado" name="ruta"
-                                                    value="infopract">
-                                                    Perfil
-                                                </button>
-                                            </form>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <br>
-                            {% endif %}
-                            {% endfor -%}
                         </div>
-                        {% endfor -%}
-                    </section>
-                </div>
-                {% for x in range(8,cantidadDatos,8) -%}
-                <div class="carousel-item">
-                    <section class="main">
-                        {% for i in range(0,2) -%}
-                        <div class="users">
-                            {% for j in range(x,x+4) -%}
-                            {% if (j+4*i) >= cantidadDatos %}
-                            <div class="card" style="opacity: 0%;">
-                                <center>
-                                    <div class="cardc"><img src={{l[j+4*i]}}></div>
-                                </center>
-                                <div class="cardc">
-                                    <td scope="col"><b> ------------------------ </b></td>
-                                </div>
-                                <div class="cardc">
-                                    <p> ------------------------ </p>
-                                </div>
-                                <div class="cardc">
-                                    <p> ------------------------------------ </p>
-                                </div>
-                                <div class="per">
-                                    <table>
-                                        <tr>
-                                            <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
-                                                --
-                                            </button>
-                                        </tr>
-                                    </table>
-                                </div>
+                            <i class='bx bx-chevron-right toggle' style="background-color: #CF2F35;"></i>
+                    </header>
+        
+                    <div class="menu-bar">
+                        <div class="menu">
+                            <li class="search-box">
+                            <form action="/admin_view" method="post">
+                            <div class="ul">
+                                <button type="submit" style="background-color: #F6F5FF;" name="ruta" value="search">
+                                <i class="bx bx-search icon"></i>
+                                </button>
+                                <input type="text" name="buscar" placeholder="Buscar..." />
                             </div>
-                            <br>
-                            {% else %}
-                            <div class="card">
-                                <center>
-                                    <div class="cardc"><img src={{l[j+4*i]}}></div>
-                                </center>
-                                <!-- <p> {{j+4*i}}</p>
-                                                                {{cantidadDatos}} -->
-                                <div class="cardc">
-                                    <td scope="col"><b>{{usuario[keys[j+4*i]]['Nombres']}}
-                                            {{usuario[keys[j+4*i]]['Apellidos']}}</b></td>
+                            </form>
+                            </li>
+                  
+                            <li class="nav-link">
+                              
+                              <form action="/admin_view" method="post">
+                                
+                                <button              
+                                  class="contenedor-btn-file bordeado"
+                                  name="ruta"
+                                  value="admin"
+                                >
+                                <div class="ul">
+                                  <i class="bx bxs-user icon"></i>
+                                  <span class="btn-file"> Practicantes</span>
                                 </div>
-                                <div class="cardc">
-                                    <p> {{usuario[keys[j+4*i]]['Correo corporativo']}} </p>
+                                </button>
+                              
+                              </form>
+                            </li>
+                  
+                            <li class="nav-link">
+                              
+                              <form action="/admin_view" method="post">
+                                <button class="contenedor-btn-file bordeado" name="ruta" value="reportes">
+                                  <div class="ul">
+                                    <i align="left" class="bx bx-pie-chart-alt icon"></i>
+                                  <span class="btn-file">Reportes</span>
+                                  </div>
+                                </button>
+                              </form>
+                            </li>
+
+                            <li class="nav-link">
+                                <form action="/admin_view" method="post">
+                                    <button class="contenedor-btn-file bordeado" name="ruta" value="reportes_ev">
+                                        <div class="ul">
+                                        <i class='bx bx-pie-chart-alt icon' ></i>
+                                        <span class="btn-file">Evaluaciones</span>
+                                        </div>
+                                    </button>
+                                </form>
+                        </li>
+                        
+
+                          </div>
+        
+                        <div class="bottom-content">
+                            <li class="a">
+                                <a href="/index">
+                                    <i class='bx bx-log-out icon' ></i>
+                                    <span class="text nav-text">Logout</span>
+                                </a>
+                            </li>        
+                            <li class="mode">
+                                <div class="sun-moon">
+                                    <i class='bx bx-moon icon moon'></i>
+                                    <i class='bx bx-sun icon sun'></i>
                                 </div>
-                                <div class="cardc">
-                                    <p> {{usuario[keys[j+4*i]]['Carrera']}} </p>
+                                <span class="mode-text text">Dark mode</span>
+        
+                                <div class="toggle-switch">
+                                    <span class="switch"></span>
                                 </div>
-                                <div class="per">
-                                    <div>
-                                        <form action="/admin_view" method="post">
-                                            <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
-                                            <input type="hidden" value="{{usuario[keys[j+4*i]]['Correo corporativo']}}"
-                                                name="foto">
-                                            <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
-                                                Perfil
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
+                            </li>
+                        </div>    
+                    </div>
+                </nav>
+        
+                <section class="home">
+                    <div class="container">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    {% for x in range(1, (cantidadDatos//8)+1) %}
+                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{x}}" aria-label="Slide {{x+1}}"></button>
+                                    {% endfor %}
                             </div>
                             <br>
                             {% endif %}
@@ -279,6 +250,4 @@
         </script>
        
     </body>
-
-    </html>
-    {% endblock %}
+{% endblock %}

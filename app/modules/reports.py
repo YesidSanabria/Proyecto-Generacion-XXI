@@ -117,3 +117,6 @@ def getInfoGraphs(students):
 
 def dashboard():
     return render_template('dashboard.html')
+
+def dashboard_ev():
+    return render_template('dashboard_ev.html')
