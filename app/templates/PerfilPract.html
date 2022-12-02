@@ -105,19 +105,19 @@
       </div>
     </nav>
     <section class="home">      
-        <section class="maini">  
+        <section class="maini" style="padding-top: 0.2%;">  
             <div class="users" style="height: 100%; width: 100%;">                 
                 <div class=card0 style="height: 100%; width: 100%;">
-                    <div class="backGraundWith" style=" height: 100%; width: 100%;">
-                        <div class="card4" style="height: 40%; opacity: 50%;">
-                            <img style="height: 100%; width: 100%" src = "{{url_for ('static', filename = './img/PHILIPPINES.jpg')}}"/>
+                    <div class="backGraundWith" style=" height: 100%; width: 100%;">                                              
+                        <div class="card4" style="height: 40%; opacity: 100%;">                          
+                            <img style="height: 100%; width: 100%" src = "{{url_for ('static', filename = './img/gener.png')}}"/>
                         </div>
                         <div class="card4" style="height: 60%;">
-                            <div class="ul">
+                            <div class="ul" style="height: 100%;">
                                 <div class="Espacio1" style="height: 100%; width: 30%;">
-                                    <div class="card" style="width: 95%; height: 50%; position: relative; top: -150px;">     
+                                    <div class="card" style="width: 95%; height: 150%; position: relative; top: -200px;">     
                                         <br>                                   
-                                            <center style="height: 20%;"><img src="{{l}}" style="width: 35%; height: 80%;" /></center>   
+                                            <center style="height: 20%;"><img src="{{l}}" style="width: 35%; height: 100%;" /></center>   
                                             <br>                                     
                                             <center><div class="card5">                                                                       
                                                 <h4 align = left >{{usuario['Nombres']}} {{usuario['Apellidos']}}</h4>
@@ -160,15 +160,15 @@
                                 <div class="Espacio2" style="height: 100%; width: 50%;">
                                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true" style="height: 100%; width: 95%;">  
                                            
-                                        <section class="main" style="width: 100%; height: 100%;">
-                                        <div class="carousel-indicators">                            
+                                        <section class="main" style="padding: 0%;">
+                                        <div class="carousel-indicators" style="margin: 0%;">                            
                                           <button type="button" style="background-color: #cf2f35;" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                                           <button type="button" style="background-color: #cf2f35;" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                                           <button type="button" style="background-color: #cf2f35;" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                                         </div>
                                         </section>
 
-                                    <section class="main" style="width: 100%; height: 100%;">
+                                    <section class="main" style="width: 100%; height: 100%; padding-top: 1%;">
                                         <div class="carousel-inner" style="height: 100%; width: 100%;">
                                           <div class="carousel-item active" style="width: 100%; height: 100%;">
                                             <div class="ul">
@@ -208,17 +208,17 @@
                                                 <center>
                                                 <h3 class="fontp" style="color: #cf2f35;" align="left">Datos Corporativos</h3>                             
                                                 <h6 align="left"><b>Gerencia: </b><td>{{ usuario['Gerencia']}}</td></h6>
-                                                <br>                                 
+                                                <hr style="margin: 2%; opacity: 0%;">                            
                                                 <h6 align="left"><b>Dirección corporativa: </b><td>{{ usuario['Area de gerencia']}}</td></h6>
-                                                <br>                                  
+                                                <hr style="margin: 2%; opacity: 0%;">                          
                                                 <h6 align="left"><b>Nombre gerente: </b><td>{{ usuario['Nombre gerente']}}</td></h6>
-                                                <br>                                      
+                                                <hr style="margin: 2%; opacity: 0%;">                                   
                                                 <h6 align="left"><b>Celular corporativo: </b><td>{{ usuario['Celular corporativo']}}</td></h6>
-                                                <br>                                      
+                                                <hr style="margin: 2%; opacity: 0%;">                                   
                                                 <h6 align="left"><b>Correo corporativo: </b><td>{{ usuario['Correo corporativo']}}</td></h6>
-                                                <br>                                      
+                                                <hr style="margin: 2%; opacity: 0%;">                              
                                                 <h6 align="left"><b>Correo gerente: </b><td>{{ usuario['Correo gerente']}}</td></h6>
-                                                <br>                                      
+                                                <hr style="margin: 2%; opacity: 0%;">                                  
                                                 <h6 align="left"><b>Celular gerente: </b><td>{{ usuario['Celular gerente']}}</td></h6>                                                                                                                    
                                               </center>
                                               </div>
@@ -250,9 +250,137 @@
                                         
                                       </div>
                                 </div>
-                                <div class="Espacio3" style="background-color: blue; height: 100%; width: 20%;">
-zxcz
+                                <div class="card0" style="height: 70%; width: 20%;">
+                                  <div>
+                                    <div>                                      
+                                      <h3 class="fontp" style="color: #cf2f35;" align="left">Evaluaciones</h3>                                    
+                                      <input type="hidden" value="{{usuario['Correo corporativo']}}" name="editar">
+                                        <button type="button" class="btn-eval" data-bs-toggle="modal" data-bs-target="#evaluacionLider">
+                                          Evaluaciones lider
+                                        </button>
+                                              <div class="modal fade" id="evaluacionLider" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                  <div class="modal-content">
+                                                      <div class="modal-header">
+                                                          <h1 class="modal-title fs-5" id="exampleModalLabel">Evaluaciones Lider</h1>
+                                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                      </div>
+                                                      <div class="modal-body">
+                                                        {% for key in ev.keys() %}
+                                                        <div>
+                                                          <b>Evaluación de {{ev[key]['Fecha']}}</b>
+                                                          <center><hr width="95%"></center>
+                                                          <div class="ul">
+                                                          <b>Gerencia:</b> {{ev[key]['Pregunta1']}}
+                                                        </div> 
+                                                      <div class="ul">
+                                                          <b>Cédula:</b> {{ev[key]['Pregunta2']}}
+                                                        </div>
+                                                        <div class="ul">
+                                                          <b>Nombre completo (Líder):</b> {{ev[key]['Pregunta3']}}
+                                                        </div>
+                                                        <div class="ul">
+                                                          <b>Nombre del practicante:</b> {{ev[key]['Pregunta4']}}
+                                                        </div>
+                                                        <div class="ul">
+                                                          <b>Cumplimiento tareas asignadas:</b> {{ev[key]['Pregunta5']}}
+                                                        </div>
+                                                        <div class="ul">
+                                                          <b>Buena actitud:</b> {{ev[key]['Pregunta6']}}
+                                                        </div>
+                                                        <div class="ul">
+                                                          <b>Capacidad de proponer e innovar:</b> {{ev[key]['Pregunta7']}}
+                                                        </div>
+                                                        <div class="ul">
+                                                          <b>Agilismo:</b> {{ev[key]['Pregunta8']}}
+                                                        </div>
+                                                        <div class="ul">
+                                                          <b>Digital:</b> {{ev[key]['Pregunta9']}}
+                                                        </div>
+                                                        <div class="ul">
+                                                          <b>Liderazgo:</b> {{ev[key]['Pregunta10']}}
+                                                        </div>
+                                                        <div class="ul">
+                                                          <b>Observaciones:</b> {{ev[key]['Observaciones']}}
+                                                        </div>  
+                                                        <center><hr width="95%"></center>                                
+                                                        </div>
+                                                        {% endfor %}                                 
+                                                      </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              
+                                        <button type="button" class="btn-eval" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                          Evaluaciones Docente
+                                        </button>                                      
+                                        <button type="button" class="btn-eval" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                          Autoevaluación
+                                        </button>
+                                        <br><br>
+                                        
+                          
+                                    </div>
+                                  </div>
+                                  <div class="ul">
+                                    <div class="btnAdnim">                            
+                                      <form action="admin_view" method="post">
+                                        <input type="hidden" value="{{usuario['Correo corporativo']}}" name="editar">
+                                        <input type="hidden" value="{{y}}" name="yavee">
+                                        <button type="submit" class="btn btn-primary" style="width: 80%;" name="ruta" value="edit" >
+                                          Editar
+                                        </button>
+                                      </form>
+                                  </div>                        
+                                  <div class="btnAdnim">                                               
+                                    <button type="button" class="btn btn-warning" style="width: 80%;" data-bs-toggle="modal" data-bs-target="#eliminarDatos">
+                                      Eliminar
+                                    </button>                    
+                                    <div class="modal fade" id="eliminarDatos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Usuario</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <div>
+                                                <b>¿Esta seguro que desea eliminar a este usuario?</b>
+                                                <center><hr width="95%"></center>
+                                                <div class="ul">
+                                                <b>Correo :</b> {{usuario["Correo corporativo"]}}
+                                              </div> 
+                                              <div class="ul">
+                                                <b>Nombre :</b> {{usuario["Nombres"]}} {{usuario["Apellidos"]}}
+                                              </div>                                     
+                                              </div>                                    
+                                            </div>
+                                            <div class="modal-footer">
+                                              <div class="card0">
+                                              <div class="ul">
+                                                <form action="admin_view" method="post">
+                                                  <div class="btnAdnim" >
+                                                    <input type="hidden" value="{{usuario['Correo corporativo']}}" name="eliminar">
+                                                      <button class="btn btn-danger" style="width: 200px;" name="ruta" value="elim">
+                                                        Si
+                                                      </button>
+                                                  </div>
+                                                </form>
+                                                <div class="btnAdnim">
+                                                  <button class="btn btn-warning" style="width: 200px;">No</button>
+                                                </div>
+                                              </div>
+                                              <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                              <button type="button" class="btn btn-primary">Save changes</button> -->
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  </div>
                                 </div>
+                               
                             </div>
                         </div>               
                     </div>                

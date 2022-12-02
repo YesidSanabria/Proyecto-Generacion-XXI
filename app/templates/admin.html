@@ -144,7 +144,7 @@
                                                 {% for j in range(0,4) -%}
                                                     {% if (j+4*i) >= cantidadDatos %}
                                                     <div class="card" style="opacity: 0%;">                                                        
-                                                        <div class="cardimage"><img src={{l[j+4*i]}} style="width: 35%; height: 80%;"></div>
+                                                        <div class="cardimage"><img src={{l[j+4*i]}}></div>
                                                         <div class="cardc">
                                                         <td scope="col"><b> ------------------------  </b></td>
                                                         </div>
@@ -168,7 +168,7 @@
                                                     {% else %}
                                                     <div class="card">
                                                         <div class="car" style="height: 2%;"></div>
-                                                            <div class="cardimage"><img src={{l[j+4*i]}} style="width: 35%; height: 80%;"></div>
+                                                            <div class="cardimage"><img src={{l[j+4*i]}}></div>
                                                             <div class="cardc">
                                                             <td scope="col"><b>{{usuario[keys[j+4*i]]['Nombres']}} {{usuario[keys[j+4*i]]['Apellidos']}}</b></td>
                                                             </div>
@@ -232,7 +232,7 @@
                                                     {% for j in range(x,x+4) -%}
                                                         {% if (j+4*i) >= cantidadDatos %}
                                                         <div class="card" style="opacity: 0%;">
-                                                            <div class="cardimage"><img src={{l[j+4*i]}} style="width: 35%; height: 80%;"></div>
+                                                            <div class="cardimage"><img src={{l[j+4*i]}}></div>
                                                             <div class="cardc">
                                                             <td scope="col"><b> ------------------------  </b></td>
                                                             </div>
@@ -255,7 +255,7 @@
                                                     
                                                     {% else %}
                                                         <div class="card">
-                                                            <div class="cardimage"><img src={{l[j+4*i]}} style="width: 35%; height: 80%;"></div>
+                                                            <div class="cardimage"><img src={{l[j+4*i]}}></div>
                                                             <!-- <p> {{j+4*i}}</p>
                                                                 {{cantidadDatos}} -->
                                                                 <div class="cardc">
