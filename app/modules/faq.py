@@ -1,6 +1,3 @@
-
-# ----- Si desea agregar más preguntas debe cambiar desde faq.html el for i range (x) en donde x es la cantidad de preguntas ---
-# ----- Ultima linea de codigo de pregunta - 4 = x ----
 question = [
     ["¿Que hago si tengo problemas tecnicos con mi computador?","En este caso debes dirigirte al 10mo piso para solicitar soporte en la oficina"]
     ,["¿Como puedo solicitar un certificado laboral?","Debes ingresar a Success Factors, en tu perfil encontrarás un apartado llamado 'Información de Nómina', ahí se encuentran los enlaces para solicitar un certificado laboral y demás relacionados."]
