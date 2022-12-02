@@ -26,7 +26,6 @@ auth = firebase.auth()
 admin = "sspg.xxi@gmail.com"
 
 def index():
-    session.pop('username', None)
     if (request.method == 'POST'):
         email = request.form['name']
         password = request.form['password']
@@ -64,13 +63,11 @@ def index():
             auth.sign_in_with_email_and_password(email, password)            
             #user_id = auth.get_account_info(user['idToken'])
             session['username'] = email
-            #print(session['username'])
             #return render_template('formulario.html', user=user)
             return render_template(putos, usuario=user, opcion=options, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta, file=file)
             
         except:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'
-            session.pop('username', None)
             return render_template('index.html', umessage=unsuccessful)
-    session.pop('username', None)
+    session.pop('username',None)
     return render_template('index.html')

@@ -1,300 +1,284 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <body>
-            <head>
-                <meta charset="UTF-8" />
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/admin.css')}}">
-                <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style1.css')}}">
-                <!-- CSS only -->
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
-                <!----===== Boxicons CSS ===== -->
-                <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-            </head>
-        <body>
-            <body>
-                <nav class="sidebar close">
-                    <header>
-                        <div class="image-text">
-                            <div class="text logo-text">
-                                <span class="name">Generación XXI</span>
-                                <span class="profession">Navegación</span>
-                            </div>
-                        </div>
-                            <i class='bx bx-chevron-right toggle' style="background-color: #CF2F35;"></i>
-                    </header>
-        
-                    <div class="menu-bar">
-                        <div class="menu">
-                            <li class="search-box">
+<body>
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/admin.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style1.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/personald.css')}}">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet'
+            href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+        <!-- Font Awesome CSS -->
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <!----===== Boxicons CSS ===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+
+    <body id="body-pd">
+        <header class="header" id="header">
+            <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        </header>
+        <div class="l-navbar" id="nav-bar">
+            <nav class="nav">
+                <div> <a href="/index" class="nav_logo"> <i class='bx bxs-home nav_logo-icon'></i> <span
+                            class="nav_logo-name">Generación XXI</span> </a>
+                    <div class="nav_list">
+
+                        <form action="/admin_view" method="post">
+                        <button class="nav_link active"  name="ruta" value="search">
+                            <i class='bx bx-user nav_icon'></i>
+                            <span class="nav_name">Buscar</span></button></form>
+
                             <form action="/admin_view" method="post">
-                            <div class="ul">
-                                <button type="submit" style="background-color: #F6F5FF;" name="ruta" value="search">
-                                <i class="bx bx-search icon"></i>
-                                </button>
-                                <input type="text" name="buscar" placeholder="Buscar..." />
-                            </div>
-                            </form>
-                            </li>
-                  
-                            <li class="nav-link">
-                              
-                              <form action="/admin_view" method="post">
-                                
-                                <button              
-                                  class="contenedor-btn-file bordeado"
-                                  name="ruta"
-                                  value="admin"
-                                >
-                                <div class="ul">
-                                  <i class="bx bxs-user icon"></i>
-                                  <span class="btn-file"> Practicantes</span>
-                                </div>
-                                </button>
-                              
-                              </form>
-                            </li>
-                  
-                            <li class="nav-link">
-                              
-                              <form action="/admin_view" method="post">
-                                <button class="contenedor-btn-file bordeado" name="ruta" value="reportes">
-                                  <div class="ul">
-                                    <i align="left" class="bx bx-pie-chart-alt icon"></i>
-                                  <span class="btn-file">Reportes</span>
-                                  </div>
-                                </button>
-                              </form>
-                            </li>
-                          </div>
-        
-                        <div class="bottom-content">
-                            <li class="a">
-                                <a href="/index">
-                                    <i class='bx bx-log-out icon' ></i>
-                                    <span class="text nav-text">Logout</span>
-                                </a>
-                            </li>        
-                            <li class="mode">
-                                <div class="sun-moon">
-                                    <i class='bx bx-moon icon moon'></i>
-                                    <i class='bx bx-sun icon sun'></i>
-                                </div>
-                                <span class="mode-text text">Dark mode</span>
-        
-                                <div class="toggle-switch">
-                                    <span class="switch"></span>
-                                </div>
-                            </li>
-                        </div>    
+                        <button class="nav_link" name="ruta" value="admin">
+                            <i class='bx bx-pencil nav_icon'></i>
+                            <span class="nav_name">Admin</span></button></form>
+
+                            <form action="/admin_view" method="post">
+                                <button class="nav_link" name="ruta" value="reportes">
+                                    <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                                    <span class="nav_name">Reportes</span></button></form>
+
+                        <a href="#" class="nav_link">
+                            <i class='bx bx-message-square-detail nav_icon'></i>
+                            <span class="nav_name">Messages</span> </a>
+                        <a href="#" class="nav_link">
+                            <i class='bx bx-bookmark nav_icon'></i>
+                            <span class="nav_name">Bookmark</span> </a>
+                        <a href="#" class="nav_link">
+                            <i class='bx bx-folder nav_icon'></i>
+                            <span class="nav_name">Files</span> </a>
+                        <a href="#" class="nav_link">
+                            <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                            <span class="nav_name">Stats</span> </a>
                     </div>
-                </nav>
-        
-                <section class="home">
-                    <div class="container">
-                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
+                        class="nav_name">SignOut</span> </a>
+            </nav>
+        </div>
 
-                            <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                    {% for x in range(1, (cantidadDatos//8)+1) %}
-                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{x}}" aria-label="Slide {{x+1}}"></button>
-                                    {% endfor %}
-                            </div>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
 
-                            <div class="carousel-inner" style="width: 100%;">
-                                <div class="main-top">
-                                    <div class="ul">
-                                    <div class="text logo-text">
-                                        <span class="name">Practicantes Generación XXI</span>
-                                    </div> 
-                                                     
-                                    
-                                    <div style="position: relative; left: 55%; top:30px; height: 10px; width: 10px;">
-                                        <div class="ul">
-                                        <form action="/admin_view" method="post">                                        
-                                            <button type="submit" name="ruta" value="searchCareer">
-                                            <i class="bx bx-search icon" style="height: 2%; width: 2%;"></i>
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                {% for x in range(1, (cantidadDatos//8)+1) %}
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{x}}"
+                    aria-label="Slide {{x+1}}"></button>
+                {% endfor %}
+            </div>
+
+            <div class="carousel-inner" style="width: 100%;">
+                <div class="main-top">
+                    <div class="text logo-text">
+                        <span class="name">Practicantes Generación XXI</span>
+                    </div>
+                </div>
+                <div class="carousel-item active">
+                    <section class="main">
+                        {% for i in range(0,2) -%}
+                        <div class="users">
+                            {% for j in range(0,4) -%}
+                            {% if (j+4*i) >= cantidadDatos %}
+                            <div class="card" style="opacity: 0%;">
+                                <center>
+                                    <div class="cardc"><img src={{l[j+4*i]}}></div>
+                                </center>
+                                <div class="cardc">
+                                    <td scope="col"><b> ------------------------ </b></td>
+                                </div>
+                                <div class="cardc">
+                                    <p> ------------------------ </p>
+                                </div>
+                                <div class="cardc">
+                                    <p> ------------------------------------ </p>
+                                </div>
+                                <div class="per">
+                                    <table>
+                                        <tr>
+                                            <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
+                                                --
                                             </button>
-                                            <input type="text" name="buscar" placeholder=" Buscar carrera" style="border-radius: 5px; background-color: #cc7171; color: #fff;" />                                        
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <br>
+                            {% else %}
+                            <div class="card">
+                                <center>
+                                    <div class="cardc"><img src={{l[j+4*i]}}></div>
+                                </center>
+                                <div class="cardc">
+                                    <td scope="col"><b>{{usuario[keys[j+4*i]]['Nombres']}}
+                                            {{usuario[keys[j+4*i]]['Apellidos']}}</b></td>
+                                </div>
+                                <div class="cardc">
+                                    <p> {{usuario[keys[j+4*i]]['Correo corporativo']}} </p>
+                                </div>
+                                <div class="cardc">
+                                    <p> {{usuario[keys[j+4*i]]['Carrera']}} </p>
+                                </div>
+                                <div class="per">
+                                    <table>
+                                        <tr>
+                                            <form action="/admin_view" method="post">
+                                                <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
+                                                <input type="hidden"
+                                                    value="{{usuario[keys[j+4*i]]['Correo corporativo']}}" name="foto">
+                                                <button class="contenedor-btn-file bordeado" name="ruta"
+                                                    value="infopract">
+                                                    Perfil
+                                                </button>
+                                            </form>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <br>
+                            {% endif %}
+                            {% endfor -%}
+                        </div>
+                        {% endfor -%}
+                    </section>
+                </div>
+                {% for x in range(8,cantidadDatos,8) -%}
+                <div class="carousel-item">
+                    <section class="main">
+                        {% for i in range(0,2) -%}
+                        <div class="users">
+                            {% for j in range(x,x+4) -%}
+                            {% if (j+4*i) >= cantidadDatos %}
+                            <div class="card" style="opacity: 0%;">
+                                <center>
+                                    <div class="cardc"><img src={{l[j+4*i]}}></div>
+                                </center>
+                                <div class="cardc">
+                                    <td scope="col"><b> ------------------------ </b></td>
+                                </div>
+                                <div class="cardc">
+                                    <p> ------------------------ </p>
+                                </div>
+                                <div class="cardc">
+                                    <p> ------------------------------------ </p>
+                                </div>
+                                <div class="per">
+                                    <table>
+                                        <tr>
+                                            <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
+                                                --
+                                            </button>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <br>
+                            {% else %}
+                            <div class="card">
+                                <center>
+                                    <div class="cardc"><img src={{l[j+4*i]}}></div>
+                                </center>
+                                <!-- <p> {{j+4*i}}</p>
+                                                                {{cantidadDatos}} -->
+                                <div class="cardc">
+                                    <td scope="col"><b>{{usuario[keys[j+4*i]]['Nombres']}}
+                                            {{usuario[keys[j+4*i]]['Apellidos']}}</b></td>
+                                </div>
+                                <div class="cardc">
+                                    <p> {{usuario[keys[j+4*i]]['Correo corporativo']}} </p>
+                                </div>
+                                <div class="cardc">
+                                    <p> {{usuario[keys[j+4*i]]['Carrera']}} </p>
+                                </div>
+                                <div class="per">
+                                    <div>
+                                        <form action="/admin_view" method="post">
+                                            <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
+                                            <input type="hidden" value="{{usuario[keys[j+4*i]]['Correo corporativo']}}"
+                                                name="foto">
+                                            <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
+                                                Perfil
+                                            </button>
                                         </form>
                                     </div>
-                                    </div>
-                                    
                                 </div>
-                                </div>
-                                <div class="carousel-item active">
-                                    <section class="main">
-                                        {% for i in range(0,2) -%}                                            
-                                            <div class="users">
-                                                {% for j in range(0,4) -%}
-                                                    {% if (j+4*i) >= cantidadDatos %}
-                                                    <div class="card" style="opacity: 0%;">
-                                                        <center><div class="cardc"><img src={{l[j+4*i]}}></div></center>
-                                                        <div class="cardc">
-                                                        <td scope="col"><b> ------------------------  </b></td>
-                                                        </div>
-                                                        <div class="cardc">
-                                                        <p> ------------------------ </p>
-                                                    </div>
-                                                    <div class="cardc">
-                                                        <p> ------------------------------------ </p>
-                                                    </div>
-                                                    <div class="per">
-                                                        <table>                                                                
-                                                            <tr>
-                                                                    <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
-                                                                        --
-                                                                    </button>
-                                                            </tr>
-                                                        </table>
-                                                    </div>                                                        
-                                                </div>
-                                                <br>
-                                                    {% else %}
-                                                    <div class="card">
-                                                            <center><div class="cardc"><img src={{l[j+4*i]}}></div></center>
-                                                            <div class="cardc">
-                                                            <td scope="col"><b>{{usuario[keys[j+4*i]]['Nombres']}} {{usuario[keys[j+4*i]]['Apellidos']}}</b></td>
-                                                            </div>
-                                                            <div class="cardc">
-                                                            <p> {{usuario[keys[j+4*i]]['Correo corporativo']}} </p>
-                                                        </div>
-                                                        <div class="cardc">
-                                                            <p> {{usuario[keys[j+4*i]]['Carrera']}} </p>
-                                                        </div>
-                                                        <div class="per">
-                                                            <table>                                                                
-                                                                <tr>                                                                                                                                 
-                                                                    <form action="/admin_view" method="post">
-                                                                        <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
-                                                                        <input type="hidden" value="{{usuario[keys[j+4*i]]['Correo corporativo']}}" name="foto">
-                                                                        <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
-                                                                            Perfil
-                                                                        </button>
-                                                                    </form>
-                                                                </tr>
-                                                            </table>
-                                                        </div>                                                        
-                                                    </div>
-                                                    <br>
-                                                    {% endif %}
-                                                {% endfor -%}
-                                            </div>
-                                        {% endfor -%}
-                                    </section>
-                                </div>    
-                                {% for x in range(8,cantidadDatos,8) -%}
-                                    <div class="carousel-item">
-                                        <section class="main">
-                                            {% for i in range(0,2) -%}
-                                                <div class="users">
-                                                    {% for j in range(x,x+4) -%}
-                                                        {% if (j+4*i) >= cantidadDatos %}
-                                                        <div class="card" style="opacity: 0%;">
-                                                            <center><div class="cardc"><img src={{l[j+4*i]}}></div></center>
-                                                            <div class="cardc">
-                                                            <td scope="col"><b> ------------------------  </b></td>
-                                                            </div>
-                                                            <div class="cardc">
-                                                            <p> ------------------------ </p>
-                                                        </div>
-                                                        <div class="cardc">
-                                                            <p> ------------------------------------ </p>
-                                                        </div>
-                                                        <div class="per">
-                                                            <table>                                                                
-                                                                <tr>
-                                                                        <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
-                                                                            --
-                                                                        </button>
-                                                                </tr>
-                                                            </table>
-                                                        </div>                                                        
-                                                    </div>
-                                                    <br>
-                                                    {% else %}
-                                                        <div class="card">
-                                                            <center><div class="cardc"><img src={{l[j+4*i]}}></div></center>
-                                                            <!-- <p> {{j+4*i}}</p>
-                                                                {{cantidadDatos}} -->
-                                                                <div class="cardc">
-                                                                <td scope="col"><b>{{usuario[keys[j+4*i]]['Nombres']}} {{usuario[keys[j+4*i]]['Apellidos']}}</b></td>
-                                                                </div>
-                                                                <div class="cardc">
-                                                                <p> {{usuario[keys[j+4*i]]['Correo corporativo']}} </p>
-                                                                </div>
-                                                                <div class="cardc">
-                                                                <p> {{usuario[keys[j+4*i]]['Carrera']}} </p>
-                                                                </div>
-                                                                    <div class="per">
-                                                                        <div>                                                                                                                                                                                                                              
-                                                                            <form action="/admin_view" method="post">
-                                                                                <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
-                                                                                <input type="hidden" value="{{usuario[keys[j+4*i]]['Correo corporativo']}}" name="foto">
-                                                                                <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
-                                                                                    Perfil
-                                                                                </button>
-                                                                            </form>                                                                        
-                                                                        </div>    
-                                                                    </div>                                                                
-                                                        </div>
-                                                                <br>
-                                                        {% endif %}
-                                                    {% endfor -%}
-                                                </div>
-                                            {% endfor -%}
-                                        </section>    
-                                    </div>
-                                {% endfor -%}
                             </div>
-                            <div class="posicion1">
-                                <button class="btn-estilo" type="button" style="top: -50%" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                            </div>
-                            <div class="posicion2"> 
-                                <button class="btn-estilo" type="button" style="top: -50%; left: 73%;" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button> 
-                            </div>
+                            <br>
+                            {% endif %}
+                            {% endfor -%}
                         </div>
-                    </div>
-                </section>
-        
-                <script>
-                        const body = document.querySelector('body'),
-                    sidebar = body.querySelector('nav'),
-                    toggle = body.querySelector(".toggle"),
-                    searchBtn = body.querySelector(".search-box"),
-                    modeSwitch = body.querySelector(".toggle-switch"),
-                    modeText = body.querySelector(".mode-text");
-        
-        
-                        toggle.addEventListener("click" , () =>{
-                        sidebar.classList.toggle("close");
-                    })
-        
-                        searchBtn.addEventListener("click" , () =>{
-                        sidebar.classList.remove("close");
-                    })
-        
-                        modeSwitch.addEventListener("click" , () =>{
-                            body.classList.toggle("dark");
-            
-                            if(body.classList.contains("dark")){
-                                modeText.innerText = "Light mode";
-                            }else{
-                                modeText.innerText = "Dark mode";
-                            }
-                            });
-                </script>
-            </body>
-        </body>
+                        {% endfor -%}
+                    </section>
+                </div>
+                {% endfor -%}
+            </div>
+            <div class="posicion1">
+                <button class="btn-estilo" type="button" style="top: -50%" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+            </div>
+            <div class="posicion2">
+                <button class="btn-estilo" type="button" style="top: -50%; left: 73%;"
+                    data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+<script>
+            document.addEventListener("DOMContentLoaded", function (event) {
+
+                const showNavbar = (toggleId, navId, bodyId, headerId) => {
+                    const toggle = document.getElementById(toggleId),
+                        nav = document.getElementById(navId),
+                        bodypd = document.getElementById(bodyId),
+                        headerpd = document.getElementById(headerId)
+
+                    // Validate that all variables exist
+                    if (toggle && nav && bodypd && headerpd) {
+                        toggle.addEventListener('click', () => {
+                            // show navbar
+                            nav.classList.toggle('show')
+                            // change icon
+                            toggle.classList.toggle('bx-x')
+                            // add padding to body
+                            bodypd.classList.toggle('body-pd')
+                            // add padding to header
+                            headerpd.classList.toggle('body-pd')
+                        })
+                    }
+                }
+
+                showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+
+                /*===== LINK ACTIVE =====*/
+                const linkColor = document.querySelectorAll('.nav_link')
+
+                function colorLink() {
+                    if (linkColor) {
+                        linkColor.forEach(l => l.classList.remove('active'))
+                        this.classList.add('active')
+                    }
+                }
+                linkColor.forEach(l => l.addEventListener('click', colorLink))
+
+                // Your code to run since DOM is loaded and ready
+            });
+        </script>
+       
     </body>
-{% endblock %}
+
+    </html>
+    {% endblock %}
