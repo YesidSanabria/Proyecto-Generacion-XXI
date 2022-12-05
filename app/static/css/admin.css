@@ -169,12 +169,6 @@ a:hover i{
   padding: 20px;
   width: 100%;
 }
-.maini{  
-  position: relative;
-  padding: 20px;
-  width: 100%;
-  height: 100%;
-}
 .main-top{
   display: flex;
   width: 100%;
@@ -189,7 +183,6 @@ a:hover i{
 .main .users{
   display: flex;
   width: 100%;
-  height: 40%;
 }
 
 .card9{
@@ -215,7 +208,6 @@ a:hover i{
 
 .users .card{
   width: 25%;
-  height: 100%;
   margin: 10px;
   background: #fff;
   text-align: center;
@@ -232,16 +224,6 @@ a:hover i{
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
-}
-
-.espacio{
-  width: 100%;
-  height: 40%;
-}
-
-.cardimage{
-  width: 100%;
-  height: 60%;
 }
 
 .cardc{
@@ -297,10 +279,11 @@ a:hover i{
   height: 8%;
   text-overflow: unset;
   margin: 0px;
+  background: #eeeeee;
   text-align: center;
   border-radius: 10px;
   padding: 10px;
-  
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -402,7 +385,7 @@ table thead tr{
 }
 
 .btnAdnim{
-  width: 50%;
+  width: 100%;
   height: 100%;
 }
 
