@@ -108,12 +108,15 @@ def getInfoGraphs(students):
     email = [data[i]['Correo corporativo'] for i in keys]
     edad = [data[i]['Edad'] for i in keys]
     genero = [data[i]['Sexo'] for i in keys]
+    dirCorp = [data[i]['Area de gerencia'] for i in keys]
     edad.sort()
     genero.sort()
+    dirCorp.sort()
     canEdad = dict(Counter(edad))
     canGenero = dict(Counter(genero))
+    canDir = dict(Counter(dirCorp))
     canPrac = len(keys)
-    return keys, email, canEdad, canGenero, canPrac
+    return keys, email, canEdad, canGenero, canPrac, canDir
 
 def dashboard():
     return render_template('dashboard.html')

@@ -142,7 +142,7 @@
     <div class="card card-style mb-2">
         <div class="card-body">
             <center>
-            <h4> Distribución de practicantes por edades </h4>
+            <h4> Edades </h4>
             <div class="chart-container" style="position: relative; height:40vh; width:30vw">
                 <canvas id="edad"></canvas>
             </div>
@@ -167,7 +167,7 @@
     <div class="card card-style mb-2">
         <div class="card-body">
             <center>
-              <h4> Distribución de practicantes por carrera </h4>
+              <h4> Carrera </h4>
             <div class="chart-container" style="position: relative; height:70vh; width:80vw">
                 <canvas id="carreras"></canvas>
             </div>
@@ -178,13 +178,24 @@
     <div class="card card-style mb-2">
         <div class="card-body">
             <center>
-              <h4> Distribución de practicantes por universidad </h4>
+              <h4> Universidad </h4>
             <div class="chart-container" style="position: relative; height:70vh; width:80vw">
                 <canvas id="universidad"></canvas>
             </div>
             </center>
         </div>
     </div>
+
+    <div class="card card-style mb-2">
+      <div class="card-body">
+          <center>
+            <h4> Dirección corporativa </h4>
+          <div class="chart-container" style="position: relative; height:70vh; width:80vw">
+              <canvas id="direccionC"></canvas>
+          </div>
+          </center>
+      </div>
+  </div>
  
 
 </div>
@@ -201,6 +212,7 @@
         const ctx1 = document.getElementById('genero');
         const ctx2 = document.getElementById('carreras');
         const ctx3 = document.getElementById('universidad');
+        const ctx4 = document.getElementById('direccionC');
       
         new Chart(ctx, {
           type: 'bar',
@@ -352,6 +364,51 @@
             },
             indexAxis:'y'
           }
+      });
+
+      new Chart(ctx4, {
+        type: 'bar',
+        data: {
+          labels: [
+          {% for i in canDirK%}
+          "{{i}}",
+          {% endfor %}
+          ],
+          datasets: [{
+            label: '# de practicantes',
+            data: [
+            {% for i in canDirV%}
+            "{{i}}",
+            {% endfor %}
+            ],
+            backgroundColor: [
+                  '#b7202e',
+                  '#0096a9',
+                  '#f58220',
+                  '#737373',
+                  '#000000'
+              ],
+              /*borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(11, 156, 49, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)'
+              ],*/
+            borderWidth: 1
+          }]
+        },
+        options: {
+          plugins: {
+            legend: {display: false},
+          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
       });
 
       </script>
