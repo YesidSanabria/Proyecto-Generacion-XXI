@@ -24,9 +24,11 @@ def orderOptions(email):
     data = crud.getStudentInfo(email)
     genre = data['Sexo']
     city = data['Regional']
+    dirCorp = data['Direccion']
     out = {
         'sexo': [genre],
-        'regional': [city]
+        'regional': [city],
+        'direccion': [dirCorp]
     }
     for i in options['sexo']:
         if i != genre:
@@ -34,6 +36,9 @@ def orderOptions(email):
     for i in options['regional']:
         if i != city:
             out['regional'].append(i)
+    for i in options['direccion']:
+        if i != dirCorp:
+            out['direccion'].append(i)
     return out
 
 

@@ -127,4 +127,4 @@ def dashboard_ev():
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
 if __name__ == '__main__':
     mail.init_app(app)
-    app.run(debug=True)
+    app.run()
