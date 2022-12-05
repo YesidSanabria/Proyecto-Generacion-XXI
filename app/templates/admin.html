@@ -218,94 +218,83 @@
                                 </center>
                                 <!-- <p> {{j+4*i}}</p>
                                                                 {{cantidadDatos}} -->
-                                <div class="cardc">
-                                    <td scope="col"><b>{{usuario[keys[j+4*i]]['Nombres']}}
-                                            {{usuario[keys[j+4*i]]['Apellidos']}}</b></td>
-                                </div>
-                                <div class="cardc">
-                                    <p> {{usuario[keys[j+4*i]]['Correo corporativo']}} </p>
-                                </div>
-                                <div class="cardc">
-                                    <p> {{usuario[keys[j+4*i]]['Carrera']}} </p>
-                                </div>
-                                <div class="per">
-                                    <div>
-                                        <form action="/admin_view" method="post">
-                                            <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
-                                            <input type="hidden" value="{{usuario[keys[j+4*i]]['Correo corporativo']}}"
-                                                name="foto">
-                                            <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
-                                                Perfil
-                                            </button>
-                                        </form>
+                                                                <div class="cardc">
+                                                                <td scope="col"><b>{{usuario[keys[j+4*i]]['Nombres']}} {{usuario[keys[j+4*i]]['Apellidos']}}</b></td>
+                                                                </div>
+                                                                <div class="cardc">
+                                                                <p> {{usuario[keys[j+4*i]]['Correo corporativo']}} </p>
+                                                                </div>
+                                                                <div class="cardc">
+                                                                <p> {{usuario[keys[j+4*i]]['Carrera']}} </p>
+                                                                </div>
+                                                                    <div class="per">
+                                                                        <div>                                                                                                                                                                                                                              
+                                                                            <form action="/admin_view" method="post">
+                                                                                <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
+                                                                                <input type="hidden" value="{{usuario[keys[j+4*i]]['Correo corporativo']}}" name="foto">
+                                                                                <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
+                                                                                    Perfil
+                                                                                </button>
+                                                                            </form>                                                                        
+                                                                        </div>    
+                                                                    </div>                                                                
+                                                        </div>
+                                                                
+                                                        {% endif %}
+                                                    {% endfor -%}
+                                                </div>
+                                                <br>
+                                            {% endfor -%}
+                                        </section>   
+                                        <section  style="width: 5%;">       
+                                        
+                                            <div class="espacio">
+                                            </div>                                                                                
+                                                <button class="btn-estilo" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="visually-hidden">Next</span>
+                                                </button>                                                                                                                       
+                                            <div class="espacio">
+                                            </div>
+                                                                                                       
+                                        </section> 
                                     </div>
                                 </div>
+                                {% endfor -%}
                             </div>
-                            <br>
-                            {% endif %}
-                            {% endfor -%}
                         </div>
-                        {% endfor -%}
-                    </section>
-                </div>
-                {% endfor -%}
-            </div>
-            <div class="posicion1">
-                <button class="btn-estilo" type="button" style="top: -50%" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-            </div>
-            <div class="posicion2">
-                <button class="btn-estilo" type="button" style="top: -50%; left: 73%;"
-                    data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-        <script>
-            document.addEventListener("DOMContentLoaded", function (event) {
-
-                const showNavbar = (toggleId, navId, bodyId, headerId) => {
-                    const toggle = document.getElementById(toggleId),
-                        nav = document.getElementById(navId),
-                        bodypd = document.getElementById(bodyId),
-                        headerpd = document.getElementById(headerId)
-
-                    // Validate that all variables exist
-                    if (toggle && nav && bodypd && headerpd) {
-                        toggle.addEventListener('click', () => {
-                            // show navbar
-                            nav.classList.toggle('show')
-                            // change icon
-                            toggle.classList.toggle('bx-x')
-                            // add padding to body
-                            bodypd.classList.toggle('body-pd')
-                            // add padding to header
-                            headerpd.classList.toggle('body-pd')
-                        })
-                    }
-                }
-
-                showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
-
-                /*===== LINK ACTIVE =====*/
-                const linkColor = document.querySelectorAll('.nav_link')
-
-                function colorLink() {
-                    if (linkColor) {
-                        linkColor.forEach(l => l.classList.remove('active'))
-                        this.classList.add('active')
-                    }
-                }
-                linkColor.forEach(l => l.addEventListener('click', colorLink))
-
-                // Your code to run since DOM is loaded and ready
-            });
-        </script>
-
+                    </div>
+                </section>
+        
+                <script>
+                        const body = document.querySelector('body'),
+                    sidebar = body.querySelector('nav'),
+                    toggle = body.querySelector(".toggle"),
+                    searchBtn = body.querySelector(".search-box"),
+                    modeSwitch = body.querySelector(".toggle-switch"),
+                    modeText = body.querySelector(".mode-text");
+        
+        
+                        toggle.addEventListener("click" , () =>{
+                        sidebar.classList.toggle("close");
+                    })
+        
+                        searchBtn.addEventListener("click" , () =>{
+                        sidebar.classList.remove("close");
+                    })
+        
+                        modeSwitch.addEventListener("click" , () =>{
+                            body.classList.toggle("dark");
+            
+                            if(body.classList.contains("dark")){
+                                modeText.innerText = "Light mode";
+                            }else{
+                                modeText.innerText = "Dark mode";
+                            }
+                            });
+                </script>
+            </body>
+        </body>
     </body>
 
     </html>

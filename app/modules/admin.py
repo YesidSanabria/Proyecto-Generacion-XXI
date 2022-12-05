@@ -34,7 +34,7 @@ def admin():
             return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
 
         elif ruta == "infopract":
-            putos = 'infopract.html'
+            putos = 'PerfilPract.html'
             yave = request.form["yave"]
             user = crud.getStudentInfo(yave)            
             foto = crud.getImagesURL([request.form["foto"]])
