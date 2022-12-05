@@ -27,7 +27,17 @@ storage = firebase.storage()
 
 options = {
     'sexo': ['Hombre', 'Mujer', 'Otros'], 
-    'regional': ['Bogotá', 'Bucaramanga', 'Medellín', 'Barranquilla', 'Cali', 'Manizales']    
+    'regional': ['Bogotá', 'Bucaramanga', 'Medellín', 'Barranquilla', 'Cali', 'Manizales'],
+    'direccion': ['Corporativo financiero',
+                  'Corporativo gestión humana',
+                  'Corporativo juridico y asuntos corporativos',
+                  'Corporativo marketing y medios de comunicación',
+                  'Ejecutivo unidad mercado corporativo',
+                  'Auditoria',
+                  'Corporativo tecnologia',
+                  'Ejecutivo unidad mercado masivo',
+                  'Corporativo asuntos regulatorios y relaciones institucionales',
+                  'Corporativo planeación estrategica e innovación']
     }
 
 # FUNCIONES
