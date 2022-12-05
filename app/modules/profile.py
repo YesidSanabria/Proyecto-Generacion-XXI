@@ -49,7 +49,7 @@ def view_personal_data():
             except:
                 opciones = crud.options
             try:
-                if request.form['practic'] in session["username"]:
+                if request.form['email'] in session["username"]:
                     return render_template('view_personal_data.html', usuario=user, opcion=opciones,l=links,file=file)
                 else: 
                     return render_template('index.html')
