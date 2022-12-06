@@ -134,7 +134,7 @@ def admin():
 
         elif ruta == 'reportes_ev':
             putos = 'dashboard_ev.html'
-            [keys, email, canEdad, canGenero, canPrac] = rp.getInfoGraphs([])
+            [keys, email, canEdad, canGenero, canPrac, canDir] = rp.getInfoGraphs([])
             [carreras, cont_carreras] = rp.getCareerData()
             [uni, cont_uni] = rp.getUniversityData()
             canGenero['Otros'] = 0
