@@ -167,19 +167,19 @@
                                                 <br>
                                                     {% else %}
                                                     <div class="card">
-                                                        <div class="car" style="height: 2%;"></div>
-                                                            <div class="cardimage"><img src={{l[j+4*i]}}></div>
-                                                            <div class="cardc">
-                                                            <td scope="col"><b>{{usuario[keys[j+4*i]]['Nombres']}} {{usuario[keys[j+4*i]]['Apellidos']}}</b></td>
+                                                        <div style="height: 100%;">
+                                                            <div class="cardimage" style="height: 32%;"><img src={{l[j+4*i]}}></div>
+                                                            <div class="cardc" style="height: 22%;">
+                                                            <FONT SIZE=3><b>{{usuario[keys[j+4*i]]['Nombres']}} {{usuario[keys[j+4*i]]['Apellidos']}}</b></font>
                                                             </div>
-                                                            <div class="cardc">
+                                                            <div class="cardc" style="height: 10%;">
                                                             <p> {{usuario[keys[j+4*i]]['Correo corporativo']}} </p>
-                                                        </div>
-                                                        <div class="cardc">
-                                                            <p> {{usuario[keys[j+4*i]]['Carrera']}} </p>
-                                                        </div>
-                                                        <div class="per">
-                                                            <table>                                                                
+                                                            </div>
+                                                            <div class="cardc" style="height: 15%;">
+                                                                <p> {{usuario[keys[j+4*i]]['Carrera']}} </p>
+                                                            </div>
+                                                            <div class="per" style="height: 10%;">
+                                                                <table>                                                                
                                                                 <tr>                                                                                                                                 
                                                                     <form action="/admin_view" method="post">
                                                                         <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
@@ -189,8 +189,9 @@
                                                                         </button>
                                                                     </form>
                                                                 </tr>
-                                                            </table>
-                                                        </div>                                                        
+                                                                </table>
+                                                            </div>  
+                                                        </div>                                                                                                              
                                                     </div>
                                                     <br>
                                                     {% endif %}
@@ -255,29 +256,31 @@
                                                     
                                                     {% else %}
                                                         <div class="card">
-                                                            <div class="cardimage"><img src={{l[j+4*i]}}></div>
-                                                            <!-- <p> {{j+4*i}}</p>
-                                                                {{cantidadDatos}} -->
-                                                                <div class="cardc">
-                                                                <td scope="col"><b>{{usuario[keys[j+4*i]]['Nombres']}} {{usuario[keys[j+4*i]]['Apellidos']}}</b></td>
+                                                            <div style="height: 100%;">
+                                                                <div class="cardimage" style="height: 32%;"><img src={{l[j+4*i]}}></div>
+                                                                <div class="cardc" style="height: 22%;">
+                                                                <FONT SIZE=3><b>{{usuario[keys[j+4*i]]['Nombres']}} {{usuario[keys[j+4*i]]['Apellidos']}}</b></font>
                                                                 </div>
-                                                                <div class="cardc">
+                                                                <div class="cardc" style="height: 10%;">
                                                                 <p> {{usuario[keys[j+4*i]]['Correo corporativo']}} </p>
                                                                 </div>
-                                                                <div class="cardc">
-                                                                <p> {{usuario[keys[j+4*i]]['Carrera']}} </p>
+                                                                <div class="cardc" style="height: 15%;">
+                                                                    <p> {{usuario[keys[j+4*i]]['Carrera']}} </p>
                                                                 </div>
-                                                                    <div class="per">
-                                                                        <div>                                                                                                                                                                                                                              
-                                                                            <form action="/admin_view" method="post">
-                                                                                <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
-                                                                                <input type="hidden" value="{{usuario[keys[j+4*i]]['Correo corporativo']}}" name="foto">
-                                                                                <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
-                                                                                    Perfil
-                                                                                </button>
-                                                                            </form>                                                                        
-                                                                        </div>    
-                                                                    </div>                                                                
+                                                                <div class="per" style="height: 10%;">
+                                                                    <table>                                                                
+                                                                    <tr>                                                                                                                                 
+                                                                        <form action="/admin_view" method="post">
+                                                                            <input type="hidden" value="{{keys[j+4*i]}}" name="yave">
+                                                                            <input type="hidden" value="{{usuario[keys[j+4*i]]['Correo corporativo']}}" name="foto">
+                                                                            <button class="contenedor-btn-file bordeado" name="ruta" value="infopract">
+                                                                                Perfil
+                                                                            </button>
+                                                                        </form>
+                                                                    </tr>
+                                                                    </table>
+                                                                </div>  
+                                                            </div>                                                                 
                                                         </div>
                                                                 
                                                         {% endif %}
