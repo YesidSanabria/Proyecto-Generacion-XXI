@@ -100,11 +100,7 @@
             </select>
           </div>
           <div class="input_div">
-            <span class="details title_form"> Dirección a la que pertenece: </span>
-            <input type="text" class="text" name="direccion" value="{{usuario['Area de gerencia']}}">
-          </div>
-          <div class="input_div">
-            <span class="details title_form"> Gerencia a la que pertenece: </span>
+            <span class="details title_form"> Gerencia: </span>
             <input type="text" class="text" name="gerencia" value="{{usuario['Gerencia']}}">
           </div>
           <div class="input_div">
@@ -118,6 +114,24 @@
           <div class="input_div">
             <span class="details title_form"> Correo Gerente: </span>
             <input type="text" class="text" name="correo_gerente" value="{{usuario['Correo gerente']}}">
+          </div>
+        </div>
+        <br>
+        <div class="input_container" style="{width:50%}">
+          <div class="input_div" >
+            <span class="details title_form"> Dirección corporativa: </span>
+            <select name="direccion" class="details">
+              <option>{{opcion['direccion'][0]}}</option>
+              <option>{{opcion['direccion'][1]}}</option>
+              <option>{{opcion['direccion'][2]}}</option>
+              <option>{{opcion['direccion'][3]}}</option>
+              <option>{{opcion['direccion'][4]}}</option>
+              <option>{{opcion['direccion'][5]}}</option>
+              <option>{{opcion['direccion'][6]}}</option>
+              <option>{{opcion['direccion'][7]}}</option>
+              <option>{{opcion['direccion'][8]}}</option>
+              <option>{{opcion['direccion'][9]}}</option>
+            </select>
           </div>
         </div>
         <br>
