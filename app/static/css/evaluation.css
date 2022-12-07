@@ -1,0 +1,53 @@
+/*  import google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+body{
+    background-image: url("../img/Fondo.png");
+    width: 100%;
+    height: 100%;
+}
+
+.ul{
+    display: flex;
+    list-style: none;
+  }
+
+.card{
+    width: 98%;
+    height: 100%;
+    margin: 10px;
+    background: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  .card1{
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+    background: rgb(101, 124, 228);
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  .card2{
+    width: 65%;
+    height: 100%;    
+    background: rgb(173, 47, 47);
+    text-align: center;
+    border-radius: 10px;    
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  .card3{
+    width: 35%;
+    height: 100%;    
+    background: rgb(108, 173, 47);
+    text-align: center;
+    border-radius: 10px;    
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
