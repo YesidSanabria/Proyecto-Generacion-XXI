@@ -48,11 +48,6 @@ def create_account():
 def forgot_password():
     return pw.forgot_password()
 
-############################ Pendientes de cambio ################################
-@app.route('/home', methods=['GET', 'POST'])
-def home():
-    return render_template('home.html')
-
 # --------------------------------------EVALUACION A PRACTICANTES-------------------------------------
 
 @app.route('/evaluation', methods=['GET', 'POST'])
