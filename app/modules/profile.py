@@ -52,7 +52,7 @@ def view_personal_data():
             file = crud.urlDevelopmentPlan(user['Cedula'])
             try:
                 if request.form['email'] in session["username"]:
-                    return render_template('view_personal_data.html', usuario=user, opcion=opciones,l=links,file=file)
+                    return render_template('view_personal_data.html', usuario=user,l=links,file=file)
                 else: 
                     return render_template('index.html')
             except:
@@ -70,6 +70,8 @@ def view_personal_data():
             try:                      
                 if request.form['actuali'] in session["username"]:
                     return render_template(putos, usuario= user, opcion=opciones, l=links)
+                elif request.form['email'] in session["username"]:
+                    return render_template('view_personal_data.html', usuario= user, opcion=opciones, l=links)
                 else:
                     return render_template('index.html')
             except:
