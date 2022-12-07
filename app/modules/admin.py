@@ -105,7 +105,8 @@ def admin():
             putos = 'admin.html'
             user = crud.getAllStudents()
             buscar = request.form['buscar']
-            studentsList = sr.searchCareer(buscar)            
+            filtro = request.form['filtro']
+            studentsList = sr.searchStudent(buscar, filtro)           
             if buscar == '':
                 [keys, emails, cantidad] = crud.getStudentsData([])
             else:

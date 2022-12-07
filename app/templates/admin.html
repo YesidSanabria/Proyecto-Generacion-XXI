@@ -35,15 +35,9 @@
                     <div class="nav_list">
 
                         <form action="/admin_view" method="post">
-                            <button class="nav_link active" name="ruta" value="search">
+                            <button class="nav_link active" name="ruta" value="admin">
                                 <i class='bx bx-user nav_icon'></i>
                                 <span class="nav_name">Buscar</span></button>
-                        </form>
-
-                        <form action="/admin_view" method="post">
-                            <button class="nav_link" name="ruta" value="admin">
-                                <i class='bx bx-pencil nav_icon'></i>
-                                <span class="nav_name">Admin</span></button>
                         </form>
 
                         <form action="/admin_view" method="post">
@@ -52,21 +46,15 @@
                                 <span class="nav_name">Reportes</span></button>
                         </form>
 
-                        <a href="#" class="nav_link">
-                            <i class='bx bx-message-square-detail nav_icon'></i>
-                            <span class="nav_name">Messages</span> </a>
-                        <a href="#" class="nav_link">
-                            <i class='bx bx-bookmark nav_icon'></i>
-                            <span class="nav_name">Bookmark</span> </a>
-                        <a href="#" class="nav_link">
-                            <i class='bx bx-folder nav_icon'></i>
-                            <span class="nav_name">Files</span> </a>
-                        <a href="#" class="nav_link">
-                            <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
-                            <span class="nav_name">Stats</span> </a>
+                        <form action="/admin_view" method="post">
+                            <button class="nav_link" name="ruta" value="reportes_ev">
+                                <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                                <span class="nav_name">Evaluaciones</span></button>
+                        </form>
+
                     </div>
-                </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
-                        class="nav_name">SignOut</span> </a>
+                </div> <a href="/index" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
+                        class="nav_name">Salir</span> </a>
             </nav>
         </div>
 
@@ -84,32 +72,8 @@
             <div class="carousel-inner" style="width: 100%;">
                 <div class="main-top">
                     <div class="text logo-text">
-                        <span class="name">Practicantes Generación XXI</span>
+                        <span class="name"><h2>Practicantes Generación XXI</h2></span>
                     </div>
-
-                    <!-- BARRA DE BUSQUEDA -->
-                    <div style="position: relative; left: 55%; top:30px; height: 10px; width: 10px;">
-
-                        <div class="ul">
-
-                            <form action="/admin_view" method="post">
-
-                                <button type="submit" name="ruta" value="searchCareer">
-
-                                    <i class="bx bx-search icon" style="height: 2%; width: 2%;"></i>
-
-                                </button>
-
-                                <input type="text" name="buscar" placeholder=" Buscar carrera"
-                                    style="border-radius: 5px; background-color: #cc7171; color: #fff;" />
-
-                            </form>
-
-                        </div>
-
-                    </div>
-                    <!-- END BUSQUEDA -->
-
 
                 </div>
                 <div class="carousel-item active">
@@ -265,6 +229,36 @@
                 </button>
             </div>
         </div>
+
+        <!-- BARRA DE BUSQUEDA -->
+        <div style="position: relative; left: 55%; top:30px; height: 10px; width: 10px;">
+
+            <div class="ul">
+
+                <form action="/admin_view" method="post">
+
+                    <span class="details title_form"> Buscar por: </span>
+                    <select name="filtro" class="details">
+                        <option>Nombres</option>
+                        <option>Carrera</option>
+                    </select>
+
+                    <button type="submit" name="ruta" value="searchCareer">
+
+                        <i class="bx bx-search icon" style="height: 2%; width: 2%;"></i>
+
+                    </button>
+
+                    <input type="text" name="buscar" placeholder=" Buscar carrera"
+                        style="border-radius: 5px; background-color: #cc7171; color: #fff;" />
+
+                </form>
+
+            </div>
+
+        </div>
+        <!-- END BUSQUEDA -->
+
         <script>
             document.addEventListener("DOMContentLoaded", function (event) {
 
