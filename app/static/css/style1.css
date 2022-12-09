@@ -102,8 +102,12 @@
     position: absolute;
   bottom: 40%;
   left: 95%
-  } 
-  
+  }
+
+  .boton-buscar{
+    border-radius: 5px;
+    padding-left: 10px;
+  }
   .circular-btn-file:hover{
     background-color: #CF2F35;
   }

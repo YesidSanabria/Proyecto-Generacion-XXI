@@ -8,7 +8,7 @@
   <link rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  
+      <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/personald.css')}}">
   <!--<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/personald.css')}}">-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.min.js" integrity="sha512-tQYZBKe34uzoeOjY9jr3MX7R/mo7n25vnqbnrkskGr4D6YOoPYSpyafUAzQVjV6xAozAqUFIEFsCO4z8mnVBXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -46,90 +46,38 @@
 
 <br>
 <br>
-
-<nav class="sidebar close">
-  <header>
-    <div class="image-text">
-      <div class="text logo-text">
-        <span class="name">Generación XXI</span>
-        <span class="profession">Navegación</span>
-      </div>
-    </div>
-    <i
-      class="bx bx-chevron-right toggle"
-      style="background-color: #cf2f35"
-    ></i>
+<body id="body-pd">
+  <header class="header" id="header">
+    <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i></div>
   </header>
+<div class="l-navbar" id="nav-bar">
+  <nav class="nav">
+    <div> <a href="#" class="nav_logo"> <i class='bx bxs-home nav_logo-icon'></i> <span
+          class="nav_logo-name">Generación XXI</span> </a>
+      <div class="nav_list">
 
-  <div class="menu-bar">
-    <div class="menu">
-      <li class="search-box">
-        <!-- <i class="bx bx-search icon"></i>
-        <input type="text" placeholder="Search..." /> -->
-      </li>
-
-      <li class="nav-link">
-        
         <form action="/admin_view" method="post">
-          
-          <button class="contenedor-btn-file bordeado" name="ruta" value="admin">
-          <div class="ul">
-            <i class="bx bxs-user icon"></i>
-            <span class="btn-file"> Practicantes</span>
-          </div>
-          </button>
-        
+          <button class="nav_link" name="ruta" value="admin">
+            <i class='bx bx-user nav_icon'></i>
+            <span class="nav_name">Practicantes</span></button>
         </form>
-      </li>          
 
-      <li class="nav-link">
-        
         <form action="/admin_view" method="post">
-          <button class="contenedor-btn-file bordeado" name="ruta" value="reportes">
-            <div class="ul">
-              <i class="bx bx-pie-chart-alt icon"></i>
-            <span class="btn-file">Reportes</span>
-            </div>
-          </button>
+          <button class="nav_link" name="ruta" value="reportes">
+            <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+            <span class="nav_name">R. Demograficos</span></button>
         </form>
-      </li>
 
-      <li class="nav-link">
         <form action="/admin_view" method="post">
-            <button class="contenedor-btn-file bordeado" name="ruta" value="reportes_ev">
-                <div class="ul">
-                <i class='bx bx-pie-chart-alt icon' ></i>
-                <span class="btn-file">Evaluaciones</span>
-                </div>
-            </button>
+          <button class="nav_link active" name="ruta" value="reportes_ev">
+            <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+            <span class="nav_name">R. Evaluaciones</span></button>
         </form>
-</li>
-
-    </div>
-
-    <div class="bottom-content">
-      <li class="">
-        <a href="/index">
-          <i class="bx bx-log-out icon"></i>
-          <span class="text nav-text">Logout</span>
-        </a>
-      </li>
-
-      <li class="mode">
-        <div class="sun-moon">
-          <i class="bx bx-moon icon moon"></i>
-          <i class="bx bx-sun icon sun"></i>
-        </div>
-        <span class="mode-text text">Dark mode</span>
-        <div class="toggle-switch">
-          <span class="switch"></span>
-        </div>
-      </li>
-    </div>
-  </div>
-</nav>
-
-<div class="container">
+      </div>
+    </div> <a href="/index" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Cerrar
+        Sesión</span> </a>
+  </nav>
+</div>
 
 <div class="row">
 
@@ -364,31 +312,45 @@ new Chart(ctx1, {
       });
 
       </script>
-      <script>
-        const body = document.querySelector("body"),
-          sidebar = body.querySelector("nav"),
-          toggle = body.querySelector(".toggle"),
-          searchBtn = body.querySelector(".search-box"),
-          modeSwitch = body.querySelector(".toggle-switch"),
-          modeText = body.querySelector(".mode-text");
-  
-        toggle.addEventListener("click", () => {
-          sidebar.classList.toggle("close");
-        });
-  
-        searchBtn.addEventListener("click", () => {
-          sidebar.classList.remove("close");
-        });
-  
-        modeSwitch.addEventListener("click", () => {
-          body.classList.toggle("dark");
-  
-          if (body.classList.contains("dark")) {
-            modeText.innerText = "Light mode";
-          } else {
-            modeText.innerText = "Dark mode";
+     <script>
+      document.addEventListener("DOMContentLoaded", function (event) {
+
+          const showNavbar = (toggleId, navId, bodyId, headerId) => {
+              const toggle = document.getElementById(toggleId),
+                  nav = document.getElementById(navId),
+                  bodypd = document.getElementById(bodyId),
+                  headerpd = document.getElementById(headerId)
+
+              // Validate that all variables exist
+              if (toggle && nav && bodypd && headerpd) {
+                  toggle.addEventListener('click', () => {
+                      // show navbar
+                      nav.classList.toggle('show')
+                      // change icon
+                      toggle.classList.toggle('bx-x')
+                      // add padding to body
+                      bodypd.classList.toggle('body-pd')
+                      // add padding to header
+                      headerpd.classList.toggle('body-pd')
+                  })
+              }
           }
-        });
-      </script>
+
+          showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+
+          /*===== LINK ACTIVE =====*/
+          const linkColor = document.querySelectorAll('.nav_link')
+
+          function colorLink() {
+              if (linkColor) {
+                  linkColor.forEach(l => l.classList.remove('active'))
+                  this.classList.add('active')
+              }
+          }
+          linkColor.forEach(l => l.addEventListener('click', colorLink))
+
+          // Your code to run since DOM is loaded and ready
+      });
+  </script>
 </body>
 </html>

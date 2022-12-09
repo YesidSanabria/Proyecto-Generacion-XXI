@@ -166,9 +166,10 @@ a:hover i{
 /* MAin Section */
 .main{
   position: relative;
-  padding: 20px;
+  padding: 4%;
   width: 90%;
   left: 5%;
+  
 }
 .main-top{
   display: flex;
