@@ -167,7 +167,8 @@ a:hover i{
 .main{
   position: relative;
   padding: 20px;
-  width: 100%;
+  width: 90%;
+  left: 5%;
 }
 .main-top{
   display: flex;
