@@ -8,10 +8,8 @@ def confirm():
         code = request.form['code']                                 
         code_input = request.form['code_input']
         try:
-            user = request.form['user']
-            print(user)
-            foto = crud.getImagesURL([user])
-            print (foto)
+            user = request.form['user']            
+            foto = crud.getImagesURL([user])            
             user = crud.getStudentInfo(user)
             
         except:

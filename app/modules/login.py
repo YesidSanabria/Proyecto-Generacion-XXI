@@ -42,7 +42,7 @@ def index():
         file = ''
         #######################################
         if (admin == email):
-            putos = 'admin.html'
+            rut = 'admin.html'
             user = crud.getAllStudents()
             [keys, emails, cantidad] = crud.getStudentsData([])
             cuenta = crud.amountCards()
@@ -52,10 +52,10 @@ def index():
             links = crud.getImagesURL(emails)
             
         elif(user['Nombres'] == ''):
-            putos = 'formulario.html'
+            rut = 'formulario.html'
             links = crud.getImagesURL([email])
         else:
-            putos = 'view_personal_data.html'
+            rut = 'view_personal_data.html'
             file = crud.urlDevelopmentPlan(user['Cedula'])
             links = crud.getImagesURL([email])
         try:
@@ -64,7 +64,7 @@ def index():
             #user_id = auth.get_account_info(user['idToken'])
             session['username'] = email
             #return render_template('formulario.html', user=user)
-            return render_template(putos, usuario=user, opcion=options, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta, file=file)
+            return render_template(rut, usuario=user, opcion=options, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta, file=file)
             
         except:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'

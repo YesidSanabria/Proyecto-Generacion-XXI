@@ -21,7 +21,7 @@ def notif():
     if (request.method == 'POST'):
         ruta = request.form ["ruta"]
         if ruta == "admin":
-            putos = 'admin.html'
+            rut = 'admin.html'
             user = crud.getAllStudents()
             [keys, emails, cantidad] = crud.getStudentsData([])
             cuenta = crud.amountCards()
@@ -31,7 +31,7 @@ def notif():
             links = crud.getImagesURL(emails)
 
             if True:
-                return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
+                return render_template(rut, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
         elif ruta == "notif":
             return render_template('notificaciones.html')
         

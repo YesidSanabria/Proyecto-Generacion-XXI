@@ -16,18 +16,63 @@
                 <div class="card1">
                     <div class="ul">
                     <div class="card2">
-                        <h5 class="lead">Usted está a punto de evaluar a {{Nombres}}</h5>
+                        <div>
+                            <h5 class="lead">Datos Corporativos</h5>
+                        </div>
+                        <div style = "width = 100%">
+                            <div class="ul">
+                                <b style="">Area de gerencia: </b>
+                                <div style="width=60%">
+                                    <h6>{{user["Area de gerencia"]}}</h6>
+                                </div>
+                            </div>                                                     
+                            <div class="ul">    
+                                <b style="width=40%">Gerencia: </b>
+                                <div style="width=60%">
+                                    <h6>{{user["Gerencia"]}}</h6>
+                                </div>
+                            </div>                            
+                            <div class="ul">
+                                <b style="width=40%">Nombre gerente: </b>
+                                <div style="width=60%"
+                                    h6>{{user["Nombre gerente"]}}</h6>
+                                </div>
+                            </div>                                                       
+                            <div class="ul">
+                                <b style="width=40%">Celular gerente: </b>
+                                <div style="width=60%">
+                                    <h6>{{user["Celular gerente"]}}</h6>
+                                </div>
+                            </div>
+                            <div class="ul">
+                                <b style="width=40%">Correo gerente: </b>
+                                <div style="width=60%">
+                                    <h6>{{user["Correo gerente"]}}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                     <div class="card3">
-                        <div class="cardimage"><img src="{{foto}}"></div>  
+                        <div class="cardimage">
+                            <img src="{{foto}}" style="width: 60%">
+                        </div>
+                        <br>
+                        <div>                    
+                                <h5><b>{{user["Nombres"]}} {{user["Apellidos"]}}</b></h5>
+                                <center><b>{{user["Universidad"]}}</b></center>  
+                                <center><b>{{user["Correo corporativo"]}}</b></center>                                                   
+                                <center><b>{{user["Celular personal"]}}</b></center>                                                            
+                                                            
+                        </div>
                     </div>
                 </div>
                 </div>                
-            </div>
-            <div class="cardimage"><img src="{{foto}}"></div>             
+            </div>                       
         <h1>Evaluación Docente - Practicante</h1>              
         <h5>{{email}}</h5>
-        {{user["Nombres"]}} {{user["Apellidos"]}}
+        
         <h5>{{Apellidos}}</h5>
         {{user}}        
         </div>
