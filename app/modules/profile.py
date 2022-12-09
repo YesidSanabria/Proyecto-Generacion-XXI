@@ -2,6 +2,7 @@ import pyrebase
 from flask import render_template, request, session
 import modules.crud as crud
 import modules.login as lg
+import modules.faq as fq
 
 
 
@@ -52,7 +53,7 @@ def view_personal_data():
             file = crud.urlDevelopmentPlan(user['Cedula'])
             try:
                 if request.form['email'] in session["username"]:
-                    return render_template('view_personal_data.html', usuario=user,l=links,file=file)
+                    return render_template('view_personal_data.html', nav_activo=1, usuario=user,l=links,file=file)
                 else: 
                     return render_template('index.html')
             except:
@@ -69,13 +70,19 @@ def view_personal_data():
                 opciones = crud.options  
             try:                      
                 if request.form['actuali'] in session["username"]:
-                    return render_template(putos, usuario= user, opcion=opciones, l=links)
-                elif request.form['email'] in session["username"]:
-                    return render_template('view_personal_data.html', usuario= user, opcion=opciones, l=links)
+                    return render_template(putos, nav_activo=2, usuario= user, opcion=opciones, l=links)
                 else:
                     return render_template('index.html')
             except:
                 return render_template('index.html')
+        elif ruta == "faq":
+             user = crud.getStudentInfo(request.form['faq2'])
+             links = crud.getImagesURL([request.form["faq2"]])
+             question= fq.question
+             length = len(question)
+             return render_template('faq.html', nav_active=3, usuario=user, question=question, length=length)
+
+
     return render_template('view_personal_data.html')
 
 def download_file():

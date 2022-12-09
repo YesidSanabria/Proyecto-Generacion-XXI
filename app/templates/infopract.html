@@ -1,37 +1,20 @@
 {% extends "base.html" %} {% block content %}
 
 <body>
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{url_for('static', filename='css/admin.css')}}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{url_for('static', filename='css/style1.css')}}"
-    />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/admin.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style1.css')}}" />
     <!-- CSS only -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
     <!----===== Boxicons CSS ===== -->
-    <link
-      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -43,10 +26,7 @@
             <span class="profession">Navegación</span>
           </div>
         </div>
-        <i
-          class="bx bx-chevron-right toggle"
-          style="background-color: #cf2f35"
-        ></i>
+        <i class="bx bx-chevron-right toggle" style="background-color: #cf2f35"></i>
       </header>
 
       <div class="menu-bar">
@@ -57,26 +37,26 @@
           </li>
 
           <li class="nav-link">
-            
+
             <form action="/admin_view" method="post">
-              
+
               <button class="contenedor-btn-file bordeado" name="ruta" value="admin">
-              <div class="ul">
-                <i class="bx bxs-user icon"></i>
-                <span class="btn-file"> Practicantes</span>
-              </div>
+                <div class="ul">
+                  <i class="bx bxs-user icon"></i>
+                  <span class="btn-file"> Practicantes</span>
+                </div>
               </button>
-            
+
             </form>
-          </li>          
+          </li>
 
           <li class="nav-link">
-            
+
             <form action="/admin_view" method="post">
               <button class="contenedor-btn-file bordeado" name="ruta" value="reportes">
                 <div class="ul">
                   <i class="bx bx-pie-chart-alt icon"></i>
-                <span class="btn-file">Reportes</span>
+                  <span class="btn-file">Reportes</span>
                 </div>
               </button>
             </form>
@@ -104,255 +84,326 @@
         </div>
       </div>
     </nav>
-    
-      <section class="home">      
-        <section class="main">          
-              <div class="users"> 
-                <!-- Carta principal de info personal -->
-                <div class="card0">
-                  <div class="card2">
+
+    <section class="home">
+      <section class="main">
+        <div class="users">
+          <!-- Carta principal de info personal -->
+          <div class="card0">
+            <div class="card2">
+              <div class="ul">
+                <div class="cuerpo">
+                  <div class="card3">
                     <div class="ul">
-                    <div class="cuerpo">
-                      <div class="card3">
-                        <div class="ul">
-                          <form action="/admin_view" method="post">
-                          <button type="submit" name="ruta" value="admin"><img src="{{url_for ('static', filename = './img/flecha.png')}}"height ="30" width="45" /></button>                                                 
-                          </form>
-                          <div class="text logo-text">
-                            <h2 class="fontp" style="color: #cf2f35;" align="left">Generación XXI</h2>
-                          </div>
-                            <input type="hidden" value="{{usuario['Correo corporativo']}}" name="editar">
-                          <button type="button" class="btn-eval" data-bs-toggle="modal" data-bs-target="#evaluacionLider">
-                            Evaluaciones lider
-                          </button>
-
-                          <div class="modal fade" id="evaluacionLider" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                  <div class="modal-header">
-                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Evaluaciones Lider</h1>
-                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                                  <div class="modal-body">
-                                    {% for key in ev.keys() %}
-                                    <div>
-                                      <b>Evaluación de {{ev[key]['Fecha']}}</b>
-                                      <center><hr width="95%"></center>
-                                      <div class="ul">
-                                      <b>Gerencia:</b> {{ev[key]['Pregunta1']}}
-                                    </div> 
-                                    <div class="ul">
-                                      <b>Cédula:</b> {{ev[key]['Pregunta2']}}
-                                    </div>
-                                    <div class="ul">
-                                      <b>Nombre completo (Líder):</b> {{ev[key]['Pregunta3']}}
-                                    </div>
-                                    <div class="ul">
-                                      <b>Nombre del practicante:</b> {{ev[key]['Pregunta4']}}
-                                    </div>
-                                    <div class="ul">
-                                      <b>Cumplimiento tareas asignadas:</b> {{ev[key]['Pregunta5']}}
-                                    </div>
-                                    <div class="ul">
-                                      <b>Buena actitud:</b> {{ev[key]['Pregunta6']}}
-                                    </div>
-                                    <div class="ul">
-                                      <b>Capacidad de proponer e innovar:</b> {{ev[key]['Pregunta7']}}
-                                    </div>
-                                    <div class="ul">
-                                      <b>Agilismo:</b> {{ev[key]['Pregunta8']}}
-                                    </div>
-                                    <div class="ul">
-                                      <b>Digital:</b> {{ev[key]['Pregunta9']}}
-                                    </div>
-                                    <div class="ul">
-                                      <b>Liderazgo:</b> {{ev[key]['Pregunta10']}}
-                                    </div>
-                                    <div class="ul">
-                                      <b>Observaciones:</b> {{ev[key]['Observaciones']}}
-                                    </div>  
-                                    <center><hr width="95%"></center>                                
-                                    </div>
-                                    {% endfor %}                                 
-                                  </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <button type="button" class="btn-eval" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Evaluaciones Docente
-                          </button>
-                          <button type="button" class="btn-eval" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Autoevaluación
-                          </button>
-                        </div>
-                        <center><hr width="95%"></center>
-
-                        <Head>
-
-                          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">                            
-                            <div class="carousel-inner">
-                              <div class="carousel-item active">
-                                <div class="ul">
-                                  <div class="card9"></div>                                  
-                                  <div class="card4">
-                                    <center>
-                                    <h3 class="fontp" style="color: #cf2f35;" align="left">Datos Personales</h3>                             
-                                    <h6 align="left"><b>Nombre: </b><td>{{ usuario['Nombres'] + " " + usuario['Apellidos']}}</td></h6>                            
-                                    <br sice>
-                                    <h6 align="left"><b>Cedula: </b><td>{{ usuario['Cedula']}}</td></h6>                                
-                                    <br>
-                                    <h6 align="left"><b>Edad: </b><td>{{ usuario['Edad']}}</td></h6>                                
-                                    <br>                              
-                                    <h6 align="left"><b>Genero: </b><td>{{ usuario['Sexo']}}</td></h6>                                
-                                    <br>                                
-                                    <h6 align="left"><b>Celular: </b><td>{{ usuario['Celular personal']}}</td></h6>                                
-                                    <br>
-                                    <h6 align="left"><b>Correo: </b><td>{{ usuario['Correo personal']}}</td></h6>                              
-                                    <br>
-                                    <h6 align="left"><b>Ciudad: </b><td align="left">{{ usuario['Regional']}}</td></h6>                                
-                                    <br>
-                                  </center>
-                                  </div>
-                                  <div class="card9"></div>
-                                  <div class="card4" align:> 
-                                    <center>
-                                    <h3 class="fontp" style="color: #cf2f35;" align="left">Datos Corporativos</h3>                             
-                                    <h6 align="left"><b>Gerencia: </b><td>{{ usuario['Gerencia']}}</td></h6>
-                                    <br>                                 
-                                    <h6 align="left"><b>Dirección corporativa: </b><td>{{ usuario['Area de gerencia']}}</td></h6>
-                                    <br>                                  
-                                    <h6 align="left"><b>Nombre gerente: </b><td>{{ usuario['Nombre gerente']}}</td></h6>
-                                    <br>                                      
-                                    <h6 align="left"><b>Celular corporativo: </b><td>{{ usuario['Celular corporativo']}}</td></h6>
-                                    <br>                                      
-                                    <h6 align="left"><b>Correo corporativo: </b><td>{{ usuario['Correo corporativo']}}</td></h6>
-                                    <br>                                      
-                                    <h6 align="left"><b>Correo gerente: </b><td>{{ usuario['Correo gerente']}}</td></h6>
-                                    <br>                                      
-                                    <h6 align="left"><b>Celular gerente: </b><td>{{ usuario['Celular gerente']}}</td></h6>                                                                    
-                                    <br>
-                                  </center>
-                                  </div>
-                                  <div class="card9"></div>
-                                </div>
-                              </div>
-                              <div class="carousel-item">
-                                <div class="ul">
-                                  <div class="card9"></div>
-                                  <div class="card4">                                
-                                    <h3 class="fontp" style="color: #cf2f35;" align="left">Datos Académicos</h3>
-                                    <br>
-                                    <h6 align="left"><b>Universidad: </b><td>{{ usuario['Universidad']}}</td></h6>
-                                    <br>                                      
-                                    <h6 align="left"><b>Carrera: </b><td>{{ usuario['Carrera']}}</td></h6>
-                                    <br>                                            
-                                    <h6 align="left"><b>Tutor universitario:</b><td>{{ usuario['Nombre tutor']}}</td>  </h6>
-                                    <br>                                       
-                                    <h6 align="left"><b>Correo del tutor: </b><td>{{ usuario['Correo tutor']}}</td> </h6>
-                                    <br>                                       
-                                    <h6 align="left"><b>Celular del tutor: </b><td>{{ usuario['Celular tutor']}}</td> </h6>
-                                    <br>                                                                        
-                                  </div>
-                                  <div class="card9"></div>
-                                  <div class="card4">
-                                    <h3 class="fontp" style="color: #cf2f35;" align="left">Datos en caso de Emergencia</h3>                                                                                                                 
-                                    <h6 align="left"><b>EPS: </b><td>{{ usuario['EPS']}}</td></h6>
-                                    <br>
-                                    <h6 align="left"><b>En caso de emergencia llamar a: </b><td>{{ usuario['Nombre emergencia']}}</td></h6>
-                                    <br>
-                                    <h6 align="left"><b>Numero: </b><td>{{ usuario['Numero emergencia']}}</td></h6>
-                                    <br>
-                                  </div>
-                                  <div class="card9"></div>
-                                </div>
-                              </div>                              
-                            </div>
-                            <br>
-                            <center><hr width="95%"></center>
-                            <div class="carousel-indicators">                            
-                              <button type="button" style="background-color: #cf2f35;" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                              <button type="button" style="background-color: #cf2f35;" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>                              
-                            </div>                            
-                          </div>                        
-                        </Head>                                                                                                  
-                        <div class="ul">
-                          <div class="btnAdnim">                            
-                            <form action="admin_view" method="post">
-                              <input type="hidden" value="{{usuario['Correo corporativo']}}" name="editar">
-                              <input type="hidden" value="{{y}}" name="yavee">
-                              <button type="submit" class="btn btn-primary" style="width: 80%;" name="ruta" value="edit" >
-                                Editar
-                              </button>
-                            </form>
-                        </div>                        
-                        <div class="btnAdnim">                                               
-                          <button type="button" class="btn btn-warning" style="width: 80%;" data-bs-toggle="modal" data-bs-target="#eliminarDatos">
-                            Eliminar
-                          </button>                    
-                          <div class="modal fade" id="eliminarDatos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                  <div class="modal-header">
-                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Usuario</h1>
-                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <div>
-                                      <b>¿Esta seguro que desea eliminar a este usuario?</b>
-                                      <center><hr width="95%"></center>
-                                      <div class="ul">
-                                      <b>Correo :</b> {{usuario["Correo corporativo"]}}
-                                    </div> 
-                                    <div class="ul">
-                                      <b>Nombre :</b> {{usuario["Nombres"]}} {{usuario["Apellidos"]}}
-                                    </div>                                     
-                                    </div>                                    
-                                  </div>
-                                  <div class="modal-footer">
-                                    <div class="card0">
-                                    <div class="ul">
-                                      <form action="admin_view" method="post">
-                                        <div class="btnAdnim" >
-                                          <input type="hidden" value="{{usuario['Correo corporativo']}}" name="eliminar">
-                                            <button class="btn btn-danger" style="width: 200px;" name="ruta" value="elim">
-                                              Si
-                                            </button>
-                                        </div>
-                                      </form>
-                                      <div class="btnAdnim">
-                                        <button class="btn btn-warning" style="width: 200px;">No</button>
-                                      </div>
-                                    </div>
-                                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button> -->
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        </div>                        
-                        <body>                                                    
-                        </body>                                               
+                      <form action="/admin_view" method="post">
+                        <button type="submit" name="ruta" value="admin"><img
+                            src="{{url_for ('static', filename = './img/flecha.png')}}" height="30"
+                            width="45" /></button>
+                      </form>
+                      <div class="text logo-text">
+                        <h2 class="fontp" style="color: #cf2f35;" align="left">Generación XXI</h2>
                       </div>
-                
-                    </div>
-                    <div class="cuerpo2">
-                      <div>
-                        <br>
-                        <center><img src="{{l}}" class='imgRedonda' alt = "su imagen fue secuestrada por un alienígena ～～ "/></center>
-                        <p></p>
-                      <center><div class="card5">
-                                <center><h4 style="color: #cf2f35;" >Datos de Contacto</h4></center>
-                                PENDIENTE!!!
-                                <p>{{usuario['Nombres']}} {{usuario['Apellidos']}}</p>
-                                <p>{{usuario['Correo corporativo']}}</p>
-                                <p>{{usuario['Celular personal']}}</p>
+                      <input type="hidden" value="{{usuario['Correo corporativo']}}" name="editar">
+                      <button type="button" class="btn-eval" data-bs-toggle="modal" data-bs-target="#evaluacionLider">
+                        Evaluaciones lider
+                      </button>
+
+                      <div class="modal fade" id="evaluacionLider" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Evaluaciones Lider</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              {% for key in ev.keys() %}
+                              <div>
+                                <b>Evaluación de {{ev[key]['Fecha']}}</b>
+                                <center>
+                                  <hr width="95%">
+                                </center>
+                                <div class="ul">
+                                  <b>Gerencia:</b> {{ev[key]['Pregunta1']}}
+                                </div>
+                                <div class="ul">
+                                  <b>Cédula:</b> {{ev[key]['Pregunta2']}}
+                                </div>
+                                <div class="ul">
+                                  <b>Nombre completo (Líder):</b> {{ev[key]['Pregunta3']}}
+                                </div>
+                                <div class="ul">
+                                  <b>Nombre del practicante:</b> {{ev[key]['Pregunta4']}}
+                                </div>
+                                <div class="ul">
+                                  <b>Cumplimiento tareas asignadas:</b> {{ev[key]['Pregunta5']}}
+                                </div>
+                                <div class="ul">
+                                  <b>Buena actitud:</b> {{ev[key]['Pregunta6']}}
+                                </div>
+                                <div class="ul">
+                                  <b>Capacidad de proponer e innovar:</b> {{ev[key]['Pregunta7']}}
+                                </div>
+                                <div class="ul">
+                                  <b>Agilismo:</b> {{ev[key]['Pregunta8']}}
+                                </div>
+                                <div class="ul">
+                                  <b>Digital:</b> {{ev[key]['Pregunta9']}}
+                                </div>
+                                <div class="ul">
+                                  <b>Liderazgo:</b> {{ev[key]['Pregunta10']}}
+                                </div>
+                                <div class="ul">
+                                  <b>Observaciones:</b> {{ev[key]['Observaciones']}}
+                                </div>
+                                <center>
+                                  <hr width="95%">
+                                </center>
                               </div>
-                      </center>  
-                      <br>
-                      <center><div class="card5">
+                              {% endfor %}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <button type="button" class="btn-eval" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Evaluaciones Docente
+                      </button>
+                      <button type="button" class="btn-eval" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Autoevaluación
+                      </button>
+                    </div>
+                    <center>
+                      <hr width="95%">
+                    </center>
+
+                    <Head>
+
+                      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <div class="ul">
+                              <div class="card9"></div>
+                              <div class="card4">
+                                <center>
+                                  <h3 class="fontp" style="color: #cf2f35;" align="left">Datos Personales</h3>
+                                  <h6 align="left"><b>Nombre: </b>
+                                    <td>{{ usuario['Nombres'] + " " + usuario['Apellidos']}}</td>
+                                  </h6>
+                                  <br sice>
+                                  <h6 align="left"><b>Cedula: </b>
+                                    <td>{{ usuario['Cedula']}}</td>
+                                  </h6>
+                                  <br>
+                                  <h6 align="left"><b>Edad: </b>
+                                    <td>{{ usuario['Edad']}}</td>
+                                  </h6>
+                                  <br>
+                                  <h6 align="left"><b>Genero: </b>
+                                    <td>{{ usuario['Sexo']}}</td>
+                                  </h6>
+                                  <br>
+                                  <h6 align="left"><b>Celular: </b>
+                                    <td>{{ usuario['Celular personal']}}</td>
+                                  </h6>
+                                  <br>
+                                  <h6 align="left"><b>Correo: </b>
+                                    <td>{{ usuario['Correo personal']}}</td>
+                                  </h6>
+                                  <br>
+                                  <h6 align="left"><b>Ciudad: </b>
+                                    <td align="left">{{ usuario['Regional']}}</td>
+                                  </h6>
+                                  <br>
+                                </center>
+                              </div>
+                              <div class="card9"></div>
+                              <div class="card4" align:>
+                                <center>
+                                  <h3 class="fontp" style="color: #cf2f35;" align="left">Datos Corporativos</h3>
+                                  <h6 align="left"><b>Gerencia: </b>
+                                    <td>{{ usuario['Gerencia']}}</td>
+                                  </h6>
+                                  <br>
+                                  <h6 align="left"><b>Dirección corporativa: </b>
+                                    <td>{{ usuario['Area de gerencia']}}</td>
+                                  </h6>
+                                  <br>
+                                  <h6 align="left"><b>Nombre gerente: </b>
+                                    <td>{{ usuario['Nombre gerente']}}</td>
+                                  </h6>
+                                  <br>
+                                  <h6 align="left"><b>Celular corporativo: </b>
+                                    <td>{{ usuario['Celular corporativo']}}</td>
+                                  </h6>
+                                  <br>
+                                  <h6 align="left"><b>Correo corporativo: </b>
+                                    <td>{{ usuario['Correo corporativo']}}</td>
+                                  </h6>
+                                  <br>
+                                  <h6 align="left"><b>Correo gerente: </b>
+                                    <td>{{ usuario['Correo gerente']}}</td>
+                                  </h6>
+                                  <br>
+                                  <h6 align="left"><b>Celular gerente: </b>
+                                    <td>{{ usuario['Celular gerente']}}</td>
+                                  </h6>
+                                  <br>
+                                </center>
+                              </div>
+                              <div class="card9"></div>
+                            </div>
+                          </div>
+                          <div class="carousel-item">
+                            <div class="ul">
+                              <div class="card9"></div>
+                              <div class="card4">
+                                <h3 class="fontp" style="color: #cf2f35;" align="left">Datos Académicos</h3>
+                                <br>
+                                <h6 align="left"><b>Universidad: </b>
+                                  <td>{{ usuario['Universidad']}}</td>
+                                </h6>
+                                <br>
+                                <h6 align="left"><b>Carrera: </b>
+                                  <td>{{ usuario['Carrera']}}</td>
+                                </h6>
+                                <br>
+                                <h6 align="left"><b>Tutor universitario:</b>
+                                  <td>{{ usuario['Nombre tutor']}}</td>
+                                </h6>
+                                <br>
+                                <h6 align="left"><b>Correo del tutor: </b>
+                                  <td>{{ usuario['Correo tutor']}}</td>
+                                </h6>
+                                <br>
+                                <h6 align="left"><b>Celular del tutor: </b>
+                                  <td>{{ usuario['Celular tutor']}}</td>
+                                </h6>
+                                <br>
+                              </div>
+                              <div class="card9"></div>
+                              <div class="card4">
+                                <h3 class="fontp" style="color: #cf2f35;" align="left">Datos en caso de Emergencia</h3>
+                                <h6 align="left"><b>EPS: </b>
+                                  <td>{{ usuario['EPS']}}</td>
+                                </h6>
+                                <br>
+                                <h6 align="left"><b>En caso de emergencia llamar a: </b>
+                                  <td>{{ usuario['Nombre emergencia']}}</td>
+                                </h6>
+                                <br>
+                                <h6 align="left"><b>Numero: </b>
+                                  <td>{{ usuario['Numero emergencia']}}</td>
+                                </h6>
+                                <br>
+                              </div>
+                              <div class="card9"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <br>
+                        <center>
+                          <hr width="95%">
+                        </center>
+                        <div class="carousel-indicators">
+                          <button type="button" style="background-color: #cf2f35;"
+                            data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                          <button type="button" style="background-color: #cf2f35;"
+                            data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        </div>
+                      </div>
+                    </Head>
+                    <div class="ul">
+                      <div class="btnAdnim">
+                        <form action="admin_view" method="post">
+                          <input type="hidden" value="{{usuario['Correo corporativo']}}" name="editar">
+                          <input type="hidden" value="{{y}}" name="yavee">
+                          <button type="submit" class="btn btn-primary" style="width: 80%;" name="ruta" value="edit">
+                            Editar
+                          </button>
+                        </form>
+                      </div>
+                      <div class="btnAdnim">
+                        <button type="button" class="btn btn-warning" style="width: 80%;" data-bs-toggle="modal"
+                          data-bs-target="#eliminarDatos">
+                          Eliminar
+                        </button>
+                        <div class="modal fade" id="eliminarDatos" tabindex="-1" aria-labelledby="exampleModalLabel"
+                          aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Usuario</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                  aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <div>
+                                  <b>¿Esta seguro que desea eliminar a este usuario?</b>
+                                  <center>
+                                    <hr width="95%">
+                                  </center>
+                                  <div class="ul">
+                                    <b>Correo :</b> {{usuario["Correo corporativo"]}}
+                                  </div>
+                                  <div class="ul">
+                                    <b>Nombre :</b> {{usuario["Nombres"]}} {{usuario["Apellidos"]}}
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <div class="card0">
+                                  <div class="ul">
+                                    <form action="admin_view" method="post">
+                                      <div class="btnAdnim">
+                                        <input type="hidden" value="{{usuario['Correo corporativo']}}" name="eliminar">
+                                        <button class="btn btn-danger" style="width: 200px;" name="ruta" value="elim">
+                                          Si
+                                        </button>
+                                      </div>
+                                    </form>
+                                    <div class="btnAdnim">
+                                      <button class="btn btn-warning" style="width: 200px;">No</button>
+                                    </div>
+                                  </div>
+                                  <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button> -->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <body>
+                    </body>
+                  </div>
+
+                </div>
+                <div class="cuerpo2">
+                  <div>
+                    <br>
+                    <center><img src="{{l}}" class='imgRedonda' alt="su imagen fue secuestrada por un alienígena ～～ " />
+                    </center>
+                    <p></p>
+                    <center>
+                      <div class="card5">
+                        <center>
+                          <h4 style="color: #cf2f35;">Datos de Contacto</h4>
+                        </center>
+                        PENDIENTE!!!
+                        <p>{{usuario['Nombres']}} {{usuario['Apellidos']}}</p>
+                        <p>{{usuario['Correo corporativo']}}</p>
+                        <p>{{usuario['Celular personal']}}</p>
+                      </div>
+                    </center>
+                    <br>
+                    <center>
+                      <div class="card5">
                         <form method="post" action="/admin_view" enctype="multipart/form-data">
                           <label for="file">Seleccione el plan de desarrollo</label>
                           <hr>
@@ -360,33 +411,36 @@
                           <input type="hidden" name="user" value={{usuario}}>
                           <input type="hidden" name="foto" value={{l}}>
                           <input type="hidden" name="yavee" value={{y}}>
-                          <input style= "width: 100%;" name="file_plan" id="fileId" type="file" accept=".pdf,.PDF,.Pdf">
+                          <input style="width: 100%;" name="file_plan" id="fileId" type="file" accept=".pdf,.PDF,.Pdf">
                           <br>
-                          <button type="submit" class="btn btn-primary" style="width: 80%;" name="plandesa" value="{{usuario['Cedula']}}">
+                          <button type="submit" class="btn btn-primary" style="width: 80%;" name="plandesa"
+                            value="{{usuario['Cedula']}}">
                             subir
                           </button>
                         </form>
                         {% if smessage %}
                         <br>
-                      <div class="alert alert-success">
-                       {{ smessage }}
+                        <div class="alert alert-success">
+                          {{ smessage }}
+                        </div>
+                        {% endif %}
                       </div>
-                      {% endif %}
-                      </div>
-                      </center>
-                      </div>
+                    </center>
+                  </div>
 
-                      <div style="position: static;">
-                      <center><img src = "{{url_for ('static', filename = './img/claro plano palabra blanco.png')}}" width = "130" height = "45" alt = "su imagen fue secuestrada por un alienígena ～～ "style = "position: relative; top: 80px; left: 100px;" /></center>
-                    </div>
-                    </div>
-                    </div>
-                  </div>                     
-                </div>   
-              </div>   
-        </section>      
+                  <div style="position: static;">
+                    <center><img src="{{url_for ('static', filename = './img/claro plano palabra blanco.png')}}"
+                        width="130" height="45" alt="su imagen fue secuestrada por un alienígena ～～ "
+                        style="position: relative; top: 80px; left: 100px;" /></center>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-  
+    </section>
+
 
     <script>
       const body = document.querySelector("body"),
