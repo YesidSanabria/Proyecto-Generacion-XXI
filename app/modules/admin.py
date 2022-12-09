@@ -45,7 +45,7 @@ def admin():
         
         elif ruta == "infopract1":
             yave = request.form["yavee"]
-            putos = 'PerfilPract.html'
+            putos = 'infopract.html'
             user = crud.getStudentInfo(yave)            
             foto = request.form["foto"]
             ev = crud.getEvaluationResults(yave, 'lider')
