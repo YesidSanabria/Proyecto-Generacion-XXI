@@ -96,5 +96,5 @@ def form ():
             ev = crud.getEvaluationResults(correo_corporativo, 'lider')
             if ev == None:
                 ev = {'': ''}  
-            return render_template('infopract.html', usuario=user, l=links, ev=ev)
+            return render_template('PerfilPract.html', usuario=user, l=links, ev=ev)
     return render_template('formulario.html')

@@ -34,14 +34,13 @@
         <input type="hidden" name="role" value="{{role}}">
         <input type="hidden" name="email" value="{{email}}">
         <input type="hidden" name="code" value="{{code}}">
-        {% if user %}
-        <input type="hidden" name="user" value="{{user}}">
-        {% endif %}
-        <button type="submit" name="submit" class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #CF2F35; color: white;">Ingresar a Evaluación</button>
+         {% if user %}
+        <input type="hidden" name="user" value="{{user['Correo corporativo']}}">        
+        {% endif %}            
+        <button type="submit" name="submit" value="submi" class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #CF2F35; color: white;">Ingresar a Evaluación</button>
       </form>
      </div>
     </div>
-  </div>
 </div>
 </div>
 </div>
