@@ -37,7 +37,13 @@
         {% if user %}
         <input type="hidden" name="user" value="{{user}}">
         {% endif %}
-        <button type="submit" name="submit" class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #CF2F35; color: white;">Ingresar a Evaluación</button>
+        <button type="submit" name="submit" class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #CF2F35; color: white;">
+          {% if name %}
+          Ingresar a Evaluación
+          {% else %}
+          Continuar
+          {% endif %}
+        </button>
       </form>
      </div>
     </div>
