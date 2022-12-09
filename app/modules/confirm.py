@@ -5,22 +5,26 @@ def confirm():
     if request.method == 'POST':
         role = request.form['role']
         email = request.form['email']
-        code = request.form['code']       
-        yave = request.form["yave"] 
-        usera = crud.getStudentInfo(yave)     
+        code = request.form['code']                                 
         code_input = request.form['code_input']
         try:
             user = request.form['user']
+            print(user)
+            foto = crud.getImagesURL([user])
+            print (foto)
+            user = crud.getStudentInfo(user)
+            
         except:
-            user = ''
+            user = ''           
         if code == code_input:
-            if role == 'docente':
-                return render_template('teacher_ev.html', email=email, user=user, datauser=usera)
-            elif role == 'líder':
-                return render_template('boss_ev.html', email=email, user=user, datauser=usera)
+            if role == 'docente':                               
+                return render_template('teacher_ev.html', email=email, user=user, foto=foto)
+            elif role == 'líder':                
+                return render_template('boss_ev.html', email=email, user=user)
             else:
                 return render_template('create_account.html', email=email)
         else:
             message = 'El código de verificación no corresponde'
             return render_template('confirm.html', umessage=message, code=code, email=email, role=role)
+                  
     return render_template('confirm.html')

@@ -5,8 +5,11 @@
     <head>
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/evaluation.css')}}">
     </head>
-    
+
     <body style="height: 100%; width: 100;"></body>    
+
+<h1>Evaluación Docente - Practicante</h1>
+<h5>{{email}}</h5>
 
         <div class="card">
             <div class="ul">
@@ -16,19 +19,18 @@
                         <h5 class="lead">Usted está a punto de evaluar a {{Nombres}}</h5>
                     </div>
                     <div class="card3">
-awd
+                        <div class="cardimage"><img src="{{foto}}"></div>  
                     </div>
                 </div>
                 </div>                
             </div>
-            <form action="/admin_view" method="post">
-                <input type="hidden" value={{email}} name="yave">
-            </form>    
-        <h1>Evaluación Docente - Practicante</h1>
-        <h5>{{datauser}}</h5>
+            <div class="cardimage"><img src="{{foto}}"></div>             
+        <h1>Evaluación Docente - Practicante</h1>              
         <h5>{{email}}</h5>
+        {{user["Nombres"]}} {{user["Apellidos"]}}
         <h5>{{Apellidos}}</h5>
-    </div>
+        {{user}}        
+        </div>
 
     </body>
     <div class="card"></div>

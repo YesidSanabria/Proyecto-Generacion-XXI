@@ -15,7 +15,7 @@ def check_in_database(role,email):
     for user,data in users.items():
         try:
             if data[field] == email:
-                return user, data['Nombres'] + ' ' + data['Apellidos']
+                return users[user], data['Nombres'] + ' ' + data['Apellidos']
         except:
             x = 'Aquí no pasa nada :v'
     return False, False
@@ -25,7 +25,7 @@ def check_in_database(role,email):
 def evaluation():
     if request.method == 'POST':
         role = request.form['role']
-        email = request.form['email']
+        email = request.form['email']   
         [user, name] = check_in_database(role,email)
         if name:
             code = ''
