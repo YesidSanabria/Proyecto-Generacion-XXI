@@ -192,6 +192,20 @@ a:hover i{
   height: 40%;
 }
 
+.evaluationcard{
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #d8d8d8;
+  padding: 2%;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.lineaver{
+  border-left: 1px solid #adadad;
+  height: 138px;  
+}
+
 .card9{
   width: 1px;
   height: 25%;

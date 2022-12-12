@@ -238,7 +238,7 @@
                                                 <h6 align="left"><b>Tutor universitario:</b><td>{{ usuario['Nombre tutor']}}</td>  </h6>
                                                 <br>                                       
                                                 <h6 align="left"><b>Correo del tutor: </b><td>{{ usuario['Correo tutor']}}</td> </h6>
-                                                <br>                                       
+                                                <br>                                         
                                                 <h6 align="left"><b>Celular del tutor: </b><td>{{ usuario['Celular tutor']}}</td> </h6>
                                                 <br>                                                                        
                                               </div>                                             
@@ -259,7 +259,7 @@
                                           Evaluaciones lider
                                         </button>
                                               <div class="modal fade" id="evaluacionLider" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
+                                                <div class="modal-dialog" >
                                                   <div class="modal-content">
                                                       <div class="modal-header">
                                                           <h1 class="modal-title fs-5" id="exampleModalLabel">Evaluaciones Lider</h1>
@@ -267,21 +267,26 @@
                                                       </div>
                                                       <div class="modal-body">
                                                         {% for key in ev.keys() %}
-                                                        <div>
+                                                        <div>                                                                                                                                                                            
                                                           <b>Evaluación de {{ev[key]['Fecha']}}</b>
                                                           <center><hr width="95%"></center>
                                                           <div class="ul">
+                                                          <div>
+                                                            <div class="lineaver" hidden></div>
+                                                          </div>
+                                                          <div class="evaluationcard">                                                                                                                      
+                                                          <div class="ul">
                                                           <b>Gerencia:</b> {{ev[key]['Pregunta1']}}
-                                                        </div> 
-                                                      <div class="ul">
+                                                          </div> 
+                                                          <div class="ul">
                                                           <b>Cédula:</b> {{ev[key]['Pregunta2']}}
-                                                        </div>
-                                                        <div class="ul">
-                                                          <b>Nombre completo (Líder):</b> {{ev[key]['Pregunta3']}}
-                                                        </div>
-                                                        <div class="ul">
-                                                          <b>Nombre del practicante:</b> {{ev[key]['Pregunta4']}}
-                                                        </div>
+                                                          </div>
+                                                          <div class="ul">
+                                                            <b>Nombre completo (Líder):</b> {{ev[key]['Pregunta3']}}
+                                                          </div>
+                                                          <div class="ul">
+                                                            <b>Nombre del practicante:</b> {{ev[key]['Pregunta4']}}
+                                                          </div>
                                                         <div class="ul">
                                                           <b>Cumplimiento tareas asignadas:</b> {{ev[key]['Pregunta5']}}
                                                         </div>
@@ -303,6 +308,8 @@
                                                         <div class="ul">
                                                           <b>Observaciones:</b> {{ev[key]['Observaciones']}}
                                                         </div>  
+                                                      </div>
+                                                    </div>
                                                         <center><hr width="95%"></center>                                
                                                         </div>
                                                         {% endfor %}                                 

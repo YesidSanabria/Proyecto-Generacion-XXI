@@ -132,7 +132,7 @@ if __name__ == '__main__':
         host, port = server_name.split(":")
         port = int(port)
     else:
-        port = 5000
+        port = 8000
         host = "localhost"
     mail.init_app(app)
     app.run(host=host, port=port, debug=True)

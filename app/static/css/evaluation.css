@@ -16,7 +16,7 @@ body{
     width: 98%;
     height: 100%;
     margin: 10px;
-    background: #fff;
+    background: rgb(240, 240, 240);
     text-align: center;
     border-radius: 10px;
     padding: 10px;
@@ -27,7 +27,7 @@ body{
     width: 100%;
     height: 100%;
     margin: 10px;
-    background: rgb(101, 124, 228);
+    background: #CF2F35;
     text-align: center;
     border-radius: 10px;
     padding: 10px;
@@ -37,7 +37,7 @@ body{
   .card2{
     width: 65%;
     height: 100%;    
-    background: rgb(173, 47, 47);
+    background: rgb(238, 238, 238);
     text-align: center;
     border-radius: 10px;    
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
@@ -46,10 +46,24 @@ body{
   .card3{
     width: 35%;
     height: 100%;    
-    background: rgb(108, 173, 47);
+    background: rgb(241, 241, 241);
     text-align: center;
     border-radius: 10px;
     padding: 10px;
-    margin: 10px;    
+    margin-left: 1%;        
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  .lineaver{
+    border-left: 1px solid #adadad;
+    height: 138px;  
+  }
+
+  .btn1{
+    width: 50%;
+    height: 50%;
+    background-color: #FAC401;
+    border-color: #FAC401;
+    border-radius: 10px;
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
   }

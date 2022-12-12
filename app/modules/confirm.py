@@ -10,13 +10,13 @@ def confirm():
         try:
             user = request.form['user']            
             foto = crud.getImagesURL([user])            
-            user = crud.getStudentInfo(user)
+            userI = crud.getStudentInfo(user)
             
         except:
             user = ''           
         if code == code_input:
             if role == 'docente':                               
-                return render_template('teacher_ev.html', email=email, user=user, foto=foto)
+                return render_template('teacher_ev.html', email=email, user=user, userI=userI, foto=foto)
             elif role == 'líder':                
                 return render_template('boss_ev.html', email=email, user=user)
             else:
