@@ -23,7 +23,7 @@ body {
     padding: 0 1rem;
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
-    transition: .5s
+    transition: .5
 }
 
 .header {
@@ -139,13 +139,22 @@ body {
     color: var(--white-color)
 }
 
-.active::before {
+.active2::before {
     content: '';
     position: absolute;
     left: 0;
     width: 2px;
     height: 32px;
     background-color: var(--white-color)
+}
+
+.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 32px;
+    background-color: transparent
 }
 
 .height-100 {
