@@ -7,19 +7,20 @@ def limpiar_acentos(text):
 			text = text.replace(acen, acentos[acen])
 	return text
 
-def searchInData(user, text, field):
+def searchInData(user, text):
     text = limpiar_acentos(text)
-    if field == 'Nombres':
-        names = limpiar_acentos(user['Nombres'])
-        lastnames = limpiar_acentos(user['Apellidos'])
-        if text.upper() in names.upper():
-            return True
-        if text.upper() in lastnames.upper():
-            return True
-    elif field == 'Carrera':
-        career = limpiar_acentos(user['Carrera'])
-        if text.upper() in career.upper():
-            return True    
+    names = limpiar_acentos(user['Nombres'])
+    lastnames = limpiar_acentos(user['Apellidos'])
+    career = limpiar_acentos(user['Carrera'])
+    uni = limpiar_acentos(user['Universidad'])
+    if text.upper() in names.upper():
+        return True
+    if text.upper() in lastnames.upper():
+        return True
+    if text.upper() in career.upper():
+        return True    
+    if text.upper() in uni.upper():
+        return True
     return False
 
 def searchInDataC(user, text):
@@ -29,12 +30,12 @@ def searchInDataC(user, text):
         return True    
     return False    
 
-def searchStudent(text, field):
+def searchStudent(text):
     allStudents = crud.getAllStudents()
     studentList = []
     for student in allStudents.keys():
         data = allStudents[student]
-        if searchInData(data, text, field):
+        if searchInData(data, text):
             studentList.append(student)
     return studentList
 
