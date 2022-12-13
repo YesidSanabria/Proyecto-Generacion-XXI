@@ -8,10 +8,9 @@ def confirm():
         code = request.form['code']                                 
         code_input = request.form['code_input']
         try:
-            user = request.form['user']            
-            foto = crud.getImagesURL([user])            
+            user = request.form['user']                     
             userI = crud.getStudentInfo(user)
-            
+            foto = crud.getImagesURL([userI["Correo corporativo"]])  
         except:
             user = ''           
         if code == code_input:
