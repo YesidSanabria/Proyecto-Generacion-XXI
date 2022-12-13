@@ -97,19 +97,19 @@
   }
   .posicion1{
     position: absolute;
-  top: 370px;
-  left: -40px;
-  width: 200px;
-  height: 80px;
+  bottom: 40%;
+  
   }
   .posicion2{
     position: absolute;
-  top: 370px;
-  left: 1080px;
-  width: 200px;
-  height: 80px;
-  } 
+  bottom: 40%;
+  left: 95%
+  }
 
+  .boton-buscar{
+    border-radius: 5px;
+    padding-left: 10px;
+  }
   .circular-btn-file:hover{
     background-color: #CF2F35;
   }

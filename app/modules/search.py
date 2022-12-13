@@ -12,12 +12,15 @@ def searchInData(user, text):
     names = limpiar_acentos(user['Nombres'])
     lastnames = limpiar_acentos(user['Apellidos'])
     career = limpiar_acentos(user['Carrera'])
+    uni = limpiar_acentos(user['Universidad'])
     if text.upper() in names.upper():
         return True
     if text.upper() in lastnames.upper():
         return True
     if text.upper() in career.upper():
         return True    
+    if text.upper() in uni.upper():
+        return True
     return False
 
 def searchInDataC(user, text):

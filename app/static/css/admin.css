@@ -165,9 +165,11 @@ a:hover i{
 
 /* MAin Section */
 .main{
-  position: relative;
-  padding: 20px;
-  width: 100%;
+    position: relative;
+    padding: 4%;
+    width: 90%;
+    left: 5%;
+  
 }
 .maini{  
   position: relative;
@@ -404,4 +406,6 @@ table thead tr{
   width: 50%;
   height: 100%;
 }
+
+
 
