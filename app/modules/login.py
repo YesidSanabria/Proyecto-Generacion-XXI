@@ -64,7 +64,7 @@ def index():
             #user_id = auth.get_account_info(user['idToken'])
             session['username'] = email
             #return render_template('formulario.html', user=user)
-            return render_template(putos, nav_activo=1, usuario=user, opcion=options, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta, file=file)
+            return render_template(putos, usuario=user, opcion=options, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta, file=file)
             
         except:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'
