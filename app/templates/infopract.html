@@ -1,7 +1,6 @@
 {% extends "base.html" %} {% block content %}
-
-<body>
-  <head>
+  
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,11 +9,11 @@
       type="text/css"
       href="{{url_for('static', filename='css/admin.css')}}"
     />
-    <link
+    <!--<link
       rel="stylesheet"
       type="text/css"
       href="{{url_for('static', filename='css/style1.css')}}"
-    />
+    />-->
     <!-- CSS only -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
@@ -33,77 +32,9 @@
       rel="stylesheet"
     />
   </head>
-
+  
   <body>
-    <nav class="sidebar close">
-      <header>
-        <div class="image-text">
-          <div class="text logo-text">
-            <span class="name">Generación XXI</span>
-            <span class="profession">Navegación</span>
-          </div>
-        </div>
-        <i
-          class="bx bx-chevron-right toggle"
-          style="background-color: #cf2f35"
-        ></i>
-      </header>
-
-      <div class="menu-bar">
-        <div class="menu">
-          <li class="search-box">
-            <i class="bx bx-search icon"></i>
-            <input type="text" placeholder="Search..." />
-          </li>
-
-          <li class="nav-link">
-            
-            <form action="/admin_view" method="post">
-              
-              <button class="contenedor-btn-file bordeado" name="ruta" value="admin">
-              <div class="ul">
-                <i class="bx bxs-user icon"></i>
-                <span class="btn-file"> Practicantes</span>
-              </div>
-              </button>
-            
-            </form>
-          </li>          
-
-          <li class="nav-link">
-            
-            <form action="/admin_view" method="post">
-              <button class="contenedor-btn-file bordeado" name="ruta" value="reportes">
-                <div class="ul">
-                  <i class="bx bx-pie-chart-alt icon"></i>
-                <span class="btn-file">Reportes</span>
-                </div>
-              </button>
-            </form>
-          </li>
-        </div>
-
-        <div class="bottom-content">
-          <li class="">
-            <a href="/index">
-              <i class="bx bx-log-out icon"></i>
-              <span class="text nav-text">Logout</span>
-            </a>
-          </li>
-
-          <li class="mode">
-            <div class="sun-moon">
-              <i class="bx bx-moon icon moon"></i>
-              <i class="bx bx-sun icon sun"></i>
-            </div>
-            <span class="mode-text text">Dark mode</span>
-            <div class="toggle-switch">
-              <span class="switch"></span>
-            </div>
-          </li>
-        </div>
-      </div>
-    </nav>
+    <button onclick="goBack()">Go Back</button>
     <section class="home">      
         <section class="maini" style="padding-top: 0.2%;">  
             <div class="users" style="height: 100%; width: 100%;">                 
@@ -420,9 +351,12 @@
             modeText.innerText = "Dark mode";
           }
         });
+        function goBack() {
+          window.history.back();
+        }
       </script>
 
-
+    </body>
 
 
 {% endblock %}
