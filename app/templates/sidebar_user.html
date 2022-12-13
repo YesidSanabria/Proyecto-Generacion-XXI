@@ -46,13 +46,13 @@
 
                   <form action="/view_personal_data" method="post">
                   <input type="hidden" value="{{usuario['Correo corporativo']}}" name="email">
-                  <button class="nav_link{% if nav_activo==1 %} active{% endif %}"  name="ruta" value="pract">
+                  <button class="nav_link{% if nav_activo==1 %} active2{% endif %}"  name="ruta" value="pract">
                       <i class='bx bx-user nav_icon'></i>
                       <span class="nav_name">Mi Perfil</span></button></form>
 
                       <form action="/view_personal_data" method="post">
                           <input type="hidden" value="{{usuario['Correo corporativo']}}" name="actuali">
-                  <button class="nav_link{% if nav_activo==2 %} active{% endif %}" name="ruta" value="actu">
+                  <button class="nav_link{% if nav_activo==2 %} active2{% endif %}" name="ruta" value="actu">
                       <i class='bx bx-pencil nav_icon'></i>
                       <span class="nav_name">Editar Perfil</span></button></form>
 
@@ -62,7 +62,7 @@
                       
                       <form action="/faq" method="post" >  
                         <input type="hidden" value="{{usuario['Correo corporativo']}}" name="faq2">   
-                <button class="nav_link{% if nav_activo==3 %} active{% endif %}" name="ruta" value="faq">
+                <button class="nav_link{% if nav_activo==3 %} active2{% endif %}" name="ruta" value="faq">
                     <i class='bx bx-bookmark nav_icon'></i>
                     <span class="nav_name">FAQ</span></button></form>
 
