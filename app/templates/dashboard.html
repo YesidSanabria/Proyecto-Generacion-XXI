@@ -1,454 +1,400 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-	<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/personald.css')}}">
   <!--<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/personald.css')}}">-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.min.js" integrity="sha512-tQYZBKe34uzoeOjY9jr3MX7R/mo7n25vnqbnrkskGr4D6YOoPYSpyafUAzQVjV6xAozAqUFIEFsCO4z8mnVBXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.min.js"
+    integrity="sha512-tQYZBKe34uzoeOjY9jr3MX7R/mo7n25vnqbnrkskGr4D6YOoPYSpyafUAzQVjV6xAozAqUFIEFsCO4z8mnVBXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <link
-    rel="stylesheet"
-    type="text/css"
-    href="{{url_for('static', filename='css/admin.css')}}"
-  />
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="{{url_for('static', filename='css/style1.css')}}"
-  />
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/admin.css')}}" />
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style1.css')}}" />
   <!-- CSS only -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-    crossorigin="anonymous"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
   <!----===== Boxicons CSS ===== -->
-  <link
-    href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
 
 </head>
-<body>
+<br><br>
+  <body id="body-pd">
+    <header class="header" id="header">
+      <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i></div>
+    </header>
 
-<br>
-<br>
+    <div class="l-navbar" id="nav-bar">
+      <nav class="nav">
+        <div> <a href="#" class="nav_logo"> <i class='bx bxs-home nav_logo-icon'></i> <span
+              class="nav_logo-name">Generación XXI</span> </a>
+          <div class="nav_list">
 
-<nav class="sidebar close">
-  <header>
-    <div class="image-text">
-      <div class="text logo-text">
-        <span class="name">Generación XXI</span>
-        <span class="profession">Navegación</span>
-      </div>
-    </div>
-    <i
-      class="bx bx-chevron-right toggle"
-      style="background-color: #cf2f35"
-    ></i>
-  </header>
+            <form action="/admin_view" method="post">
+              <button class="nav_link" name="ruta" value="admin">
+                <i class='bx bx-user nav_icon'></i>
+                <span class="nav_name">Practicantes</span></button>
+            </form>
 
-  <div class="menu-bar">
-    <div class="menu">
-      <li class="search-box">
-        <!-- <i class="bx bx-search icon"></i>
-        <input type="text" placeholder="Search..." /> -->
-      </li>
+            <form action="/admin_view" method="post">
+              <button class="nav_link active2" name="ruta" value="reportes">
+                <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                <span class="nav_name">R. Demograficos</span></button>
+            </form>
 
-      <li class="nav-link">
-        
-        <form action="/admin_view" method="post">
-          
-          <button class="contenedor-btn-file bordeado" name="ruta" value="admin">
-          <div class="ul">
-            <i class="bx bxs-user icon"></i>
-            <span class="btn-file"> Practicantes</span>
+            <form action="/admin_view" method="post">
+              <button class="nav_link" name="ruta" value="reportes_ev">
+                <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                <span class="nav_name">R. Evaluaciones</span></button>
+            </form>
           </div>
-          </button>
-        
-        </form>
-      </li>          
-
-      <li class="nav-link">
-        
-        <form action="/admin_view" method="post">
-          <button class="contenedor-btn-file bordeado" name="ruta" value="reportes">
-            <div class="ul">
-              <i class="bx bx-pie-chart-alt icon"></i>
-            <span class="btn-file">Reportes</span>
-            </div>
-          </button>
-        </form>
-      </li>
-
-      <li class="nav-link">
-        <form action="/admin_view" method="post">
-            <button class="contenedor-btn-file bordeado" name="ruta" value="reportes_ev">
-                <div class="ul">
-                <i class='bx bx-pie-chart-alt icon' ></i>
-                <span class="btn-file">Evaluaciones</span>
-                </div>
-            </button>
-        </form>
-</li>
-
+        </div> <a href="/index" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Cerrar
+            Sesión</span> </a>
+      </nav>
     </div>
 
-    <div class="bottom-content">
-      <li class="">
-        <a href="/index">
-          <i class="bx bx-log-out icon"></i>
-          <span class="text nav-text">Logout</span>
-        </a>
-      </li>
 
-      <li class="mode">
-        <div class="sun-moon">
-          <i class="bx bx-moon icon moon"></i>
-          <i class="bx bx-sun icon sun"></i>
-        </div>
-        <span class="mode-text text">Dark mode</span>
-        <div class="toggle-switch">
-          <span class="switch"></span>
-        </div>
-      </li>
-    </div>
-  </div>
-</nav>
+    <div class="row">
 
-<div class="container">
-
-<div class="row">
-
-  <div class="col-xs-10 col-sm-6 col-md-3">
-    <div class="card card-style mb-2">
-        <div class="card-body">
+      <div class="col-xs-10 col-sm-6 col-md-3">
+        <div class="card card-style mb-2">
+          <div class="card-body">
             <center>
-            <div class="chart-container" style="position: relative; height:46vh; width:14vw">
-              <br>
-              <br>
-              <h4>Cantidad practicantes: </h4>
-              <br>
-              <br>
-              <h1>{{canPrac}}</h1>
-            </div>
+              <div class="chart-container" style="position: relative; height:46vh; width:14vw">
+                <br>
+                <br>
+                <h4>Cantidad practicantes: </h4>
+                <br>
+                <br>
+                <h1>{{canPrac}}</h1>
+              </div>
             </center>
+          </div>
         </div>
-    </div>
-  </div>
+      </div>
 
-  <div class="col-xs-10 col-sm-6 col-md-6">
-    <div class="card card-style mb-2">
-        <div class="card-body">
+      <div class="col-xs-10 col-sm-6 col-md-6">
+        <div class="card card-style mb-2">
+          <div class="card-body">
             <center>
-            <h4> Edades </h4>
-            <div class="chart-container" style="position: relative; height:40vh; width:30vw">
+              <h4> Edades </h4>
+              <div class="chart-container" style="position: relative; height:40vh; width:30vw">
                 <canvas id="edad"></canvas>
-            </div>
+              </div>
             </center>
+          </div>
         </div>
-    </div>
-  </div>
+      </div>
 
-  <div class="col-xs-10 col-sm-6 col-md-3">
-    <div class="card card-style mb-2">
-        <div class="card-body">
+      <div class="col-xs-10 col-sm-6 col-md-3">
+        <div class="card card-style mb-2">
+          <div class="card-body">
             <center>
               <h4> Equipares </h4>
-            <div class="chart-container" style="position: relative; height:40vh; width:14vw">
+              <div class="chart-container" style="position: relative; height:40vh; width:14vw">
                 <canvas id="genero"></canvas>
-            </div>
+              </div>
             </center>
+          </div>
         </div>
-    </div>
-  </div>
-  
-    <div class="card card-style mb-2">
-        <div class="card-body">
-            <center>
-              <h4> Carrera </h4>
-            <div class="chart-container" style="position: relative; height:70vh; width:80vw">
-                <canvas id="carreras"></canvas>
-            </div>
-            </center>
-        </div>
-    </div>
+      </div>
 
-    <div class="card card-style mb-2">
+      <div class="card card-style mb-2">
         <div class="card-body">
-            <center>
-              <h4> Universidad </h4>
+          <center>
+            <h4> Carrera </h4>
             <div class="chart-container" style="position: relative; height:70vh; width:80vw">
-                <canvas id="universidad"></canvas>
+              <canvas id="carreras"></canvas>
             </div>
-            </center>
+          </center>
         </div>
-    </div>
+      </div>
 
-    <div class="card card-style mb-2">
-      <div class="card-body">
+      <div class="card card-style mb-2">
+        <div class="card-body">
+          <center>
+            <h4> Universidad </h4>
+            <div class="chart-container" style="position: relative; height:70vh; width:80vw">
+              <canvas id="universidad"></canvas>
+            </div>
+          </center>
+        </div>
+      </div>
+
+      <div class="card card-style mb-2">
+        <div class="card-body">
           <center>
             <h4> Dirección corporativa </h4>
-          <div class="chart-container" style="position: relative; height:70vh; width:80vw">
+            <div class="chart-container" style="position: relative; height:70vh; width:80vw">
               <canvas id="direccionC"></canvas>
-          </div>
+            </div>
           </center>
+        </div>
       </div>
-  </div>
- 
 
-</div>
 
-</div>
+    </div>
 
-      <div>
-        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-      </div>
-      
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <script>
-        const ctx = document.getElementById('edad');
-        const ctx1 = document.getElementById('genero');
-        const ctx2 = document.getElementById('carreras');
-        const ctx3 = document.getElementById('universidad');
-        const ctx4 = document.getElementById('direccionC');
-      
-        new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: [
-            {% for i in canEdadK%}
+
+
+    <div>
+      <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const ctx = document.getElementById('edad');
+      const ctx1 = document.getElementById('genero');
+      const ctx2 = document.getElementById('carreras');
+      const ctx3 = document.getElementById('universidad');
+      const ctx4 = document.getElementById('direccionC');
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+            {% for i in canEdadK %}
             "{{i}}",
             {% endfor %}
             ],
-            datasets: [{
-              label: '# de practicantes',
-              data: [
-              {% for i in canEdadV%}
+        datasets: [{
+          label: '# de practicantes',
+          data: [
+            {% for i in canEdadV %}
               "{{i}}",
-              {% endfor %}
-              ],
-              backgroundColor: [
-                    '#b7202e',
-                    '#0096a9',
-                    '#f58220',
-                    '#737373',
-                    '#000000'
-                ],
-                /*borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(11, 156, 49, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],*/
-              borderWidth: 1
+        {% endfor %}
+      ],
+        backgroundColor: [
+        '#b7202e',
+        '#0096a9',
+        '#f58220',
+        '#737373',
+        '#000000'
+      ],
+        /*borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(11, 156, 49, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ],*/
+        borderWidth: 1
             }]
           },
-          options: {
-            plugins: {
-              legend: {display: false},
-            },
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
+        options: {
+        plugins: {
+          legend: { display: false },
+        },
+        scales: {
+          y: {
+            beginAtZero: true
           }
+        }
+      }
         });
 
-        var xValues = [
+      var xValues = [
         {% for i in canGeneroK %}
-        "{{i}}",
+      "{{i}}",
         {% endfor %}
         ];
-        var yValues = [
+      var yValues = [
         {% for i in canGeneroV %}
-        "{{i}}",
+      "{{i}}",
         {% endfor %}
         ];
-        var barColors = [
+      var barColors = [
         '#0096a9',
         '#b7202e',
         '#f58220',
         '#737373',
         '#000000'
-        ];
+      ];
 
-        new Chart(ctx1, {
-          type: "pie",
-          data: {
-            labels: xValues,
-            datasets: [{
-              backgroundColor: barColors,
-              data: yValues
-            }]
-          },
-          options: {
-            title: {
-              display: true,
-              text: "Genero"
-            }
+      new Chart(ctx1, {
+        type: "pie",
+        data: {
+          labels: xValues,
+          datasets: [{
+            backgroundColor: barColors,
+            data: yValues
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: "Genero"
           }
-        });
+        }
+      });
 
-        var xValues = [
+      var xValues = [
         {% for i in carreras %}
-        "{{i}}",
+      "{{i}}",
         {% endfor %}
         ];
-        var yValues = [
+      var yValues = [
         {% for i in cont_carreras %}
-        "{{i}}",
+      "{{i}}",
         {% endfor %}
         ];
-        var barColors = [
+      var barColors = [
         '#b7202e',
         '#0096a9',
         '#f58220',
         '#737373',
         '#000000'
-        ];
+      ];
 
-        new Chart(ctx2, {
-          type: "bar",
-          data: {
-            labels: xValues,
-            datasets: [{
-              backgroundColor: barColors,
-              label: "# de practicantes",
-              data: yValues
-            }]
+      new Chart(ctx2, {
+        type: "bar",
+        data: {
+          labels: xValues,
+          datasets: [{
+            backgroundColor: barColors,
+            label: "# de practicantes",
+            data: yValues
+          }]
+        },
+        options: {
+          plugins: {
+            legend: { display: false },
           },
-          options: {
-            plugins: {
-              legend: {display: false},
-            },
-            title: {
-              display: true,
-              text: "Carreras"
-            },
-            indexAxis:'y'
-          }
-        });
+          title: {
+            display: true,
+            text: "Carreras"
+          },
+          indexAxis: 'y'
+        }
+      });
 
-        new Chart(ctx3, {
-          type: 'bar',
-          data: {
-            labels: [
+      new Chart(ctx3, {
+        type: 'bar',
+        data: {
+          labels: [
             {% for i in uni %}
             "{{i}}",
             {% endfor %}
             ],
-            datasets: [
-              {
-                label: "# de practicantes",
-                backgroundColor: barColors,
-                data: [
-                {% for i in cont_uni %}
+        datasets: [
+        {
+          label: "# de practicantes",
+          backgroundColor: barColors,
+          data: [
+            {% for i in cont_uni %}
                 "{{i}}",
-                {% endfor %}
-                ]
+        {% endfor %}
+      ]
               }
             ]
           },
-          options: {
-            plugins: {
-              legend: {display: false},
-            },
-            title: {
-              display: true,
-              text: 'Predicted world population (millions) in 2050'
-            },
-            indexAxis:'y'
-          }
+        options: {
+        plugins: {
+          legend: { display: false },
+        },
+        title: {
+          display: true,
+          text: 'Predicted world population (millions) in 2050'
+        },
+        indexAxis: 'y'
+      }
       });
 
       new Chart(ctx4, {
         type: 'bar',
         data: {
           labels: [
-          {% for i in canDirK%}
+            {% for i in canDirK %}
           "{{i}}",
           {% endfor %}
           ],
-          datasets: [{
-            label: '# de practicantes',
-            data: [
-            {% for i in canDirV%}
+        datasets: [{
+          label: '# de practicantes',
+          data: [
+            {% for i in canDirV %}
             "{{i}}",
-            {% endfor %}
-            ],
-            backgroundColor: [
-                  '#b7202e',
-                  '#0096a9',
-                  '#f58220',
-                  '#737373',
-                  '#000000'
-              ],
-              /*borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(11, 156, 49, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
-              ],*/
-            borderWidth: 1
+        {% endfor %}
+      ],
+        backgroundColor: [
+        '#b7202e',
+        '#0096a9',
+        '#f58220',
+        '#737373',
+        '#000000'
+      ],
+        /*borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(11, 156, 49, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ],*/
+        borderWidth: 1
           }]
         },
         options: {
-          plugins: {
-            legend: {display: false},
-          },
-          scales: {
-            y: {
-              beginAtZero: true
-            }
+        plugins: {
+          legend: { display: false },
+        },
+        scales: {
+          y: {
+            beginAtZero: true
           }
         }
+      }
       });
 
-      </script>
-      <script>
-        const body = document.querySelector("body"),
-          sidebar = body.querySelector("nav"),
-          toggle = body.querySelector(".toggle"),
-          searchBtn = body.querySelector(".search-box"),
-          modeSwitch = body.querySelector(".toggle-switch"),
-          modeText = body.querySelector(".mode-text");
-  
-        toggle.addEventListener("click", () => {
-          sidebar.classList.toggle("close");
-        });
-  
-        searchBtn.addEventListener("click", () => {
-          sidebar.classList.remove("close");
-        });
-  
-        modeSwitch.addEventListener("click", () => {
-          body.classList.toggle("dark");
-  
-          if (body.classList.contains("dark")) {
-            modeText.innerText = "Light mode";
-          } else {
-            modeText.innerText = "Dark mode";
-          }
-        });
-      </script>
-</body>
+    </script>
+   <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+
+        const showNavbar = (toggleId, navId, bodyId, headerId) => {
+            const toggle = document.getElementById(toggleId),
+                nav = document.getElementById(navId),
+                bodypd = document.getElementById(bodyId),
+                headerpd = document.getElementById(headerId)
+
+            // Validate that all variables exist
+            if (toggle && nav && bodypd && headerpd) {
+                toggle.addEventListener('click', () => {
+                    // show navbar
+                    nav.classList.toggle('show')
+                    // change icon
+                    toggle.classList.toggle('bx-x')
+                    // add padding to body
+                    bodypd.classList.toggle('body-pd')
+                    // add padding to header
+                    headerpd.classList.toggle('body-pd')
+                })
+            }
+        }
+
+        showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+
+        /*===== LINK ACTIVE =====*/
+        const linkColor = document.querySelectorAll('.nav_link')
+
+        function colorLink() {
+            if (linkColor) {
+                linkColor.forEach(l => l.classList.remove('active'))
+                this.classList.add('active')
+            }
+        }
+        linkColor.forEach(l => l.addEventListener('click', colorLink))
+
+        // Your code to run since DOM is loaded and ready
+    });
+</script>
+  </body>
+
 </html>
