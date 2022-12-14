@@ -93,8 +93,11 @@ def form ():
         else:
             user = crud.getStudentInfo(request.form["userr"])
             links = crud.getImagesURL([correo_corporativo])
-            ev = crud.getEvaluationResults(correo_corporativo, 'lider')
+            ev = {}
+            ev['lider'] = crud.getEvaluationResults(correo_corporativo, 'lider')
+            ev['tutor'] = crud.getEvaluationResults(correo_corporativo, 'tutor')
             if ev == None:
-                ev = {'': ''}  
+                ev['lider'] = {'': ''}
+                ev['tutor'] = {'': ''}
             return render_template('infopract.html', usuario=user, l=links, ev=ev)
     return render_template('formulario.html')

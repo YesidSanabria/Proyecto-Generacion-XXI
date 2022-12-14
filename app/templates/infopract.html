@@ -273,14 +273,14 @@
                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                   </div>
-                                {% for key in ev.keys() %}
+                                {% for key in ev['lider'].keys() %}
                                 <div style="background-color: rgb(209, 209, 209)">
                                     <div class="cardmodal">                                                            
                                         <div style="height: 30px; background-color: #6B1A1E;"></div>
                                       <div class="modal-body">
                                         
                                         <div style="color: #ffff;">                                                                                                                                                                                                                                     
-                                        <b>Evaluación de {{ev[key]['Fecha']}}</b>                                                                                                                                                                                                                                            
+                                        <b>Evaluación de {{ev['lider'][key]['Fecha']}}</b>                                                                                                                                                                                                                                            
                                         </div>                                                                                            
                                       </div>
                                     </div>
@@ -297,67 +297,67 @@
                                                 <div align="left" style="width: 50%;" >
                                                 <b>Gerencia:</b> 
                                                 </div>
-                                                <div align="left" style="width: 50%;">{{ev[key]['Pregunta1']}}</div>
+                                                <div align="left" style="width: 50%;">{{ev['lider'][key]['Pregunta1']}}</div>
                                               </div> 
                                               <div class="ul">
                                                 <div align="left" style="width: 50%;">
                                                     <b>Cédula:</b> 
                                                     </div> 
-                                                <div align="left" style="width: 50%;">{{ev[key]['Pregunta2']}}</div>
+                                                <div align="left" style="width: 50%;">{{ev['lider'][key]['Pregunta2']}}</div>
                                               </div>
                                               <div class="ul">
                                                 <div align="left" style="width: 50%;">
                                                     <b>Nombre completo (Líder):</b> 
                                                     </div>
-                                                    <div align="left" style="width: 50%;">{{ev[key]['Pregunta3']}}</div>
+                                                    <div align="left" style="width: 50%;">{{ev['lider'][key]['Pregunta3']}}</div>
                                               </div>
                                               <div class="ul">
                                                 <div align="left" style="width: 50%;">
                                                     <b>Nombre del practicante:</b> 
                                                     </div>
-                                                    <div align="left" style="width: 50%;">{{ev[key]['Pregunta4']}}</div>
+                                                    <div align="left" style="width: 50%;">{{ev['lider'][key]['Pregunta4']}}</div>
                                               </div>
                                               <div class="ul">
                                                 <div align="left" style="width: 70%;">
                                                     <b>Cumplimiento tareas asignadas:</b> 
                                                     </div>
-                                                    <div align="left" style="width: 15%;">{{ev[key]['Pregunta5']}}</div>
+                                                    <div align="left" style="width: 15%;">{{ev['lider'][key]['Pregunta5']}}</div>
                                               </div>
                                               <div class="ul">
                                                 <div align="left" style="width: 70%;">
                                                     <b>Buena actitud:</b>
                                                     </div>
-                                                    <div align="left" style="width: 15%;">{{ev[key]['Pregunta6']}}</div>
+                                                    <div align="left" style="width: 15%;">{{ev['lider'][key]['Pregunta6']}}</div>
                                               </div>
                                               <div class="ul">
                                                 <div align="left" style="width: 70%;">
                                                     <b>Capacidad de proponer e innovar:</b> 
                                                     </div>
-                                                    <div align="left" style="width: 15%;">{{ev[key]['Pregunta7']}}</div>
+                                                    <div align="left" style="width: 15%;">{{ev['lider'][key]['Pregunta7']}}</div>
                                               </div>
                                               <div class="ul">
                                                 <div align="left" style="width: 70%;">
                                                     <b>Agilismo:</b>
                                                     </div>
-                                                    <div align="left" style="width: 15%;">{{ev[key]['Pregunta8']}}</div>
+                                                    <div align="left" style="width: 15%;">{{ev['lider'][key]['Pregunta8']}}</div>
                                               </div>
                                               <div class="ul">
                                                 <div align="left" style="width: 70%;">
                                                     <b>Digital:</b>
                                                     </div>
-                                                    <div align="left" style="width: 15%;">{{ev[key]['Pregunta9']}}</div>
+                                                    <div align="left" style="width: 15%;">{{ev['lider'][key]['Pregunta9']}}</div>
                                               </div>
                                               <div class="ul">
                                                 <div align="left" style="width: 70%;">
                                                     <b>Liderazgo:</b>
                                                     </div>
-                                                    <div align="left" style="width: 15%;">{{ev[key]['Pregunta10']}}</div>
+                                                    <div align="left" style="width: 15%;">{{ev['lider'][key]['Pregunta10']}}</div>
                                               </div>
                                               <div align="left">
                                                 <div style="width: 50%;">
                                                     <b>Observaciones:</b>
                                                     </div>
-                                                    <div align="left" style="width: 50%;">{{ev[key]['Observaciones']}}</div>
+                                                    <div align="left" style="width: 50%;">{{ev['lider'][key]['Observaciones']}}</div>
                                               </div>  
                                             </div>
                                           </div>                                                                                                                             
@@ -381,20 +381,20 @@
                             <div class="evaluationcard">
                                 <div class="ull" style="border-color: #6B1A1E; background-color: #6B1A1E; color: #ffff;">
                                     <div>
-                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Evaluaciones Lider</h1>
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Evaluaciones Tutor</h1>
                                     </div>
                                     <div style="position: relative; left: 56%;">
                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                   </div>
-                                {% for key in ev.keys() %}
+                                {% for key in ev['tutor'].keys() %}
                                 <div style="background-color: rgb(209, 209, 209)">
                                     <div class="cardmodal">                                                            
                                         <div style="height: 30px; background-color: #6B1A1E;"></div>
                                       <div class="modal-body">
                                         
                                         <div style="color: #ffff;">                                                                                                                                                                                                                                     
-                                        <b>Evaluación de {{ev[key]['Fecha']}}</b>                                                                                                                                                                                                                                            
+                                        <b>Evaluación de {{ev['tutor'][key]['Fecha']}}</b>                                                                                                                                                                                                                                            
                                         </div>                                                                                            
                                       </div>
                                     </div>
@@ -409,69 +409,39 @@
                                             <div>                                                                                                                      
                                               <div class="ul" style="width: 100%;">
                                                 <div align="left" style="width: 50%;" >
-                                                <b>Gerencia:</b> 
+                                                <b>Universidad:</b> 
                                                 </div>
-                                                <div align="left" style="width: 50%;">{{ev[key]['Pregunta1']}}</div>
+                                                <div align="left" style="width: 50%;">{{ev['tutor'][key]['Pregunta1']}}</div>
                                               </div> 
                                               <div class="ul">
                                                 <div align="left" style="width: 50%;">
                                                     <b>Cédula:</b> 
                                                     </div> 
-                                                <div align="left" style="width: 50%;">{{ev[key]['Pregunta2']}}</div>
+                                                <div align="left" style="width: 50%;">{{ev['tutor'][key]['Pregunta2']}}</div>
                                               </div>
                                               <div class="ul">
                                                 <div align="left" style="width: 50%;">
-                                                    <b>Nombre completo (Líder):</b> 
+                                                    <b>Nombre completo (Tutor):</b> 
                                                     </div>
-                                                    <div align="left" style="width: 50%;">{{ev[key]['Pregunta3']}}</div>
+                                                    <div align="left" style="width: 50%;">{{ev['tutor'][key]['Pregunta3']}}</div>
                                               </div>
                                               <div class="ul">
                                                 <div align="left" style="width: 50%;">
                                                     <b>Nombre del practicante:</b> 
                                                     </div>
-                                                    <div align="left" style="width: 50%;">{{ev[key]['Pregunta4']}}</div>
+                                                    <div align="left" style="width: 50%;">{{ev['tutor'][key]['Pregunta4']}}</div>
                                               </div>
                                               <div class="ul">
-                                                <div align="left" style="width: 70%;">
-                                                    <b>Cumplimiento tareas asignadas:</b> 
+                                                <div align="left" style="width: 50%;">
+                                                    <b>Nota general:</b> 
                                                     </div>
-                                                    <div align="left" style="width: 15%;">{{ev[key]['Pregunta5']}}</div>
-                                              </div>
-                                              <div class="ul">
-                                                <div align="left" style="width: 70%;">
-                                                    <b>Buena actitud:</b>
-                                                    </div>
-                                                    <div align="left" style="width: 15%;">{{ev[key]['Pregunta6']}}</div>
-                                              </div>
-                                              <div class="ul">
-                                                <div align="left" style="width: 70%;">
-                                                    <b>Capacidad de proponer e innovar:</b> 
-                                                    </div>
-                                                    <div align="left" style="width: 15%;">{{ev[key]['Pregunta7']}}</div>
-                                              </div>
-                                              <div class="ul">
-                                                <div align="left" style="width: 70%;">
-                                                    <b>Agilismo:</b>
-                                                    </div>
-                                                    <div align="left" style="width: 15%;">{{ev[key]['Pregunta8']}}</div>
-                                              </div>
-                                              <div class="ul">
-                                                <div align="left" style="width: 70%;">
-                                                    <b>Digital:</b>
-                                                    </div>
-                                                    <div align="left" style="width: 15%;">{{ev[key]['Pregunta9']}}</div>
-                                              </div>
-                                              <div class="ul">
-                                                <div align="left" style="width: 70%;">
-                                                    <b>Liderazgo:</b>
-                                                    </div>
-                                                    <div align="left" style="width: 15%;">{{ev[key]['Pregunta10']}}</div>
+                                                    <div align="left" style="width: 50%;">{{ev['tutor'][key]['Pregunta5']}}</div>
                                               </div>
                                               <div align="left">
                                                 <div style="width: 50%;">
                                                     <b>Observaciones:</b>
                                                     </div>
-                                                    <div align="left" style="width: 50%;">{{ev[key]['Observaciones']}}</div>
+                                                    <div align="left" style="width: 50%;">{{ev['tutor'][key]['Observaciones']}}</div>
                                               </div>  
                                             </div>
                                           </div>                                                                                                                             

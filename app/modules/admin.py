@@ -38,9 +38,13 @@ def admin():
             yave = request.form["yave"]
             user = crud.getStudentInfo(yave)            
             foto = crud.getImagesURL([request.form["foto"]])
-            ev = crud.getEvaluationResults(request.form['yave'], 'lider')
+            ev = {}
+            ev['lider'] = crud.getEvaluationResults(request.form['yave'], 'lider')
+            ev['tutor'] = crud.getEvaluationResults(request.form['yave'], 'tutor')
             if ev == None:
-                ev = {'': ''}
+                ev['lider'] = {'': ''}
+                ev['tutor'] = {'': ''}
+            print(ev['lider'].keys())
             return render_template(putos, usuario=user, l=foto, ev=ev, y=yave)
         
         elif ruta == "infopract1":
@@ -48,7 +52,9 @@ def admin():
             putos = 'infopract.html'
             user = crud.getStudentInfo(yave)            
             foto = request.form["foto"]
-            ev = crud.getEvaluationResults(yave, 'lider')
+            ev = {}
+            ev['lider'] = crud.getEvaluationResults(request.form['yave'], 'lider')
+            ev['tutor'] = crud.getEvaluationResults(request.form['yave'], 'tutor')
             message = ''
             file_plan = request.files['file_plan']
             plandesa = request.form['plandesa']         
@@ -58,7 +64,8 @@ def admin():
                 message = 'Plan de desarrollo subido satisfactoriamente.'
 
             if ev == None:
-                ev = {'': ''}
+                ev['lider'] = {'': ''}
+                ev['tutor'] = {'': ''}
             return render_template(putos, usuario=user, l=foto, ev=ev, y=yave, smessage=message)
 
         elif ruta == "elim":
