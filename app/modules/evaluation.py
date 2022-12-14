@@ -30,7 +30,7 @@ def checkInDataBase(role, email):
     for user,data in users.items():
         try:
             if data[field] == email:
-                students.append([user, data['Nombres'] + ' ' + data['Apellidos']])
+                students.append({'user': user, 'name': data['Nombres'] + ' ' + data['Apellidos']})
         except:
             x = 'Aquí no pasa nada :v'
     return students
@@ -52,18 +52,23 @@ def evaluation():
         #     message = 'El correo ingresado no corresponde con el del ' + role + ' registrado por algún practicante'
         #     return render_template('evaluation.html', umessage=message)
         students = checkInDataBase(role, email)
+        # No existe el correo registrado en la base de datos.
         if len(students) < 1:
             message = 'El correo ingresado no corresponde con el del ' + role + ' registrado por algún practicante'
             return render_template('evaluation.html', umessage=message)
-        elif len(students) < 2:
-            [user, name] = students[0]
+        # El correo registrado se encontró en la base de datos.
+        else:
             code = ''
             for d in range(6):
                 code += str(random.randint(0,9))
             mail.send_mail(email,code)
-            return render_template('confirm.html', code=code, email=email, role=role, name=name, user=user)
-        else:
-            return render_template('index.html')
+            # EL correo está una sol vez en la base de datos.
+            if len(students) < 2:
+                repetido = False
+            # El correo está más de una vez en la base de datos.
+            else:
+                repetido = True
+            return render_template('confirm.html', code=code, email=email, role=role, students=students, repetido=repetido)
     return render_template('evaluation.html')
 
 def boss_ev():
