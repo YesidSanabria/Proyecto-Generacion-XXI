@@ -125,7 +125,6 @@ def dashboard_ev():
     return rp.dashboard_ev()
     
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
-
 if __name__ == '__main__':
     server_name = app.config['SERVER_NAME']
     if server_name and ':' in server_name:
@@ -135,10 +134,4 @@ if __name__ == '__main__':
         port = 8000
         host = "localhost"
     mail.init_app(app)
-    app.run(host=host, port=port, debug=True)
-  
-
-
-# if __name__ == '__main__':
-#     mail.init_app(app)
-#     app.run(debug=True)
+    app.run(debug=True)

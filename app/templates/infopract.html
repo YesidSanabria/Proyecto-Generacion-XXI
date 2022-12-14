@@ -258,69 +258,65 @@
                                         <button type="button" class="btn-eval" data-bs-toggle="modal" data-bs-target="#evaluacionLider">
                                           Evaluaciones lider
                                         </button>
-                                                <div class="modal fade" id="evaluacionLider" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                  <div class="modal-dialog" >
-                                                    <div class="modal-content">
+                                              <div class="modal fade" id="evaluacionLider" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" >
+                                                  <div class="modal-content">
                                                       <div class="modal-header">
                                                           <h1 class="modal-title fs-5" id="exampleModalLabel">Evaluaciones Lider</h1>
                                                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                       </div>
                                                       <div class="modal-body">
                                                         {% for key in ev.keys() %}
-                                                        <div> 
-                                                          <div class="cardmodal">                                                                                                                                                                           
-                                                            <b>Evaluación de {{ev[key]['Fecha']}}</b>
-                                                            <center><hr width="95%"></center>
-                                                            <div class="cardmodal1">
-                                                              <div class="ul">
-                                                                <div>
-                                                                  <div class="lineaver" hidden></div>
-                                                                </div>
-                                                                <div class="cardmodal">                                                                                                                      
-                                                                  <div class="ul">
-                                                                    <b>Gerencia:</b> {{ev[key]['Pregunta1']}}
-                                                                  </div> 
-                                                                  <div class="ul">
-                                                                    <b>Cédula:</b> {{ev[key]['Pregunta2']}}
-                                                                  </div>
-                                                                  <div class="ul">
-                                                                    <b>Nombre completo (Líder):</b> {{ev[key]['Pregunta3']}}
-                                                                  </div>
-                                                                  <div class="ul">
-                                                                    <b>Nombre del practicante:</b> {{ev[key]['Pregunta4']}}
-                                                                  </div>
-                                                                  <div class="ul">
-                                                                    <b>Cumplimiento tareas asignadas:</b> {{ev[key]['Pregunta5']}}
-                                                                  </div>
-                                                                  <div class="ul">
-                                                                    <b>Buena actitud:</b> {{ev[key]['Pregunta6']}}
-                                                                  </div>
-                                                                  <div class="ul">
-                                                                    <b>Capacidad de proponer e innovar:</b> {{ev[key]['Pregunta7']}}
-                                                                  </div>
-                                                                  <div class="ul">
-                                                                    <b>Agilismo:</b> {{ev[key]['Pregunta8']}}
-                                                                  </div>
-                                                                  <div class="ul">
-                                                                    <b>Digital:</b> {{ev[key]['Pregunta9']}}
-                                                                  </div>
-                                                                  <div class="ul">
-                                                                    <b>Liderazgo:</b> {{ev[key]['Pregunta10']}}
-                                                                  </div>
-                                                                  <div class="ul">
-                                                                    <b>Observaciones:</b> {{ev[key]['Observaciones']}}
-                                                                  </div>  
-                                                                </div>
-                                                              </div>
-                                                              <center><hr width="95%"></center>                                
-                                                            </div>                                                            
+                                                        <div>                                                                                                                                                                            
+                                                          <b>Evaluación de {{ev[key]['Fecha']}}</b>
+                                                          <center><hr width="95%"></center>
+                                                          <div class="ul">
+                                                          <div>
+                                                            <div class="lineaver" hidden></div>
                                                           </div>
+                                                          <div class="evaluationcard">                                                                                                                      
+                                                          <div class="ul">
+                                                          <b>Gerencia:</b> {{ev[key]['Pregunta1']}}
+                                                          </div> 
+                                                          <div class="ul">
+                                                          <b>Cédula:</b> {{ev[key]['Pregunta2']}}
+                                                          </div>
+                                                          <div class="ul">
+                                                            <b>Nombre completo (Líder):</b> {{ev[key]['Pregunta3']}}
+                                                          </div>
+                                                          <div class="ul">
+                                                            <b>Nombre del practicante:</b> {{ev[key]['Pregunta4']}}
+                                                          </div>
+                                                        <div class="ul">
+                                                          <b>Cumplimiento tareas asignadas:</b> {{ev[key]['Pregunta5']}}
+                                                        </div>
+                                                        <div class="ul">
+                                                          <b>Buena actitud:</b> {{ev[key]['Pregunta6']}}
+                                                        </div>
+                                                        <div class="ul">
+                                                          <b>Capacidad de proponer e innovar:</b> {{ev[key]['Pregunta7']}}
+                                                        </div>
+                                                        <div class="ul">
+                                                          <b>Agilismo:</b> {{ev[key]['Pregunta8']}}
+                                                        </div>
+                                                        <div class="ul">
+                                                          <b>Digital:</b> {{ev[key]['Pregunta9']}}
+                                                        </div>
+                                                        <div class="ul">
+                                                          <b>Liderazgo:</b> {{ev[key]['Pregunta10']}}
+                                                        </div>
+                                                        <div class="ul">
+                                                          <b>Observaciones:</b> {{ev[key]['Observaciones']}}
+                                                        </div>  
+                                                      </div>
+                                                    </div>
+                                                        <center><hr width="95%"></center>                                
                                                         </div>
                                                         {% endfor %}                                 
                                                       </div>
-                                                    </div>
                                                   </div>
                                                 </div>
+                                              </div>
                                               
                                         <button type="button" class="btn-eval" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                           Evaluaciones Docente

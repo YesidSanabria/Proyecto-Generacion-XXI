@@ -45,7 +45,7 @@ def admin():
         
         elif ruta == "infopract1":
             yave = request.form["yavee"]
-            rut = 'PerfilPract.html'
+            putos = 'PerfilPract.html'
             user = crud.getStudentInfo(yave)            
             foto = request.form["foto"]
             ev = crud.getEvaluationResults(yave, 'lider')
@@ -105,7 +105,7 @@ def admin():
             rut = 'admin.html'
             user = crud.getAllStudents()
             buscar = request.form['buscar']
-            studentsList = sr.searchCareer(buscar)            
+            studentsList = sr.searchStudent(buscar)            
             if buscar == '':
                 [keys, emails, cantidad] = crud.getStudentsData([])
             else:
