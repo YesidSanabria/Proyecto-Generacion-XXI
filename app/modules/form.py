@@ -96,7 +96,7 @@ def form ():
             ev = {}
             ev['lider'] = crud.getEvaluationResults(correo_corporativo, 'lider')
             ev['tutor'] = crud.getEvaluationResults(correo_corporativo, 'tutor')
-            if ev == None:
+            if (ev['lider'] == None) | (ev['tutor'] == None):
                 ev['lider'] = {'': ''}
                 ev['tutor'] = {'': ''}
             return render_template('infopract.html', usuario=user, l=links, ev=ev)

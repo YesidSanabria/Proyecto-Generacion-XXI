@@ -41,10 +41,10 @@ def admin():
             ev = {}
             ev['lider'] = crud.getEvaluationResults(request.form['yave'], 'lider')
             ev['tutor'] = crud.getEvaluationResults(request.form['yave'], 'tutor')
-            if ev == None:
+            if (ev['lider'] == None) | (ev['tutor'] == None):
                 ev['lider'] = {'': ''}
                 ev['tutor'] = {'': ''}
-            print(ev['lider'].keys())
+            print(ev['lider'])
             return render_template(putos, usuario=user, l=foto, ev=ev, y=yave)
         
         elif ruta == "infopract1":
@@ -63,7 +63,7 @@ def admin():
                 crud.uploadDevelopmentPlan(plandesa, file_plan)
                 message = 'Plan de desarrollo subido satisfactoriamente.'
 
-            if ev == None:
+            if (ev['lider'] == None) | (ev['tutor'] == None):
                 ev['lider'] = {'': ''}
                 ev['tutor'] = {'': ''}
             return render_template(putos, usuario=user, l=foto, ev=ev, y=yave, smessage=message)
@@ -73,15 +73,12 @@ def admin():
             
             [keys, emails, cantidad] = crud.getStudentsData([])
             user = crud.deleteStudent(request.form["eliminar"])
-            foto = crud.getImagesURL([request.form["eliminar"]])
-            ev = crud.getEvaluationResults(request.form['eliminar'], 'lider')
-            if ev == None:
-                ev = {'': ''}         
+            foto = crud.getImagesURL([request.form["eliminar"]])      
             emails = [x.lower() for x in emails]
             req = crud.getRequests()
             links = crud.getImagesURL(emails)
                          
-            return render_template(putos, usuario=user, l=foto, req=req, keys=keys, cantidadDatos=cantidad, ev=ev) 
+            return render_template(putos, usuario=user, l=foto, req=req, keys=keys, cantidadDatos=cantidad) 
 
         elif ruta =="edit":
             putos = 'admformulario.html'
