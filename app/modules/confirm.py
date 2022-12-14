@@ -3,7 +3,6 @@ import modules.crud as crud
 
 def confirm():
     if request.method == 'POST':
-        print('Si se llegó hasta aquí')
         role = request.form['role']
         email = request.form['email']
         code = request.form['code']                                 
