@@ -68,7 +68,7 @@ def evaluation():
             # El correo está más de una vez en la base de datos.
             else:
                 repetido = True
-            return render_template('confirm.html', code=code, email=email, role=role, students=students, repetido=repetido)
+            return render_template('confirm.html', ev=True, code=code, email=email, role=role, students=students, repetido=repetido)
     return render_template('evaluation.html')
 
 def boss_ev():
