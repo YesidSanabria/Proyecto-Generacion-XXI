@@ -187,27 +187,6 @@ a:hover i{
   width: 100%;
 }
 
-.evaluationcard{
-  height: 100%;
-  width: 100%;
-  border-radius: 10px;
-  background-color: #d8d8d8;
-  padding: 2%;
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
-}
-
-.cardmodal{
-  height: 100%;
-  width: 100%;
-  background-color: #FAC401;
-}
-
-.cardomodal1{
-  height: 100%;
-  width: 100%;
-  background-color: aqua;
-}
-
 .lineaver{
   border-left: 1px solid #adadad;
   height: 138px;  
