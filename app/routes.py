@@ -66,7 +66,11 @@ def boss_ev():
 
 @app.route('/teacher_ev', methods=['GET', 'POST'])
 def teacher_ev():
-    return render_template('teacher_ev.html')
+    return ev.teacher_ev()
+
+@app.route('/tutor_ev', methods=['GET', 'POST'])
+def tutor_ev():
+    return ev.tutor_ev()
     
 # --------------------------------------SOLICITUD DE PRACTICANTES-------------------------------------
 

@@ -89,7 +89,7 @@ def form ():
 
             
         if (registro == 'estudiante'):
-            return render_template('view_personal_data.html', usuario=crud.getStudentInfo(correo_corporativo), smessage=mensaje,l=links)
+            return render_template('view_personal_data.html', nav_activo=1, usuario=crud.getStudentInfo(correo_corporativo), smessage=mensaje,l=links)
         else:
             user = crud.getStudentInfo(request.form["userr"])
             links = crud.getImagesURL([correo_corporativo])

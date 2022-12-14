@@ -372,10 +372,118 @@
                         </div>
                         <br>
                         <button type="button" class="btn btn-danger"
-                          data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          data-bs-toggle="modal" data-bs-target="#evaluacionDocente">
                           Evaluaciones Docente
                         </button>
                         <br>
+                        <div class="modal fade" id="evaluacionDocente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" >                                                    
+                            <div class="evaluationcard">
+                                <div class="ull" style="border-color: #6B1A1E; background-color: #6B1A1E; color: #ffff;">
+                                    <div>
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Evaluaciones Lider</h1>
+                                    </div>
+                                    <div style="position: relative; left: 56%;">
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                  </div>
+                                {% for key in ev.keys() %}
+                                <div style="background-color: rgb(209, 209, 209)">
+                                    <div class="cardmodal">                                                            
+                                        <div style="height: 30px; background-color: #6B1A1E;"></div>
+                                      <div class="modal-body">
+                                        
+                                        <div style="color: #ffff;">                                                                                                                                                                                                                                     
+                                        <b>Evaluación de {{ev[key]['Fecha']}}</b>                                                                                                                                                                                                                                            
+                                        </div>                                                                                            
+                                      </div>
+                                    </div>
+                                </div>                                                    
+                            <div style="background-color: #A4262B;">
+                            <div class="cardmodal1">
+                                <div class="modal-body">                                                                                                                                                                                      
+                                          <div style="width: 100%;">
+                                            <div>
+                                              <div class="lineaver" hidden></div>
+                                            </div>
+                                            <div>                                                                                                                      
+                                              <div class="ul" style="width: 100%;">
+                                                <div align="left" style="width: 50%;" >
+                                                <b>Gerencia:</b> 
+                                                </div>
+                                                <div align="left" style="width: 50%;">{{ev[key]['Pregunta1']}}</div>
+                                              </div> 
+                                              <div class="ul">
+                                                <div align="left" style="width: 50%;">
+                                                    <b>Cédula:</b> 
+                                                    </div> 
+                                                <div align="left" style="width: 50%;">{{ev[key]['Pregunta2']}}</div>
+                                              </div>
+                                              <div class="ul">
+                                                <div align="left" style="width: 50%;">
+                                                    <b>Nombre completo (Líder):</b> 
+                                                    </div>
+                                                    <div align="left" style="width: 50%;">{{ev[key]['Pregunta3']}}</div>
+                                              </div>
+                                              <div class="ul">
+                                                <div align="left" style="width: 50%;">
+                                                    <b>Nombre del practicante:</b> 
+                                                    </div>
+                                                    <div align="left" style="width: 50%;">{{ev[key]['Pregunta4']}}</div>
+                                              </div>
+                                              <div class="ul">
+                                                <div align="left" style="width: 70%;">
+                                                    <b>Cumplimiento tareas asignadas:</b> 
+                                                    </div>
+                                                    <div align="left" style="width: 15%;">{{ev[key]['Pregunta5']}}</div>
+                                              </div>
+                                              <div class="ul">
+                                                <div align="left" style="width: 70%;">
+                                                    <b>Buena actitud:</b>
+                                                    </div>
+                                                    <div align="left" style="width: 15%;">{{ev[key]['Pregunta6']}}</div>
+                                              </div>
+                                              <div class="ul">
+                                                <div align="left" style="width: 70%;">
+                                                    <b>Capacidad de proponer e innovar:</b> 
+                                                    </div>
+                                                    <div align="left" style="width: 15%;">{{ev[key]['Pregunta7']}}</div>
+                                              </div>
+                                              <div class="ul">
+                                                <div align="left" style="width: 70%;">
+                                                    <b>Agilismo:</b>
+                                                    </div>
+                                                    <div align="left" style="width: 15%;">{{ev[key]['Pregunta8']}}</div>
+                                              </div>
+                                              <div class="ul">
+                                                <div align="left" style="width: 70%;">
+                                                    <b>Digital:</b>
+                                                    </div>
+                                                    <div align="left" style="width: 15%;">{{ev[key]['Pregunta9']}}</div>
+                                              </div>
+                                              <div class="ul">
+                                                <div align="left" style="width: 70%;">
+                                                    <b>Liderazgo:</b>
+                                                    </div>
+                                                    <div align="left" style="width: 15%;">{{ev[key]['Pregunta10']}}</div>
+                                              </div>
+                                              <div align="left">
+                                                <div style="width: 50%;">
+                                                    <b>Observaciones:</b>
+                                                    </div>
+                                                    <div align="left" style="width: 50%;">{{ev[key]['Observaciones']}}</div>
+                                              </div>  
+                                            </div>
+                                          </div>                                                                                                                             
+                                                                     
+                                  </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                          </div>
+                          
+                        </div>
+                        </div>
                         <br>
                         <button type="button" class="btn btn-danger"
                           data-bs-toggle="modal" data-bs-target="#exampleModal">
