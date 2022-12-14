@@ -1,0 +1,28 @@
+.evaluationcard{
+    height: 100%;
+    width: 100%;
+    background-color: #d8d8d8;  
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cardmodal{
+    height: 100%;
+    width: 100%;
+    background-color: #A4262B;
+    border-bottom-left-radius: 60px;
+  }
+  
+  .cardmodal1{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(209, 209, 209);
+    border-top-right-radius: 60px;
+    
+  }
+
+  .ull{
+    display: flex;
+    list-style: none;
+    height: 20px;
+    padding: 10px;
+  }
