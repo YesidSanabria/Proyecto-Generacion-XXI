@@ -32,7 +32,7 @@ def view_personal_data():
             user = crud.getStudentInfo(request.form["email"])
             links = crud.getImagesURL([request.form["email"]])
             file = crud.urlDevelopmentPlan(user['Cedula'])
-            # Verificar si hay un plan de desarrollo
+            # Verificar si hay un plan de desarrollo.
             try:
                 urlopen(file)
             except:
