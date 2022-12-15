@@ -1,7 +1,7 @@
 import pyrebase
-from flask import render_template, request, Flask, session
+from flask import render_template, request, session
 import modules.crud as crud
-
+from urllib.request import urlopen
 
 config = {
     "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
@@ -15,7 +15,6 @@ config = {
 }
 
 firebase = pyrebase.initialize_app(config)
-storage = firebase.storage() #linea del storage
 auth = firebase.auth()
 
 
@@ -58,6 +57,11 @@ def index():
             putos = 'view_personal_data.html'
             file = crud.urlDevelopmentPlan(user['Cedula'])
             links = crud.getImagesURL([email])
+            # Verificar si hay un plan de desarrollo
+            try:
+                urlopen(file)
+            except:
+                file = False
         try:
 #--------------------INICIAR SESION---------------------------------                
             auth.sign_in_with_email_and_password(email, password)            

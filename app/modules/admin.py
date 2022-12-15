@@ -53,8 +53,8 @@ def admin():
             user = crud.getStudentInfo(yave)            
             foto = request.form["foto"]
             ev = {}
-            ev['lider'] = crud.getEvaluationResults(request.form['yave'], 'lider')
-            ev['tutor'] = crud.getEvaluationResults(request.form['yave'], 'tutor')
+            ev['lider'] = crud.getEvaluationResults(request.form['yavee'], 'lider')
+            ev['tutor'] = crud.getEvaluationResults(request.form['yavee'], 'tutor')
             message = ''
             file_plan = request.files['file_plan']
             plandesa = request.form['plandesa']         
