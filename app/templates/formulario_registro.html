@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sistema de Seguimiento de Practicantes Generación XXI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/personald.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+    <!-- Font Awesome CSS -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+</style>
+
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/formulario.css')}}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alkalami&family=Roboto+Condensed&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container row">
+    <div class="container-superior">
+      <!-- <form action="/formulario" method="post">
+        <button type="submit" name="ruta" value="pract"><img src="{{url_for ('static', filename = './img/flecha.png')}}"height ="30" width="45" /></button>                                                 
+        </form> -->
+      <form action="/formulario" method="post" enctype="multipart/form-data">
+      <br>
+      <h5><b> Registro de Practicantes Generación XXI - {{usuario['Nombres']}} {{usuario['Apellidos']}}</b></h5>
+      <br>
+      <img class="img-practicante" src="{{l}}" width="100" height="100">
+      <br>
+      <button class="contenedor-btn-file bordeado" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-up" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z"/>
+          <path fill-rule="evenodd" d="M7.646 4.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V14.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3z"/>
+        </svg>
+        Adjuntar Archivo
+        <label for="btn-file"></label>
+        <input type="file" id="btn-file" name="upload">
+      </button>
+    </div>
+      <input type="hidden" name="userr" value="{{usuario['Correo corporativo']}}">
+      <br>
+    <div class="title title_form"><b> Datos Personales: </b></div>
+    <br>
+    <div class="content">
+      <!--<form action="/formulario" method="post">-->
+        <div class="input_container row">
+          <div class="input_div">
+            <span class="details title_form"> Nombre: </span>
+            <input type="text"  class="text" name="nombre" required="required" value="{{usuario['Nombres']}}">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Apellidos: </span>
+            <input type="text" class="text" name="apellidos" required="required" value="{{usuario['Apellidos']}}">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Edad: </span>
+            <input type="text" class="text" name="edad" required="required" value="{{usuario['Edad']}}">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Genero: </span>
+            <select name="genero" class="details">
+              <option>{{opcion['sexo'][0]}}</option>
+              <option>{{opcion['sexo'][1]}}</option>
+              <option>{{opcion['sexo'][2]}}</option>
+            </select>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Cédula: </span>
+            <input type="text" class="text" name="cedula" required="required" value="{{usuario['Cedula']}}">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Celular personal: </span>
+            <input type="text" class="text" name="celular_personal" required="required" value="{{usuario['Celular personal']}}">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Correo Electrónico: </span>
+            <input type="text" class="text" name="correo_personal" required="required" value="{{usuario['Correo personal']}}">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> EPS: </span>
+            <input type="text" class="text" name="eps" required="required" value="{{usuario['EPS']}}">
+          </div>
+        </div>
+        <br>
+        <div class="title title_form"><b> Datos Corporativos: </b></div>
+        <br>        
+        <div class="input_container">
+          <div class="input_div">
+            <span class="details title_form"> Correo Corporativo: </span>
+            <input type="text" class="text" name="correo_corporativo" required="required" readonly value="{{usuario['Correo corporativo']}}">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Celular corporativo: </span>
+            <input type="text" class="text" name="celular_corporativo" value="{{usuario['Celular corporativo']}}">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Regional: </span>
+            <select name="ciudad" class="details">
+              <option>{{opcion['regional'][0]}}</option>
+              <option>{{opcion['regional'][1]}}</option>
+              <option>{{opcion['regional'][2]}}</option>
+              <option>{{opcion['regional'][3]}}</option>
+              <option>{{opcion['regional'][4]}}</option>
+              <option>{{opcion['regional'][5]}}</option>
+            </select>
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Gerencia: </span>
+            <input type="text" class="text" name="gerencia" value="{{usuario['Gerencia']}}">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Nombre de su Gerente o Jefe: </span>
+            <input type="text" class="text" name="nombre_gerente" value="{{usuario['Nombre gerente']}}">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Celular de contacto gerente: </span>
+            <input type="text" class="text" name="celular_gerente" value="{{usuario['Celular gerente']}}">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Correo Gerente: </span>
+            <input type="text" class="text" name="correo_gerente" value="{{usuario['Correo gerente']}}">
+          </div>
+        </div>
+        <br>
+        <div class="input_container" style="{width:50%}">
+          <div class="input_div" >
+            <span class="details title_form"> Dirección corporativa: </span>
+            <select name="direccion" class="details">
+              <option>{{opcion['direccion'][0]}}</option>
+              <option>{{opcion['direccion'][1]}}</option>
+              <option>{{opcion['direccion'][2]}}</option>
+              <option>{{opcion['direccion'][3]}}</option>
+              <option>{{opcion['direccion'][4]}}</option>
+              <option>{{opcion['direccion'][5]}}</option>
+              <option>{{opcion['direccion'][6]}}</option>
+              <option>{{opcion['direccion'][7]}}</option>
+              <option>{{opcion['direccion'][8]}}</option>
+              <option>{{opcion['direccion'][9]}}</option>
+            </select>
+          </div>
+        </div>
+        <br>
+        <div class="title title_form"> <b>Datos Academicos: </b></div>
+        <br>
+        <div class="input_container row">
+          <div class="input_div">
+            <span class="details title_form"> Universidad: </span>
+            <input type="text" class="text" name="universidad" required="required" value="{{usuario['Universidad']}}">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Carrera a la que pertenece: </span>
+            <input type="text" class="text" name="carrera" required="required" value="{{usuario['Carrera']}}">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Tutor encargado de la practica: </span>
+            <input type="text" class="text" name="nombre_tutor" value="{{usuario['Nombre tutor']}}">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Correo del tutor: </span>
+            <input type="text" class="text" name="correo_tutor" value="{{usuario['Correo tutor']}}">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Celular del tutor: </span>
+            <input type="text" class="text" name="celular_tutor" value="{{usuario['Celular tutor']}}">
+          </div>
+        </div>
+        <br>
+        <div class="title title_form"><b> Datos en caso de emergencia: </b></div>
+        <br>
+        <div class="input_container row">
+          <div class="input_div">
+            <span class="details title_form"> Nombre del Contacto de Emergencia: </span>
+            <input type="text" class="text" name="nombre_emergencia" required="required" value="{{usuario['Nombre emergencia']}}">
+          </div>
+          <div class="input_div">
+            <span class="details title_form"> Numero del Contacto de Emergencia: </span>
+            <input type="text" class="text" name="numero_emergencia" required="required" value="{{usuario['Numero emergencia']}}">
+          </div>
+        </div>
+    </div>
+    <br>
+    <div class="btn-enviar">
+      <button class="btn-grad" type="submit" name="registro" value="estudiante"> Enviar </button>
+    </div>
+    </form>
+</html>

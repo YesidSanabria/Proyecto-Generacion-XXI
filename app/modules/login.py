@@ -52,7 +52,7 @@ def index():
             links = crud.getImagesURL(emails)
             
         elif(user['Nombres'] == ''):
-            putos = 'formulario.html'
+            putos = 'formulario_registro.html'
             links = crud.getImagesURL([email])
         else:
             putos = 'view_personal_data.html'
