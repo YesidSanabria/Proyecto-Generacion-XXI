@@ -5,7 +5,11 @@ from firebase_admin import db
 from flask import send_file
 import pyrebase
 ##########################################
-cred = credentials.Certificate("app/config/generacion-xxi-firebase-adminsdk-iwq0c-bc2e550415.json")
+# Excepción para ejecutar el proyecto desde cmd
+try:
+    cred = credentials.Certificate("app/config/generacion-xxi-firebase-adminsdk-iwq0c-bc2e550415.json")
+except:
+    cred = credentials.Certificate("config/generacion-xxi-firebase-adminsdk-iwq0c-bc2e550415.json")
 firebase_admin.initialize_app(cred,{'databaseURL':'https://generacion-xxi-default-rtdb.firebaseio.com/'})
 ##########################################
 

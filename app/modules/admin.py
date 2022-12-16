@@ -3,7 +3,7 @@ from flask import render_template, request
 import modules.crud as crud
 import modules.search as sr
 import modules.reports as rp
-
+from urllib.request import urlopen
 
 config = {
     "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
@@ -44,8 +44,13 @@ def admin():
             if (ev['lider'] == None) | (ev['tutor'] == None):
                 ev['lider'] = {'': ''}
                 ev['tutor'] = {'': ''}
-            print(ev['lider'])
-            return render_template(putos, usuario=user, l=foto, ev=ev, y=yave)
+            file = crud.urlDevelopmentPlan(user['Cedula'])
+            # Verificar si hay un plan de desarrollo.
+            try:
+                urlopen(file)
+            except:
+                file = False
+            return render_template(putos, usuario=user, l=foto, ev=ev, y=yave, file=file)
         
         elif ruta == "infopract1":
             yave = request.form["yavee"]
@@ -53,8 +58,8 @@ def admin():
             user = crud.getStudentInfo(yave)            
             foto = request.form["foto"]
             ev = {}
-            ev['lider'] = crud.getEvaluationResults(request.form['yave'], 'lider')
-            ev['tutor'] = crud.getEvaluationResults(request.form['yave'], 'tutor')
+            ev['lider'] = crud.getEvaluationResults(request.form['yavee'], 'lider')
+            ev['tutor'] = crud.getEvaluationResults(request.form['yavee'], 'tutor')
             message = ''
             file_plan = request.files['file_plan']
             plandesa = request.form['plandesa']         
