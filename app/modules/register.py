@@ -50,7 +50,9 @@ def create_account():
         password = acc['password']
         try:
             auth.create_user_with_email_and_password(email, password)
-            crud.createNewStudent(email)
+            user = email.replace('.','')
+            if user not in crud.getAllStudents().keys():
+                crud.createNewStudent(email)
             return render_template('index.html')
         except:
             return render_template('create_account.html', email=email, umessage=unsuccessful)

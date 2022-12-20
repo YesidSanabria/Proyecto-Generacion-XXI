@@ -71,14 +71,20 @@ def admin():
             if (ev['lider'] == None) | (ev['tutor'] == None):
                 ev['lider'] = {'': ''}
                 ev['tutor'] = {'': ''}
-            return render_template(putos, usuario=user, l=foto, ev=ev, y=yave, smessage=message)
+            file = crud.urlDevelopmentPlan(user['Cedula'])
+            # Verificar si hay un plan de desarrollo.
+            try:
+                urlopen(file)
+            except:
+                file = False
+            return render_template(putos, usuario=user, l=foto, ev=ev, y=yave, smessage=message, file=file)
 
         elif ruta == "elim":
             putos = 'homeadmin.html'         
             
             [keys, emails, cantidad] = crud.getStudentsData([])
             user = crud.deleteStudent(request.form["eliminar"])
-            foto = crud.getImagesURL([request.form["eliminar"]])      
+            foto = crud.getImagesURL([request.form["eliminar"]])
             emails = [x.lower() for x in emails]
             req = crud.getRequests()
             links = crud.getImagesURL(emails)

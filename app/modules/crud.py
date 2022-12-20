@@ -4,6 +4,7 @@ from firebase_admin import credentials
 from firebase_admin import db
 from flask import send_file
 import pyrebase
+from firebase_admin import auth
 ##########################################
 # Excepción para ejecutar el proyecto desde cmd
 try:
@@ -88,14 +89,40 @@ def updateStudentData(email, data):
     # updateStudentData('julian.cely@claro.com.co', {'Celular personal': '3214157461'})
 
 def deleteStudent(email):
+    student = getStudentInfo(email)
+    deleteDevelopmentPlan(student['Cedula'])
+    deleteProfileImage(email)
     ref = db.reference('Estudiantes')
-    ref.child(email.replace('.', '')).delete()   
+    ref.child(email.replace('.', '')).delete()
+    user = auth.get_user_by_email(email)
+    auth.delete_user(user.uid)
 
 def createNewStudent(email):
     ref = db.reference('Estudiantes')
     initData = {
             'Correo corporativo': email,
-            'Nombres': ''
+            'Nombres': '',
+            'Apellidos': '',
+            'Area de gerencia': '',
+            'Carrera': '',
+            'Cedula': '',
+            'Celular corporativo': '',
+            'Celular gerente': '',
+            'Celular personal': '',
+            'Celular tutor': '',
+            'Correo gerente': '',
+            'Correo personal': '',
+            'Correo tutor': '',
+            'EPS': '',
+            'Edad': '',
+            'Gerencia': '',
+            'Nombre emergencia': '',
+            'Nombre gerente': '',
+            'Nombre tutor': '',
+            'Numero emergencia': '',
+            'Regional': '',
+            'Sexo': '',
+            'Universidad': ''
         }
     ref.child(email.replace('.','')).set(initData)
     
@@ -134,7 +161,7 @@ def uploadProfileImage(path, image):
     storage.child("profile_pictures/" + path).put(image)
 
 def deleteProfileImage(path):
-    storage.child("profile_pictures/" + path, None)
+    storage.delete("profile_pictures/" + path, None)
 
 # EVALUACIONES
 
