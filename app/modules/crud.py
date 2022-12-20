@@ -177,6 +177,37 @@ def getEvaluationResults(email, role):
     role = id.child(role)
     return role.get()
 
+def getSingleEvaluation(email, number):
+    results = getEvaluationResults(email, 'lider')
+    keys = list(results.keys())
+    try:
+        return results[keys[number - 1]]
+    except:
+        return False
+
+def getAllEvaluations(number):
+    table = db.reference('Evaluaciones')
+    keys = list(table.get().keys())
+    evaluations = {}
+    for student in keys:
+        notas = getSingleEvaluation(student, number)
+        if notas:
+            grades = {}
+            for i in range(5, 11):
+                grades[str(i - 4)] = int(notas['Pregunta' + str(i)])
+            evaluations[student] = grades
+    return evaluations
+
+def getEvaluationsAvg(number):
+    evaluations = {}
+    for i in range(1, 7):
+        evaluations[str(i)] = 0
+    data = getAllEvaluations(number)
+    for student, grades in data.items():
+        for question in grades.keys():
+            evaluations[question] += grades[question] / len(data.keys())
+    return evaluations
+
 #PDF plan de desarrollo
 def uploadDevelopmentPlan(path, pdf):
     storage.child("development_plan/" + "plan_desarrollo_" + path + ".pdf").put(pdf)
@@ -193,3 +224,6 @@ def downloadDevelopmentPlan(cedula):
 def urlDevelopmentPlan(cedula):
     archivo = storage.child("development_plan/" + "plan_desarrollo_" + cedula + ".pdf").get_url(None)
     return archivo
+
+print(getAllEvaluations(1))
+print(getEvaluationsAvg(1))
