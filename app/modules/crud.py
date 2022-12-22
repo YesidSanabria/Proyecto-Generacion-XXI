@@ -224,6 +224,3 @@ def downloadDevelopmentPlan(cedula):
 def urlDevelopmentPlan(cedula):
     archivo = storage.child("development_plan/" + "plan_desarrollo_" + cedula + ".pdf").get_url(None)
     return archivo
-
-print(getAllEvaluations(1))
-print(getEvaluationsAvg(1))

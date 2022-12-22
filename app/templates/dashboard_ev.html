@@ -91,7 +91,7 @@
               <h4><strong>Promedio general del grupo: </strong></h4>
               <br>
               <br>
-              <h1>7</h1>
+              <h1>{{avg}}</h1>
             </div>
             </center>
         </div>
@@ -130,16 +130,6 @@
         </div>
     </div>
   </div>
-
-    <div class="card card-style mb-2">
-        <div class="card-body">
-            <center>
-            <div class="chart-container" style="position: relative; height:20vh; width:14vw">
-              <h4>Los datos de este reporte son ficticios por el momento</h4>
-            </div>
-            </center>
-        </div>
-    </div>
   
     <div class="card card-style mb-2">
         <div class="card-body">
@@ -193,10 +183,18 @@
         new Chart(ctx, {
           type: 'bar',
           data: {
-            labels: ['1', '2', '3', '4', '5', '6'],
+            labels: [
+            {% for i in questions %}
+            "{{i}}",
+            {% endfor %}
+            ],
             datasets: [{
-              label: '# de practicantes',
-              data: [6, 4, 8, 7, 7, 9],
+              label: 'Nota',
+              data: [
+                {% for i in grades %}
+                "{{i}}",
+                {% endfor %}
+              ],
               backgroundColor: [
                     '#b7202e',
                     '#0096a9',
@@ -235,7 +233,7 @@
   ],
   datasets: [{
     label: ' Promedio grupal',
-    data: [6.5, 5.9, 9],
+    data: [{{grades[3]}}, {{grades[4]}}, {{grades[5]}}],
     fill: true,
     backgroundColor: 'rgba(0,150, 169, 0.2)',
     borderColor: 'rgb(0,150, 169)',

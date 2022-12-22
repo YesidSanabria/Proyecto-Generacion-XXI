@@ -149,15 +149,12 @@ def admin():
 
         elif ruta == 'reportes_ev':
             putos = 'dashboard_ev.html'
-            [keys, email, canEdad, canGenero, canPrac, canDir] = rp.getInfoGraphs([])
-            [carreras, cont_carreras] = rp.getCareerData()
-            [uni, cont_uni] = rp.getUniversityData()
-            canGenero['Otros'] = 0
-            canEdadK = list(canEdad.keys())
-            canEdadV = list(canEdad.values())
-            canGeneroK = list(canGenero.keys())
-            canGeneroV = list(canGenero.values())
-            return render_template(putos, keys=keys, carreras=carreras,cont_carreras=cont_carreras,uni=uni,cont_uni=cont_uni, email=email, canEdadK=canEdadK, canEdadV=canEdadV, canGeneroK=canGeneroK, canGeneroV=canGeneroV, canPrac=canPrac)
+            [questions, grades] = rp.getQuestionsResults(1)
+            avg = 0
+            for grade in grades:
+                grade = round(grade, 2)
+                avg += grade / len(grades)
+            return render_template(putos, questions=questions, grades=grades, avg=round(avg, 2))
 
     return render_template('admin.html')   
 
