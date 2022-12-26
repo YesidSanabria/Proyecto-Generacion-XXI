@@ -55,7 +55,7 @@ def admin():
         elif ruta == "infopract1":
             yave = request.form["yavee"]
             putos = 'infopract.html'
-            user = crud.getStudentInfo(yave)            
+            user = crud.getStudentInfo(yave)
             foto = request.form["foto"]
             ev = {}
             ev['lider'] = crud.getEvaluationResults(request.form['yavee'], 'lider')
@@ -97,7 +97,7 @@ def admin():
             yave = request.form['yavee']
             # foto = crud.getImagesURL([request.form["foto"]])
 
-            return render_template(putos, usuario=crud.getStudentInfo(editt),y=yave)
+            return render_template(putos, usuario=crud.getStudentInfo(editt), y=yave)
 
         elif ruta == 'search':
             putos = 'admin.html'
