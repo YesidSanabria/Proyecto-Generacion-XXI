@@ -149,12 +149,16 @@ def admin():
 
         elif ruta == 'reportes_ev':
             putos = 'dashboard_ev.html'
-            [questions, grades] = rp.getQuestionsResults(1)
+            try:
+                ev = int(request.form['ev'])
+            except:
+                ev = 1
+            [questions, grades] = rp.getQuestionsResults(ev)
             avg = 0
             for grade in grades:
                 grade = round(grade, 2)
                 avg += grade / len(grades)
-            return render_template(putos, questions=questions, grades=grades, avg=round(avg, 2))
+            return render_template(putos, questions=questions, grades=grades, avg=round(avg, 2), ev=ev)
 
     return render_template('admin.html')   
 

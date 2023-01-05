@@ -116,7 +116,7 @@
         <div class="card-body">
             <!-- <center> -->
             <div class="chart-container" style="position: relative; height:46vh; width:14vw">
-              <center><h4><strong> Preguntas: </strong></h4></center>
+              <center><h5><strong> Preguntas: </strong></h5></center>
               <ol>
               <li> Cumplimiento de tareas asignadas</li>
               <li> Buena actitud</li> 
@@ -125,6 +125,24 @@
               <li> Digital</li>
               <li> Liderazgo</li>  
               </ol>
+              <h6>Evaluación</h6>
+              <div>
+                <form action="/admin_view" method="post">
+                  <input type="hidden" name="ruta" value="reportes_ev">
+                  <button 
+                    style="padding: 5px; background-color: {% if ev == 1 %} #0096A9 {% else %} #CCEAEE {% endif %};"
+                    name="ev"
+                    value="1">
+                      Primera
+                  </button>
+                  <button 
+                    style="padding: 5px; background-color: {% if ev == 2 %} #0096A9 {% else %} #CCEAEE {% endif %};"
+                    name="ev"
+                    value="2">
+                      Segunda
+                  </button>
+                </form>
+              </div>
             </div>
             <!-- </center> -->
         </div>
