@@ -5,6 +5,7 @@ from firebase_admin import db
 from flask import send_file
 import pyrebase
 from firebase_admin import auth
+import pandas as pd
 ##########################################
 # Excepción para ejecutar el proyecto desde cmd
 try:
@@ -35,14 +36,14 @@ options = {
     'regional': ['Bogotá', 'Bucaramanga', 'Medellín', 'Barranquilla', 'Cali', 'Manizales'],
     'direccion': ['Corporativo financiero',
                   'Corporativo gestión humana',
-                  'Corporativo juridico y asuntos corporativos',
+                  'Corporativo jurídico y asuntos corporativos',
                   'Corporativo marketing y medios de comunicación',
                   'Ejecutivo unidad mercado corporativo',
-                  'Auditoria',
-                  'Corporativo tecnologia',
+                  'Auditoría',
+                  'Corporativo tecnología',
                   'Ejecutivo unidad mercado masivo',
                   'Corporativo asuntos regulatorios y relaciones institucionales',
-                  'Corporativo planeación estrategica e innovación']
+                  'Corporativo planeación estratégica e innovación']
     }
 
 # FUNCIONES
@@ -224,3 +225,17 @@ def downloadDevelopmentPlan(cedula):
 def urlDevelopmentPlan(cedula):
     archivo = storage.child("development_plan/" + "plan_desarrollo_" + cedula + ".pdf").get_url(None)
     return archivo
+
+# Archivo de Excel con los resultados de las evaluaciones. (Provisional)
+def createEvlauationsExcel():
+    dicc = db.reference('Evaluaciones').get()
+    keys = dicc.keys()
+    for key in keys:
+        dicc[key] = getSingleEvaluation(key, 1)
+    cols = [
+        'Fecha', 'Pregunta1', 'Pregunta2', 'Pregunta3', 'Pregunta4', 'Pregunta5', 'Pregunta6',
+        'Pregunta7', 'Pregunta8', 'Pregunta9', 'Pregunta10', 'Observaciones'
+    ]
+    df = pd.DataFrame.from_dict(dicc, orient='index', columns=cols)
+    with pd.ExcelWriter('data/Datos Evaluación.xlsx', engine='xlsxwriter') as excelfile:
+        df.to_excel(excelfile, sheet_name='Evaluación 1', index=False)
