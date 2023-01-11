@@ -227,15 +227,46 @@ def urlDevelopmentPlan(cedula):
     return archivo
 
 # Archivo de Excel con los resultados de las evaluaciones. (Provisional)
-def createEvlauationsExcel():
+
+def getEvaluationsDF(number):
     dicc = db.reference('Evaluaciones').get()
     keys = dicc.keys()
     for key in keys:
-        dicc[key] = getSingleEvaluation(key, 1)
+        notas = getSingleEvaluation(key, number)
+        if notas:
+            dicc[key] = notas
     cols = [
         'Fecha', 'Pregunta1', 'Pregunta2', 'Pregunta3', 'Pregunta4', 'Pregunta5', 'Pregunta6',
         'Pregunta7', 'Pregunta8', 'Pregunta9', 'Pregunta10', 'Observaciones'
     ]
     df = pd.DataFrame.from_dict(dicc, orient='index', columns=cols)
+    col_names = {
+        'Pregunta1': 'Gerencia', 
+        'Pregunta2': 'Cédula', 
+        'Pregunta3': 'Nombre Líder', 
+        'Pregunta4': 'Nombre Practicante', 
+        'Pregunta5': 'Pregunta 1', 
+        'Pregunta6': 'Pregunta 2',
+        'Pregunta7': 'Pregunta 3',
+        'Pregunta8': 'Pregunta 4', 
+        'Pregunta9': 'Pregunta 5', 
+        'Pregunta10': 'Pregunta 6'
+    }
+    df.rename(columns=col_names, inplace=True)
+    return df
+
+def createEvlauationsExcel():
+    dfs = []
+    sheets = []
+    for i in range(1, 3):
+        dfs.append(getEvaluationsDF(i))
+        sheets.append('Evaluación ' + str(i))
     with pd.ExcelWriter('data/Datos Evaluación.xlsx', engine='xlsxwriter') as excelfile:
-        df.to_excel(excelfile, sheet_name='Evaluación 1', index=False)
+        for i in range(len(sheets)):
+            workbook = excelfile.book
+            dfs[i].to_excel(excelfile, sheet_name=sheets[i], index=False)
+            headerFormat = workbook.add_format({'align':'center'})
+            columnWidth = [10, 20, 10, 16, 18, 10, 10, 10, 10, 10, 10, 30]
+            worksheet = excelfile.sheets[sheets[i]]
+            for i in range(len(columnWidth)):
+                worksheet.set_column(i, i, columnWidth[i], headerFormat)
