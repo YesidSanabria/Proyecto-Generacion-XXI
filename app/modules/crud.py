@@ -5,6 +5,7 @@ from firebase_admin import db
 from flask import send_file
 import pyrebase
 from firebase_admin import auth
+import pandas as pd
 ##########################################
 # Excepción para ejecutar el proyecto desde cmd
 try:
@@ -35,14 +36,14 @@ options = {
     'regional': ['Bogotá', 'Bucaramanga', 'Medellín', 'Barranquilla', 'Cali', 'Manizales'],
     'direccion': ['Corporativo financiero',
                   'Corporativo gestión humana',
-                  'Corporativo juridico y asuntos corporativos',
+                  'Corporativo jurídico y asuntos corporativos',
                   'Corporativo marketing y medios de comunicación',
                   'Ejecutivo unidad mercado corporativo',
-                  'Auditoria',
-                  'Corporativo tecnologia',
+                  'Auditoría',
+                  'Corporativo tecnología',
                   'Ejecutivo unidad mercado masivo',
                   'Corporativo asuntos regulatorios y relaciones institucionales',
-                  'Corporativo planeación estrategica e innovación']
+                  'Corporativo planeación estratégica e innovación']
     }
 
 # FUNCIONES
@@ -177,6 +178,37 @@ def getEvaluationResults(email, role):
     role = id.child(role)
     return role.get()
 
+def getSingleEvaluation(email, number):
+    results = getEvaluationResults(email, 'lider')
+    keys = list(results.keys())
+    try:
+        return results[keys[number - 1]]
+    except:
+        return False
+
+def getAllEvaluations(number):
+    table = db.reference('Evaluaciones')
+    keys = list(table.get().keys())
+    evaluations = {}
+    for student in keys:
+        notas = getSingleEvaluation(student, number)
+        if notas:
+            grades = {}
+            for i in range(5, 11):
+                grades[str(i - 4)] = int(notas['Pregunta' + str(i)])
+            evaluations[student] = grades
+    return evaluations
+
+def getEvaluationsAvg(number):
+    evaluations = {}
+    for i in range(1, 7):
+        evaluations[str(i)] = 0
+    data = getAllEvaluations(number)
+    for student, grades in data.items():
+        for question in grades.keys():
+            evaluations[question] += grades[question] / len(data.keys())
+    return evaluations
+
 #PDF plan de desarrollo
 def uploadDevelopmentPlan(path, pdf):
     storage.child("development_plan/" + "plan_desarrollo_" + path + ".pdf").put(pdf)
@@ -193,3 +225,17 @@ def downloadDevelopmentPlan(cedula):
 def urlDevelopmentPlan(cedula):
     archivo = storage.child("development_plan/" + "plan_desarrollo_" + cedula + ".pdf").get_url(None)
     return archivo
+
+# Archivo de Excel con los resultados de las evaluaciones. (Provisional)
+def createEvlauationsExcel():
+    dicc = db.reference('Evaluaciones').get()
+    keys = dicc.keys()
+    for key in keys:
+        dicc[key] = getSingleEvaluation(key, 1)
+    cols = [
+        'Fecha', 'Pregunta1', 'Pregunta2', 'Pregunta3', 'Pregunta4', 'Pregunta5', 'Pregunta6',
+        'Pregunta7', 'Pregunta8', 'Pregunta9', 'Pregunta10', 'Observaciones'
+    ]
+    df = pd.DataFrame.from_dict(dicc, orient='index', columns=cols)
+    with pd.ExcelWriter('data/Datos Evaluación.xlsx', engine='xlsxwriter') as excelfile:
+        df.to_excel(excelfile, sheet_name='Evaluación 1', index=False)

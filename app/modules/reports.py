@@ -118,6 +118,17 @@ def getInfoGraphs(students):
     canPrac = len(keys)
     return keys, email, canEdad, canGenero, canPrac, canDir
 
+# Reportes de evaluaciones.
+
+def getQuestionsResults(number):
+    questions = crud.getEvaluationsAvg(number)
+    label = []
+    count = []
+    for question, grade in questions.items():
+        label.append(question)
+        count.append(grade)
+    return label, count
+
 def dashboard():
     return render_template('dashboard.html')
 

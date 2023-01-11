@@ -85,13 +85,13 @@
     <div class="card card-style mb-2">
         <div class="card-body">
             <center>
-            <div class="chart-container" style="position: relative; height:46vh; width:14vw">
+            <div class="chart-container" style="position: relative; height:50vh; width:14vw">
               <br>
               <br>
               <h4><strong>Promedio general del grupo: </strong></h4>
               <br>
               <br>
-              <h1>7</h1>
+              <h1>{{avg}}</h1>
             </div>
             </center>
         </div>
@@ -103,7 +103,7 @@
         <div class="card-body">
             <center>
             <h4><strong>Promedio de calificaciones por pregunta </strong></h4>
-            <div class="chart-container" style="position: relative; height:40vh; width:30vw">
+            <div class="chart-container" style="position: relative; height:44vh; width:30vw">
                 <canvas id="prom_preg"></canvas>
             </div>
             </center>
@@ -115,8 +115,8 @@
     <div class="card card-style mb-2">
         <div class="card-body">
             <!-- <center> -->
-            <div class="chart-container" style="position: relative; height:46vh; width:14vw">
-              <center><h4><strong> Preguntas: </strong></h4></center>
+            <div class="chart-container" style="position: relative; height:50vh; width:14vw">
+              <center><h5><strong> Preguntas: </strong></h5></center>
               <ol>
               <li> Cumplimiento de tareas asignadas</li>
               <li> Buena actitud</li> 
@@ -125,21 +125,29 @@
               <li> Digital</li>
               <li> Liderazgo</li>  
               </ol>
+              <h6>Evaluación</h6>
+              <div>
+                <form action="/admin_view" method="post">
+                  <input type="hidden" name="ruta" value="reportes_ev">
+                  <button 
+                    style="padding: 5px; background-color: {% if ev == 1 %} #0096A9 {% else %} #CCEAEE {% endif %};"
+                    name="ev"
+                    value="1">
+                      Primera
+                  </button>
+                  <button 
+                    style="padding: 5px; background-color: {% if ev == 2 %} #0096A9 {% else %} #CCEAEE {% endif %};"
+                    name="ev"
+                    value="2">
+                      Segunda
+                  </button>
+                </form>
+              </div>
             </div>
             <!-- </center> -->
         </div>
     </div>
   </div>
-
-    <div class="card card-style mb-2">
-        <div class="card-body">
-            <center>
-            <div class="chart-container" style="position: relative; height:20vh; width:14vw">
-              <h4>Los datos de este reporte son ficticios por el momento</h4>
-            </div>
-            </center>
-        </div>
-    </div>
   
     <div class="card card-style mb-2">
         <div class="card-body">
@@ -193,10 +201,18 @@
         new Chart(ctx, {
           type: 'bar',
           data: {
-            labels: ['1', '2', '3', '4', '5', '6'],
+            labels: [
+            {% for i in questions %}
+            "{{i}}",
+            {% endfor %}
+            ],
             datasets: [{
-              label: '# de practicantes',
-              data: [6, 4, 8, 7, 7, 9],
+              label: 'Nota',
+              data: [
+                {% for i in grades %}
+                "{{i}}",
+                {% endfor %}
+              ],
               backgroundColor: [
                     '#b7202e',
                     '#0096a9',
@@ -235,7 +251,7 @@
   ],
   datasets: [{
     label: ' Promedio grupal',
-    data: [6.5, 5.9, 9],
+    data: [{{grades[3]}}, {{grades[4]}}, {{grades[5]}}],
     fill: true,
     backgroundColor: 'rgba(0,150, 169, 0.2)',
     borderColor: 'rgb(0,150, 169)',
