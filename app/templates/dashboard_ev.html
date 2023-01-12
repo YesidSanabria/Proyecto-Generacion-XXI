@@ -87,11 +87,16 @@
             <center>
             <div class="chart-container" style="position: relative; height:50vh; width:14vw">
               <br>
-              <br>
               <h4><strong>Promedio general del grupo: </strong></h4>
               <br>
               <br>
               <h1>{{avg}}</h1>
+              <br>
+              <form action="/dashboard_ev" method="post">
+                <button style="padding: 5px; background-color: #0096A9;" type="submit">
+                    Descargar datos
+                </button>
+              </form>
             </div>
             </center>
         </div>

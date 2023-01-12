@@ -1,7 +1,8 @@
 import modules.crud as crud
 import modules.search as sr
 from collections import Counter
-from flask import render_template
+from flask import render_template, request
+import modules.excel_files as exf
 
 careers = {
     'SISTEMAS': 'Ingeniería de Sistemas',
@@ -130,7 +131,33 @@ def getQuestionsResults(number):
     return label, count
 
 def dashboard():
+    if (request.method == 'POST'):
+        exf.createStudentsExcel()
+        putos = 'dashboard.html'
+        [keys, email, canEdad, canGenero, canPrac, canDir] = getInfoGraphs([])
+        [carreras, cont_carreras] = getCareerData()
+        [uni, cont_uni] = getUniversityData()
+        canEdadK = list(canEdad.keys())
+        canEdadV = list(canEdad.values())
+        canGeneroK = list(canGenero.keys())
+        canGeneroV = list(canGenero.values())
+        canDirK = list(canDir.keys())
+        canDirV = list(canDir.values())
+        return render_template(putos, keys=keys, carreras=carreras,cont_carreras=cont_carreras,uni=uni,cont_uni=cont_uni, email=email, canEdadK=canEdadK, canEdadV=canEdadV, canGeneroK=canGeneroK, canGeneroV=canGeneroV, canDirK=canDirK, canDirV=canDirV , canPrac=canPrac)
     return render_template('dashboard.html')
 
 def dashboard_ev():
+    if (request.method == 'POST'):
+        exf.createEvlauationsExcel()
+        putos = 'dashboard_ev.html'
+        try:
+            ev = int(request.form['ev'])
+        except:
+            ev = 1
+        [questions, grades] = getQuestionsResults(ev)
+        avg = 0
+        for grade in grades:
+            grade = round(grade, 2)
+            avg += grade / len(grades)
+        return render_template(putos, questions=questions, grades=grades, avg=round(avg, 2), ev=ev)
     return render_template('dashboard_ev.html')

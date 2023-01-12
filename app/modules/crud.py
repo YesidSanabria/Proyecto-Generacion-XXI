@@ -226,7 +226,7 @@ def urlDevelopmentPlan(cedula):
     archivo = storage.child("development_plan/" + "plan_desarrollo_" + cedula + ".pdf").get_url(None)
     return archivo
 
-# Archivo de Excel con los resultados de las evaluaciones. (Provisional)
+# Data frames de los datos contenidos en la base de datos.
 
 def getEvaluationsDF(number):
     dicc = db.reference('Evaluaciones').get()
@@ -255,18 +255,25 @@ def getEvaluationsDF(number):
     df.rename(columns=col_names, inplace=True)
     return df
 
-def createEvlauationsExcel():
-    dfs = []
-    sheets = []
-    for i in range(1, 3):
-        dfs.append(getEvaluationsDF(i))
-        sheets.append('Evaluación ' + str(i))
-    with pd.ExcelWriter('data/Datos Evaluación.xlsx', engine='xlsxwriter') as excelfile:
-        for i in range(len(sheets)):
-            workbook = excelfile.book
-            dfs[i].to_excel(excelfile, sheet_name=sheets[i], index=False)
-            headerFormat = workbook.add_format({'align':'center'})
-            columnWidth = [10, 20, 10, 16, 18, 10, 10, 10, 10, 10, 10, 30]
-            worksheet = excelfile.sheets[sheets[i]]
-            for i in range(len(columnWidth)):
-                worksheet.set_column(i, i, columnWidth[i], headerFormat)
+def getStudentsDF():
+    dicc = db.reference('Estudiantes').get()
+    cols = [
+        'Nombres', 'Apellidos', 'Cedula', 'Edad', 'Sexo', 'Celular personal', 'Correo personal', 'Regional', 
+        'Gerencia', 'Area de gerencia', 'Correo corporativo', 'Celular corporativo', 
+        'Nombre gerente', 'Correo gerente', 'Celular gerente', 
+        'Universidad', 'Carrera', 'Nombre tutor', 'Correo tutor', 'Celular tutor', 
+        'EPS', 'Nombre emergencia', 'Numero emergencia'        
+    ]
+    df = pd.DataFrame.from_dict(dicc, orient='index', columns=cols)
+    col_names = {
+        'Cedula': 'Cédula',
+        'Sexo': 'Género',
+        'Area de gerencia': 'Dirección corporativa',
+        'Nombre gerente': 'Nombre líder',
+        'Correo gerente': 'Correo líder',
+        'Celular gerente': 'Celular líder',
+        'Nombre emergencia': 'Nombre en caso de emergencia',
+        'Numero emergencia': 'Numero en caso de emergencia'
+    }
+    df.rename(columns=col_names, inplace=True)
+    return df
