@@ -4,6 +4,7 @@ import modules.crud as crud
 import modules.search as sr
 import modules.reports as rp
 from urllib.request import urlopen
+import modules.excel_files as exf
 
 config = {
     "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
@@ -62,7 +63,7 @@ def admin():
             ev['tutor'] = crud.getEvaluationResults(request.form['yavee'], 'tutor')
             message = ''
             file_plan = request.files['file_plan']
-            plandesa = request.form['plandesa']         
+            plandesa = request.form['plandesa']
             
             if (file_plan.filename != ''):
                 crud.uploadDevelopmentPlan(plandesa, file_plan)
@@ -134,6 +135,8 @@ def admin():
             return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad)
         
         elif ruta == 'reportes':
+            exf.createStudentsExcel()
+            link = crud.uploadStudentsExcel()
             putos = 'dashboard.html'
             [keys, email, canEdad, canGenero, canPrac, canDir] = rp.getInfoGraphs([])
             [carreras, cont_carreras] = rp.getCareerData()
@@ -145,9 +148,11 @@ def admin():
             canGeneroV = list(canGenero.values())
             canDirK = list(canDir.keys())
             canDirV = list(canDir.values())
-            return render_template(putos, keys=keys, carreras=carreras,cont_carreras=cont_carreras,uni=uni,cont_uni=cont_uni, email=email, canEdadK=canEdadK, canEdadV=canEdadV, canGeneroK=canGeneroK, canGeneroV=canGeneroV, canDirK=canDirK, canDirV=canDirV , canPrac=canPrac)
+            return render_template(putos, keys=keys, carreras=carreras,cont_carreras=cont_carreras,uni=uni,cont_uni=cont_uni, email=email, canEdadK=canEdadK, canEdadV=canEdadV, canGeneroK=canGeneroK, canGeneroV=canGeneroV, canDirK=canDirK, canDirV=canDirV , canPrac=canPrac, link=link)
 
         elif ruta == 'reportes_ev':
+            exf.createEvlauationsExcel()
+            link = crud.uploadEvaluationsExcel()
             putos = 'dashboard_ev.html'
             try:
                 ev = int(request.form['ev'])
@@ -158,7 +163,7 @@ def admin():
             for grade in grades:
                 grade = round(grade, 2)
                 avg += grade / len(grades)
-            return render_template(putos, questions=questions, grades=grades, avg=round(avg, 2), ev=ev)
+            return render_template(putos, questions=questions, grades=grades, avg=round(avg, 2), ev=ev, link=link)
 
     return render_template('admin.html')   
 

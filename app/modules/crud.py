@@ -212,8 +212,19 @@ def getEvaluationsAvg(number):
 #PDF plan de desarrollo
 def uploadDevelopmentPlan(path, pdf):
     storage.child("development_plan/" + "plan_desarrollo_" + path + ".pdf").put(pdf)
+
+# Excel con los datos de los practicantes y evaluaciones.
+def uploadStudentsExcel():
+    storage.child('datos_practicantes/practicantes.xlsx').put('data\Datos Practicantes.xlsx')
+    file = storage.child('datos_practicantes/practicantes.xlsx').get_url(None)
+    return file
+
+def uploadEvaluationsExcel():
+    storage.child('datos_practicantes/evaluaciones.xlsx').put('data\Datos Evaluación.xlsx')
+    file = storage.child('datos_practicantes/evaluaciones.xlsx').get_url(None)
+    return file
     
-#eliminar archivos pland de desarrollo
+#eliminar archivos plan de desarrollo
 def deleteDevelopmentPlan(path):
     storage.delete("development_plan/" + "plan_desarrollo_" + path + ".pdf", None)
 
