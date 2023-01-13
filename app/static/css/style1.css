@@ -1,8 +1,6 @@
 /* Google Font Import - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 *{
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
@@ -420,7 +418,6 @@ body.dark .switch::before{
 }
 
 .home{
-    position: absolute;
     top: 0;
     top: 0;
     left: 250px;
@@ -476,5 +473,44 @@ body.dark .home .text{
   text-align: center;
   background-color: #ffffff;
  }
+
+ .users .card2{
+    width: 100%;
+    margin: 0px;
+    background-image: url("../img/fondocarper.png");
+    /* background-color: #741c1f; */
+    text-align: center; 
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  .users .card0{
+    width: 1500px;
+    margin: 0px;
+    background: rgba(247, 247, 247, 0.521);
+    text-align: center;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  body{
+    background-image: url("../img/fondoadmin.png");
+}
+
+
+.users .card4{
+    width: 110%;
+    height: 100%;
+    margin: 0px;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    border-radius: 20px;
+    padding: 10px;
+    height: 310px; 
+    background-color: rgba(255, 255, 255, 0.815);
+    
+  }
 
  
