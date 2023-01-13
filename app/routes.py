@@ -136,8 +136,6 @@ def dashboard_ev():
 #         host = "localhost"
 #     mail.init_app(app)
 #     app.run(host=host, port=port, debug=True)
-  
-
 
 if __name__ == '__main__':
     mail.init_app(app)
