@@ -1,7 +1,7 @@
 import pyrebase
-from flask import render_template, request, Flask, session
+from flask import render_template, request, session
 import modules.crud as crud
-
+from urllib.request import urlopen
 
 config = {
     "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
@@ -15,7 +15,6 @@ config = {
 }
 
 firebase = pyrebase.initialize_app(config)
-storage = firebase.storage() #linea del storage
 auth = firebase.auth()
 
 
@@ -42,7 +41,7 @@ def index():
         file = ''
         #######################################
         if (admin == email):
-            rut = 'admin.html'
+            putos = 'admin.html'
             user = crud.getAllStudents()
             [keys, emails, cantidad] = crud.getStudentsData([])
             cuenta = crud.amountCards()
@@ -52,19 +51,24 @@ def index():
             links = crud.getImagesURL(emails)
             
         elif(user['Nombres'] == ''):
-            rut = 'formulario.html'
+            putos = 'formulario.html'
             links = crud.getImagesURL([email])
         else:
-            rut = 'view_personal_data.html'
+            putos = 'view_personal_data.html'
             file = crud.urlDevelopmentPlan(user['Cedula'])
             links = crud.getImagesURL([email])
+            # Verificar si hay un plan de desarrollo
+            try:
+                urlopen(file)
+            except:
+                file = False
         try:
 #--------------------INICIAR SESION---------------------------------                
             auth.sign_in_with_email_and_password(email, password)            
             #user_id = auth.get_account_info(user['idToken'])
             session['username'] = email
             #return render_template('formulario.html', user=user)
-            return render_template(rut, usuario=user, opcion=options, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta, file=file)
+            return render_template(putos, nav_activo=1, usuario=user, opcion=options, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta, file=file)
             
         except:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'

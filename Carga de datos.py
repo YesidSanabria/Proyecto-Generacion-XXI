@@ -18,6 +18,7 @@ col_types = {
     'Celular corporativo':str, 
     'Celular personal':str,
     'Celular tutor':str,
+    'Celular gerente':str,
     'Edad':str
     }
 baseDatos = pd.read_excel(f'data\{file}',dtype=col_types)

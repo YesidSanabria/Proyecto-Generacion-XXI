@@ -56,14 +56,18 @@
                             <div class="ul">
                                 <div style="width: 50%;">
                                     <h5>Evalución generada por el jefe directo</h5>
+                                    <form>
                                     <Button class="btn1"> Ver Evaluación</Button>
+                                </form>
                                 </div>
                                 <div>
                                     <div class="lineaver"></div>
                                 </div>
                                 <div style="width: 50%;">
-                                    <h5 >Evalué aquí al practicante</h5>
-                                    <Button class="btn1"> Evaluar</Button>
+                                    <h5>Evalúe aquí al practicante</h5>
+                                    <form action="/teacher_ev" method="post">
+                                        <Button class="btn1" value="{{user}}" name="user" type="submit">Evaluar</Button>
+                                    </form>
                                 </div>
                                 <br>
                             </div>

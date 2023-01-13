@@ -8,7 +8,7 @@
   <link rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  
+      <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/personald.css')}}">
   <!--<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/personald.css')}}">-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.min.js" integrity="sha512-tQYZBKe34uzoeOjY9jr3MX7R/mo7n25vnqbnrkskGr4D6YOoPYSpyafUAzQVjV6xAozAqUFIEFsCO4z8mnVBXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -46,90 +46,38 @@
 
 <br>
 <br>
-
-<nav class="sidebar close">
-  <header>
-    <div class="image-text">
-      <div class="text logo-text">
-        <span class="name">Generación XXI</span>
-        <span class="profession">Navegación</span>
-      </div>
-    </div>
-    <i
-      class="bx bx-chevron-right toggle"
-      style="background-color: #cf2f35"
-    ></i>
+<body id="body-pd">
+  <header class="header" id="header">
+    <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i></div>
   </header>
+<div class="l-navbar" id="nav-bar">
+  <nav class="nav">
+    <div> <a href="#" class="nav_logo"> <i class='bx bxs-home nav_logo-icon'></i> <span
+          class="nav_logo-name">Generación XXI</span> </a>
+      <div class="nav_list">
 
-  <div class="menu-bar">
-    <div class="menu">
-      <li class="search-box">
-        <!-- <i class="bx bx-search icon"></i>
-        <input type="text" placeholder="Search..." /> -->
-      </li>
-
-      <li class="nav-link">
-        
         <form action="/admin_view" method="post">
-          
-          <button class="contenedor-btn-file bordeado" name="ruta" value="admin">
-          <div class="ul">
-            <i class="bx bxs-user icon"></i>
-            <span class="btn-file"> Practicantes</span>
-          </div>
-          </button>
-        
+          <button class="nav_link" name="ruta" value="admin">
+            <i class='bx bx-user nav_icon'></i>
+            <span class="nav_name">Practicantes</span></button>
         </form>
-      </li>          
 
-      <li class="nav-link">
-        
         <form action="/admin_view" method="post">
-          <button class="contenedor-btn-file bordeado" name="ruta" value="reportes">
-            <div class="ul">
-              <i class="bx bx-pie-chart-alt icon"></i>
-            <span class="btn-file">Reportes</span>
-            </div>
-          </button>
+          <button class="nav_link" name="ruta" value="reportes">
+            <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+            <span class="nav_name">R. Demograficos</span></button>
         </form>
-      </li>
 
-      <li class="nav-link">
         <form action="/admin_view" method="post">
-            <button class="contenedor-btn-file bordeado" name="ruta" value="reportes_ev">
-                <div class="ul">
-                <i class='bx bx-pie-chart-alt icon' ></i>
-                <span class="btn-file">Evaluaciones</span>
-                </div>
-            </button>
+          <button class="nav_link active2" name="ruta" value="reportes_ev">
+            <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+            <span class="nav_name">R. Evaluaciones</span></button>
         </form>
-</li>
-
-    </div>
-
-    <div class="bottom-content">
-      <li class="">
-        <a href="/index">
-          <i class="bx bx-log-out icon"></i>
-          <span class="text nav-text">Logout</span>
-        </a>
-      </li>
-
-      <li class="mode">
-        <div class="sun-moon">
-          <i class="bx bx-moon icon moon"></i>
-          <i class="bx bx-sun icon sun"></i>
-        </div>
-        <span class="mode-text text">Dark mode</span>
-        <div class="toggle-switch">
-          <span class="switch"></span>
-        </div>
-      </li>
-    </div>
-  </div>
-</nav>
-
-<div class="container">
+      </div>
+    </div> <a href="/index" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Cerrar
+        Sesión</span> </a>
+  </nav>
+</div>
 
 <div class="row">
 
@@ -137,13 +85,16 @@
     <div class="card card-style mb-2">
         <div class="card-body">
             <center>
-            <div class="chart-container" style="position: relative; height:46vh; width:14vw">
+            <div class="chart-container" style="position: relative; height:50vh; width:14vw">
+              <br>
+              <h4><strong>Promedio general del grupo: </strong></h4>
               <br>
               <br>
-              <h4>Promedio general del grupo: </h4>
+              <h1>{{avg}}</h1>
               <br>
-              <br>
-              <h1>7</h1>
+              <button style="padding: 5px; background-color: #0096A9; width: 100%;">
+                <a href="{{link}}" target="_blank" style="color: white; width: 100%;">Descargar datos</a>
+              </button>
             </div>
             </center>
         </div>
@@ -154,8 +105,8 @@
     <div class="card card-style mb-2">
         <div class="card-body">
             <center>
-            <h4> Promedio de calificaciones por pregunta </h4>
-            <div class="chart-container" style="position: relative; height:40vh; width:30vw">
+            <h4><strong>Promedio de calificaciones por pregunta </strong></h4>
+            <div class="chart-container" style="position: relative; height:44vh; width:30vw">
                 <canvas id="prom_preg"></canvas>
             </div>
             </center>
@@ -163,10 +114,48 @@
     </div>
   </div>
 
+  <div class="col-xs-10 col-sm-6 col-md-3">
+    <div class="card card-style mb-2">
+        <div class="card-body">
+            <!-- <center> -->
+            <div class="chart-container" style="position: relative; height:50vh; width:14vw">
+              <center><h5><strong> Preguntas: </strong></h5></center>
+              <ol>
+              <li> Cumplimiento de tareas asignadas</li>
+              <li> Buena actitud</li> 
+              <li> Capacidad de proponer e innovar</li>
+              <li> Agilismo</li>
+              <li> Digital</li>
+              <li> Liderazgo</li>  
+              </ol>
+              <h6>Evaluación</h6>
+              <div>
+                <form action="/admin_view" method="post">
+                  <input type="hidden" name="ruta" value="reportes_ev">
+                  <button 
+                    style="padding: 5px; background-color: {% if ev == 1 %} #0096A9 {% else %} #CCEAEE {% endif %};"
+                    name="ev"
+                    value="1">
+                      Primera
+                  </button>
+                  <button 
+                    style="padding: 5px; background-color: {% if ev == 2 %} #0096A9 {% else %} #CCEAEE {% endif %};"
+                    name="ev"
+                    value="2">
+                      Segunda
+                  </button>
+                </form>
+              </div>
+            </div>
+            <!-- </center> -->
+        </div>
+    </div>
+  </div>
+  
     <div class="card card-style mb-2">
         <div class="card-body">
             <center>
-              <h4> A.L.D </h4>
+              <h4><strong>A.L.D </strong></h4>
             <div class="chart-container" style="position: relative; height:60vh; width:80vw">
                 <canvas id="genero"></canvas>
             </div>
@@ -215,10 +204,18 @@
         new Chart(ctx, {
           type: 'bar',
           data: {
-            labels: ['1', '2', '3', '4', '5', '6'],
+            labels: [
+            {% for i in questions %}
+            "{{i}}",
+            {% endfor %}
+            ],
             datasets: [{
-              label: '# de practicantes',
-              data: [6, 4, 8, 7, 7, 9],
+              label: 'Nota',
+              data: [
+                {% for i in grades %}
+                "{{i}}",
+                {% endfor %}
+              ],
               backgroundColor: [
                     '#b7202e',
                     '#0096a9',
@@ -256,12 +253,12 @@
     'Liderazgo'
   ],
   datasets: [{
-    label: 'Promedio grupal',
-    data: [65, 59, 90],
+    label: ' Promedio grupal',
+    data: [{{grades[3]}}, {{grades[4]}}, {{grades[5]}}],
     fill: true,
-    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-    borderColor: 'rgb(255, 99, 132)',
-    pointBackgroundColor: 'rgb(255, 99, 132)',
+    backgroundColor: 'rgba(0,150, 169, 0.2)',
+    borderColor: 'rgb(0,150, 169)',
+    pointBackgroundColor: 'rgb(0,150, 169)',
     pointBorderColor: '#fff',
     pointHoverBackgroundColor: '#fff',
     pointHoverBorderColor: 'rgb(255, 99, 132)'
@@ -270,9 +267,9 @@
     label: '',
     data: [0, 0, 0],
     fill: true,
-    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-    borderColor: 'rgb(255, 99, 132)',
-    pointBackgroundColor: 'rgb(255, 99, 132)',
+    backgroundColor: 'rgba(0,150, 169, 0.2)',
+    borderColor: 'rgb(0,150, 169)',
+    pointBackgroundColor: 'rgb(0,150, 169)',
     pointBorderColor: '#fff',
     pointHoverBackgroundColor: '#fff',
     pointHoverBorderColor: 'rgb(255, 99, 132)'
@@ -364,31 +361,45 @@ new Chart(ctx1, {
       });
 
       </script>
-      <script>
-        const body = document.querySelector("body"),
-          sidebar = body.querySelector("nav"),
-          toggle = body.querySelector(".toggle"),
-          searchBtn = body.querySelector(".search-box"),
-          modeSwitch = body.querySelector(".toggle-switch"),
-          modeText = body.querySelector(".mode-text");
-  
-        toggle.addEventListener("click", () => {
-          sidebar.classList.toggle("close");
-        });
-  
-        searchBtn.addEventListener("click", () => {
-          sidebar.classList.remove("close");
-        });
-  
-        modeSwitch.addEventListener("click", () => {
-          body.classList.toggle("dark");
-  
-          if (body.classList.contains("dark")) {
-            modeText.innerText = "Light mode";
-          } else {
-            modeText.innerText = "Dark mode";
+     <script>
+      document.addEventListener("DOMContentLoaded", function (event) {
+
+          const showNavbar = (toggleId, navId, bodyId, headerId) => {
+              const toggle = document.getElementById(toggleId),
+                  nav = document.getElementById(navId),
+                  bodypd = document.getElementById(bodyId),
+                  headerpd = document.getElementById(headerId)
+
+              // Validate that all variables exist
+              if (toggle && nav && bodypd && headerpd) {
+                  toggle.addEventListener('click', () => {
+                      // show navbar
+                      nav.classList.toggle('show')
+                      // change icon
+                      toggle.classList.toggle('bx-x')
+                      // add padding to body
+                      bodypd.classList.toggle('body-pd')
+                      // add padding to header
+                      headerpd.classList.toggle('body-pd')
+                  })
+              }
           }
-        });
-      </script>
+
+          showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+
+          /*===== LINK ACTIVE =====*/
+          const linkColor = document.querySelectorAll('.nav_link')
+
+          function colorLink() {
+              if (linkColor) {
+                  linkColor.forEach(l => l.classList.remove('active'))
+                  this.classList.add('active')
+              }
+          }
+          linkColor.forEach(l => l.addEventListener('click', colorLink))
+
+          // Your code to run since DOM is loaded and ready
+      });
+  </script>
 </body>
 </html>
