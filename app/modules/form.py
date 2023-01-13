@@ -89,15 +89,12 @@ def form ():
 
             
         if (registro == 'estudiante'):
-            return render_template('view_personal_data.html', nav_activo=1, usuario=crud.getStudentInfo(correo_corporativo), smessage=mensaje,l=links)
+            return render_template('view_personal_data.html', usuario=crud.getStudentInfo(correo_corporativo), smessage=mensaje,l=links)
         else:
             user = crud.getStudentInfo(request.form["userr"])
             links = crud.getImagesURL([correo_corporativo])
-            ev = {}
-            ev['lider'] = crud.getEvaluationResults(correo_corporativo, 'lider')
-            ev['tutor'] = crud.getEvaluationResults(correo_corporativo, 'tutor')
-            if (ev['lider'] == None) | (ev['tutor'] == None):
-                ev['lider'] = {'': ''}
-                ev['tutor'] = {'': ''}
-            return render_template('infopract.html', usuario=user, l=links, ev=ev)
+            ev = crud.getEvaluationResults(correo_corporativo, 'lider')
+            if ev == None:
+                ev = {'': ''}  
+            return render_template('PerfilPract.html', usuario=user, l=links, ev=ev)
     return render_template('formulario.html')

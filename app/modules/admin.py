@@ -3,8 +3,7 @@ from flask import render_template, request
 import modules.crud as crud
 import modules.search as sr
 import modules.reports as rp
-from urllib.request import urlopen
-import modules.excel_files as exf
+
 
 config = {
     "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
@@ -35,50 +34,32 @@ def admin():
             return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
 
         elif ruta == "infopract":
-            putos = 'infopract.html'
+            putos = 'PerfilPract.html'
             yave = request.form["yave"]
             user = crud.getStudentInfo(yave)            
             foto = crud.getImagesURL([request.form["foto"]])
-            ev = {}
-            ev['lider'] = crud.getEvaluationResults(request.form['yave'], 'lider')
-            ev['tutor'] = crud.getEvaluationResults(request.form['yave'], 'tutor')
-            if (ev['lider'] == None) | (ev['tutor'] == None):
-                ev['lider'] = {'': ''}
-                ev['tutor'] = {'': ''}
-            file = crud.urlDevelopmentPlan(user['Cedula'])
-            # Verificar si hay un plan de desarrollo.
-            try:
-                urlopen(file)
-            except:
-                file = False
-            return render_template(putos, usuario=user, l=foto, ev=ev, y=yave, file=file)
+            ev = crud.getEvaluationResults(request.form['yave'], 'lider')
+            if ev == None:
+                ev = {'': ''}
+            return render_template(putos, usuario=user, l=foto, ev=ev, y=yave)
         
         elif ruta == "infopract1":
             yave = request.form["yavee"]
-            putos = 'infopract.html'
-            user = crud.getStudentInfo(yave)
+            putos = 'PerfilPract.html'
+            user = crud.getStudentInfo(yave)            
             foto = request.form["foto"]
-            ev = {}
-            ev['lider'] = crud.getEvaluationResults(request.form['yavee'], 'lider')
-            ev['tutor'] = crud.getEvaluationResults(request.form['yavee'], 'tutor')
+            ev = crud.getEvaluationResults(yave, 'lider')
             message = ''
             file_plan = request.files['file_plan']
-            plandesa = request.form['plandesa']
+            plandesa = request.form['plandesa']         
             
             if (file_plan.filename != ''):
                 crud.uploadDevelopmentPlan(plandesa, file_plan)
                 message = 'Plan de desarrollo subido satisfactoriamente.'
 
-            if (ev['lider'] == None) | (ev['tutor'] == None):
-                ev['lider'] = {'': ''}
-                ev['tutor'] = {'': ''}
-            file = crud.urlDevelopmentPlan(user['Cedula'])
-            # Verificar si hay un plan de desarrollo.
-            try:
-                urlopen(file)
-            except:
-                file = False
-            return render_template(putos, usuario=user, l=foto, ev=ev, y=yave, smessage=message, file=file)
+            if ev == None:
+                ev = {'': ''}
+            return render_template(putos, usuario=user, l=foto, ev=ev, y=yave, smessage=message)
 
         elif ruta == "elim":
             putos = 'homeadmin.html'         
@@ -86,11 +67,14 @@ def admin():
             [keys, emails, cantidad] = crud.getStudentsData([])
             user = crud.deleteStudent(request.form["eliminar"])
             foto = crud.getImagesURL([request.form["eliminar"]])
+            ev = crud.getEvaluationResults(request.form['eliminar'], 'lider')
+            if ev == None:
+                ev = {'': ''}         
             emails = [x.lower() for x in emails]
             req = crud.getRequests()
             links = crud.getImagesURL(emails)
                          
-            return render_template(putos, usuario=user, l=foto, req=req, keys=keys, cantidadDatos=cantidad) 
+            return render_template(putos, usuario=user, l=foto, req=req, keys=keys, cantidadDatos=cantidad, ev=ev) 
 
         elif ruta =="edit":
             putos = 'admformulario.html'
@@ -98,7 +82,7 @@ def admin():
             yave = request.form['yavee']
             # foto = crud.getImagesURL([request.form["foto"]])
 
-            return render_template(putos, usuario=crud.getStudentInfo(editt), y=yave)
+            return render_template(putos, usuario=crud.getStudentInfo(editt),y=yave)
 
         elif ruta == 'search':
             putos = 'admin.html'
@@ -135,8 +119,6 @@ def admin():
             return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad)
         
         elif ruta == 'reportes':
-            exf.createStudentsExcel()
-            link = crud.uploadStudentsExcel()
             putos = 'dashboard.html'
             [keys, email, canEdad, canGenero, canPrac, canDir] = rp.getInfoGraphs([])
             [carreras, cont_carreras] = rp.getCareerData()
@@ -148,22 +130,19 @@ def admin():
             canGeneroV = list(canGenero.values())
             canDirK = list(canDir.keys())
             canDirV = list(canDir.values())
-            return render_template(putos, keys=keys, carreras=carreras,cont_carreras=cont_carreras,uni=uni,cont_uni=cont_uni, email=email, canEdadK=canEdadK, canEdadV=canEdadV, canGeneroK=canGeneroK, canGeneroV=canGeneroV, canDirK=canDirK, canDirV=canDirV , canPrac=canPrac, link=link)
+            return render_template(putos, keys=keys, carreras=carreras,cont_carreras=cont_carreras,uni=uni,cont_uni=cont_uni, email=email, canEdadK=canEdadK, canEdadV=canEdadV, canGeneroK=canGeneroK, canGeneroV=canGeneroV, canDirK=canDirK, canDirV=canDirV , canPrac=canPrac)
 
         elif ruta == 'reportes_ev':
-            exf.createEvlauationsExcel()
-            link = crud.uploadEvaluationsExcel()
             putos = 'dashboard_ev.html'
-            try:
-                ev = int(request.form['ev'])
-            except:
-                ev = 1
-            [questions, grades] = rp.getQuestionsResults(ev)
-            avg = 0
-            for grade in grades:
-                grade = round(grade, 2)
-                avg += grade / len(grades)
-            return render_template(putos, questions=questions, grades=grades, avg=round(avg, 2), ev=ev, link=link)
+            [keys, email, canEdad, canGenero, canPrac, canDir] = rp.getInfoGraphs([])
+            [carreras, cont_carreras] = rp.getCareerData()
+            [uni, cont_uni] = rp.getUniversityData()
+            canGenero['Otros'] = 0
+            canEdadK = list(canEdad.keys())
+            canEdadV = list(canEdad.values())
+            canGeneroK = list(canGenero.keys())
+            canGeneroV = list(canGenero.values())
+            return render_template(putos, keys=keys, carreras=carreras,cont_carreras=cont_carreras,uni=uni,cont_uni=cont_uni, email=email, canEdadK=canEdadK, canEdadV=canEdadV, canGeneroK=canGeneroK, canGeneroV=canGeneroV, canPrac=canPrac)
 
     return render_template('admin.html')   
 

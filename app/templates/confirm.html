@@ -20,21 +20,11 @@
             {{ umessage }}
           </div>
         {% endif %}
-          <form action="/confirm" method="post">
-{% if ev %}
-        {% if repetido %}
-          <h5 class="lead">Seleccione el practicante al que evaluará</h5>
-        {% for student in students %}
-          <input type="radio" name="user" value="{{student['user']}}" required>
-          <label>{{student['name']}}</label>
-          <br>
-        {% endfor %}
-        {% else %}
-          <h5 class="lead">Usted está a punto de evaluar a {{students[0]['name']}}</h5>
-          <input type="hidden" name="user" value="{{students[0]['user']}}">
-        {% endif %}
-{% endif %}
+        {% if name %}
+        <h5 class="lead">Usted está a punto de evaluar a {{name}}</h5>
         <br>
+        {% endif %}
+        <form action="/confirm" method="post">
           <h5 class="lead">Ingrese el código de 6 dígitos enviado a su correo electrónico</h5>
           <br>
         <div class="form-floating mb-3">
@@ -44,19 +34,16 @@
         <input type="hidden" name="role" value="{{role}}">
         <input type="hidden" name="email" value="{{email}}">
         <input type="hidden" name="code" value="{{code}}">
-        <button type="submit" name="submit" class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #CF2F35; color: white;">
-          {% if ev %}
-          Ingresar a Evaluación
-          {% else %}
-          Continuar
-          {% endif %}
-        </button>
+        {% if user %}
+        <input type="hidden" name="user" value="{{user}}">
+        {% endif %}
+        <button type="submit" name="submit" class="btn login text-uppercase fw-bold" style="width: 350px; background-color: #CF2F35; color: white;">Ingresar a Evaluación</button>
       </form>
      </div>
     </div>
+  </div>
 </div>
 </div>
 </div>
 
 {% endblock %}
-

@@ -4,14 +4,8 @@ from firebase_admin import credentials
 from firebase_admin import db
 from flask import send_file
 import pyrebase
-from firebase_admin import auth
-import pandas as pd
 ##########################################
-# Excepción para ejecutar el proyecto desde cmd
-try:
-    cred = credentials.Certificate("app/config/generacion-xxi-firebase-adminsdk-iwq0c-bc2e550415.json")
-except:
-    cred = credentials.Certificate("config/generacion-xxi-firebase-adminsdk-iwq0c-bc2e550415.json")
+cred = credentials.Certificate("app/config/generacion-xxi-firebase-adminsdk-iwq0c-bc2e550415.json")
 firebase_admin.initialize_app(cred,{'databaseURL':'https://generacion-xxi-default-rtdb.firebaseio.com/'})
 ##########################################
 
@@ -36,14 +30,14 @@ options = {
     'regional': ['Bogotá', 'Bucaramanga', 'Medellín', 'Barranquilla', 'Cali', 'Manizales'],
     'direccion': ['Corporativo financiero',
                   'Corporativo gestión humana',
-                  'Corporativo jurídico y asuntos corporativos',
+                  'Corporativo juridico y asuntos corporativos',
                   'Corporativo marketing y medios de comunicación',
                   'Ejecutivo unidad mercado corporativo',
-                  'Auditoría',
-                  'Corporativo tecnología',
+                  'Auditoria',
+                  'Corporativo tecnologia',
                   'Ejecutivo unidad mercado masivo',
                   'Corporativo asuntos regulatorios y relaciones institucionales',
-                  'Corporativo planeación estratégica e innovación']
+                  'Corporativo planeación estrategica e innovación']
     }
 
 # FUNCIONES
@@ -90,40 +84,14 @@ def updateStudentData(email, data):
     # updateStudentData('julian.cely@claro.com.co', {'Celular personal': '3214157461'})
 
 def deleteStudent(email):
-    student = getStudentInfo(email)
-    deleteDevelopmentPlan(student['Cedula'])
-    deleteProfileImage(email)
     ref = db.reference('Estudiantes')
-    ref.child(email.replace('.', '')).delete()
-    user = auth.get_user_by_email(email)
-    auth.delete_user(user.uid)
+    ref.child(email.replace('.', '')).delete()   
 
 def createNewStudent(email):
     ref = db.reference('Estudiantes')
     initData = {
             'Correo corporativo': email,
-            'Nombres': '',
-            'Apellidos': '',
-            'Area de gerencia': '',
-            'Carrera': '',
-            'Cedula': '',
-            'Celular corporativo': '',
-            'Celular gerente': '',
-            'Celular personal': '',
-            'Celular tutor': '',
-            'Correo gerente': '',
-            'Correo personal': '',
-            'Correo tutor': '',
-            'EPS': '',
-            'Edad': '',
-            'Gerencia': '',
-            'Nombre emergencia': '',
-            'Nombre gerente': '',
-            'Nombre tutor': '',
-            'Numero emergencia': '',
-            'Regional': '',
-            'Sexo': '',
-            'Universidad': ''
+            'Nombres': ''
         }
     ref.child(email.replace('.','')).set(initData)
     
@@ -162,7 +130,7 @@ def uploadProfileImage(path, image):
     storage.child("profile_pictures/" + path).put(image)
 
 def deleteProfileImage(path):
-    storage.delete("profile_pictures/" + path, None)
+    storage.child("profile_pictures/" + path, None)
 
 # EVALUACIONES
 
@@ -178,53 +146,11 @@ def getEvaluationResults(email, role):
     role = id.child(role)
     return role.get()
 
-def getSingleEvaluation(email, number):
-    results = getEvaluationResults(email, 'lider')
-    keys = list(results.keys())
-    try:
-        return results[keys[number - 1]]
-    except:
-        return False
-
-def getAllEvaluations(number):
-    table = db.reference('Evaluaciones')
-    keys = list(table.get().keys())
-    evaluations = {}
-    for student in keys:
-        notas = getSingleEvaluation(student, number)
-        if notas:
-            grades = {}
-            for i in range(5, 11):
-                grades[str(i - 4)] = int(notas['Pregunta' + str(i)])
-            evaluations[student] = grades
-    return evaluations
-
-def getEvaluationsAvg(number):
-    evaluations = {}
-    for i in range(1, 7):
-        evaluations[str(i)] = 0
-    data = getAllEvaluations(number)
-    for student, grades in data.items():
-        for question in grades.keys():
-            evaluations[question] += grades[question] / len(data.keys())
-    return evaluations
-
 #PDF plan de desarrollo
 def uploadDevelopmentPlan(path, pdf):
     storage.child("development_plan/" + "plan_desarrollo_" + path + ".pdf").put(pdf)
-
-# Excel con los datos de los practicantes y evaluaciones.
-def uploadStudentsExcel():
-    storage.child('datos_practicantes/practicantes.xlsx').put('data\Datos Practicantes.xlsx')
-    file = storage.child('datos_practicantes/practicantes.xlsx').get_url(None)
-    return file
-
-def uploadEvaluationsExcel():
-    storage.child('datos_practicantes/evaluaciones.xlsx').put('data\Datos Evaluación.xlsx')
-    file = storage.child('datos_practicantes/evaluaciones.xlsx').get_url(None)
-    return file
     
-#eliminar archivos plan de desarrollo
+#eliminar archivos pland de desarrollo
 def deleteDevelopmentPlan(path):
     storage.delete("development_plan/" + "plan_desarrollo_" + path + ".pdf", None)
 
@@ -236,55 +162,3 @@ def downloadDevelopmentPlan(cedula):
 def urlDevelopmentPlan(cedula):
     archivo = storage.child("development_plan/" + "plan_desarrollo_" + cedula + ".pdf").get_url(None)
     return archivo
-
-# Data frames de los datos contenidos en la base de datos.
-
-def getEvaluationsDF(number):
-    dicc = db.reference('Evaluaciones').get()
-    keys = dicc.keys()
-    for key in keys:
-        notas = getSingleEvaluation(key, number)
-        if notas:
-            dicc[key] = notas
-    cols = [
-        'Fecha', 'Pregunta1', 'Pregunta2', 'Pregunta3', 'Pregunta4', 'Pregunta5', 'Pregunta6',
-        'Pregunta7', 'Pregunta8', 'Pregunta9', 'Pregunta10', 'Observaciones'
-    ]
-    df = pd.DataFrame.from_dict(dicc, orient='index', columns=cols)
-    col_names = {
-        'Pregunta1': 'Gerencia', 
-        'Pregunta2': 'Cédula', 
-        'Pregunta3': 'Nombre Líder', 
-        'Pregunta4': 'Nombre Practicante', 
-        'Pregunta5': 'Pregunta 1', 
-        'Pregunta6': 'Pregunta 2',
-        'Pregunta7': 'Pregunta 3',
-        'Pregunta8': 'Pregunta 4', 
-        'Pregunta9': 'Pregunta 5', 
-        'Pregunta10': 'Pregunta 6'
-    }
-    df.rename(columns=col_names, inplace=True)
-    return df
-
-def getStudentsDF():
-    dicc = db.reference('Estudiantes').get()
-    cols = [
-        'Nombres', 'Apellidos', 'Cedula', 'Edad', 'Sexo', 'Celular personal', 'Correo personal', 'Regional', 
-        'Gerencia', 'Area de gerencia', 'Correo corporativo', 'Celular corporativo', 
-        'Nombre gerente', 'Correo gerente', 'Celular gerente', 
-        'Universidad', 'Carrera', 'Nombre tutor', 'Correo tutor', 'Celular tutor', 
-        'EPS', 'Nombre emergencia', 'Numero emergencia'        
-    ]
-    df = pd.DataFrame.from_dict(dicc, orient='index', columns=cols)
-    col_names = {
-        'Cedula': 'Cédula',
-        'Sexo': 'Género',
-        'Area de gerencia': 'Dirección corporativa',
-        'Nombre gerente': 'Nombre líder',
-        'Correo gerente': 'Correo líder',
-        'Celular gerente': 'Celular líder',
-        'Nombre emergencia': 'Nombre en caso de emergencia',
-        'Numero emergencia': 'Numero en caso de emergencia'
-    }
-    df.rename(columns=col_names, inplace=True)
-    return df

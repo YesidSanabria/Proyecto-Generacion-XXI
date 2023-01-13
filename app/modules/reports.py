@@ -1,8 +1,7 @@
 import modules.crud as crud
 import modules.search as sr
 from collections import Counter
-from flask import render_template, request
-import modules.excel_files as exf
+from flask import render_template
 
 careers = {
     'SISTEMAS': 'Ingeniería de Sistemas',
@@ -118,17 +117,6 @@ def getInfoGraphs(students):
     canDir = dict(Counter(dirCorp))
     canPrac = len(keys)
     return keys, email, canEdad, canGenero, canPrac, canDir
-
-# Reportes de evaluaciones.
-
-def getQuestionsResults(number):
-    questions = crud.getEvaluationsAvg(number)
-    label = []
-    count = []
-    for question, grade in questions.items():
-        label.append(question)
-        count.append(grade)
-    return label, count
 
 def dashboard():
     return render_template('dashboard.html')

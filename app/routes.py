@@ -66,11 +66,7 @@ def boss_ev():
 
 @app.route('/teacher_ev', methods=['GET', 'POST'])
 def teacher_ev():
-    return ev.teacher_ev()
-
-@app.route('/tutor_ev', methods=['GET', 'POST'])
-def tutor_ev():
-    return ev.tutor_ev()
+    return render_template('teacher_ev.html')
     
 # --------------------------------------SOLICITUD DE PRACTICANTES-------------------------------------
 
@@ -129,6 +125,18 @@ def dashboard_ev():
     return rp.dashboard_ev()
     
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
+
+# if __name__ == '__main__':
+#     server_name = app.config['SERVER_NAME']
+#     if server_name and ':' in server_name:
+#         host, port = server_name.split(":")
+#         port = int(port)
+#     else:
+#         port = 8000
+#         host = "localhost"
+#     mail.init_app(app)
+#     app.run(host=host, port=port, debug=True)
+
 if __name__ == '__main__':
     mail.init_app(app)
     app.run(debug=True)
