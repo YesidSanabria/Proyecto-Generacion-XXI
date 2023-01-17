@@ -1,161 +1,102 @@
 <body>
-
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/admin.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style1.css')}}" />
-    <!-- CSS only -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/admformulario.css')}}" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-
-    <!----===== Boxicons CSS ===== -->
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
   </head>
-
   <body>
-    <nav class="sidebar close">
-      <header>
-        <div class="image-text">
-          <div class="text logo-text">
-            <span class="name">Generación XXI</span>
-            <span class="profession">Navegación</span>
-          </div>
-        </div>
-        <i class="bx bx-chevron-right toggle" style="background-color: #cf2f35"></i>
-      </header>
-
-      <div class="menu-bar">
-        <div class="menu">
-          <li class="search-box">
-            <i class="bx bx-search icon"></i>
-            <input type="text" placeholder="Search..." />
-          </li>
-
-          <li class="nav-link">
-
-            <form action="/admin_view" method="post">
-
-              <button class="contenedor-btn-file bordeado" name="ruta" value="admin">
-                <div class="ul">
-                  <i class="bx bxs-user icon"></i>
-                  <span class="btn-file"> Practicantes</span>
-                </div>
-              </button>
-
-            </form>
-          </li>
-
-          <li class="nav-link">
-
-            <form action="/admin_view" method="post">
-              <button class="contenedor-btn-file bordeado" name="ruta" value="reportes">
-                <div class="ul">
-                  <i class="bx bx-pie-chart-alt icon"></i>
-                  <span class="btn-file">Reportes</span>
-                </div>
-              </button>
-            </form>
-          </li>
-        </div>
-
-        <div class="bottom-content">
-          <li class="">
-            <a href="/index">
-              <i class="bx bx-log-out icon"></i>
-              <span class="text nav-text">Logout</span>
-            </a>
-          </li>
-
-          <li class="mode">
-            <div class="sun-moon">
-              <i class="bx bx-moon icon moon"></i>
-              <i class="bx bx-sun icon sun"></i>
-            </div>
-            <span class="mode-text text">Dark mode</span>
-            <div class="toggle-switch">
-              <span class="switch"></span>
-            </div>
-          </li>
-        </div>
-      </div>
-    </nav>
-
     <section class="home">
       <section class="main">
         <div class="users">
           <div class="card0">
             <div class="card2">
-
               <head>
                 <form action="/formulario" method="post">
                   <div class="container row">
                     <div class="container-superior">
                       <form action="/formulario" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="userr" value="{{usuario['Correo corporativo']}}">
-                        <!--<form action="/formulario" method="post">-->
                         <center>
                           <div class="ul">
                             <div class="card4" style="height: 310px; background-color: rgba(255, 255, 255, 0.815);">
                               <div class="title title_form"><b> Datos Personales: </b></div>
                               <div style="height: 5px;"></div>
                               <div class="input_container row">
-                                <div class="input_div">
-                                  <span class="details title_form" style="width: 50%;"> Nombre: </span>
-                                  <input type="text" class="syinput" style="width: 50%;" name="nombre"
-                                    required="required" value="{{usuario['Nombres']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form" style="width: 50%;"> Apellidos: </span>
-                                  <input type="text" class="syinput" style="width: 50%;" name="apellidos"
-                                    required="required" value="{{usuario['Apellidos']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form"> Edad: </span>
-                                  <input type="text" class="syinput" name="edad" required="required"
-                                    value="{{usuario['Edad']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form"> Genero: </span>
-                                  <input type="text" class="syinput" name="genero" required="required"
-                                    value="{{usuario['Sexo']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form"> Cédula: </span>
-                                  <input type="text" class="syinput" name="cedula" required="required"
-                                    value="{{usuario['Cedula']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form"> Celular personal: </span>
-                                  <input type="text" class="syinput" name="celular_personal" required="required"
-                                    value="{{usuario['Celular personal']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form"> Correo Electrónico: </span>
-                                  <input type="text" class="syinput" name="correo_personal" required="required"
-                                    value="{{usuario['Correo personal']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form"> EPS: </span>
-                                  <input type="text" class="syinput" name="eps" required="required"
-                                    value="{{usuario['EPS']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form"> Regional: </span>
-                                  <input type="text" class="syinput" name="ciudad" required="required"
-                                    value="{{usuario['Regional']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
+                                <div class="form-horizontal">
+                                  <div class="col-sm-6">
+                                      <div class="form-group">
+                                          <label for="MainContent_text_reg_nombre" class="col-sm-4 control-label">Nombres*:</label>
+                                          <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="nombre"
+                                            required="required" value="{{usuario['Nombres']}}">
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="MainContent_text_reg_telefono" class="col-sm-4 control-label">Apellidos:</label>
+                                          <div class="col-sm-8">
+                                            <input type="text" class="form-control"  name="apellidos"
+                                            required="required" value="{{usuario['Apellidos']}}">
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="MainContent_text_reg_email" class="col-sm-4 control-label">Edad:</label>
+                                          <div class="col-sm-8">
+                                            <input type="text" class="form-control"  name="edad" required="required"
+                                            value="{{usuario['Edad']}}">
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="MainContent_text_reg_web" class="col-sm-4 control-label">Genero:</label>
+                                          <div class="col-sm-8">
+                                            <input type="text" class="form-control"  name="genero" required="required"
+                                            value="{{usuario['Sexo']}}">
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="MainContent_text_reg_direccion" class="col-sm-4 control-label">Cedula:</label>
+                                        <div class="col-sm-8">
+                                          <input type="text" class="form-control"  name="cedula" required="required"
+                                          value="{{usuario['Cedula']}}">
+                                        </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-sm-6">
+                                      <div class="form-group">
+                                          <label for="MainContent_text_reg_localidad" class="col-sm-4 control-label">Celular Personal:</label>
+                                          <div class="col-sm-8">
+                                            <input type="text" class="form-control"  name="celular_personal" required="required"
+                                            value="{{usuario['Celular personal']}}">
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="MainContent_text_reg_provincia" class="col-sm-4 control-label">Correo Electronico:</label>
+                                          <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="correo_personal" required="required"
+                                            value="{{usuario['Correo personal']}}">
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="MainContent_text_reg_cp" class="col-sm-4 control-label">EPS:</label>
+                                          <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="eps" required="required"
+                                            value="{{usuario['EPS']}}">
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="MainContent_text_reg_cp" class="col-sm-4 control-label">Regional:</label>
+                                        <div class="col-sm-8">
+                                          <input type="text" class="form-control"  name="ciudad" required="required"
+                                            value="{{usuario['Regional']}}">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
                               </div>
                             </div>
                             <div class="card9"></div>
@@ -164,50 +105,63 @@
                               <div style="height: 5px;"></div>
                               <br>
                               <div class="input_container">
-                                <div class="input_div">
-                                  <span class="details title_form"> Celular corporativo: </span>
-                                  <input type="text" class="syinput" name="celular_corporativo" required="required"
-                                    value="{{usuario['Celular corporativo']}}">
+                                <div class="form-horizontal">
+                                  <div class="col-sm-6">
+                                    <div class="form-group">
+                                      <label for="MainContent_text_reg_cp" class="col-sm-4 control-label">Celular Corporativo:</label>
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="celular_corporativo" required="required"
+                                        value="{{usuario['Celular corporativo']}}">
+                                      </div>
+                                    </div>
+                                      <div class="form-group">
+                                        <label for="MainContent_text_reg_cp" class="col-sm-4 control-label">Dirección a la que pertenece:</label>
+                                        <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="direccion" required="required"
+                                            value="{{usuario['Area de gerencia']}}">
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="MainContent_text_reg_cp" class="col-sm-4 control-label">Gerencia a la que pertenece:</label>
+                                          <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="gerencia" required="required"
+                                          value="{{usuario['Gerencia']}}">
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="MainContent_text_reg_cp" class="col-sm-4 control-label">Nombre de su Gerente o Jefe:</label>
+                                          <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="nombre_gerente" required="required"
+                                          value="{{usuario['Nombre gerente']}}">
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-sm-6">
+                                      <div class="form-group">
+                                        <label for="MainContent_text_reg_cp" class="col-sm-4 control-label">Celular de contacto gerente:</label>
+                                        <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="celular_gerente" required="required"
+                                          value="{{usuario['Celular gerente']}}">
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="MainContent_text_reg_cp" class="col-sm-4 control-label">Correo Corporativo:</label>
+                                        <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="correo_corporativo" required="required"
+                                          value="{{usuario['Correo corporativo']}}">
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="MainContent_text_reg_cp" class="col-sm-4 control-label">Correo Gerente:</label>
+                                        <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="correo_gerente" required="required"
+                                          value="{{usuario['Correo gerente']}}">
+                                        </div>
+                                      </div>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form"> Dirección a la que pertenece: </span>
-                                  <input type="text" class="syinput" name="direccion" required="required"
-                                    value="{{usuario['Area de gerencia']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form"> Gerencia a la que pertenece: </span>
-                                  <input type="text" class="syinput" name="gerencia" required="required"
-                                    value="{{usuario['Gerencia']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form"> Nombre de su Gerente o Jefe: </span>
-                                  <input type="text" class="syinput" name="nombre_gerente" required="required"
-                                    value="{{usuario['Nombre gerente']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form"> Celular de contacto gerente: </span>
-                                  <input type="text" class="syinput" name="celular_gerente" required="required"
-                                    value="{{usuario['Celular gerente']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form"> Correo Corporativo: </span>
-                                  <input type="text" class="syinput" name="correo_corporativo" required="required"
-                                    value="{{usuario['Correo corporativo']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form"> Correo Gerente: </span>
-                                  <input type="text" class="syinput" name="correo_gerente" required="required"
-                                    value="{{usuario['Correo gerente']}}">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
                         </center>
                         <br>
                         <center>
@@ -216,56 +170,61 @@
                               <div class="title title_form"> <b>Datos Academicos: </b></div>
                               <div style="height: 5px;"></div>
                               <div class="input_container row">
-                                <div class="input_div">
-                                  <span class="details title_form"> Universidad: </span>
-                                  <input type="text" class="syinput" name="universidad" required="required"
-                                    value="{{usuario['Universidad']}}">
+                                <div class="form-horizontal">
+                                  <div class="col-sm-6">
+                                    <div class="form-group">
+                                      <label for="MainContent_text_reg_cp" class="col-sm-4 control-label">Universidad:</label>
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="universidad" required="required"
+                                        value="{{usuario['Universidad']}}">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="MainContent_text_reg_cp" class="col-sm-4 control-label">Carrera a la que pertenece:</label>
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="carrera" required="required"
+                                        value="{{usuario['Carrera']}}">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="MainContent_text_reg_cp" class="col-sm-4 control-label">Tutor encargado de la practica:</label>
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="nombre_tutor" required="required"
+                                        value="{{usuario['Nombre tutor']}}">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="MainContent_text_reg_cp" class="col-sm-4 control-label">Correo del tutor:</label>
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="correo_tutor" required="required"
+                                          value="{{usuario['Correo tutor']}}">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-6">
+                                    <div class="form-group">
+                                      <label for="MainContent_text_reg_cp" class="col-sm-4 control-label">Celular del tutor:</label>
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="celular_tutor" required="required"
+                                          value="{{usuario['Celular tutor']}}">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="MainContent_text_reg_cp" class="col-sm-4 control-label"> Nombre del Contacto de Emergencia:</label>
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="nombre_emergencia" required="required"
+                                        value="{{usuario['Nombre emergencia']}}">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="MainContent_text_reg_cp" class="col-sm-4 control-label"> Numero del Contacto de Emergencia:</label>
+                                      <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="numero_emergencia" required="required"
+                                        value="{{usuario['Numero emergencia']}}">
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form"> Carrera a la que pertenece: </span>
-                                  <input type="text" class="syinput" name="carrera" required="required"
-                                    value="{{usuario['Carrera']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form"> Tutor encargado de la practica: </span>
-                                  <input type="text" class="syinput" name="nombre_tutor" required="required"
-                                    value="{{usuario['Nombre tutor']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form"> Correo del tutor: </span>
-                                  <input type="text" class="syinput" name="correo_tutor" required="required"
-                                    value="{{usuario['Correo tutor']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form"> Celular del tutor: </span>
-                                  <input type="text" class="syinput" name="celular_tutor" required="required"
-                                    value="{{usuario['Celular tutor']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                              </div>
-                            </div>
-                            <div class="card9"></div>
-                            <div class="card4" style="height: 250px; background-color: rgba(255, 255, 255, 0.815);">
-                              <div class="title title_form"><b> Datos en caso de emergencia: </b></div>
-                              <div style="height: 5px;"></div>
-                              <div class="input_container row">
-                                <div class="input_div">
-                                  <span class="details title_form"> Nombre del Contacto de Emergencia: </span>
-                                  <input type="text" class="syinput" name="nombre_emergencia" required="required"
-                                    value="{{usuario['Nombre emergencia']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                                <div class="input_div">
-                                  <span class="details title_form"> Numero del Contacto de Emergencia: </span>
-                                  <input type="text" class="syinput" name="numero_emergencia" required="required"
-                                    value="{{usuario['Numero emergencia']}}">
-                                </div>
-                                <div style="height: 5px;"></div>
-                              </div>
                             </div>
                           </div>
                           <br>
@@ -283,33 +242,5 @@
         </div>
       </section>
     </section>
-
-
-    <script>
-      const body = document.querySelector("body"),
-        sidebar = body.querySelector("nav"),
-        toggle = body.querySelector(".toggle"),
-        searchBtn = body.querySelector(".search-box"),
-        modeSwitch = body.querySelector(".toggle-switch"),
-        modeText = body.querySelector(".mode-text");
-
-      toggle.addEventListener("click", () => {
-        sidebar.classList.toggle("close");
-      });
-
-      searchBtn.addEventListener("click", () => {
-        sidebar.classList.remove("close");
-      });
-
-      modeSwitch.addEventListener("click", () => {
-        body.classList.toggle("dark");
-
-        if (body.classList.contains("dark")) {
-          modeText.innerText = "Light mode";
-        } else {
-          modeText.innerText = "Dark mode";
-        }
-      });
-    </script>
   </body>
 </body>

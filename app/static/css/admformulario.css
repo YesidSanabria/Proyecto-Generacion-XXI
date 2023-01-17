@@ -1,8 +1,7 @@
-/*  import google fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 *{
-  margin: 0;
+  margin: auto;
   padding: 0;
   outline: none;
   border: none;
@@ -11,8 +10,12 @@
   font-family: "Poppins", sans-serif;
 }
 
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box;}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
@@ -84,7 +87,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 .ul{
-  display: flex;
   list-style: none;
 }
 .cuerpo{
@@ -164,13 +166,6 @@ a:hover i{
 }
 
 /* MAin Section */
-.main{
-    position: relative;
-    padding: 4%;
-    width: 90%;
-    left: 5%;
-  
-}
 .main-top{
   display: flex;
   width: 100%;
@@ -183,8 +178,21 @@ a:hover i{
   cursor: pointer;
 }
 .main .users{
-  display: flex;
+  width: 80%;
+}
+
+.evaluationcard{
+  height: 100%;
   width: 100%;
+  border-radius: 10px;
+  background-color: #d8d8d8;
+  padding: 2%;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.lineaver{
+  border-left: 1px solid #adadad;
+  height: 138px;  
 }
 
 .card9{
@@ -235,12 +243,10 @@ a:hover i{
 }
 
 .users .card0{
-  width: 1250px;
-  margin: 0px;
   background: rgba(247, 247, 247, 0.521);
   text-align: center;
   border-radius: 10px;
-  padding: 10px;
+  padding: 30px;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
 
@@ -267,14 +273,17 @@ a:hover i{
 
 .users .card4{
   width: 100%;
-  height: 100%;
+  height: 120%;
   margin: 0px;
   background: rgb(255, 255, 255);
   text-align: center;
   border-radius: 20px;
   padding: 10px;
+  height: 310px; 
+  background-color: rgba(255, 255, 255, 0.815);
   
 }
+
 
 .users .card5{
   width: 90%;
@@ -390,3 +399,5 @@ table thead tr{
   width: 100%;
   height: 100%;
 }
+
+
