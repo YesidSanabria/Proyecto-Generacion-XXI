@@ -213,6 +213,9 @@ def getEvaluationsAvg(number):
 def uploadDevelopmentPlan(path, pdf):
     storage.child("development_plan/" + "plan_desarrollo_" + path + ".pdf").put(pdf)
 
+def uploadCV(path, pdf):
+    storage.child("Hojas_de_vida/" + "CV_" + path + ".pdf").put(pdf)
+
 # Excel con los datos de los practicantes y evaluaciones.
 def uploadStudentsExcel():
     storage.child('datos_practicantes/practicantes.xlsx').put('data\Datos Practicantes.xlsx')

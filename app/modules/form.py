@@ -46,6 +46,7 @@ def form ():
         regional = request.form['ciudad']
         correo_personal = request.form['correo_personal']
         registro = request.form['registro']
+        cv = request.files['hojavida']
 
         data = {"Nombres": nombre,
             "Apellidos": apellidos,
@@ -74,6 +75,8 @@ def form ():
         crud.updateStudentData(correo_corporativo, data)
         mensaje = 'Los datos han sido guardados satisfactoriamente.'
         links = crud.getImagesURL([correo_corporativo])
+        user = crud.getStudentInfo(correo_corporativo)
+        name_and_last = user['Nombres'] + ' ' + user['Apellidos']
         userr= request.form['userr']
         try:
             upload = request.files['upload']
@@ -83,6 +86,9 @@ def form ():
                 #print("1")
         except:
             upload = 3
+            
+        if (cv.filename != ''):
+                crud.uploadCV(name_and_last, cv)
         
         #print(upload.filename)
         
