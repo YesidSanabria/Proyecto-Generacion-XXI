@@ -46,7 +46,6 @@ def form ():
         regional = request.form['ciudad']
         correo_personal = request.form['correo_personal']
         registro = request.form['registro']
-        cv = request.files['hojavida']
 
         data = {"Nombres": nombre,
             "Apellidos": apellidos,
@@ -87,13 +86,15 @@ def form ():
         except:
             upload = 3
             
-        if (cv.filename != ''):
-                crud.uploadCV(name_and_last, cv)
+        try:
+            cv = request.files['hojavida']
+            if (cv.filename != ''):
+                    crud.uploadCV(name_and_last, cv)
+        except:
+            cv = 3
         
         #print(upload.filename)
         
-
-            
         if (registro == 'estudiante'):
             return render_template('view_personal_data.html', nav_activo=1, usuario=crud.getStudentInfo(correo_corporativo), smessage=mensaje,l=links)
         else:
