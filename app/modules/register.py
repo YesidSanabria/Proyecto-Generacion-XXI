@@ -34,8 +34,13 @@ def register():
         code = ''
         for d in range(6):
             code += str(random.randint(0,9))
-        mail.send_mail(email,code)
-        return render_template('confirm.html', code=code, email=email, role='estudiante')
+        dom = email.split('@')[1]
+        if (dom == 'claro.com.co') | (dom == 'globalhitss.com'):
+            mail.send_mail(email,code)
+            return render_template('confirm.html', code=code, email=email, role='estudiante')
+        else:
+            message = 'Su correo no pertenece al dominio de Claro o Global Hitss'
+            return render_template('register.html', umessage=message)
     return render_template('register.html')
 
 def create_account():
