@@ -46,7 +46,6 @@ def index():
             [keys, emails, cantidad] = crud.getStudentsData([])
             cuenta = crud.amountCards()
             emails = [x.lower() for x in emails]
-            req = crud.getRequests()
              #arreglo con los campos de imagenes de cada persona
             links = crud.getImagesURL(emails)
             
@@ -68,7 +67,7 @@ def index():
             #user_id = auth.get_account_info(user['idToken'])
             session['username'] = email
             #return render_template('formulario.html', user=user)
-            return render_template(putos, nav_activo=1, usuario=user, opcion=options, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta, file=file)
+            return render_template(putos, nav_activo=1, usuario=user, opcion=options, l=links, keys=keys, cantidadDatos=cantidad, cuent=cuenta, file=file)
             
         except:
             unsuccessful = 'Su correo electrónico o contraseña estan mal digitados, vuelva a intentarlo.'

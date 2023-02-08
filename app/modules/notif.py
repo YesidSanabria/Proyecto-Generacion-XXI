@@ -26,12 +26,11 @@ def notif():
             [keys, emails, cantidad] = crud.getStudentsData([])
             cuenta = crud.amountCards()
             emails = [x.lower() for x in emails]
-            req = crud.getRequests()
              #arreglo con los campos de imagenes de cada persona
             links = crud.getImagesURL(emails)
 
             if True:
-                return render_template(rut, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
+                return render_template(rut, usuario=user, l=links, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
         elif ruta == "notif":
             return render_template('notificaciones.html')
         

@@ -29,10 +29,9 @@ def admin():
             [keys, emails, cantidad] = crud.getStudentsData([])
             cuenta = crud.amountCards()
             emails = [x.lower() for x in emails]
-            req = crud.getRequests()
              #arreglo con los campos de imagenes de cada persona
             links = crud.getImagesURL(emails)
-            return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
+            return render_template(putos, usuario=user, l=links, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
 
         elif ruta == "infopract":
             putos = 'infopract.html'
@@ -87,10 +86,9 @@ def admin():
             user = crud.deleteStudent(request.form["eliminar"])
             foto = crud.getImagesURL([request.form["eliminar"]])
             emails = [x.lower() for x in emails]
-            req = crud.getRequests()
             links = crud.getImagesURL(emails)
                          
-            return render_template(putos, usuario=user, l=foto, req=req, keys=keys, cantidadDatos=cantidad) 
+            return render_template(putos, usuario=user, l=foto, keys=keys, cantidadDatos=cantidad) 
 
         elif ruta =="edit":
             putos = 'admformulario.html'
@@ -110,12 +108,11 @@ def admin():
             else:
                 [keys, emails, cantidad] = crud.getStudentsData(studentsList)
             emails = [x.lower() for x in emails]
-            req = crud.getRequests()
              #arreglo con los campos de imagenes de cada persona
             links = crud.getImagesURL(emails)
             if len(links[0]) == 1:
                 links = [links]
-            return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad)
+            return render_template(putos, usuario=user, l=links, keys=keys, cantidadDatos=cantidad)
 
         elif ruta == 'searchCareer':
             putos = 'admin.html'
@@ -127,12 +124,11 @@ def admin():
             else:
                 [keys, emails, cantidad] = crud.getStudentsData(studentsList)
             emails = [x.lower() for x in emails]
-            req = crud.getRequests()
              #arreglo con los campos de imagenes de cada persona
             links = crud.getImagesURL(emails)
             if len(links[0]) == 1:
                 links = [links]
-            return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad)
+            return render_template(putos, usuario=user, l=links, keys=keys, cantidadDatos=cantidad)
         
         elif ruta == 'reportes':
             exf.createStudentsExcel()
@@ -177,11 +173,10 @@ def confirm():
         [keys, emails, cantidad] = crud.getStudentsData([])
         cuenta = crud.amountCards()
         emails = [x.lower() for x in emails]
-        req = crud.getRequests()
              #arreglo con los campos de imagenes de cada persona
         links = crud.getImagesURL(emails)
 
         if True:
-            return render_template(putos, usuario=user, l=links, req=req, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
+            return render_template(putos, usuario=user, l=links, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
         
     return render_template('homeadmin.html')

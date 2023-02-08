@@ -87,7 +87,7 @@ def updateStudentData(email, data):
     ref = db.reference('Estudiantes')
     ref.child(email.replace('.', '')).update(data)
     # Sintaxis:
-    # updateStudentData('julian.cely@claro.com.co', {'Celular personal': '3214157461'})
+    # updateStudentData(correo_corporativo, {'Celular personal': '1234567890', ...})
 
 def deleteStudent(email):
     student = getStudentInfo(email)
@@ -136,16 +136,6 @@ def getStudentsData(students):
     email = [data[i]['Correo corporativo'] for i in keys]
     cantidad = len(keys)    
     return keys, email, cantidad
-
-# SOLICITUDES DE PRACTICANTES
-
-def addRequest(req):
-    ref = db.reference('Solicitudes')
-    ref.push(req)
-
-def getRequests():
-    ref = db.reference('Solicitudes')
-    return ref.get()
 
 # FOTOS DE PERFIL
 
