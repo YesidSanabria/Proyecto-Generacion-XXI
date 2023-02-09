@@ -48,8 +48,6 @@ def view_personal_data():
             putos = 'formulario.html'
             user = crud.getStudentInfo(request.form['actuali'])
             links = crud.getImagesURL([request.form["actuali"]])
-            # print(request.form['actuali'])
-            # print(session["username"])
             try:
                 opciones = orderOptions(user['Correo corporativo'])
             except:

@@ -17,11 +17,6 @@ config = {
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 
-
-#storage.child("profile_pictures/new.jpeg").put(r"C:\Users\ic5705b\Documents\GitHub\Proyecto-Generacion-XXI\app\descarga.jpeg") #cargar imagenes al storage
-# storage.child("profile_pictures/new.jpeg").download(r"C:\Users\ic5705b\Documents\GitHub\Proyecto-Generacion-XXI\app","example.jpeg") #descargar las imagenes obtenidas del storage 
-# print(storage.child("profile_pictures/new.jpeg").get_url(None)) #Obtener la url de la ruta de las imagenes
-
 admin = "sspg.xxi@gmail.com"
 
 def index():

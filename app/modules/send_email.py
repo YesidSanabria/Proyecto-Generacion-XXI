@@ -34,7 +34,6 @@ def send_custom_email(email,link,correo):
     #crea el objeto mail
     mail=Mail(rt.app)
 
-    print(link)
     
     # msg = Message("Restablecer contraseña",sender='sspg.xxi@gmail.com',recipients=[email])
     # #msg.body = 'Link de restablecimiento de contraseña: ' +  "\n\n"  + "Mensaje enviado de manera automática, no responder" 

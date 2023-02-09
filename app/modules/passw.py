@@ -26,10 +26,8 @@ def forgot_password():
             handle_code_in_app=True,
         )
         email = request.form['name']
-        #print(email)
         try:
             user = crud.getStudentInfo(email)
-            #print(user['Correo personal'])
             link = auth.generate_password_reset_link(email, action_code_settings)
             mail.send_custom_email(user['Correo personal'],link,email)
             unsuccessful = 'Revisa tu correo corporativo'

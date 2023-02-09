@@ -17,7 +17,6 @@ def confirm():
             if role == 'docente':
                 ev = {}
                 ev['lider'] = crud.getEvaluationResults(user, 'lider')
-                print(ev)
                 return render_template('teacher_ev.html', email=email, user=user, userI=userI, foto=foto, ev=ev)
             elif role == 'líder':                
                 return render_template('boss_ev.html', email=email, user=user)

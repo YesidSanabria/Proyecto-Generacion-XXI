@@ -1,7 +1,6 @@
-# Este se quita cuando se arregle la sección "Pendientes de cambio"
 from flask import render_template
-####################################################################
 from flask import Flask
+from flask_mail import Mail
 
 # ------ Importar archivos propios -------
 import modules.register as reg
@@ -10,15 +9,12 @@ import modules.passw as pw
 import modules.admin as ad
 import modules.form as fm
 import modules.profile as pf
-import modules.demand as dm
 import modules.evaluation as ev
 import modules.confirm as cf
 import modules.notif as nt
 import modules.reports as rp
-
-from flask_mail import Mail
-
 import modules.faq as fq
+
 app = Flask(__name__)
 app.secret_key = 'esto-es-una-clave-muy-secreta'
 mail = Mail()
@@ -71,12 +67,6 @@ def teacher_ev():
 @app.route('/tutor_ev', methods=['GET', 'POST'])
 def tutor_ev():
     return ev.tutor_ev()
-    
-# --------------------------------------SOLICITUD DE PRACTICANTES-------------------------------------
-
-@app.route('/solicitudes', methods=['GET', 'POST'])
-def solicitudes():
-    return dm.demand()
 
 # --------------------------------------REGISTRO E INICIO DE SESION-------------------------------------
 
@@ -129,6 +119,17 @@ def dashboard_ev():
     return rp.dashboard_ev()
     
 # ---------------------------------PROGRAMAR ARRIBA DEL IF DE ABAJO----------------------------------
+# if __name__ == '__main__':
+#     mail.init_app(app)
+#     app.run(debug=True)
+
 if __name__ == '__main__':
+    server_name = app.config['SERVER_NAME']
+    if server_name and ':' in server_name:
+        host, port = server_name.split(":")
+        port = int(port)
+    else:
+        port = 80
+        host = "localhost"
     mail.init_app(app)
-    app.run(debug=True)
+    app.run(host=host, port=port, debug=True)

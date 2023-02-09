@@ -82,7 +82,6 @@ def form ():
             if (upload.filename != ''):
                 crud.uploadProfileImage(userr, upload)
                 links = crud.getImagesURL([userr])
-                #print("1")
         except:
             upload = 3
             
@@ -93,7 +92,6 @@ def form ():
         except:
             cv = 3
         
-        #print(upload.filename)
         
         if (registro == 'estudiante'):
             return render_template('view_personal_data.html', nav_activo=1, usuario=crud.getStudentInfo(correo_corporativo), smessage=mensaje,l=links)
