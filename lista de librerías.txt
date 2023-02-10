@@ -5,3 +5,4 @@ pip install firebase-admin
 pip3 install pyrebase4
 ** pip install firebase
 pip install pandas
+pip install xlsxwriter
