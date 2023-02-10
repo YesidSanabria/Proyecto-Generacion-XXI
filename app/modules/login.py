@@ -28,7 +28,6 @@ def index():
         user = crud.getStudentInfo(email) 
         options = crud.options
         # Inicialización de parámetros.
-        req = ''
         cantidad = ''
         emails = ''
         keys =''
