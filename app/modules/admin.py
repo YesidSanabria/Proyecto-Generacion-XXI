@@ -29,7 +29,7 @@ def admin():
             [keys, emails, cantidad] = crud.getStudentsData([])
             cuenta = crud.amountCards()
             emails = [x.lower() for x in emails]
-             #arreglo con los campos de imagenes de cada persona
+            # arreglo con los campos de imagenes de cada persona
             links = crud.getImagesURL(emails)
             return render_template(putos, usuario=user, l=links, keys=keys, cantidadDatos=cantidad, cuent=cuenta)
 
