@@ -1,7 +1,7 @@
 import pyrebase
 from flask import render_template, request
 import modules.crud as crud
-import modules.evaluation as ev
+from urllib.request import urlopen
 
 config = {
     "apiKey": "AIzaSyDBP7Is2dfzsIzLA-o222p2K2VxoSsFw0c",
@@ -104,5 +104,12 @@ def form ():
             if (ev['lider'] == None) | (ev['tutor'] == None):
                 ev['lider'] = {'': ''}
                 ev['tutor'] = {'': ''}
-            return render_template('infopract.html', usuario=user, l=links, ev=ev)
+            file = crud.urlDevelopmentPlan(user['Cedula'])
+            # Verificar si hay un plan de desarrollo.
+            try:
+                urlopen(file)
+            except:
+                file = False
+            yave = user['Correo corporativo']
+            return render_template('infopract.html', usuario=user, l=links, ev=ev, y=yave, file=file)
     return render_template('formulario.html')
